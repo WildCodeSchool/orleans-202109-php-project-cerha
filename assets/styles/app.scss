@@ -1,7 +1,22 @@
-@import 'variables.scss';
+@import "variables.scss";
+@import "~bootstrap/scss/bootstrap";
 
 body {
-    margin:0;
-    background-color: $wild-color;
-    color: $light;
+    margin: 0;
+    background-color: $light;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+
+
+p {
+    font-family: Calibri, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+    font-size: $text-size;
 }
