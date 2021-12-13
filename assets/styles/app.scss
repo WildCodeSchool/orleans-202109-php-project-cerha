@@ -1,6 +1,5 @@
 @import "variables.scss";
 @import "~bootstrap/scss/bootstrap";
-@import url('https://fonts.googleapis.com/css2?family=Sulphur+Point:wght@300;400;700&display=swap');
 
 body {
     margin: 0;
@@ -12,12 +11,12 @@ h2,
 h3,
 h4,
 h5 {
-    font-family: 'Sulphur Point', sans-serif;
+    font-family: $title-family;
 }
 
 
 
 p {
-    font-family: Calibri, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+    font-family: $text-family;
     font-size: $text-size;
 }
