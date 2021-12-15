@@ -32,6 +32,11 @@ class Employee
      */
     private string $role;
 
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private string $civility;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Employee
     public function setRole(string $role): self
     {
         $this->role = $role;
+
+        return $this;
+    }
+
+    public function getCivility(): ?string
+    {
+        return $this->civility;
+    }
+
+    public function setCivility(string $civility): self
+    {
+        $this->civility = $civility;
 
         return $this;
     }
