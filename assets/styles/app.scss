@@ -1,8 +1,9 @@
 @import "variables.scss";
 @import "~bootstrap/scss/bootstrap";
+@import "navbar.scss";
 
 body {
-    margin          : 0;
+    margin          : 0;    
     background-color: $light;
 }
 
