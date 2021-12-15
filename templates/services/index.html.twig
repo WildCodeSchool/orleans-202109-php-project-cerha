@@ -5,3 +5,8 @@
 {% block stylesheets %}
 	{{ encore_entry_link_tags('services') }}
 {% endblock %}
+{% block body %}
+<h1 class="text-center my-5">Nos services</h1>
+{% include 'services/_particular-services.html.twig'%}
+{% include 'services/_company-services.html.twig'%}
+{% endblock %}

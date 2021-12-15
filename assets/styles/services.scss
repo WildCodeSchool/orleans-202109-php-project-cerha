@@ -1,0 +1,33 @@
+@import 'variables.scss';
+
+.service-body {
+    min-height: 360px;
+    height: auto;
+}
+
+.service-head {
+    background-color: $primary;
+    font-family: $text-family;
+}
+
+.service-body ul {
+    font-size: 16px;
+    line-height: 32px;
+}
+
+.service-body svg {
+    fill:$secondary;
+    margin-inline-end: 16px;
+}
+
+.particular{
+    color:$secondary;
+}
+
+.head-company {
+    background-color: $secondary;
+}
+
+.body-company svg {
+    fill:$primary;
+}
