@@ -15,22 +15,22 @@ class Team
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $name;
+    private string $name;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $picture;
+    private string $picture;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $role;
+    private string $role;
 
     public function getId(): ?int
     {
