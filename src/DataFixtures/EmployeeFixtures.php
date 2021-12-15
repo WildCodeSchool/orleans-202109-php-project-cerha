@@ -13,14 +13,14 @@ class EmployeeFixtures extends Fixture
             'firstname' => 'Kévin',
             'lastname' => 'Hidalgo',
             'role' => 'rôle',
-            'picture' => 'https://via.placeholder.com/250',
+            'picture' => 'https://via.placeholder.com/350',
             'civility' => 'M'
         ],
         [
             'firstname' => 'Lionel',
             'lastname' => 'Dubos',
             'role' => 'rôle',
-            'picture' => 'https://via.placeholder.com/250',
+            'picture' => 'https://via.placeholder.com/350',
             'civility' => 'M',
         ]
     ];
