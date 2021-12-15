@@ -10,13 +10,15 @@ class EmployeeFixtures extends Fixture
 {
     public const EMPLOYEES = [
         [
-            'name' => 'Kévin Hidalgo',
+            'firstname' => 'Kévin',
+            'lastname' => 'Hidalgo',
             'role' => 'rôle',
             'picture' => 'https://via.placeholder.com/250',
             'civility' => 'M'
         ],
         [
-            'name' => 'Lionel Dubos',
+            'firstname' => 'Lionel',
+            'lastname' => 'Dubos',
             'role' => 'rôle',
             'picture' => 'https://via.placeholder.com/250',
             'civility' => 'M',
@@ -26,14 +28,13 @@ class EmployeeFixtures extends Fixture
     {
         foreach (self::EMPLOYEES as $employee) {
             $newEmployee = new Employee();
-            $newEmployee->setName($employee['name']);
+            $newEmployee->setFirstname($employee['firstname']);
+            $newEmployee->setLastname($employee['lastname']);
             $newEmployee->setRole($employee['role']);
             $newEmployee->setPicture($employee['picture']);
             $newEmployee->setCivility($employee['civility']);
             $manager->persist($newEmployee);
         }
-
-
         $manager->flush();
     }
 }

@@ -18,11 +18,6 @@ class Employee
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private string $name;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private string $picture;
@@ -37,21 +32,19 @@ class Employee
      */
     private string $civility;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private string $firstname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private string $lastname;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     public function getPicture(): ?string
@@ -86,6 +79,30 @@ class Employee
     public function setCivility(string $civility): self
     {
         $this->civility = $civility;
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
 
         return $this;
     }
