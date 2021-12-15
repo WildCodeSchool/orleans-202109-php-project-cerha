@@ -31,3 +31,9 @@
 .body-company svg {
     fill:$primary;
 }
+
+.img-services {
+    height: 400px;
+    object-fit: cover;
+    object-position: top;
+}
