@@ -14,9 +14,11 @@ h5 {
     font-family: $title-family;
 }
 
-
-
 p {
     font-family: $text-family;
     font-size: $text-size;
+}
+
+h1 {
+    color: $dark-primary;
 }

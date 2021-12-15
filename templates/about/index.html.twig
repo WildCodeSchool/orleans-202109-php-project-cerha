@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - À propos{% endblock %}
+
+{% block body %}
+<main class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1>A propos</h1>
+        </div>
+    </div>
+    <div class="presentation my-5">
+        <div class="row d-flex gap-5">
+            <div class="col-5 offset-1 text-end">
+                <img src="https://via.placeholder.com/550x250?text=Enterprise+Image" class="rounded-1"
+                    alt="Image de l'entreprise">
+            </div>
+            <div class="col-5">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam odit sequi perferendis est sit
+                    corporis, quaerat eum alias nostrum quae veritatis tempora error, recusandae similique quisquam
+                    numquam. Asperiores, sequi ut!
+                    Esse consequatur, est voluptates, aspernatur perspiciatis sapiente nesciunt nulla dolore repudiandae
+                    explicabo hic accusamus obcaecati. Accusantium ea nulla molestiae autem quis illum totam in corporis
+                    mollitia minus, doloremque nihil natus!
+                </p>
+            </div>
+        </div>
+    </div>
+
+</main>
+{% endblock %}
