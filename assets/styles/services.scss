@@ -1,8 +1,14 @@
 @import 'variables.scss';
 
+.service-card {
+    border:none;
+    box-shadow: $shadow-card;
+}
+
 .service-body {
     min-height: 360px;
     height: auto;
+    
 }
 
 .service-head {
@@ -35,5 +41,14 @@
 .img-services {
     height: 400px;
     object-fit: cover;
-    object-position: top;
+    object-position: -30px -30px;
+    
+}
+
+.row {
+    --bs-gutter-x:0;
+}
+
+.container {
+    max-width: 1200px;
 }
