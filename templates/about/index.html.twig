@@ -27,6 +27,27 @@
             </div>
         </div>
     </div>
-
+    <section class="missions my-5">
+        <div class="row">
+            <h2 class="text-center">Nos missions</h2>
+        </div>
+        <div class="mission">
+            {% for mission in missions %}
+            <div
+                class="row flex-column text-center flex-xxl-row align-items-center justify-content-center my-5 {{ loop.index % 2 != 0 ? 'flex-xxl-row-reverse' }}">
+                <div class="col d-md-none mb-3">
+                    <img src="{{ mission.smImage }}" class="rounded-1" alt="{{ mission.title }} image">
+                </div>
+                <div class="col d-none d-md-block">
+                    <img src="{{ mission.mdImage }}" class="rounded-1" alt="{{ mission.title }} image">
+                </div>
+                <div class="col">
+                    <h3 class="text-center mb-1">{{ mission.title }}</h3>
+                    <p class="fs-6 text-xxl-start">{{ mission.text }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
 </main>
 {% endblock %}
