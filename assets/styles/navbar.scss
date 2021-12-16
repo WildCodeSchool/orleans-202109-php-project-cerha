@@ -1,0 +1,30 @@
+@import "variables.scss";
+
+.navbar {
+    box-shadow: 0px 0px 8px -2px black;
+
+    a {
+        .logoCERHA {
+            height: 50px;
+        }
+    }
+
+    .navbar-nav .nav-link {
+        font-family: $title-family;
+        color      : $dark-primary;
+
+        &:hover {
+            color: $secondary;
+        }
+    }
+
+    .btn {
+        color : $light;
+        border: none;
+
+        &:hover {
+            background-color: $dark-primary;
+            border          : none;
+        }
+    }
+}
