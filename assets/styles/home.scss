@@ -1,7 +1,11 @@
 @import "variables.scss";
 
 .card-home-service {
-    height: 600px;
+    max-width: 1200px;
+}
+
+.card-home-service {
+    height: 700px;
     box-shadow: $shadow-card;
 }
 
