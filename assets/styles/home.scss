@@ -1,0 +1,25 @@
+@import "variables.scss";
+
+.card-home-service {
+    height: 600px;
+    box-shadow: $shadow-card;
+}
+
+.card-home-service h3 {
+
+    color:$primary;
+}
+
+.card-home-service a {
+    text-decoration: none;
+    color: $secondary;
+}
+
+.card-home-service a:hover {
+    color: $primary;
+}
+
+.card-home-service img {
+    height: calc( 100% / 3);
+    object-fit: cover;
+}
