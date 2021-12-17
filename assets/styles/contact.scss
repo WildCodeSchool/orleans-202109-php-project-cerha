@@ -6,12 +6,12 @@
 }
 
 .btn {
-    color : $light;
+    color: $light;
     border: none;
 
     &:hover {
         background-color: $dark-primary;
-        border          : none;
-        color : $light;
+        border: none;
+        color: $light;
     }
 }
