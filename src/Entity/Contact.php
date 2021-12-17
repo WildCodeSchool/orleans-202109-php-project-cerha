@@ -6,37 +6,35 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class Contact
 {
+    private string $company;
 
-    private $company;
 
-
-    private $candidate;
-
-    /**
-     * @Assert\NotBlank
-     */
-    private $lastName;
-
-    /**
-     */
-    private $firstName;
+    private string $candidate;
 
     /**
      * @Assert\NotBlank
      */
-    private $phone;
+    private string $lastName;
+
+    /**
+     */
+    private string $firstName;
+
+    /**
+     * @Assert\NotBlank
+     */
+    private string $phone;
 
     /**
      * @Assert\NotBlank
      * @Assert\Email()
      */
-    private $email;
+    private string $email;
 
     /**
      * @Assert\NotBlank
-     * @Assert\Length(min=10)
      */
-    private $message;
+    private string $message;
 
     public function getCompany(): ?string
     {

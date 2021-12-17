@@ -12,8 +12,8 @@
 			Nous contacter
 			<h1>
 
-				<div class="row ">
-					<div class="col-md-6 ">
+				<div class="row  d-flex ">
+					<div class=" col-md-6  ">
 
 						<img class=" w-50 h-70" src="{{ asset('build/images/logo-cerha.png') }}" alt="logo"/>
 
@@ -36,19 +36,28 @@
 						</small>
 					</div>
 					<div class="col">
-						<div class=" vr d-flex mt-5 h-100"></div>
+						<div class=" vr d-flex mt-5 h-100 d-none d-sm-block "></div>
 					</div>
-					<div class="col-md-5 mt-5 fs-4">
-						{{form_start(form)}}
-						<div class="row">
-							<div class="col my-3">{{form_row(form.company)}}
+					<div class="col-md-5 d-print-inline-block mt-5 fs-4 ">
+						{% for message in app.flashes('success') %}
+							<div class="alert alert-success">
+								{{ message }}
 							</div>
-							<div class="col my-3">{{form_row(form.candidate)}}
+						{% endfor %}
+						{{ form_start(form) }}
+						<div class="row mb-4">
+							<div class="col">
+								{{ form_widget(form.company[0]) }}
+							</div>
+							<div class="col">
+								{{ form_widget(form.company[1]) }}
 							</div>
 						</div>
-						{{form_rest(form)}}
-						<button class="btn btn-secondary">Envoyer</button>
-						{{form_end(form)}}
+						{{ form_rest(form) }}
+
+						<button class="btn btn-contact btn-secondary mt-5">Envoyer</button>
+
+						{{ form_end(form) }}
 					</div>
 				</main>
 			{% endblock %}
