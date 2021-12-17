@@ -1,5 +1,6 @@
 @import "variables.scss";
 @import "~bootstrap/scss/bootstrap";
+@import "navbar.scss";
 
 body {
     margin: 0;
@@ -14,7 +15,7 @@ h5 {
     font-family: $title-family;
 }
 
-p {
+p{
     font-family: $text-family;
     font-size: $text-size;
 }

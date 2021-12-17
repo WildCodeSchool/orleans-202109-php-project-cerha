@@ -3,19 +3,72 @@
 {% block title %}{{ parent() }} - À propos{% endblock %}
 
 {% block body %}
+{% set missions = [
+    {
+        'title': 'Expertise R.H.',
+        'text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Etiam lacus nunc, euismod eu ultricies porta, congue eget quam. 
+        Vestibulum accumsan libero id feugiat condimentum. 
+        Cras molestie interdum elementum. Mauris ipsum ex, 
+        fringilla eu dignissim sed, dignissim id tellus. 
+        Nulla at scelerisque magna. Maecenas pharetra volutpat sapien, 
+        at sagittis eros vulputate non. Aliquam blandit lacus ac enim sollicitudin dapibus. 
+        Aenean sed est id arcu feugiat bibendum. Sed pulvinar vel sapien ut faucibus. 
+        Vestibulum eget justo id odio consectetur rutrum in fringilla nisl. 
+        Proin placerat aliquet risus non pretium. Nunc congue metus finibus nibh 
+        bibendum cursus. In tortor nisl, blandit sit amet euismod sed, ultrices at turpis.',
+        'smImage': 'https://via.placeholder.com/350x250?text=Small+Image',
+        'mdImage': 'https://via.placeholder.com/500x250?text=Medium+Image',
+    },
+    {
+        'title': 'C.V. automatisé et anonyme',
+            'text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Etiam lacus nunc, euismod eu ultricies porta, congue eget quam. 
+            Vestibulum accumsan libero id feugiat condimentum. 
+            Cras molestie interdum elementum. Mauris ipsum ex, 
+            fringilla eu dignissim sed, dignissim id tellus. 
+            Nulla at scelerisque magna. Maecenas pharetra volutpat sapien, 
+            at sagittis eros vulputate non. Aliquam blandit lacus ac enim sollicitudin dapibus. 
+            Aenean sed est id arcu feugiat bibendum. Sed pulvinar vel sapien ut faucibus. 
+            Vestibulum eget justo id odio consectetur rutrum in fringilla nisl. 
+            Proin placerat aliquet risus non pretium. Nunc congue metus finibus nibh 
+            bibendum cursus. In tortor nisl, blandit sit amet euismod sed, ultrices at turpis. ',
+            'smImage': 'https://via.placeholder.com/350x250?text=Small+Image',
+            'mdImage': 'https://via.placeholder.com/500x250?text=Medium+Image',
+    },
+    {
+        'title': 'Recrutement de hauts potentiels',
+            'text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Etiam lacus nunc, euismod eu ultricies porta, congue eget quam. 
+            Vestibulum accumsan libero id feugiat condimentum. 
+            Cras molestie interdum elementum. Mauris ipsum ex, 
+            fringilla eu dignissim sed, dignissim id tellus. 
+            Nulla at scelerisque magna. Maecenas pharetra volutpat sapien, 
+            at sagittis eros vulputate non. Aliquam blandit lacus ac enim sollicitudin dapibus. 
+            Aenean sed est id arcu feugiat bibendum. Sed pulvinar vel sapien ut faucibus. 
+            Vestibulum eget justo id odio consectetur rutrum in fringilla nisl. 
+            Proin placerat aliquet risus non pretium. Nunc congue metus finibus nibh 
+            bibendum cursus. In tortor nisl, blandit sit amet euismod sed, ultrices at turpis. ',
+            'smImage': 'https://via.placeholder.com/350x250?text=Small+Image',
+            'mdImage': 'https://via.placeholder.com/500x250?text=Medium+Image',
+    },
+] %}
 <main class="container">
     <div class="row">
         <div class="col text-center">
             <h1>A propos</h1>
         </div>
     </div>
-    <div class="presentation my-5">
-        <div class="row d-flex gap-5">
-            <div class="col-5 offset-1 text-end">
+    <div class="presentation my-5 text-center text-xl-start">
+        <div class="row flex-column flex-xl-row align-items-center gap-5">
+            <div class="col d-none d-md-block">
                 <img src="https://via.placeholder.com/550x250?text=Enterprise+Image" class="rounded-1"
                     alt="Image de l'entreprise">
             </div>
-            <div class="col-5">
+            <div class="col d-md-none">
+                <img src="https://via.placeholder.com/350x250?text=Enterprise+Image" class="rounded-1" alt="Image de l'entreprise">
+            </div>
+            <div class="col">
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam odit sequi perferendis est sit
                     corporis, quaerat eum alias nostrum quae veritatis tempora error, recusandae similique quisquam
@@ -27,6 +80,27 @@
             </div>
         </div>
     </div>
-
+    <section class="missions my-5">
+        <div class="row">
+            <h2 class="text-center">Nos missions</h2>
+        </div>
+        <div class="mission">
+            {% for mission in missions %}
+            <div
+                class="row flex-column text-center flex-xxl-row align-items-center justify-content-center my-5 {{ loop.index is even ? 'flex-xxl-row-reverse' }}">
+                <div class="col d-md-none mb-3">
+                    <img src="{{ mission.smImage }}" class="rounded-1" alt="{{ mission.title }} image">
+                </div>
+                <div class="col d-none d-md-block">
+                    <img src="{{ mission.mdImage }}" class="rounded-1" alt="{{ mission.title }} image">
+                </div>
+                <div class="col">
+                    <h3 class="text-center mb-1">{{ mission.title }}</h3>
+                    <p class="fs-6 text-xxl-start">{{ mission.text }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
 </main>
 {% endblock %}
