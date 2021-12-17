@@ -3,95 +3,95 @@
 {% block title %}{{ parent() }} - À propos{% endblock %}
 {% block body %}
 {% set goodnesses = [
-    {
-        'goodness': 'Valeur 1',
-        'text': 'Lorem ipsum dolor sit amet, 
-        consectetur adipiscing elit. 
-        Curabitur posuere tellus quis lacus convallis tincidunt. 
-        Duis efficitur mauris metus, et mollis tortor congue ac. 
-        Mauris metus purus, finibus ac commodo vitae, interdum eu ante. 
-        Praesent sed aliquam lacus. Duis a tortor at arcu semper interdum in ut magna. 
-        Integer fringilla consectetur tellus, congue vehicula libero egestas vitae. 
-        Sed blandit faucibus est, a luctus nulla consequat sit amet. 
-        Donec congue convallis nulla a ultrices. 
-        Cras rhoncus dapibus ipsum in sollicitudin.',
-    },
-    {
-        'goodness': 'Valeur 2',
-        'text': 'Lorem ipsum dolor sit amet, 
-        consectetur adipiscing elit. 
-        Curabitur posuere tellus quis lacus convallis tincidunt. 
-        Duis efficitur mauris metus, et mollis tortor congue ac. 
-        Mauris metus purus, finibus ac commodo vitae, interdum eu ante. 
-        Praesent sed aliquam lacus. Duis a tortor at arcu semper interdum in ut magna. 
-        Integer fringilla consectetur tellus, congue vehicula libero egestas vitae. 
-        Sed blandit faucibus est, a luctus nulla consequat sit amet. 
-        Donec congue convallis nulla a ultrices. 
-        Cras rhoncus dapibus ipsum in sollicitudin.',
-    },
-    {
-        'goodness': 'Valeur 3',
-        'text': 'Lorem ipsum dolor sit amet, 
-        consectetur adipiscing elit. 
-        Curabitur posuere tellus quis lacus convallis tincidunt. 
-        Duis efficitur mauris metus, et mollis tortor congue ac. 
-        Mauris metus purus, finibus ac commodo vitae, interdum eu ante. 
-        Praesent sed aliquam lacus. Duis a tortor at arcu semper interdum in ut magna. 
-        Integer fringilla consectetur tellus, congue vehicula libero egestas vitae. 
-        Sed blandit faucibus est, a luctus nulla consequat sit amet. 
-        Donec congue convallis nulla a ultrices. 
-        Cras rhoncus dapibus ipsum in sollicitudin.',
-    },
+{
+'goodness': 'Valeur 1',
+'text': 'Lorem ipsum dolor sit amet,
+consectetur adipiscing elit.
+Curabitur posuere tellus quis lacus convallis tincidunt.
+Duis efficitur mauris metus, et mollis tortor congue ac.
+Mauris metus purus, finibus ac commodo vitae, interdum eu ante.
+Praesent sed aliquam lacus. Duis a tortor at arcu semper interdum in ut magna.
+Integer fringilla consectetur tellus, congue vehicula libero egestas vitae.
+Sed blandit faucibus est, a luctus nulla consequat sit amet.
+Donec congue convallis nulla a ultrices.
+Cras rhoncus dapibus ipsum in sollicitudin.',
+},
+{
+'goodness': 'Valeur 2',
+'text': 'Lorem ipsum dolor sit amet,
+consectetur adipiscing elit.
+Curabitur posuere tellus quis lacus convallis tincidunt.
+Duis efficitur mauris metus, et mollis tortor congue ac.
+Mauris metus purus, finibus ac commodo vitae, interdum eu ante.
+Praesent sed aliquam lacus. Duis a tortor at arcu semper interdum in ut magna.
+Integer fringilla consectetur tellus, congue vehicula libero egestas vitae.
+Sed blandit faucibus est, a luctus nulla consequat sit amet.
+Donec congue convallis nulla a ultrices.
+Cras rhoncus dapibus ipsum in sollicitudin.',
+},
+{
+'goodness': 'Valeur 3',
+'text': 'Lorem ipsum dolor sit amet,
+consectetur adipiscing elit.
+Curabitur posuere tellus quis lacus convallis tincidunt.
+Duis efficitur mauris metus, et mollis tortor congue ac.
+Mauris metus purus, finibus ac commodo vitae, interdum eu ante.
+Praesent sed aliquam lacus. Duis a tortor at arcu semper interdum in ut magna.
+Integer fringilla consectetur tellus, congue vehicula libero egestas vitae.
+Sed blandit faucibus est, a luctus nulla consequat sit amet.
+Donec congue convallis nulla a ultrices.
+Cras rhoncus dapibus ipsum in sollicitudin.',
+},
 ] %}
 {% set missions = [
-    {
-        'title': 'Expertise R.H.',
-        'text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Etiam lacus nunc, euismod eu ultricies porta, congue eget quam. 
-        Vestibulum accumsan libero id feugiat condimentum. 
-        Cras molestie interdum elementum. Mauris ipsum ex, 
-        fringilla eu dignissim sed, dignissim id tellus. 
-        Nulla at scelerisque magna. Maecenas pharetra volutpat sapien, 
-        at sagittis eros vulputate non. Aliquam blandit lacus ac enim sollicitudin dapibus. 
-        Aenean sed est id arcu feugiat bibendum. Sed pulvinar vel sapien ut faucibus. 
-        Vestibulum eget justo id odio consectetur rutrum in fringilla nisl. 
-        Proin placerat aliquet risus non pretium. Nunc congue metus finibus nibh 
-        bibendum cursus. In tortor nisl, blandit sit amet euismod sed, ultrices at turpis.',
-        'smImage': 'https://via.placeholder.com/350x250?text=Small+Image',
-        'mdImage': 'https://via.placeholder.com/500x250?text=Medium+Image',
-    },
-    {
-        'title': 'C.V. automatisé et anonyme',
-            'text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Etiam lacus nunc, euismod eu ultricies porta, congue eget quam. 
-            Vestibulum accumsan libero id feugiat condimentum. 
-            Cras molestie interdum elementum. Mauris ipsum ex, 
-            fringilla eu dignissim sed, dignissim id tellus. 
-            Nulla at scelerisque magna. Maecenas pharetra volutpat sapien, 
-            at sagittis eros vulputate non. Aliquam blandit lacus ac enim sollicitudin dapibus. 
-            Aenean sed est id arcu feugiat bibendum. Sed pulvinar vel sapien ut faucibus. 
-            Vestibulum eget justo id odio consectetur rutrum in fringilla nisl. 
-            Proin placerat aliquet risus non pretium. Nunc congue metus finibus nibh 
-            bibendum cursus. In tortor nisl, blandit sit amet euismod sed, ultrices at turpis. ',
-            'smImage': 'https://via.placeholder.com/350x250?text=Small+Image',
-            'mdImage': 'https://via.placeholder.com/500x250?text=Medium+Image',
-    },
-    {
-        'title': 'Recrutement de hauts potentiels',
-            'text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Etiam lacus nunc, euismod eu ultricies porta, congue eget quam. 
-            Vestibulum accumsan libero id feugiat condimentum. 
-            Cras molestie interdum elementum. Mauris ipsum ex, 
-            fringilla eu dignissim sed, dignissim id tellus. 
-            Nulla at scelerisque magna. Maecenas pharetra volutpat sapien, 
-            at sagittis eros vulputate non. Aliquam blandit lacus ac enim sollicitudin dapibus. 
-            Aenean sed est id arcu feugiat bibendum. Sed pulvinar vel sapien ut faucibus. 
-            Vestibulum eget justo id odio consectetur rutrum in fringilla nisl. 
-            Proin placerat aliquet risus non pretium. Nunc congue metus finibus nibh 
-            bibendum cursus. In tortor nisl, blandit sit amet euismod sed, ultrices at turpis. ',
-            'smImage': 'https://via.placeholder.com/350x250?text=Small+Image',
-            'mdImage': 'https://via.placeholder.com/500x250?text=Medium+Image',
-    },
+{
+'title': 'Expertise R.H.',
+'text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Etiam lacus nunc, euismod eu ultricies porta, congue eget quam.
+Vestibulum accumsan libero id feugiat condimentum.
+Cras molestie interdum elementum. Mauris ipsum ex,
+fringilla eu dignissim sed, dignissim id tellus.
+Nulla at scelerisque magna. Maecenas pharetra volutpat sapien,
+at sagittis eros vulputate non. Aliquam blandit lacus ac enim sollicitudin dapibus.
+Aenean sed est id arcu feugiat bibendum. Sed pulvinar vel sapien ut faucibus.
+Vestibulum eget justo id odio consectetur rutrum in fringilla nisl.
+Proin placerat aliquet risus non pretium. Nunc congue metus finibus nibh
+bibendum cursus. In tortor nisl, blandit sit amet euismod sed, ultrices at turpis.',
+'smImage': 'https://via.placeholder.com/350x250?text=Small+Image',
+'mdImage': 'https://via.placeholder.com/500x250?text=Medium+Image',
+},
+{
+'title': 'C.V. automatisé et anonyme',
+'text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Etiam lacus nunc, euismod eu ultricies porta, congue eget quam.
+Vestibulum accumsan libero id feugiat condimentum.
+Cras molestie interdum elementum. Mauris ipsum ex,
+fringilla eu dignissim sed, dignissim id tellus.
+Nulla at scelerisque magna. Maecenas pharetra volutpat sapien,
+at sagittis eros vulputate non. Aliquam blandit lacus ac enim sollicitudin dapibus.
+Aenean sed est id arcu feugiat bibendum. Sed pulvinar vel sapien ut faucibus.
+Vestibulum eget justo id odio consectetur rutrum in fringilla nisl.
+Proin placerat aliquet risus non pretium. Nunc congue metus finibus nibh
+bibendum cursus. In tortor nisl, blandit sit amet euismod sed, ultrices at turpis. ',
+'smImage': 'https://via.placeholder.com/350x250?text=Small+Image',
+'mdImage': 'https://via.placeholder.com/500x250?text=Medium+Image',
+},
+{
+'title': 'Recrutement de hauts potentiels',
+'text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Etiam lacus nunc, euismod eu ultricies porta, congue eget quam.
+Vestibulum accumsan libero id feugiat condimentum.
+Cras molestie interdum elementum. Mauris ipsum ex,
+fringilla eu dignissim sed, dignissim id tellus.
+Nulla at scelerisque magna. Maecenas pharetra volutpat sapien,
+at sagittis eros vulputate non. Aliquam blandit lacus ac enim sollicitudin dapibus.
+Aenean sed est id arcu feugiat bibendum. Sed pulvinar vel sapien ut faucibus.
+Vestibulum eget justo id odio consectetur rutrum in fringilla nisl.
+Proin placerat aliquet risus non pretium. Nunc congue metus finibus nibh
+bibendum cursus. In tortor nisl, blandit sit amet euismod sed, ultrices at turpis. ',
+'smImage': 'https://via.placeholder.com/350x250?text=Small+Image',
+'mdImage': 'https://via.placeholder.com/500x250?text=Medium+Image',
+},
 ] %}
 <main class="container">
     <div class="row">
@@ -106,7 +106,8 @@
                     alt="Image de l'entreprise">
             </div>
             <div class="col d-md-none">
-                <img src="https://via.placeholder.com/350x250?text=Enterprise+Image" class="rounded-1" alt="Image de l'entreprise">
+                <img src="https://via.placeholder.com/350x250?text=Enterprise+Image" class="rounded-1"
+                    alt="Image de l'entreprise">
             </div>
             <div class="col">
                 <p>
@@ -121,15 +122,15 @@
         </div>
     </div>
     <section class="goodness my-5">
-        <div class="row justify-content-between">
+        <div class="row justify-content-between flex-column flex-lg-row">
             {% for goodness in goodnesses %}
-                <div class="col-3">
-                    <h3 class="text-center mb-2">{{ goodness.goodness }}</h3>
-                    <p>{{ goodness.text }}</p>
-                </div>
+            <div class="col col-lg-3">
+                <h3 class="text-center mb-2">{{ goodness.goodness }}</h3>
+                <p>{{ goodness.text }}</p>
+            </div>
             {% endfor %}
         </div>
-     </section>
+    </section>
 
     <section class="missions my-5">
         <div class="row">
