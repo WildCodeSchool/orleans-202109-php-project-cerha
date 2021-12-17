@@ -1,4 +1,5 @@
 @import "variables.scss";
+
 .map {
     width: 13em;
     height: 9em;
@@ -8,7 +9,6 @@
 .btn {
     color: $light;
     border: none;
-
     &:hover {
         background-color: $dark-primary;
         border: none;
