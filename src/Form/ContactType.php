@@ -24,11 +24,11 @@ class ContactType extends AbstractType
                 ],
                 'expanded' => true, 'multiple' => false
             ])
-            ->add('firstName', TextType::class, array('label' => 'Nom'))
-            ->add('lastName', TextType::class, array('label' => 'Prénom'))
-            ->add('phone', TelType::class, array('label' => 'Téléphone'))
-            ->add('email', EmailType::class, array('label' => 'E-mail'))
-            ->add('message', TextareaType::class, array('label' => 'Message'));
+            ->add('firstName', TextType::class, ['label' => 'Nom'])
+            ->add('lastName', TextType::class, ['label' => 'Prénom'])
+            ->add('phone', TelType::class, ['label' => 'Téléphone'])
+            ->add('email', EmailType::class, ['label' => 'E-mail'])
+            ->add('message', TextareaType::class, ['label' => 'Message']);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
