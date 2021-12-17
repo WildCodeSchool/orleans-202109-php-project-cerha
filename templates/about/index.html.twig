@@ -1,7 +1,47 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ parent() }} - À propos{% endblock %}
-
+{% set goodnesses = [
+    {
+        'goodness': 'Valeur 1',
+        'text': 'Lorem ipsum dolor sit amet, 
+        consectetur adipiscing elit. 
+        Curabitur posuere tellus quis lacus convallis tincidunt. 
+        Duis efficitur mauris metus, et mollis tortor congue ac. 
+        Mauris metus purus, finibus ac commodo vitae, interdum eu ante. 
+        Praesent sed aliquam lacus. Duis a tortor at arcu semper interdum in ut magna. 
+        Integer fringilla consectetur tellus, congue vehicula libero egestas vitae. 
+        Sed blandit faucibus est, a luctus nulla consequat sit amet. 
+        Donec congue convallis nulla a ultrices. 
+        Cras rhoncus dapibus ipsum in sollicitudin.',
+    },
+    {
+        'goodness': 'Valeur 2',
+        'text': 'Lorem ipsum dolor sit amet, 
+        consectetur adipiscing elit. 
+        Curabitur posuere tellus quis lacus convallis tincidunt. 
+        Duis efficitur mauris metus, et mollis tortor congue ac. 
+        Mauris metus purus, finibus ac commodo vitae, interdum eu ante. 
+        Praesent sed aliquam lacus. Duis a tortor at arcu semper interdum in ut magna. 
+        Integer fringilla consectetur tellus, congue vehicula libero egestas vitae. 
+        Sed blandit faucibus est, a luctus nulla consequat sit amet. 
+        Donec congue convallis nulla a ultrices. 
+        Cras rhoncus dapibus ipsum in sollicitudin.',
+    },
+    {
+        'goodness': 'Valeur 3',
+        'text': 'Lorem ipsum dolor sit amet, 
+        consectetur adipiscing elit. 
+        Curabitur posuere tellus quis lacus convallis tincidunt. 
+        Duis efficitur mauris metus, et mollis tortor congue ac. 
+        Mauris metus purus, finibus ac commodo vitae, interdum eu ante. 
+        Praesent sed aliquam lacus. Duis a tortor at arcu semper interdum in ut magna. 
+        Integer fringilla consectetur tellus, congue vehicula libero egestas vitae. 
+        Sed blandit faucibus est, a luctus nulla consequat sit amet. 
+        Donec congue convallis nulla a ultrices. 
+        Cras rhoncus dapibus ipsum in sollicitudin.',
+    },
+] %}
 {% block body %}
 <main class="container">
     <div class="row">
@@ -30,6 +70,15 @@
             </div>
         </div>
     </div>
-
+    <section class="goodness my-5">
+        <div class="row justify-content-between">
+            {% for goodness in goodnesses %}
+                <div class="col-3">
+                    <h3 class="text-center mb-2">{{ goodness.goodness }}</h3>
+                    <p>{{ goodness.text }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
 </main>
 {% endblock %}
