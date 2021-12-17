@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<p>
+			Une nouvelle personne souhaiterais obtenir plus d'informations à propos de vos services.
+		</p>
+		<table class="table table-bordered">
+
+			<tr class = "mt-5" >
+				<td class="gap-4 fw-bold">Service :</td>
+				<td>{{ contact.company }}</td>
+			</tr>
+			<tr >
+				<td class= "fw-bold gap-4 fw-bold">Nom :</td>
+				<td>{{ contact.lastName }}</td>
+			</tr>
+			<tr >
+				<td class ="gap-4 fw-bold">Prénom :</td>
+				<td>{{ contact.firstName }}</td>
+			</tr>
+			<tr >
+				<td class ="gap-4 fw-bold">Téléphone :</td>
+				<td>{{ contact.phone }}</td>
+			</tr>
+			<tr >
+				<td class ="gap-4 fw-bold ">E-mail :</td>
+				<td>{{ contact.email }}</td>
+			</tr>
+			<tr  >
+				<td class ="gap-4 fw-bold ">Message :</td>
+				<td>{{ contact.message }}</td>
+			</tr>
+
+
+		{% endblock %}
