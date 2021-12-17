@@ -1,0 +1,21 @@
+@import "variables.scss";
+
+.footer {
+    font-family: $text-family;
+
+    .footerImage {
+        width: 130px;
+    }
+
+    .linkedinQR {
+        width: 70px;
+    }
+
+    a {
+        color: $light;
+
+        &:hover {
+            color: $secondary;
+        }
+    }
+}
