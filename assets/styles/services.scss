@@ -1,0 +1,57 @@
+@import 'variables.scss';
+
+.service-card {
+    border:none;
+    box-shadow: $shadow-card;
+}
+
+.service-body {
+    min-height: 360px;
+    height: auto;
+    
+}
+
+.service-head {
+    background-color: $primary;
+    font-family: $text-family;
+}
+
+.service-body ul {
+    font-size: 16px;
+    line-height: 32px;
+}
+
+.service-body svg {
+    fill:$secondary;
+    margin-inline-end: 16px;
+}
+
+.particular{
+    color:$secondary;
+}
+
+.head-company {
+    background-color: $secondary;
+}
+
+.body-company svg {
+    fill:$primary;
+}
+
+.img-services {
+    height: 400px;
+    object-fit: cover;
+    object-position:top;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+svg {
+    fill:$primary;
+}
+
+svg:hover{
+    fill:$secondary;
+}
