@@ -1,0 +1,176 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - À propos{% endblock %}
+{% block stylesheets %}
+{{ encore_entry_link_tags('about') }}
+{% endblock %}
+{% block body %}
+{% set goodnesses = [
+    {
+        'goodness': 'Valeur 1',
+        'text': 'Lorem ipsum dolor sit amet, 
+        consectetur adipiscing elit. 
+        Curabitur posuere tellus quis lacus convallis tincidunt. 
+        Duis efficitur mauris metus, et mollis tortor congue ac. 
+        Mauris metus purus, finibus ac commodo vitae, interdum eu ante. 
+        Praesent sed aliquam lacus. Duis a tortor at arcu semper interdum in ut magna. 
+        Integer fringilla consectetur tellus, congue vehicula libero egestas vitae. 
+        Sed blandit faucibus est, a luctus nulla consequat sit amet. 
+        Donec congue convallis nulla a ultrices. 
+        Cras rhoncus dapibus ipsum in sollicitudin.',
+    },
+    {
+        'goodness': 'Valeur 2',
+        'text': 'Lorem ipsum dolor sit amet, 
+        consectetur adipiscing elit. 
+        Curabitur posuere tellus quis lacus convallis tincidunt. 
+        Duis efficitur mauris metus, et mollis tortor congue ac. 
+        Mauris metus purus, finibus ac commodo vitae, interdum eu ante. 
+        Praesent sed aliquam lacus. Duis a tortor at arcu semper interdum in ut magna. 
+        Integer fringilla consectetur tellus, congue vehicula libero egestas vitae. 
+        Sed blandit faucibus est, a luctus nulla consequat sit amet. 
+        Donec congue convallis nulla a ultrices. 
+        Cras rhoncus dapibus ipsum in sollicitudin.',
+    },
+    {
+        'goodness': 'Valeur 3',
+        'text': 'Lorem ipsum dolor sit amet, 
+        consectetur adipiscing elit. 
+        Curabitur posuere tellus quis lacus convallis tincidunt. 
+        Duis efficitur mauris metus, et mollis tortor congue ac. 
+        Mauris metus purus, finibus ac commodo vitae, interdum eu ante. 
+        Praesent sed aliquam lacus. Duis a tortor at arcu semper interdum in ut magna. 
+        Integer fringilla consectetur tellus, congue vehicula libero egestas vitae. 
+        Sed blandit faucibus est, a luctus nulla consequat sit amet. 
+        Donec congue convallis nulla a ultrices. 
+        Cras rhoncus dapibus ipsum in sollicitudin.',
+    },
+] %}
+{% set missions = [
+    {
+        'title': 'Expertise R.H.',
+        'text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Etiam lacus nunc, euismod eu ultricies porta, congue eget quam. 
+        Vestibulum accumsan libero id feugiat condimentum. 
+        Cras molestie interdum elementum. Mauris ipsum ex, 
+        fringilla eu dignissim sed, dignissim id tellus. 
+        Nulla at scelerisque magna. Maecenas pharetra volutpat sapien, 
+        at sagittis eros vulputate non. Aliquam blandit lacus ac enim sollicitudin dapibus. 
+        Aenean sed est id arcu feugiat bibendum. Sed pulvinar vel sapien ut faucibus. 
+        Vestibulum eget justo id odio consectetur rutrum in fringilla nisl. 
+        Proin placerat aliquet risus non pretium. Nunc congue metus finibus nibh 
+        bibendum cursus. In tortor nisl, blandit sit amet euismod sed, ultrices at turpis.',
+        'smImage': 'https://via.placeholder.com/350x250?text=Small+Image',
+        'mdImage': 'https://via.placeholder.com/500x250?text=Medium+Image',
+    },
+    {
+        'title': 'C.V. automatisé et anonyme',
+            'text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Etiam lacus nunc, euismod eu ultricies porta, congue eget quam. 
+            Vestibulum accumsan libero id feugiat condimentum. 
+            Cras molestie interdum elementum. Mauris ipsum ex, 
+            fringilla eu dignissim sed, dignissim id tellus. 
+            Nulla at scelerisque magna. Maecenas pharetra volutpat sapien, 
+            at sagittis eros vulputate non. Aliquam blandit lacus ac enim sollicitudin dapibus. 
+            Aenean sed est id arcu feugiat bibendum. Sed pulvinar vel sapien ut faucibus. 
+            Vestibulum eget justo id odio consectetur rutrum in fringilla nisl. 
+            Proin placerat aliquet risus non pretium. Nunc congue metus finibus nibh 
+            bibendum cursus. In tortor nisl, blandit sit amet euismod sed, ultrices at turpis. ',
+            'smImage': 'https://via.placeholder.com/350x250?text=Small+Image',
+            'mdImage': 'https://via.placeholder.com/500x250?text=Medium+Image',
+    },
+    {
+        'title': 'Recrutement de hauts potentiels',
+            'text': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Etiam lacus nunc, euismod eu ultricies porta, congue eget quam. 
+            Vestibulum accumsan libero id feugiat condimentum. 
+            Cras molestie interdum elementum. Mauris ipsum ex, 
+            fringilla eu dignissim sed, dignissim id tellus. 
+            Nulla at scelerisque magna. Maecenas pharetra volutpat sapien, 
+            at sagittis eros vulputate non. Aliquam blandit lacus ac enim sollicitudin dapibus. 
+            Aenean sed est id arcu feugiat bibendum. Sed pulvinar vel sapien ut faucibus. 
+            Vestibulum eget justo id odio consectetur rutrum in fringilla nisl. 
+            Proin placerat aliquet risus non pretium. Nunc congue metus finibus nibh 
+            bibendum cursus. In tortor nisl, blandit sit amet euismod sed, ultrices at turpis. ',
+            'smImage': 'https://via.placeholder.com/350x250?text=Small+Image',
+            'mdImage': 'https://via.placeholder.com/500x250?text=Medium+Image',
+    },
+] %}
+<main class="container-fluid">
+    <section class="presentation my-5 pb-5">
+        <div class="row">
+            <div class="col text-center">
+                <h1 class="mt-3">A propos</h1>
+            </div>
+        </div>
+        <div class="row d-flex gap-5">
+            <div class="col-5 offset-1 text-end">
+                <img src="https://via.placeholder.com/550x250?text=Enterprise+Image" class="rounded-1"
+                    alt="Image de l'entreprise">
+            </div>
+            <div class="col d-md-none">
+                <img src="https://via.placeholder.com/350x250?text=Enterprise+Image" class="rounded-1" alt="Image de l'entreprise">
+            </div>
+            <div class="col">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam odit sequi perferendis est sit
+                    corporis, quaerat eum alias nostrum quae veritatis tempora error, recusandae similique quisquam
+                    numquam. Asperiores, sequi ut!
+                    Esse consequatur, est voluptates, aspernatur perspiciatis sapiente nesciunt nulla dolore
+                    repudiandae
+                    explicabo hic accusamus obcaecati. Accusantium ea nulla molestiae autem quis illum totam in
+                    corporis
+                    mollitia minus, doloremque nihil natus!
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="employee my-5">
+        <div class="row">
+            <h2 class="mt-3 text-center">Notre Équipe</h2>
+        </div>
+        <div class="row align-items-center justify-content-center my-4 flex-column flex-lg-row">
+            {% for employee in employees %}
+            <div class="col col-lg-4 text-center">
+                <img class="rounded-1" src="{{ employee.picture }}"
+                    alt="{{ employee.firstname ~ employee.lastname }} picture">
+                <h3 class="fw-bold mt-4 mb-0">{{ employee.civility ~ '. ' ~ employee.firstname ~ ' ' ~ employee.lastname }}</h3>
+                <p class="role mb-3">{{ employee.role }}</p>
+             </div>
+             {% endfor %}
+         <div>
+     </section>
+    <section class="goodness my-5">
+        <div class="row justify-content-between">
+            {% for goodness in goodnesses %}
+                <div class="col-3">
+                    <h3 class="text-center mb-2">{{ goodness.goodness }}</h3>
+                    <p>{{ goodness.text }}</p>
+                </div>
+            {% endfor %}
+        </div>
+     </section>
+    <section class="missions my-5">
+        <div class="row">
+            <h2 class="text-center">Nos missions</h2>
+        </div>
+        <div class="mission">
+            {% for mission in missions %}
+            <div
+                class="row flex-column text-center flex-xxl-row align-items-center justify-content-center my-5 {{ loop.index is even ? 'flex-xxl-row-reverse' }}">
+                <div class="col d-md-none mb-3">
+                    <img src="{{ mission.smImage }}" class="rounded-1" alt="{{ mission.title }} image">
+                </div>
+                <div class="col d-none d-md-block">
+                    <img src="{{ mission.mdImage }}" class="rounded-1" alt="{{ mission.title }} image">
+                </div>
+                <div class="col">
+                    <h3 class="text-center mb-1">{{ mission.title }}</h3>
+                    <p class="fs-6 text-xxl-start">{{ mission.text }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+{% endblock %}
