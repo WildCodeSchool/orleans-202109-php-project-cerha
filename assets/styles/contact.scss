@@ -8,9 +8,11 @@
 .btn {
     color : $light;
      border: none;
+   
 
      &:hover {
          background-color: $dark-primary;
          border          : none;
+         color : $light;
      }
  }
