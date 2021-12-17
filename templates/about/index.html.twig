@@ -34,7 +34,7 @@
         <div class="mission">
             {% for mission in missions %}
             <div
-                class="row flex-column text-center flex-xxl-row align-items-center justify-content-center my-5 {{ loop.index % 2 != 0 ? 'flex-xxl-row-reverse' }}">
+                class="row flex-column text-center flex-xxl-row align-items-center justify-content-center my-5 {{ loop.index is even ? 'flex-xxl-row-reverse' }}">
                 <div class="col d-md-none mb-3">
                     <img src="{{ mission.smImage }}" class="rounded-1" alt="{{ mission.title }} image">
                 </div>
