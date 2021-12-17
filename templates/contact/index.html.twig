@@ -12,8 +12,8 @@
 			Nous contacter
 			<h1>
 
-				<div class="row">
-					<div class=" col-md-6  ">
+				<div class="row ">
+					<div class=" col-md-5 ">
 
 						<img class=" w-50 h-70" src="{{ asset('build/images/logo-cerha.png') }}" alt="logo"/>
 
@@ -31,14 +31,16 @@
 								<path fill-rule="evenodd" d="M3.1 11.2a.5.5 0 0 1 .4-.2H6a.5.5 0 0 1 0 1H3.75L1.5 15h13l-2.25-3H10a.5.5 0 0 1 0-1h2.5a.5.5 0 0 1 .4.2l3 4a.5.5 0 0 1-.4.8H.5a.5.5 0 0 1-.4-.8l3-4z"/>
 								<path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z"/>
 							</svg>12 rue du vivier – 45140 Ormes</p>
-						<iframe class="w-100 mt-3 map align-middle" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=1.8236768245697024%2C47.9344951864642%2C1.827603578567505%2C47.93633890209049&amp;layer=mapnik&amp;marker=47.93541705249512%2C1.8256402015686035"></iframe><br/><small>
+						<iframe class="w-100 mt-3 mb-5 map align-middle" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=1.8236768245697024%2C47.9344951864642%2C1.827603578567505%2C47.93633890209049&amp;layer=mapnik&amp;marker=47.93541705249512%2C1.8256402015686035"></iframe><br/><small>
 							<a href="https://www.openstreetmap.org/?mlat=47.93542&amp;mlon=1.82564#map=19/47.93542/1.82564"></a>
 						</small>
 					</div>
-					<div class="col">
-						<div class=" vr d-flex mt-5 h-100 d-none d-sm-block "></div>
+
+					<div class="col-2 d-flex justify-content-center ">
+						<div class=" vr mt-5 h-75 d-none d-sm-block "></div>
 					</div>
-					<div class="col-md-5 d-print-inline-block mt-5 fs-4 ">
+
+					<div class="col-md-5  mt-5 fs-4 ">
 						{% for message in app.flashes('success') %}
 							<div class="alert alert-success">
 								{{ message }}
@@ -55,7 +57,7 @@
 						</div>
 						{{ form_rest(form) }}
 
-						<button class="btn btn-contact btn-secondary mt-5">Envoyer</button>
+						<a class="btn btn-secondary fw-bold " href="#">Envoyer</a>
 
 						{{ form_end(form) }}
 					</div>
