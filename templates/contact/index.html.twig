@@ -12,7 +12,7 @@
 			Nous contacter
 			<h1>
 
-				<div class="row  d-flex ">
+				<div class="row">
 					<div class=" col-md-6  ">
 
 						<img class=" w-50 h-70" src="{{ asset('build/images/logo-cerha.png') }}" alt="logo"/>
@@ -46,10 +46,10 @@
 						{% endfor %}
 						{{ form_start(form) }}
 						<div class="row mb-4">
-							<div class="col">
+							<div class="col-6">
 								{{ form_widget(form.company[0]) }}
 							</div>
-							<div class="col">
+							<div class="col-6">
 								{{ form_widget(form.company[1]) }}
 							</div>
 						</div>
