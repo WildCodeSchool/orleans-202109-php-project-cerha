@@ -1,0 +1,13 @@
+@import "variables.scss";
+
+.banner {
+    background-image   : url('../images/banner.jpg');
+    background-position: center;
+    background-repeat  : no-repeat;
+    height             : 400px;
+    background-size    : cover;
+
+    .bannerLogo {
+        width: 250px;
+    }
+}

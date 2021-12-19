@@ -1,5 +1,18 @@
+@import "variables.scss";
+
 .map {
-    width: 425px;
-    height: 350px;
+    width: 13em;
+    height: 9em;
     border-radius: 5px;
+}
+
+.btn {
+    color: $light;
+    border: none;
+
+    &:hover {
+        background-color: $dark-primary;
+        border: none;
+        color: $light;
+    }
 }
