@@ -6,7 +6,7 @@
 }
 
 .service-body {
-    min-height: 360px;
+    min-height: 300px;
     height: auto;
     
 }
@@ -14,11 +14,12 @@
 .service-head {
     background-color: $primary;
     font-family: $text-family;
+    font-size: 20px;
 }
 
 .service-body ul {
     font-size: 16px;
-    line-height: 32px;
+    line-height: 40px;
 }
 
 .service-body svg {
@@ -39,13 +40,9 @@
 }
 
 .img-services {
-    height: 400px;
+    height: 500px;
     object-fit: cover;
     object-position:top;
-}
-
-.container {
-    max-width: 1200px;
 }
 
 svg {
@@ -55,3 +52,4 @@ svg {
 svg:hover{
     fill:$secondary;
 }
+
