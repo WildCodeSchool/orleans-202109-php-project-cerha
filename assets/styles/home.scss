@@ -1,12 +1,15 @@
 @import "variables.scss";
 
-.card-home-service {
-    max-width: 1200px;
+.container-service {
+    margin-block-end: 150px;
+    margin-block-start: 80px;
 }
 
 .card-home-service {
     height: 700px;
     box-shadow: $shadow-card;
+    font-size: $text-size;
+    line-height: 32px;
 }
 
 .card-home-service h3 {
@@ -19,7 +22,11 @@
 }
 
 .card-home-service a:hover {
-    color: $primary;
+    color: $light;
+}
+
+.card-home-service a:active {
+    border:none;
 }
 
 .card-home-service img {
