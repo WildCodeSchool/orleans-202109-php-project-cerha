@@ -50,6 +50,7 @@
     },
     "require-dev": {
         "friendsoftwig/twigcs": ">=4",
+        "fzaninotto/faker": "^1.9",
         "phpmd/phpmd": "*",
         "phpro/grumphp": "*",
         "phpstan/phpdoc-parser": "*",
