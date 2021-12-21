@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil
+{% endblock %}
+
+
+{% block body %}
+	<main class="container">
+		<h1 class="text-center mt-5 ">
+			Mon profil
+			<h1>
+				<div class="col-md-6 et offset-md-3 fs-4 mt-5">
+					{% for message in app.flashes('success') %}
+						<div class="alert alert-success">
+							{{ message }}
+						</div>
+					{% endfor %}
+
+					{{ form_start(form) }}
+
+					{{ form_widget(form) }}
+					<button class="btn btn-secondary align-self-center mb-4">Valider</button>
+					<a class="btn btn-outline-dark align-self-center mb-4" href=" {{ path('candidat_show', {'id': candidat.id}) }}">Retour</a>
+
+					{{ form_end(form) }}
+				</div>
+			</main>
+		{% endblock %}

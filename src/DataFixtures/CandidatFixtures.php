@@ -4,13 +4,12 @@ namespace App\DataFixtures;
 
 use Faker;
 use App\Entity\Candidat;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
 class CandidatFixtures extends Fixture
 {
-    public const CANDIDAT_NUMBER = 3;
+    public const CANDIDAT_NUMBER = 4;
     public function load(ObjectManager $manager): void
     {
         $faker = Faker\Factory::create('fr_FR');
