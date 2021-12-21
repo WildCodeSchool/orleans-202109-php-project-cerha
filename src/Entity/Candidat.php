@@ -34,7 +34,6 @@ class Candidat
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank
-     * @Assert\Type(type="integer")
      */
     private string $postalCode;
 
