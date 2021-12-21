@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{ parent() }} - Mon profil
+{% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('profile') }}
+{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+	{% include "candidat/components/_soft-skills.html.twig" %}
+</div>
+{% endblock %}
