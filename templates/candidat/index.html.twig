@@ -1,10 +1,18 @@
+
 {% extends 'base.html.twig' %}
 
 {% block title %}Mon profil
+{% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('profile') }}
 {% endblock %}
 
 {% block body %}
 	<div class="container">
 		{% include "candidat//components/_contactDetails.html.twig" %}
+    {% include "candidat/components/_soft-skills.html.twig" %}
 	</div>
+
+{% block body %}
+
 {% endblock %}
