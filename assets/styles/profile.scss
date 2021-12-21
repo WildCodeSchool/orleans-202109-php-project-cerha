@@ -1,0 +1,10 @@
+@import "variables.scss";
+.card {
+    box-shadow: $shadow-card;
+}
+
+.softskills ul{
+    line-height:$line-height;
+    font-family: $text-family;
+    font-size: $text-size;
+}

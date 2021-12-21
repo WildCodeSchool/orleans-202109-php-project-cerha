@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\SoftskillRepository;
+use App\Repository\SoftSkillRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=SoftskillRepository::class)
+ * @ORM\Entity(repositoryClass=SoftSkillRepository::class)
  */
-class Softskill
+class SoftSkill
 {
     /**
      * @ORM\Id

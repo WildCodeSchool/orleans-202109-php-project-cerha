@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\Softskill;
+use App\Entity\SoftSkill;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -12,15 +12,15 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Softskill[]    findAll()
  * @method Softskill[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class SoftskillRepository extends ServiceEntityRepository
+class SoftSkillRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Softskill::class);
+        parent::__construct($registry, SoftSkill::class);
     }
 
     // /**
-    //  * @return Softskill[] Returns an array of Softskill objects
+    //  * @return SoftSkill[] Returns an array of SoftSkill objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class SoftskillRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Softskill
+    public function findOneBySomeField($value): ?SoftSkill
     {
         return $this->createQueryBuilder('s')
             ->andWhere('s.exampleField = :val')
