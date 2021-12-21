@@ -15,6 +15,7 @@
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.10",
+        "fzaninotto/faker": "^1.9",
         "phpdocumentor/reflection-docblock": "^5.3",
         "sensio/framework-extra-bundle": "^6.1",
         "symfony/asset": "5.3.*",
@@ -50,7 +51,6 @@
     },
     "require-dev": {
         "friendsoftwig/twigcs": ">=4",
-        "fzaninotto/faker": "^1.9",
         "phpmd/phpmd": "*",
         "phpro/grumphp": "*",
         "phpstan/phpdoc-parser": "*",
