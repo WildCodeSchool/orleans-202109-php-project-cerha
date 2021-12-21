@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\HobbyRepository;
 use App\Repository\SoftSkillRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,10 +17,11 @@ class CandidatController extends AbstractController
     /**
      * @Route("/profil", name="show")
      */
-    public function show(SoftSkillRepository $softSkillRepository): Response
+    public function show(SoftSkillRepository $softSkillRepository, HobbyRepository $hobbyRepository): Response
     {
         $softSkills = $softSkillRepository->findAll();
+        $hobbies = $hobbyRepository->findAll();
 
-        return $this->render('candidat/index.html.twig', ['softSkills' => $softSkills]);
+        return $this->render('candidat/index.html.twig', ['softSkills' => $softSkills, 'hobbies' => $hobbies]);
     }
 }
