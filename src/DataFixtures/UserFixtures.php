@@ -27,7 +27,6 @@ class UserFixtures extends Fixture
             $user->setPhoneNumber((int)$faker->serviceNumber());
             $user->setPassword($this->passwordHasher->hashPassword($user, $faker->password()));
             $user->setGender('M');
-            $user->setRoles(['ROLE_USER']);
             $manager->persist($user);
         }
 

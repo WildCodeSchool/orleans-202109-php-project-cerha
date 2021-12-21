@@ -11,7 +11,7 @@ use Exception;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/login", name="login")
+     * @Route("/connexion", name="login")
      */
     public function index(AuthenticationUtils $authenticationUtils): Response
     {
@@ -26,7 +26,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/logout", name="logout", methods={"GET"})
+     * @Route("/deconnexion", name="logout", methods={"GET"})
      */
     public function logout(): void
     {
