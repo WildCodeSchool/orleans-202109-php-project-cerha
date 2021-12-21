@@ -4,37 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container">
-		<h1 class="text-center mt-5 ">
-			Mon profil
-			<h1>
-				<div class="col-md-6 et offset-md-3  mt-5">
-					<div class="card card-profil">
-						<h2 class="card-title text-center mt-3 pt-2 px-4">Coordonnées</h2>
-						<p class="card-text p-4">
-							Civilité :
-						</p>
-						<p class="card-text p-4">
-							Nom :
-						</p>
-						<p class="card-text p-4">
-							Prénom :</p>
-						<p class="card-text p-4">
-							Date de Naissance :
-						</p>
-						<p class="card-text p-4">
-							Téléphone :</p>
-						<p class="card-text p-4">
-							E-mail :</p>
-						<p class="card-text p-4">
-							Adresse :
-							{{ candidat.adress }},
-							{{ candidat.postalCode }},
-							{{ candidat.city }}
-						</p>
-						<a class="btn btn-secondary align-self-center mb-4 " href=" {{ path('candidat_edit', {'id': candidat.id}) }}">modifier</a>
-					</div>
-				</div>
-			</div>
-		</main>
-	{% endblock %}
+	<div class="container">
+		{% include "candidat//components/_contactDetails.html.twig" %}
+	</div>
+{% endblock %}
