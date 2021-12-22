@@ -15,7 +15,6 @@
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.10",
-        "fakerphp/faker": "^1.17",
         "phpdocumentor/reflection-docblock": "^5.3",
         "sensio/framework-extra-bundle": "^6.1",
         "symfony/asset": "5.3.*",
@@ -50,6 +49,7 @@
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
+        "fakerphp/faker": "^1.17",
         "friendsoftwig/twigcs": ">=4",
         "phpmd/phpmd": "*",
         "phpro/grumphp": "*",
