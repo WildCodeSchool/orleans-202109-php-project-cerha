@@ -1,4 +1,4 @@
-<footer class="footer container-fluid footer-expand-md bg-primary" id="footer">
+<footer class="footer container-fluid footer-expand-md bg-primary sticky-bottom" id="footer">
 	<div class="row d-flex justify-content-around align-items-center py-3 pt-1 pb-3">
 		<div class="col-lg-4 col-md-6 col-xs-8 mt-3 footerInfos d-flex justify-content-center align-items-center">
 			<div class="footerInfoContact d-flex flex-column m-2">
@@ -31,17 +31,20 @@
 				</div>
 			</div>
 			<div class="linkedinQRCODE ms-2">
-				<a href="https://www.linkedin.com/company/cerha/"><img class="linkedinQR" src="{{ asset('build/images/QRCode.png') }}" alt="QRCode Linkedin"></a>
+				<a href="https://www.linkedin.com/company/cerha/" target="_blank"><img class="linkedinQR" src="{{ asset('build/images/QRCode.png') }}" alt="QRCode Linkedin"></a>
 			</div>
 		</div>
 		<div class="col-lg-4 col-md-6 col-xs-8 mt-3 footerLogoPartners d-flex align-items-center flex-column">
-			<img class="footerImage" src="{{ asset('build/images/logo-cerha.png') }}" alt="Logo CERHA bas de page">
+			<a href="{{ path('home') }}" target="_blank"><img class="footerImage" src="{{ asset('build/images/CERHA-logo-detoure.svg') }}" alt="Logo CERHA bas de page">
+			</a>
 			<a href="https://inosearch.fr/" target="_blank">
-				<img class="footerImage mt-4 bg-light" src="{{ asset('build/images/Inosearch.png') }}" alt="Logo Inosearch">
+				<img class="footerImage mt-4" src="{{ asset('build/images/Inosearch.png') }}" alt="Logo Inosearch">
 			</a>
 		</div>
-		<div class="col-lg-4 mt-3 d-flex justify-content-center legalNotice">
-			<a class="footerLegalNotice text-decoration-none" href="https://inosearch.fr/mentions-legales" target="_blank">Mentions légales</a>
+	</div>
+	<div>
+		<div class="col-lg-12 pb-2 d-flex justify-content-center legalNotice">
+			<a class="footerLegalNotice nav-link text-decoration-none" href="https://inosearch.fr/mentions-legales" target="_blank">Mentions légales</a>
 		</div>
 	</div>
 </footer>
