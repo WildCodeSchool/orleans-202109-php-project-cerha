@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\CandidatRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -20,27 +19,21 @@ class Candidat
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\NotBlank
      */
     private \DateTimeInterface $birthDate;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank
-     * @Assert\Length(max=255)
      */
     private string $adress;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank
      */
     private string $postalCode;
 
     /**
      * @ORM\Column(type="string", length=155)
-     * @Assert\NotBlank
-     * @Assert\Length(max=155)
      */
     private string $city;
 

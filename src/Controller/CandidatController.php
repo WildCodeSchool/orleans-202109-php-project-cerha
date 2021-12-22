@@ -3,8 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Candidat;
-use App\Form\ContactDetailsType;
-use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\SoftSkillRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,25 +24,5 @@ class CandidatController extends AbstractController
         $softSkills = $softSkillRepository->findAll();
 
         return $this->render('candidat/index.html.twig', ['candidat' => $candidat, 'softSkills' => $softSkills]);
-    }
-
-
-    /**
-     * @Route("/profil/{id}/modifier", name="edit", methods={"GET", "POST"})
-     */
-    public function edit(Request $request, Candidat $candidat, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(ContactDetailsType::class, $candidat);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
-        }
-
-        return $this->renderForm('candidat/form/edit.contactDetails.html.twig', [
-            'candidat' => $candidat,
-            'form' => $form,
-        ]);
     }
 }
