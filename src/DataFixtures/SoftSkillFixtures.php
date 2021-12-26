@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\SoftSkill;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
 class SoftSkillFixtures extends Fixture
@@ -14,8 +15,18 @@ class SoftSkillFixtures extends Fixture
         foreach (self::SOFTSKILLS as $skill) {
             $softSkill = new SoftSkill();
             $softSkill->setName($skill);
+            $softSkill->setCandidat($this->getReference('candidat_0'));
             $manager->persist($softSkill);
         }
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+
+        return [
+
+          CandidatFixtures::class,
+        ];
     }
 }

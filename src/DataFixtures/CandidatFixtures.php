@@ -20,6 +20,7 @@ class CandidatFixtures extends Fixture
             $candidat->setpostalCode($faker->departmentNumber());
             $candidat->setcity($faker->city);
             $manager->persist($candidat);
+            $this->addReference('candidat_' . $i, $candidat);
         }
 
         $manager->flush();
