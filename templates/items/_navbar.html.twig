@@ -5,7 +5,7 @@
 		</a>
 		<div class="navbar-nav order-lg-last order-xs-2 ms-auto me-2">
 			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-			<a class="btn btn-secondary fw-bold " href="#">Mon espace</a>
+			<a class="btn btn-secondary fw-bold " href="{{ path('candidat_show', {id : app.user.candidat.id}) }}">Mon espace</a>
 			{% else %}
 			<a class="btn btn-secondary fw-bold " href="{{ path('login') }}">Connexion</a>
 			{% endif %}

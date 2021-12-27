@@ -21,15 +21,13 @@ class CandidatController extends AbstractController
 
     public function showCandidateProfile(
         Candidat $candidat,
-        SoftSkillRepository $softSkillRepository,
         HobbyRepository $hobbyRepository
     ): Response {
-        $softSkills = $softSkillRepository->findAll();
         $hobbies = $hobbyRepository->findAll();
 
         return $this->render(
             'candidat/index.html.twig',
-            ['candidat' => $candidat, 'softSkills' => $softSkills, 'hobbies' => $hobbies]
+            ['candidat' => $candidat, 'hobbies' => $hobbies]
         );
     }
 }

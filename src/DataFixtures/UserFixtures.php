@@ -28,6 +28,7 @@ class UserFixtures extends Fixture
             $user->setPassword($this->passwordHasher->hashPassword($user, $faker->password()));
             $user->setGender('M');
             $manager->persist($user);
+            $this->addReference('user_' . $i, $user);
         }
 
         $user = new User();
@@ -39,6 +40,7 @@ class UserFixtures extends Fixture
         $user->setGender('M');
         $user->setRoles(['ROLE_ADMIN']);
         $manager->persist($user);
+        $this->addReference('user_john', $user);
 
         $manager->flush();
     }
