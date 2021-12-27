@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Candidat;
 use App\Repository\HobbyRepository;
-use App\Repository\SoftSkillRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,6 +17,7 @@ class CandidatController extends AbstractController
 {
     /**
      * @Route("/profil/{id<^[0-9]+$>}", name="show")
+     * @IsGranted("ROLE_USER")
      */
 
     public function showCandidateProfile(

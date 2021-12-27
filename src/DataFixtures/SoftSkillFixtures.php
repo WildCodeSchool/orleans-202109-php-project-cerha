@@ -24,7 +24,6 @@ class SoftSkillFixtures extends Fixture implements DependentFixtureInterface
 
 
     public function getDependencies()
-
     {
         return [
             CandidatFixtures::class

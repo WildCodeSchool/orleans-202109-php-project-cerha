@@ -26,7 +26,7 @@ class SoftSkill
      * @ORM\ManyToOne(targetEntity=Candidat::class, inversedBy="softSkills")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $candidat;
+    private ?Candidat $candidat;
 
     public function getId(): ?int
     {
