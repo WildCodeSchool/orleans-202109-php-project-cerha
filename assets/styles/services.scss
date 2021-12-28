@@ -45,11 +45,11 @@
     object-position:top;
 }
 
-svg {
-    fill:$primary;
+.arrow {
+    fill: $primary;
 }
 
-svg:hover{
+.arrow:hover {
     fill:$secondary;
 }
 
