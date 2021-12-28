@@ -1,13 +1,18 @@
 @import "variables.scss";
 
 .banner {
-    background-image   : url('../images/banner.jpg');
-    background-position: center;
-    background-repeat  : no-repeat;
-    height             : 400px;
-    background-size    : cover;
+    height    : 400px;
+    width     : 100vw;
+    object-fit: cover;
+    opacity   : 60%;
+}
 
-    .bannerLogo {
-        width: 250px;
-    }
+.bannerLogo {
+    width       : 300px;
+    position    : absolute;
+    top         : 12em;
+    display     : block;
+    margin-left : 50vw;
+    margin-right: 50vw;
+    transform   : translate(-50%, -50%);
 }
