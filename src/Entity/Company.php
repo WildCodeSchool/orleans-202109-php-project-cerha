@@ -15,47 +15,47 @@ class Company
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $denomination;
+    private string $denomination;
 
     /**
      * @ORM\Column(type="string", length=14)
      */
-    private $siret;
+    private string $siret;
 
     /**
      * @ORM\Column(type="string", length=5)
      */
-    private $apeCode;
+    private string $apeCode;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $address;
+    private string $address;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $postalCode;
+    private int $postalCode;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $city;
+    private string $city;
 
     /**
      * @ORM\Column(type="string", length=13)
      */
-    private $vatNumber;
+    private string $vatNumber;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $contactRole;
+    private string $contactRole;
 
     public function getId(): ?int
     {
