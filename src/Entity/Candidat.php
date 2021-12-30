@@ -53,7 +53,7 @@ class Candidat
     /**
      * @ORM\OneToMany(targetEntity=Hobby::class, mappedBy="candidat", orphanRemoval=true)
      */
-    private $hobbies;
+    private Collection $hobbies;
 
     public function __construct()
     {

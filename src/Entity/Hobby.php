@@ -26,7 +26,7 @@ class Hobby
      * @ORM\ManyToOne(targetEntity=Candidat::class, inversedBy="hobbies")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $candidat;
+    private ?Candidat $candidat;
 
     public function getId(): ?int
     {
