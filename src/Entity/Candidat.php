@@ -58,17 +58,17 @@ class Candidat
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $timeSearch;
+    private ?string $timeSearch;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $searchQuality;
+    private ?string $searchQuality;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $profilQuality;
+    private ?string $profilQuality;
 
     public function __construct()
     {
