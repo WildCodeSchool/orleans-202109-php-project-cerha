@@ -7,6 +7,7 @@ use App\Entity\Candidat;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use DateTime;
 
 class CandidatFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -26,7 +27,7 @@ class CandidatFixtures extends Fixture implements DependentFixtureInterface
         }
 
         $candidat = new Candidat();
-        $birthDate = new \DateTime('12/02/1992');
+        $birthDate = new DateTime('12/02/1992');
         $candidat->setbirthDate($birthDate);
         $candidat->setaddress('2 rue de la Chèvre qui danse');
         $candidat->setpostalCode(45000);
