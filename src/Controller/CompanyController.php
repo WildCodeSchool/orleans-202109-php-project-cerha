@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Company;
 
 /**
- * @Route("/company", name="company_")
+ * @Route("/entreprise", name="company_")
  */
 
 class CompanyController extends AbstractController

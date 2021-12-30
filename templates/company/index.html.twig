@@ -6,12 +6,12 @@
 {% endblock %}
 
 {% block stylesheets %}
-	{{ encore_entry_link_tags('profile') }}
+	{{ encore_entry_link_tags('companyProfile') }}
 {% endblock %}
 
 {% block body %}
 	<div class="container my-5">
-		{% include "candidat/components/_companyDetails.html.twig" %}
+		{% include "company/components/_companyDetails.html.twig" %}
 	</div>
 
 {% endblock %}
