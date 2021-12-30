@@ -48,7 +48,7 @@ class CandidatController extends AbstractController
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
         }
 
-        return $this->renderForm('candidat/form/edit.contactDetails.html.twig', [
+        return $this->renderForm('candidat/edit/edit.contactDetails.html.twig', [
             'candidat' => $candidat,
             'form' => $form,
         ]);

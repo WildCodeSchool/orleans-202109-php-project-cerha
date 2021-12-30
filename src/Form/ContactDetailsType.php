@@ -15,7 +15,7 @@ class ContactDetailsType extends AbstractType
     {
         $builder
             ->add('birthDate', BirthdayType::class, ['label' => 'Date de naissance'])
-            ->add('address', TextType::class, ['label' => 'Addresse'])
+            ->add('address', TextType::class, ['label' => 'Adresse'])
             ->add('postalCode', TextType::class, ['label' => 'Code postale'])
             ->add('city', TextType::class, ['label' => 'Ville']);
     }

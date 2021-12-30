@@ -32,8 +32,9 @@ class Candidat
     private string $address;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      * @Assert\NotBlank
+     * @Assert\Length(max=5)
      */
     private string $postalCode;
 
