@@ -19,7 +19,7 @@ class CompanyFixtures extends Fixture
             $company->setSiret(preg_replace('/\s+/', '', $faker->siret));
             $company->setApeCode(rand(1001, 9999) . 'B');
             $company->setAddress($faker->streetAddress);
-            $company->setPostalCode(rand(10001, 99999));
+            $company->setPostalCode(preg_replace('/\s+/', '', $faker->postcode));
             $company->setCity($faker->city);
             $company->setVatNumber('FR' . rand(10000000001, 99999999999));
             $company->setContactRole($faker->jobTitle);
