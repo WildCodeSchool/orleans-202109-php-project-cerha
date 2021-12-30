@@ -55,6 +55,21 @@ class Candidat
      */
     private Collection $hobbies;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private string $timeSearch;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private string $searchQuality;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private string $profilQuality;
+
     public function __construct()
     {
         $this->softSkills = new ArrayCollection();
@@ -182,6 +197,42 @@ class Candidat
                 $hobby->setCandidat(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTimeSearch(): ?string
+    {
+        return $this->timeSearch;
+    }
+
+    public function setTimeSearch(?string $timeSearch): self
+    {
+        $this->timeSearch = $timeSearch;
+
+        return $this;
+    }
+
+    public function getSearchQuality(): ?string
+    {
+        return $this->searchQuality;
+    }
+
+    public function setSearchQuality(?string $searchQuality): self
+    {
+        $this->searchQuality = $searchQuality;
+
+        return $this;
+    }
+
+    public function getProfilQuality(): ?string
+    {
+        return $this->profilQuality;
+    }
+
+    public function setProfilQuality(?string $profilQuality): self
+    {
+        $this->profilQuality = $profilQuality;
 
         return $this;
     }
