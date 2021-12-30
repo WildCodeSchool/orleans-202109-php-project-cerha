@@ -33,6 +33,9 @@ class CandidatFixtures extends Fixture implements DependentFixtureInterface
         $candidat->setpostalCode(45000);
         $candidat->setcity('Orléans');
         $candidat->setUser($this->getReference('user_john'));
+        $candidat->setTimeSearch('Six mois');
+        $candidat->setSearchQuality('Pas assez ciblée');
+        $candidat->setProfilQuality('Attractif');
         $manager->persist($candidat);
         $this->addReference('candidat_john', $candidat);
 
