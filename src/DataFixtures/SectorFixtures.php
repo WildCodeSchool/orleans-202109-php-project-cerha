@@ -8,7 +8,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class SectorFixtures extends Fixture
 {
-    public const SECTORS = ['Commercial', 'Siences', 'Gestion'];
+    public const SECTORS = ['Commercial', 'Sciences', 'Gestion'];
     public function load(ObjectManager $manager): void
     {
         foreach (self::SECTORS as $key => $data) {
