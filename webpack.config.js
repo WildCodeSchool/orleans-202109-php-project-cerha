@@ -33,9 +33,13 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addStyleEntry('contact', './assets/styles/contact.scss')
+    .addStyleEntry('banner', './assets/styles/banner.scss')
     .addStyleEntry('about', './assets/styles/about.scss')
     .addStyleEntry('home', './assets/styles/home.scss')
     .addStyleEntry('services', './assets/styles/services.scss')
+    .addStyleEntry('profile', './assets/styles/profile.scss')
+    .addStyleEntry('companyProfile', './assets/styles/companyProfile.scss')
+    .addStyleEntry('login', './assets/styles/login.scss')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

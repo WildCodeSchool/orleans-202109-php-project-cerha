@@ -1,0 +1,18 @@
+@import "variables.scss";
+
+.banner {
+    height    : 400px;
+    width     : 100%;
+    object-fit: cover;
+    opacity   : 60%;
+}
+
+.bannerLogo {
+    width       : 300px;
+    position    : absolute;
+    top         : 12em;
+    display     : block;
+    margin-left : 50vw;
+    margin-right: 50vw;
+    transform   : translate(-50%, -50%);
+}

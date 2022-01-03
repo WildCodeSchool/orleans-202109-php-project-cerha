@@ -130,6 +130,9 @@
     "egulias/email-validator": {
         "version": "3.1.1"
     },
+    "fakerphp/faker": {
+        "version": "v1.17.0"
+    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
     },
@@ -150,6 +153,9 @@
     },
     "laminas/laminas-zendframework-bridge": {
         "version": "1.2.0"
+    },
+    "lorenzo/pinky": {
+        "version": "1.0.5"
     },
     "monolog/monolog": {
         "version": "2.2.0"
@@ -662,6 +668,9 @@
     },
     "twig/extra-bundle": {
         "version": "v3.3.0"
+    },
+    "twig/inky-extra": {
+        "version": "v3.3.4"
     },
     "twig/twig": {
         "version": "v3.3.0"

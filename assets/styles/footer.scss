@@ -4,7 +4,13 @@
     font-family: $text-family;
 
     .footerImage {
-        width: 130px;
+        width     : 130px;
+        filter    : brightness(0) invert(1);
+        transition: filter 0.15s ease-in-out;
+
+        &:hover {
+            filter: none;
+        }
     }
 
     .linkedinQR {
@@ -12,7 +18,8 @@
     }
 
     a {
-        color: $light;
+        color     : $light;
+        transition: color 0.15s ease-in-out;
 
         &:hover {
             color: $secondary;
