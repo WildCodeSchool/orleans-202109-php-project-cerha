@@ -4,12 +4,14 @@ namespace App\DataFixtures;
 
 use Faker;
 use App\Entity\Candidat;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use DateTime;
 
-class CandidatFixtures extends Fixture
+class CandidatFixtures extends Fixture implements DependentFixtureInterface
 {
-    public const CANDIDAT_NUMBER = 4;
+    public const CANDIDAT_NUMBER = 10;
     public function load(ObjectManager $manager): void
     {
         $faker = Faker\Factory::create('fr_FR');
@@ -19,8 +21,20 @@ class CandidatFixtures extends Fixture
             $candidat->setaddress($faker->address);
             $candidat->setpostalCode($faker->departmentNumber());
             $candidat->setcity($faker->city);
+            $candidat->setUser($this->getReference('user_' . $i));
             $manager->persist($candidat);
+            $this->addReference('candidat_' . $i, $candidat);
         }
+
+        $candidat = new Candidat();
+        $birthDate = new DateTime('12/02/1992');
+        $candidat->setbirthDate($birthDate);
+        $candidat->setaddress('2 rue de la Chèvre qui danse');
+        $candidat->setpostalCode(45000);
+        $candidat->setcity('Orléans');
+        $candidat->setUser($this->getReference('user_john'));
+        $manager->persist($candidat);
+        $this->addReference('candidat_john', $candidat);
 
         $manager->flush();
     }
@@ -28,7 +42,7 @@ class CandidatFixtures extends Fixture
     public function getDependencies()
     {
         return [
-            Candidat::class
+            UserFixtures::class
         ];
     }
 }
