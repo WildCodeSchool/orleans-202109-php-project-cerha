@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	- Mon entreprise
+{% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('companyProfile') }}
+{% endblock %}
+
+{% block body %}
+	<div class="container my-5">
+		{% include "company/components/_companyDetails.html.twig" %}
+	</div>
+
+{% endblock %}
