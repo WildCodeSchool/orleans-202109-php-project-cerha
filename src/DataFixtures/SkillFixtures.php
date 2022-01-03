@@ -26,7 +26,8 @@ class SkillFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            CandidatFixtures::class
+            CandidatFixtures::class,
+            SectorFixtures::class
         ];
     }
 }
