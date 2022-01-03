@@ -53,7 +53,7 @@ class Candidat
     /**
      * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="candidat")
      */
-    private $skills;
+    private Collection $skills;
 
     public function __construct()
     {

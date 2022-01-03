@@ -3,14 +3,12 @@
 namespace App\DataFixtures;
 
 use App\Entity\Skill;
-
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class SkillFixtures extends Fixture implements DependentFixtureInterface
 {
-
     public const SKILLS = ['Gestion des comptes', 'Analyse commerciale', 'Ventes et marketing'];
     public function load(ObjectManager $manager): void
     {
