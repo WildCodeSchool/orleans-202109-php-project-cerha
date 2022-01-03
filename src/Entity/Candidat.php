@@ -50,9 +50,15 @@ class Candidat
      */
     private ?User $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Hobby::class, mappedBy="candidat", orphanRemoval=true)
+     */
+    private Collection $hobbies;
+
     public function __construct()
     {
         $this->softSkills = new ArrayCollection();
+        $this->hobbies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -146,6 +152,36 @@ class Candidat
     public function setUser(User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Hobby[]
+     */
+    public function getHobbies(): Collection
+    {
+        return $this->hobbies;
+    }
+
+    public function addHobby(Hobby $hobby): self
+    {
+        if (!$this->hobbies->contains($hobby)) {
+            $this->hobbies[] = $hobby;
+            $hobby->setCandidat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHobby(Hobby $hobby): self
+    {
+        if ($this->hobbies->removeElement($hobby)) {
+            // set the owning side to null (unless already changed)
+            if ($hobby->getCandidat() === $this) {
+                $hobby->setCandidat(null);
+            }
+        }
 
         return $this;
     }

@@ -20,17 +20,15 @@ class CandidatController extends AbstractController
      * @IsGranted("ROLE_USER")
      */
 
-    public function showCandidateProfile(
-        HobbyRepository $hobbyRepository
-    ): Response {
-        $hobbies = $hobbyRepository->findAll();
+    public function showCandidateProfile(): Response
+    {
         /** @var User */
         $user = $this->getUser();
         $candidat = $user->getCandidat();
 
         return $this->render(
             'candidat/index.html.twig',
-            ['candidat' => $candidat, 'hobbies' => $hobbies]
+            ['candidat' => $candidat]
         );
     }
 }
