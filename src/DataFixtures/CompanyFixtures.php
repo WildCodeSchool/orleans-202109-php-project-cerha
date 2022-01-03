@@ -21,7 +21,7 @@ class CompanyFixtures extends Fixture
             $company->setAddress($faker->streetAddress);
             $company->setPostalCode(preg_replace('/\s+/', '', $faker->postcode));
             $company->setCity($faker->city);
-            $company->setVatNumber('FR' . rand(10000000001, 99999999999));
+            $company->setVatNumber(preg_replace('/\s+/', '', $faker->vat));
             $company->setContactRole($faker->jobTitle);
             $manager->persist($company);
         }
