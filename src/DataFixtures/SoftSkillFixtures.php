@@ -3,11 +3,11 @@
 namespace App\DataFixtures;
 
 use App\Entity\SoftSkill;
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class SoftSkillFixtures extends Fixture
+class SoftSkillFixtures extends Fixture implements DependentFixtureInterface
 {
     public const SOFTSKILLS = ['Management', 'Communication', 'Adaptabilité', 'Travail en équipe'];
     public function load(ObjectManager $manager): void
@@ -15,7 +15,7 @@ class SoftSkillFixtures extends Fixture
         foreach (self::SOFTSKILLS as $skill) {
             $softSkill = new SoftSkill();
             $softSkill->setName($skill);
-            $softSkill->setCandidat($this->getReference('candidat_0'));
+            $softSkill->setCandidat($this->getReference('candidat_john'));
             $manager->persist($softSkill);
         }
         $manager->flush();
@@ -23,10 +23,8 @@ class SoftSkillFixtures extends Fixture
 
     public function getDependencies()
     {
-
         return [
-
-          CandidatFixtures::class,
+            CandidatFixtures::class
         ];
     }
 }
