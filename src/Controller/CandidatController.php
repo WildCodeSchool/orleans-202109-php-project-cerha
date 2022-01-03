@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Symfony\Component\Intl\Languages;
 use App\Repository\HobbyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,6 +25,10 @@ class CandidatController extends AbstractController
         /** @var User */
         $user = $this->getUser();
         $candidat = $user->getCandidat();
+        $candidatlanguages = $candidat->getCandidatLanguages();
+
+        $languages[]= Languages::getNames();
+        
 
         return $this->render(
             'candidat/index.html.twig',
