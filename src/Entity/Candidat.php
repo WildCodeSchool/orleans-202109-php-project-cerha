@@ -50,9 +50,15 @@ class Candidat
      */
     private ?User $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="candidat")
+     */
+    private $skills;
+
     public function __construct()
     {
         $this->softSkills = new ArrayCollection();
+        $this->skills = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -146,6 +152,36 @@ class Candidat
     public function setUser(User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Skill[]
+     */
+    public function getSkills(): Collection
+    {
+        return $this->skills;
+    }
+
+    public function addSkill(Skill $skill): self
+    {
+        if (!$this->skills->contains($skill)) {
+            $this->skills[] = $skill;
+            $skill->setCandidat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSkill(Skill $skill): self
+    {
+        if ($this->skills->removeElement($skill)) {
+            // set the owning side to null (unless already changed)
+            if ($skill->getCandidat() === $this) {
+                $skill->setCandidat(null);
+            }
+        }
 
         return $this;
     }
