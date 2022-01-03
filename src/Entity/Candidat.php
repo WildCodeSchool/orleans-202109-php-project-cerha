@@ -51,23 +51,20 @@ class Candidat
     private ?User $user;
 
     /**
-
-     * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="candidat")
-     */
-    private Collection $skills;
      * @ORM\OneToMany(targetEntity=Hobby::class, mappedBy="candidat", orphanRemoval=true)
      */
     private Collection $hobbies;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="candidat")
+     */
+    private Collection $skills;
 
     public function __construct()
     {
         $this->softSkills = new ArrayCollection();
-
-        $this->skills = new ArrayCollection();
-
         $this->hobbies = new ArrayCollection();
-
+        $this->skills = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -166,19 +163,6 @@ class Candidat
     }
 
     /**
-     * @return Collection|Skill[]
-     */
-    public function getSkills(): Collection
-    {
-        return $this->skills;
-    }
-
-    public function addSkill(Skill $skill): self
-    {
-        if (!$this->skills->contains($skill)) {
-            $this->skills[] = $skill;
-            $skill->setCandidat($this);
-
      * @return Collection|Hobby[]
      */
     public function getHobbies(): Collection
@@ -191,18 +175,10 @@ class Candidat
         if (!$this->hobbies->contains($hobby)) {
             $this->hobbies[] = $hobby;
             $hobby->setCandidat($this);
-
         }
 
         return $this;
     }
-
-    public function removeSkill(Skill $skill): self
-    {
-        if ($this->skills->removeElement($skill)) {
-            // set the owning side to null (unless already changed)
-            if ($skill->getCandidat() === $this) {
-                $skill->setCandidat(null);
 
     public function removeHobby(Hobby $hobby): self
     {
@@ -210,7 +186,34 @@ class Candidat
             // set the owning side to null (unless already changed)
             if ($hobby->getCandidat() === $this) {
                 $hobby->setCandidat(null);
+            }
+        }
 
+        return $this;
+    }
+    /**
+     * @return Collection|Skill[]
+     */
+    public function getSkills(): Collection
+    {
+        return $this->skills;
+    }
+
+    public function addSkill(Skill $skill): self
+    {
+        if (!$this->skills->contains($skill)) {
+            $this->skills[] = $skill;
+            $skill->setCandidat($this);
+        }
+
+        return $this;
+    }
+    public function removeSkill(Skill $skill): self
+    {
+        if ($this->skills->removeElement($skill)) {
+            // set the owning side to null (unless already changed)
+            if ($skill->getCandidat() === $this) {
+                $skill->setCandidat(null);
             }
         }
 
