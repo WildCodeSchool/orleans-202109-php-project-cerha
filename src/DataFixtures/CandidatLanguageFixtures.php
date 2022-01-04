@@ -9,7 +9,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class CandidatLanguageFixtures extends Fixture implements DependentFixtureInterface
 {
-    public const LANGUAGES = ['fr_FR', 'fr_BE', 'en_EN'];
+    public const LANGUAGES = ['fr_FR', 'de_DE', 'en_EN'];
     public function load(ObjectManager $manager): void
     {
         foreach (self::LANGUAGES as $language) {

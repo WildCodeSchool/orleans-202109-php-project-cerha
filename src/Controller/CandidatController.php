@@ -20,6 +20,7 @@ class CandidatController extends AbstractController
      * @Route("/profil", name="show")
      * @IsGranted("ROLE_USER")
      */
+
     public function showCandidateProfile(): Response
     {
         /** @var User */
