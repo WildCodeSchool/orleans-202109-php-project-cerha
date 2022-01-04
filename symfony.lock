@@ -672,6 +672,9 @@
     "twig/inky-extra": {
         "version": "v3.3.4"
     },
+    "twig/intl-extra": {
+        "version": "v3.3.5"
+    },
     "twig/twig": {
         "version": "v3.3.0"
     },

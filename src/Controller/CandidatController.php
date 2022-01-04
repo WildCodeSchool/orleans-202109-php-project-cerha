@@ -26,16 +26,10 @@ class CandidatController extends AbstractController
         $user = $this->getUser();
         /** @var Candidat */
         $candidat = $user->getCandidat();
-        $languagesName = [];
-        $candidatLanguages = $candidat->getCandidatLanguages();
-
-        foreach ($candidatLanguages as $language) {
-            $languagesName[] = ucfirst(Languages::getName($language->getName(), 'fr'));
-        }
 
         return $this->render(
             'candidat/index.html.twig',
-            ['candidat' => $candidat, 'languages' => $languagesName]
+            ['candidat' => $candidat]
         );
     }
 }
