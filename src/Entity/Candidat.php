@@ -56,21 +56,37 @@ class Candidat
     private Collection $hobbies;
 
     /**
-     * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="candidat")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private Collection $formations;
+    private ?string $timeSearch;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private ?string $searchQuality;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private ?string $profilQuality;
 
     /**
      * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="candidat")
      */
     private Collection $skills;
 
+
+    /**
+     * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="candidat")
+     */
+    private Collection $formations;
+
     public function __construct()
     {
         $this->softSkills = new ArrayCollection();
         $this->hobbies = new ArrayCollection();
-        $this->formations = new ArrayCollection();
         $this->skills = new ArrayCollection();
+        $this->formations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -197,6 +213,43 @@ class Candidat
 
         return $this;
     }
+
+    public function getTimeSearch(): ?string
+    {
+        return $this->timeSearch;
+    }
+
+    public function setTimeSearch(?string $timeSearch): self
+    {
+        $this->timeSearch = $timeSearch;
+
+        return $this;
+    }
+
+    public function getSearchQuality(): ?string
+    {
+        return $this->searchQuality;
+    }
+
+    public function setSearchQuality(?string $searchQuality): self
+    {
+        $this->searchQuality = $searchQuality;
+
+        return $this;
+    }
+
+    public function getProfilQuality(): ?string
+    {
+        return $this->profilQuality;
+    }
+
+    public function setProfilQuality(?string $profilQuality): self
+    {
+        $this->profilQuality = $profilQuality;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Skill[]
      */
