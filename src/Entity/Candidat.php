@@ -59,8 +59,8 @@ class Candidat
      * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="candidat")
      */
     private Collection $formations;
-  
-   /**
+
+    /**
      * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="candidat")
      */
     private Collection $skills;
@@ -71,7 +71,6 @@ class Candidat
         $this->hobbies = new ArrayCollection();
         $this->formations = new ArrayCollection();
         $this->skills = new ArrayCollection();
-
     }
 
     public function getId(): ?int
@@ -198,7 +197,7 @@ class Candidat
 
         return $this;
     }
- /**
+    /**
      * @return Collection|Skill[]
      */
     public function getSkills(): Collection
