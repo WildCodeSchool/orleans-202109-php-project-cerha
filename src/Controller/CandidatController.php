@@ -3,12 +3,12 @@
 namespace App\Controller;
 
 use Symfony\Component\Intl\Languages;
-use App\Repository\HobbyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
+use App\Entity\Candidat;
 
 /**
  * @Route("/candidat", name="candidat_")
@@ -24,9 +24,11 @@ class CandidatController extends AbstractController
     {
         /** @var User */
         $user = $this->getUser();
+        /** @var Candidat */
         $candidat = $user->getCandidat();
         $languagesName = [];
         $candidatLanguages = $candidat->getCandidatLanguages();
+
         foreach ($candidatLanguages as $language) {
             $languagesName[] = ucfirst(Languages::getName($language->getName(), 'fr'));
         }
