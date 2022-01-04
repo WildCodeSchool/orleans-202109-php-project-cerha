@@ -24,3 +24,14 @@ require('bootstrap');
 $(document).ready(() => {
     $('[data-toggle="popover"]').popover();
 });
+
+/* const collectionHolder = document.querySelector('#soft_skills_softskills');
+
+let indexSoftSkills = collectionHolder.querySelectorAll('fieldset').length;
+const addSoftSkill = () => {
+    collectionHolder.innerHTML += collectionHolder.dataset.prototype.replace(/__name__/g,
+    indexSoftSkills);
+    indexSoftSkills++;
+}
+
+document.querySelector('#new-softskill').addEventListener('click', addSoftSkill); */
