@@ -16,7 +16,7 @@ class SoftSkillsType extends AbstractType
             ->add('softskills', CollectionType::class, [
                 'entry_type' => SoftSkillType::class,
                 'by_reference' => false,
-                'allow_add =>' => true,
+                'allow_add' => true,
                 'allow_delete' => true
             ]);
     }
