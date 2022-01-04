@@ -69,8 +69,8 @@ class Candidat
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private ?string $profilQuality;
-  
-    /**  
+
+    /**
      * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="candidat")
      */
     private Collection $skills;
@@ -239,8 +239,10 @@ class Candidat
     public function setProfilQuality(?string $profilQuality): self
     {
         $this->profilQuality = $profilQuality;
+
+        return $this;
     }
-    
+
     /**
      * @return Collection|Skill[]
      */
