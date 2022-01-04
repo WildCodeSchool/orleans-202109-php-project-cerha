@@ -69,11 +69,17 @@ class Candidat
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private ?string $profilQuality;
+  
+    /**  
+     * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="candidat")
+     */
+    private Collection $skills;
 
     public function __construct()
     {
         $this->softSkills = new ArrayCollection();
         $this->hobbies = new ArrayCollection();
+        $this->skills = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -233,6 +239,32 @@ class Candidat
     public function setProfilQuality(?string $profilQuality): self
     {
         $this->profilQuality = $profilQuality;
+      
+    /**
+     * @return Collection|Skill[]
+     */
+    public function getSkills(): Collection
+    {
+        return $this->skills;
+    }
+
+    public function addSkill(Skill $skill): self
+    {
+        if (!$this->skills->contains($skill)) {
+            $this->skills[] = $skill;
+            $skill->setCandidat($this);
+        }
+
+        return $this;
+    }
+    public function removeSkill(Skill $skill): self
+    {
+        if ($this->skills->removeElement($skill)) {
+            // set the owning side to null (unless already changed)
+            if ($skill->getCandidat() === $this) {
+                $skill->setCandidat(null);
+            }
+        }
 
         return $this;
     }
