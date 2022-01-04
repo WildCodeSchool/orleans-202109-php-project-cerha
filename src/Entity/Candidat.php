@@ -239,7 +239,8 @@ class Candidat
     public function setProfilQuality(?string $profilQuality): self
     {
         $this->profilQuality = $profilQuality;
-      
+    }
+    
     /**
      * @return Collection|Skill[]
      */
