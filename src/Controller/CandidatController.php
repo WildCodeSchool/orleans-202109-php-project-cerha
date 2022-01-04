@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use Symfony\Component\Intl\Languages;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,7 +24,6 @@ class CandidatController extends AbstractController
     {
         /** @var User */
         $user = $this->getUser();
-        /** @var Candidat */
         $candidat = $user->getCandidat();
 
         return $this->render(
