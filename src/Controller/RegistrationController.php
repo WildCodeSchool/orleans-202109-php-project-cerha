@@ -49,12 +49,14 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             // generate a signed url and email it to the user
+            /** @var string */
+            $userEmail = $user->getEmail();
             $this->emailVerifier->sendEmailConfirmation(
                 'app_verify_email',
                 $user,
                 (new TemplatedEmail())
                     ->from(new Address('nathan-chapelle_student2021@wilder.school', 'CERHA Confirmation'))
-                    ->to($user->getEmail()) //@phpstan-ignore-line
+                    ->to($userEmail)
                     ->subject('Please Confirm your Email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
@@ -76,7 +78,9 @@ class RegistrationController extends AbstractController
 
         // validate email confirmation link, sets User::isVerified=true and persists
         try {
-            $this->emailVerifier->handleEmailConfirmation($request, $this->getUser()); //@phpstan-ignore-line
+            /** @var User */
+            $user = $this->getUser();
+            $this->emailVerifier->handleEmailConfirmation($request, $user);
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('verify_email_error', $exception->getReason());
 
