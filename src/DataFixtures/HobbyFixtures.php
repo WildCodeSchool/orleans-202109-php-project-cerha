@@ -9,13 +9,28 @@ use Doctrine\Persistence\ObjectManager;
 
 class HobbyFixtures extends Fixture implements DependentFixtureInterface
 {
-    public const HOBBIES = ['Equitation', 'Dessin', 'Danse classique'];
+    public const HOBBIES = [
+        [
+            'name' => 'Equitation',
+            'candidat' => 'candidat_1'
+        ],
+        [
+            'name' => 'Danse classique',
+            'candidat' => 'candidat_2'
+        ],
+
+        [
+            'name' => 'Dessin',
+            'candidat' => 'candidat_3'
+        ]
+    ];
+
     public function load(ObjectManager $manager): void
     {
         foreach (self::HOBBIES as $hobby) {
             $newHobby = new Hobby();
-            $newHobby->setName($hobby);
-            $newHobby->setCandidat($this->getReference('candidat_john'));
+            $newHobby->setName($hobby['name']);
+            $newHobby->setCandidat($this->getReference($hobby['candidat']));
             $manager->persist($newHobby);
         }
         $manager->flush();

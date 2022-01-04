@@ -25,7 +25,7 @@ class UserFixtures extends Fixture
             $user->setFirstname($faker->firstName());
             $user->setEmail($faker->email());
             $user->setPhoneNumber((int)$faker->serviceNumber());
-            $user->setPassword($this->passwordHasher->hashPassword($user, $faker->password()));
+            $user->setPassword($this->passwordHasher->hashPassword($user, 'test'));
             $user->setGender('M');
             $manager->persist($user);
             $this->addReference('user_' . $i, $user);
