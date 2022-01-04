@@ -16,13 +16,13 @@ class FormationFixtures extends Fixture implements DependentFixtureInterface
         $faker = Faker\Factory::create('fr_FR');
         for ($i = 0; $i < self::FORMATIONS; $i++) {
             $formation = new Formation();
-            $formation->setstartDate($faker->dateTime());
-            $formation->setendDate($faker->dateTime());
-            $formation->settitle('Master commerce international');
-            $formation->setplace('ESI Business School');
-            $formation->setdescription($faker->paragraph());
-            $formation->setreferent($faker->userName());
-            $formation->setlevel($this->getReference('level_2'));
+            $formation->setStartDate($faker->dateTime());
+            $formation->setEndDate($faker->dateTime());
+            $formation->setTitle('Master commerce international');
+            $formation->setPlace('ESI Business School');
+            $formation->setDescription($faker->paragraph());
+            $formation->setReferent($faker->userName());
+            $formation->setLevel($this->getReference('level_2'));
             $formation->setCandidat($this->getReference('candidat_john'));
             $manager->persist($formation);
             $manager->flush();

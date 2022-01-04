@@ -13,7 +13,7 @@ class FormationLevelFixtures extends Fixture
     {
         foreach (self::FORMATIONS_LEVELS as $key => $data) {
             $level = new FormationLevel();
-            $level->setlevel($data);
+            $level->setLevel($data);
             $manager->persist($level);
             $this->addReference('level_' . $key, $level);
         }
