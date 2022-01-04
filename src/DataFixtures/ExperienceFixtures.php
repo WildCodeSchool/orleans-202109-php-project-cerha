@@ -16,10 +16,10 @@ class ExperienceFixtures extends Fixture implements DependentFixtureInterface
         $faker = Faker\Factory::create('fr_FR');
         for ($i = 0; $i < self::EXPERIENCES; $i++) {
             $experience = new Experience();
-            $experience->setjobName($faker->jobTitle);
-            $experience->setplace($faker->company);
-            $experience->setdescription($faker->paragraph());
-            $experience->setreferentName($faker->userName());
+            $experience->setJobName($faker->jobTitle);
+            $experience->setPlace($faker->company);
+            $experience->setDescription($faker->paragraph());
+            $experience->setReferentName($faker->userName());
             $experience->setCandidat($this->getReference('candidat_john'));
             $manager->persist($experience);
             $manager->flush();
