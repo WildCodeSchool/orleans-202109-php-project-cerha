@@ -4,6 +4,9 @@ set -e
 php composer.phar update
 
 ## Symfony configuration
+if [ ${APP_ENV} != "prod" ]; then
+  php bin/console doctrine:database:drop --force --quiet --if-exists --no-interaction
+fi
 php bin/console doctrine:database:create --if-not-exists --quiet --no-interaction
 php bin/console doctrine:migrations:migrate --verbose --no-interaction --allow-no-migration
 if [ ${APP_ENV} != "prod" ]; then

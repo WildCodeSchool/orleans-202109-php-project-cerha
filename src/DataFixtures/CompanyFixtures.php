@@ -9,11 +9,11 @@ use Faker;
 
 class CompanyFixtures extends Fixture
 {
-    public const COMPANY_NUMBER = 6;
+    public const COMPANY_NUMBER = 10;
     public function load(ObjectManager $manager): void
     {
         $faker = Faker\Factory::create('fr_FR');
-        for ($i = 0; $i < self::COMPANY_NUMBER; $i++) {
+        for ($i = 10; $i < (self::COMPANY_NUMBER + 10); $i++) {
             $company = new Company();
             $company->setDenomination($faker->company);
             $company->setSiret(preg_replace('/\s+/', '', $faker->siret));
@@ -23,7 +23,9 @@ class CompanyFixtures extends Fixture
             $company->setCity($faker->city);
             $company->setVatNumber(preg_replace('/\s+/', '', $faker->vat));
             $company->setContactRole($faker->jobTitle);
+            $company->setUser($this->getReference('user_' . $i));
             $manager->persist($company);
+            $this->addReference('company_' . $i, $company);
         }
 
         $manager->flush();
@@ -32,7 +34,7 @@ class CompanyFixtures extends Fixture
     public function getDependencies()
     {
         return [
-            Company::class
+            UserFixtures::class
         ];
     }
 }

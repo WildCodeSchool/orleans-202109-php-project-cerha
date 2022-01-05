@@ -57,6 +57,12 @@ class Company
      */
     private string $contactRole;
 
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="company", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private ?User $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -154,6 +160,18 @@ class Company
     public function setContactRole(string $contactRole): self
     {
         $this->contactRole = $contactRole;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

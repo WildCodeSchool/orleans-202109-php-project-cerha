@@ -56,14 +56,36 @@ class Candidat
     private Collection $hobbies;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private ?string $timeSearch;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private ?string $searchQuality;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private ?string $profilQuality;
+
+    /**
      * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="candidat")
      */
     private Collection $skills;
+
 
     /**
      * @ORM\OneToMany(targetEntity=Experience::class, mappedBy="candidat")
      */
     private Collection $experiences;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="candidat")
+     */
+    private Collection $formations;
+
 
     public function __construct()
     {
@@ -71,6 +93,7 @@ class Candidat
         $this->hobbies = new ArrayCollection();
         $this->skills = new ArrayCollection();
         $this->experiences = new ArrayCollection();
+        $this->formations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -197,6 +220,43 @@ class Candidat
 
         return $this;
     }
+
+    public function getTimeSearch(): ?string
+    {
+        return $this->timeSearch;
+    }
+
+    public function setTimeSearch(?string $timeSearch): self
+    {
+        $this->timeSearch = $timeSearch;
+
+        return $this;
+    }
+
+    public function getSearchQuality(): ?string
+    {
+        return $this->searchQuality;
+    }
+
+    public function setSearchQuality(?string $searchQuality): self
+    {
+        $this->searchQuality = $searchQuality;
+
+        return $this;
+    }
+
+    public function getProfilQuality(): ?string
+    {
+        return $this->profilQuality;
+    }
+
+    public function setProfilQuality(?string $profilQuality): self
+    {
+        $this->profilQuality = $profilQuality;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Skill[]
      */
@@ -250,6 +310,39 @@ class Candidat
             // set the owning side to null (unless already changed)
             if ($experience->getCandidat() === $this) {
                 $experience->setCandidat(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+
+    /**
+     * @return Collection|Formation[]
+     */
+    public function getFormations(): Collection
+    {
+        return $this->formations;
+    }
+
+    public function addFormation(Formation $formation): self
+    {
+        if (!$this->formations->contains($formation)) {
+            $this->formations[] = $formation;
+            $formation->setCandidat($this);
+        }
+
+        return $this;
+    }
+
+
+    public function removeFormation(Formation $formation): self
+    {
+        if ($this->formations->removeElement($formation)) {
+            // set the owning side to null (unless already changed)
+            if ($formation->getCandidat() === $this) {
+                $formation->setCandidat(null);
             }
         }
 
