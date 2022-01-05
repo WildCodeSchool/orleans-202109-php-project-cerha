@@ -83,6 +83,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="boolean")
      */
     private bool $isVerified = false;
+  
+    /**
+     * @ORM\OneToOne(targetEntity=Company::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private ?Company $company;
 
     public function getId(): ?int
     {
@@ -246,6 +251,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+    }
+  
+    public function getCompany(): ?Company
+    {
+        return $this->company;
+    }
+
+    public function setCompany(Company $company): self
+    {
+        // set the owning side of the relation if necessary
+        if ($company->getUser() !== $this) {
+            $company->setUser($this);
+        }
+
+        $this->company = $company;
 
         return $this;
     }
