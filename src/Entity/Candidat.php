@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=CandidatRepository::class)
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class Candidat
 {
@@ -315,9 +316,6 @@ class Candidat
 
         return $this;
     }
-
-
-
     /**
      * @return Collection|Formation[]
      */
@@ -335,7 +333,6 @@ class Candidat
 
         return $this;
     }
-
 
     public function removeFormation(Formation $formation): self
     {
