@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CandidatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,21 +23,28 @@ class Candidat
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank
      */
     private \DateTimeInterface $birthDate;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(max=255)
      */
     private string $address;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank
+     * @Assert\Length(max=5)
      */
     private string $postalCode;
 
     /**
      * @ORM\Column(type="string", length=155)
+     * @Assert\NotBlank
+     * @Assert\Length(max=155)
      */
     private string $city;
 
