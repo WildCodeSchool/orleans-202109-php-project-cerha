@@ -23,6 +23,10 @@ class CompanyFixtures extends Fixture
             $company->setCity($faker->city);
             $company->setVatNumber(preg_replace('/\s+/', '', $faker->vat));
             $company->setContactRole($faker->jobTitle);
+            $company->setWebsite('http://www.lesite.fr');
+            $company->setFacebook('http://www.facebook.com');
+            $company->setInstagram('http://www.instagram.com');
+            $company->setLinkedin('http://www.linkedin.com');
             $company->setUser($this->getReference('user_' . $i));
             $manager->persist($company);
             $this->addReference('company_' . $i, $company);

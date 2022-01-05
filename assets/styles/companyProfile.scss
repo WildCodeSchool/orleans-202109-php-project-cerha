@@ -10,3 +10,14 @@
     font-family: $text-family;
     font-size  : $text-size;
 }
+
+.companyNetwork {
+    transition : color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    font-family: $text-family;
+    font-size  : $text-size;
+    color      : $dark-primary;
+
+    &:hover {
+        color: $secondary;
+    }
+}
