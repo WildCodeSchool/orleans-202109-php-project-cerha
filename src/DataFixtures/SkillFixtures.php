@@ -9,14 +9,17 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class SkillFixtures extends Fixture implements DependentFixtureInterface
 {
-    public const SKILLS = ['Gestion des comptes', 'Analyse commerciale', 'Ventes et marketing'];
+    public const SKILLS =
+    [ 'Gestion des comptes','Analyse commerciale','Ventes et marketing'];
+
+
     public function load(ObjectManager $manager): void
     {
-        foreach (self::SKILLS as $skillName) {
+        foreach (self::SKILLS as $key => $skillName) {
             $skill = new Skill();
             $skill->setName($skillName);
-            $skill->setSector($this->getReference('sector_1'));
-            $skill->setCandidat($this->getReference('candidat_john'));
+            $skill->setSector($this->getReference('sector_' . ($key)));
+            $skill->setCandidat($this->getReference('candidat_' . ($key)));
             $manager->persist($skill);
         }
         $manager->flush();
