@@ -20,7 +20,7 @@ class ExperienceFixtures extends Fixture implements DependentFixtureInterface
             $experience->setPlace($faker->company);
             $experience->setDescription($faker->paragraph());
             $experience->setReferentName($faker->userName());
-            $experience->setCandidat($this->getReference('candidat_john'));
+            $experience->setCandidat($this->getReference('candidat_' . $i));
             $manager->persist($experience);
             $manager->flush();
         }
