@@ -4,7 +4,8 @@
     box-shadow: $shadow-card;
 }
 
-.companyDetails {
+.companyDetails,
+.companyContact {
     line-height: $line-height;
     font-family: $text-family;
     font-size  : $text-size;

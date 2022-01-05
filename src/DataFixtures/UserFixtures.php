@@ -15,7 +15,7 @@ class UserFixtures extends Fixture
     {
         $this->passwordHasher = $passwordHasher;
     }
-    public const USER_NUMBER = 10;
+    public const USER_NUMBER = 20;
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create('fr_FR');
