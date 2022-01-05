@@ -10,21 +10,42 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class FormationFixtures extends Fixture implements DependentFixtureInterface
 {
-    public const FORMATIONS = 2;
+    public const FORMATIONS = [
+        [
+            'title' => 'Master commerce international',
+            'place' => 'ESI Business School'
+
+        ],
+
+        [
+            'title' => 'Licence marketing digital',
+            'place' => 'EFAP STRASBOURG'
+
+        ],
+
+        [
+            'title' => 'BTS comptabilité et gestion',
+            'place' =>  'ESUP Angers'
+
+        ],
+
+
+    ];
     public function load(ObjectManager $manager): void
     {
         $faker = Faker\Factory::create('fr_FR');
-        for ($i = 0; $i < self::FORMATIONS; $i++) {
-            $formation = new Formation();
-            $formation->setStartDate($faker->dateTime());
-            $formation->setEndDate($faker->dateTime());
-            $formation->setTitle('Master commerce international');
-            $formation->setPlace('ESI Business School');
-            $formation->setDescription($faker->paragraph());
-            $formation->setReferent($faker->userName());
-            $formation->setLevel($this->getReference('level_2'));
-            $formation->setCandidat($this->getReference('candidat_john'));
-            $manager->persist($formation);
+
+        foreach (self::FORMATIONS as $key => $formation) {
+            $newFormation = new Formation();
+            $newFormation->setStartDate($faker->dateTime());
+            $newFormation->setEndDate($faker->dateTime());
+            $newFormation->setTitle($formation['title']);
+            $newFormation->setPlace($formation['place']);
+            $newFormation->setDescription($faker->paragraph());
+            $newFormation->setReferent($faker->userName());
+            $newFormation->setLevel($this->getReference('level_' . ($key)));
+            $newFormation->setCandidat($this->getReference('candidat_' . ($key)));
+            $manager->persist($newFormation);
             $manager->flush();
         }
     }

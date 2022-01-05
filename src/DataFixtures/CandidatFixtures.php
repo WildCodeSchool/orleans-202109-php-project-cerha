@@ -26,15 +26,6 @@ class CandidatFixtures extends Fixture implements DependentFixtureInterface
             $this->addReference('candidat_' . $i, $candidat);
         }
 
-        $candidat = new Candidat();
-        $birthDate = new DateTime('12/02/1992');
-        $candidat->setbirthDate($birthDate);
-        $candidat->setaddress('2 rue de la Chèvre qui danse');
-        $candidat->setpostalCode(45000);
-        $candidat->setcity('Orléans');
-        $candidat->setUser($this->getReference('user_john'));
-        $manager->persist($candidat);
-        $this->addReference('candidat_john', $candidat);
 
         $manager->flush();
     }
