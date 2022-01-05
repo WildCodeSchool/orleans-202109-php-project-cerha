@@ -66,22 +66,22 @@ class Company
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $website;
+    private ?string $website;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $linkedin;
+    private ?string $linkedin;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $facebook;
+    private ?string $facebook;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $instagram;
+    private ?string $instagram;
 
     public function getId(): ?int
     {
