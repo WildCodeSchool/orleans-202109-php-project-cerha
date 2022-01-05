@@ -41,7 +41,7 @@ class RegistrationController extends AbstractController
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
-                    $form->get('plainPassword')->getData() //@phpstan-ignore-line
+                    $form->get('password')->getData() //@phpstan-ignore-line
                 )
             );
 
