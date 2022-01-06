@@ -42,11 +42,11 @@ class RegistrationFormType extends AbstractType
                 'second_options' => ['label' => 'Second Mot de Passe'],
             ])
             ->add('agreeTerms', CheckboxType::class, [
-                'label' => 'Accepter les termes d\'utilisation',
+                'label' => 'Accepter les conditions d\'utilisation',
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'Vous devez acceptez nos condition d\'utilisation.',
+                        'message' => 'Vous devez acceptez nos conditions d\'utilisation.',
                     ]),
                 ],
             ]);
