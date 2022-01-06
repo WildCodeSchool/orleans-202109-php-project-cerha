@@ -46,19 +46,19 @@ class CandidatController extends AbstractController
         /** @var User */
         $user = $this->getUser();
         $candidat = $user->getCandidat();
-        
+
         $form = $this->createForm(SoftSkillsType::class, $candidat);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager(); 
-    
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+
             $entityManager->flush();
-    
+
             return $this->redirectToRoute('candidat_show');
         }
         return $this->render('candidat/edit/sofskills.html.twig', [
-            'form' => $form->createView(), 'candidat' =>$candidat
+            'form' => $form->createView(), 'candidat' => $candidat
         ]);
     }
 }
