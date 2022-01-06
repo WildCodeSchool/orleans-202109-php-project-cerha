@@ -60,6 +60,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private ?Candidat $candidat;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Company::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private ?Company $company;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -210,6 +215,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         $this->candidat = $candidat;
+
+        return $this;
+    }
+
+    public function getCompany(): ?Company
+    {
+        return $this->company;
+    }
+
+    public function setCompany(Company $company): self
+    {
+        // set the owning side of the relation if necessary
+        if ($company->getUser() !== $this) {
+            $company->setUser($this);
+        }
+
+        $this->company = $company;
 
         return $this;
     }
