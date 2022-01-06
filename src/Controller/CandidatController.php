@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\ContactDetailsType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
+use App\Form\ComplementaryQuestionType;
 
 /**
  * @Route("/candidat", name="candidat_")
@@ -50,6 +51,28 @@ class CandidatController extends AbstractController
         }
 
         return $this->renderForm('candidat/edit/edit.contactDetails.html.twig', [
+            'candidat' => $candidat,
+            'form' => $form,
+        ]);
+    }
+
+    /**
+     * @Route("/profil/modifier/questions-complementaires", name="questions_edit", methods={"GET", "POST"})
+     */
+    public function editQuestions(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        /** @var User */
+        $user = $this->getUser();
+        $candidat = $user->getCandidat();
+        $form = $this->createForm(ComplementaryQuestionType::class, $candidat);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
+            return $this->redirectToRoute('candidat_show');
+        }
+
+        return $this->renderForm('candidat/edit/complementary-questions.html.twig', [
             'candidat' => $candidat,
             'form' => $form,
         ]);
