@@ -1,4 +1,5 @@
 {{ form_start(form) }}
 {{ form_widget(form) }}
-<button class="btn">{{ button_label|default('Valider') }}</button>
+<button class="btn btn-secondary fw-bold text-light align-self-center mb-4">Valider</button>
+<a class="btn btn-outline-dark align-self-center mb-4" href=" {{ path('company_show', {'user': company.user}) }}">Retour</a>
 {{ form_end(form) }}
