@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Form\CandidateSkillType;
+use App\Form\CandidateSkillsType;
 use App\Repository\HobbyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -63,16 +63,15 @@ class CandidatController extends AbstractController
     {
         /** @var User */
         $user = $this->getUser();
-        $candidat = $user->getCandidat();
-        //  $skill = $candidat->getSkills();
-        $form = $this->createForm(CandidateSkillType::class, $candidat);
+        $candidate = $user->getCandidat();
+        $form = $this->createForm(CandidateSkillsType::class, $candidate);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
         }
         return $this->renderForm('candidat/edit/edit.skill.html.twig', [
-            'candidat' => $candidat,
+            'candidat' => $candidate,
             'form' => $form,
         ]);
     }
