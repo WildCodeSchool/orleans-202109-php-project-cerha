@@ -49,7 +49,8 @@ class Candidat
     private string $city;
 
     /**
-     * @ORM\OneToMany(targetEntity=SoftSkill::class, mappedBy="candidat", orphanRemoval=true, cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=SoftSkill::class,
+     * mappedBy="candidat", orphanRemoval=true, cascade={"persist", "remove"})
      * @Assert\Count(max = 3)
      * @Assert\Valid
      */

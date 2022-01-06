@@ -4,7 +4,7 @@
  * We recommend including the built version of this JavaScript file
  * (and its CSS file) in your base layout (base.html.twig).
  */
-
+import a2lixLib from '@a2lix/symfony-collection/src/a2lix_sf_collection';
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
 
@@ -25,7 +25,15 @@ $(document).ready(() => {
     $('[data-toggle="popover"]').popover();
 });
 
-const newItem = (e) => {
+a2lixLib.sfCollection.init({
+    collectionsSelector: 'form div[data-prototype]',
+    manageRemoveEntry: true,
+    lang: {
+        add: 'Ajouter',
+        remove: 'Supprimer',
+    },
+});
+/* const newItem = (e) => {
     const collectionHolder = document.querySelector(e.currentTarget.dataset.collection);
 
     const item = document.createElement('div');
@@ -47,8 +55,9 @@ const newItem = (e) => {
 
 document
     .querySelectorAll('.btn-remove')
-    .forEach((btn) => btn.addEventListener('click', (e) => e.currentTarget.closest('.col-4').remove()));
+    .forEach(
+        (btn) => btn.addEventListener('click', (e) => e.currentTarget.closest('.col-4').remove()));
 
 document
     .querySelectorAll('.btn-new')
-    .forEach((btn) => btn.addEventListener('click', newItem));
+    .forEach((btn) => btn.addEventListener('click', newItem)); */

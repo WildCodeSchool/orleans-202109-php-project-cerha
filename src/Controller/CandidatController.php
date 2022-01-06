@@ -56,6 +56,7 @@ class CandidatController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
 
             $entityManager->flush();
+            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
             return $this->redirectToRoute('candidat_show');
         }

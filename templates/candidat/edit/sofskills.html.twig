@@ -7,28 +7,17 @@
 
 {% block body %}
 	<div class="container">
+		<h1 class="text-center mt-5 ">
+			Mes softskills</h1>
 		<div class="row">
-			<div class="col-12">
+			<h2 class="text-center fs-3">Ajouter jusqu'à 3 softskills</h2>
+			<div class="col-6 offset-md-3 fs-4 mt-5">
 				{{ form_start(form) }}
-				{{ form_errors(form) }}
-				{{ form_widget(form._token) }}
-				<button type="button" class="btn btn-primary btn-new" data-collection="#softskills">Ajouter un softskill</button>
-				<div
-				id="softskills"
-				data-prototype="{{ include("candidat/edit/_softskills-form.html.twig", {form: form.softskills.vars.prototype})|e("html_attr") }}"
-				data-index="{{ form.softskills|length > 0 ? form.softskills|last.vars.name + 1 : 0 }}"
-				class="row">
-					{% for softskill in form.softskills %}
-					<div class="col-4">
-
-						{{ include("candidat/edit/_softskills-form.html.twig", {form: softskill}) }}
-						{{ form_errors(softskill) }}
-					</div>
-					{% endfor %}
-				</div>
-				{{ form_errors(form.softskills) }}
-				<button class="btn btn-primary">Valider</button>
-				{{ form_end(form, {render_rest: false}) }}
+				{{ form_label(form.name, 'Compétence') }}
+				{{ form_widget(form) }}
+				<button class="btn btn-secondary fw-bold text-light align-self-center mb-4">Valider</button>
+				<a class="btn btn-outline-dark align-self-center mb-4" href=" {{ path('candidat_show', {'user': candidat.user}) }}">Retour</a>
+				{{ form_end(form) }}
 			</div>
 		</div>
 	</div>
