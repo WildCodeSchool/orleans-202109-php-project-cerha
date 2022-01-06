@@ -6,6 +6,7 @@ use App\Repository\CandidatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CandidatRepository::class)
@@ -40,7 +41,9 @@ class Candidat
     private string $city;
 
     /**
-     * @ORM\OneToMany(targetEntity=SoftSkill::class, mappedBy="candidat", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=SoftSkill::class, mappedBy="candidat", orphanRemoval=true, cascade={"persist"})
+     * @Assert\Count(max = 3)
+     * @Assert\Valid
      */
     private Collection $softSkills;
 

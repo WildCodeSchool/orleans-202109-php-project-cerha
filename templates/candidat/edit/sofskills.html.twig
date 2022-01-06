@@ -9,12 +9,28 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-            {{ form_start(form) }}
-            <button type="button" class="btn btn-primary" id="new-softskill">+</button>
-            {{ form_widget(form) }}
-            <button type="button" class="btn btn-secondary ">Envoyer</button>
-            {{ form_end(form) }}
-            </div>
+			
+				{{ form_start(form) }}
+				{{ form_errors(form)}}
+				{{ form_widget(form._token)}}
+				<button type="button" class="btn btn-primary btn-new" data-collection="#softskills">Ajouter un softskill</button>
+				<div 
+				id="softskills" 
+				data-prototype="{{ include("candidat/edit/_softskills-form.html.twig", {form: form.softskills.vars.prototype})| e("html_attr") }}" 
+				data-index="{{form.softskills|length > 0 ? form.softskills|last.vars.name + 1 : 0}}" 
+				class="row">
+					{% for softskill in form.softskills %}
+					<div class="col-4">
+
+						{{ include("candidat/edit/_softskills-form.html.twig", {form: softskill}) }}
+						{{ form_errors(softskill)}}
+					</div>
+					{% endfor %}
+				</div>
+				{{ form_errors(form.softskills) }}
+				<button class="btn btn-primary">Valider</button>
+				{{ form_end(form, {render_rest:false}) }}
+			</div>
 		</div>
 	</div>
 {% endblock %}

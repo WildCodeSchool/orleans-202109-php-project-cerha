@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Candidat;
 use App\Repository\HobbyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -9,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Form\SoftSkillsType;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/candidat", name="candidat_")
@@ -38,11 +40,25 @@ class CandidatController extends AbstractController
      * @IsGranted("ROLE_USER")
      */
 
-    public function editSoftSkills(): Response
+    public function editSoftSkills(Request $request): Response
     {
-        $form = $this->createForm(SoftSkillsType::class);
+
+        /** @var User */
+        $user = $this->getUser();
+        $candidat = $user->getCandidat();
+        
+        $form = $this->createForm(SoftSkillsType::class, $candidat);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager(); 
+    
+            $entityManager->flush();
+    
+            return $this->redirectToRoute('candidat_show');
+        }
         return $this->render('candidat/edit/sofskills.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(), 'candidat' =>$candidat
         ]);
     }
 }

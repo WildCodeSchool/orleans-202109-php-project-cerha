@@ -25,13 +25,31 @@ $(document).ready(() => {
     $('[data-toggle="popover"]').popover();
 });
 
-/* const collectionHolder = document.querySelector('#soft_skills_softskills');
+const newItem = (e) => {
+    const collectionHolder = document.querySelector(e.currentTarget.dataset.collection);
 
-let indexSoftSkills = collectionHolder.querySelectorAll('fieldset').length;
-const addSoftSkill = () => {
-    collectionHolder.innerHTML += collectionHolder.dataset.prototype.replace(/__name__/g,
-    indexSoftSkills);
-    indexSoftSkills++;
+    const item = document.createElement("div");
+
+    item.classList.add("col-4");
+    item.innerHTML = collectionHolder
+    .dataset
+    .prototype
+    .replace(
+        /__name__/g,
+        collectionHolder.dataset.index
+    );
+    item.querySelector('.btn-remove').addEventListener('click', () => item.remove());
+
+
+    collectionHolder.appendChild(item);
+
+    collectionHolder.dataset.index++;
 }
 
-document.querySelector('#new-softskill').addEventListener('click', addSoftSkill); */
+document
+.querySelectorAll('.btn-remove')
+.forEach(btn => btn.addEventListener("click", (e) => e.currentTarget.closest('.col-4').remove()));
+
+document
+.querySelectorAll('.btn-new')
+.forEach(btn => btn.addEventListener("click", newItem));
