@@ -26,6 +26,7 @@ class UserCompanyType extends AbstractType
             ])
             ->add('lastname', TextType::class, ['label' => 'Nom'])
             ->add('firstname', TextType::class, ['label' => 'Prénom'])
+            ->add('email', TextType::class, ['label' => 'Adresse e-mail'])
             ->add('phoneNumber', TextType::class, ['label' => 'Numéro de téléphone']);
     }
 

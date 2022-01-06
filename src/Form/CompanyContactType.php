@@ -15,7 +15,10 @@ class CompanyContactType extends AbstractType
     {
         $builder
             ->add('user', UserCompanyType::class, ['label' => false])
-            ->add('contactRole', TextType::class, ['label' => 'Intitulé de poste du contact']);
+            ->add('contactRole', TextType::class, [
+                'label' => 'Intitulé de poste',
+                'empty_data' => ''
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
