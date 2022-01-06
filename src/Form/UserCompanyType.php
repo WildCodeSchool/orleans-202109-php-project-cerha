@@ -15,7 +15,15 @@ class UserCompanyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('gender', ChoiceType::class, ['choices' => ['M.' => 'M.', 'Mme' => 'Mme'], 'label' => 'M. ou Mme'])
+            ->add('gender', ChoiceType::class, [
+                'choices' => [
+                    'M.' => 'M.',
+                    'Mme' => 'Mme'
+                ],
+                'expanded' => true,
+                'multiple' => false,
+                'label' => false
+            ])
             ->add('lastname', TextType::class, ['label' => 'Nom'])
             ->add('firstname', TextType::class, ['label' => 'Prénom'])
             ->add('phoneNumber', TextType::class, ['label' => 'Numéro de téléphone']);

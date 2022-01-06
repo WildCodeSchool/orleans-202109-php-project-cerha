@@ -4,10 +4,14 @@
 	{{ company.denomination }}
 {% endblock %}
 
+{% block stylesheets %}
+	{{ encore_entry_link_tags('editCompany') }}
+{% endblock %}
+
 {% block body %}
 	<main class="container">
-		<h1 class="text-center mt-5 ">Modifier vos informations</h1>
-		<div class="col-md-6 et offset-md-3 fs-4 mt-5">
+		<h1 class="text-center mt-5 ">Contact</h1>
+		<div class="companyForm col-md-6 offset-md-3 fs-4 mt-5">
 			{{ include('company/components/_formCompanyContact.html.twig', {'button_label': 'Valider'}) }}
 		</div>
 	</main>
