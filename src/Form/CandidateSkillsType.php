@@ -14,7 +14,7 @@ class CandidateSkillsType extends AbstractType
     {
         $builder
             ->add('skills', CollectionType::class, [
-                'label' => 'compétences',
+                'label' => false,
                 'entry_type'   => SkillType::class,
             ]);
     }
