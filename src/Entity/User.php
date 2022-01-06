@@ -5,11 +5,13 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields="email", message="cette adresse email existe déjà.")
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -22,8 +24,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-       * @Assert\NotBlank
-       * @Assert\Email()
+     * @Assert\NotBlank
+     * @Assert\Email()
+     * @Assert\Length(max=180)
      */
     private string $email;
 
@@ -53,7 +56,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private string $firstname;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      * @Assert\NotBlank
      */
     private int $phoneNumber;

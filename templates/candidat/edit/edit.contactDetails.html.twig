@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Coordonnées
+{% block title %}Mes coordonnées
 {% endblock %}
 
 {% block body %}
@@ -9,7 +9,34 @@
 			Coordonnées<h1>
 				<div class="col-md-6 et offset-md-3 fs-4 mt-5">
 					{{ form_start(form) }}
-					{{ form_widget(form) }}
+					<div class="row mb-2">
+						<div class="col">
+							{{ form_row(form.user.lastname) }}</div>
+						<div class="col">
+							{{ form_row(form.user.firstname) }}</div>
+					</div>
+
+					<div class="row mb-2">
+						<div class="col">
+							{{ form_row(form.user.phoneNumber) }}</div>
+						<div class="col">
+							{{ form_row(form.user.email) }}</div>
+					</div>
+					<div class="row mb-2">
+						<div class="col">
+							{{ form_row(form.birthDate) }}</div>
+
+					</div>
+					<div class="row mb-2">
+						<div class="col">
+							{{ form_row(form.address) }}</div>
+					</div>
+					<div class="row mb-2	">
+						<div class="col">
+							{{ form_row(form.postalCode) }}</div>
+						<div class="col">
+							{{ form_row(form.city) }}</div>
+					</div>
 					<button class="btn btn-secondary fw-bold text-light align-self-center mb-4">Valider</button>
 					<a class="btn btn-outline-dark align-self-center mb-4" href=" {{ path('candidat_show', {'user': candidat.user}) }}">Retour</a>
 					{{ form_end(form) }}
