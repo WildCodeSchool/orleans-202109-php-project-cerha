@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\CandidateSkillType;
 use App\Repository\HobbyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -50,6 +51,27 @@ class CandidatController extends AbstractController
         }
 
         return $this->renderForm('candidat/edit/edit.contactDetails.html.twig', [
+            'candidat' => $candidat,
+            'form' => $form,
+        ]);
+    }
+
+    /**
+     * @Route("/profil/modifier/skill", name="edit_skill", methods={"GET", "POST"})
+     */
+    public function editSkill(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        /** @var User */
+        $user = $this->getUser();
+        $candidat = $user->getCandidat();
+        //  $skill = $candidat->getSkills();
+        $form = $this->createForm(CandidateSkillType::class, $candidat);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
+        }
+        return $this->renderForm('candidat/edit/edit.skill.html.twig', [
             'candidat' => $candidat,
             'form' => $form,
         ]);

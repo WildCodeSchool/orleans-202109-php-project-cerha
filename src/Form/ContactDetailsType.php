@@ -15,8 +15,6 @@ class ContactDetailsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-
-
             ->add('birthDate', BirthdayType::class, ['label' => 'Date de naissance'])
             ->add('address', TextType::class, ['label' => 'Adresse'])
             ->add('postalCode', TextType::class, ['label' => 'Code postal'])
