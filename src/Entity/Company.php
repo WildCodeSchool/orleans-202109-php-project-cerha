@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CompanyRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CompanyRepository::class)
@@ -19,36 +20,50 @@ class Company
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
+     * @Assert\Length(max=100)
      */
     private string $denomination;
 
     /**
      * @ORM\Column(type="string", length=14)
+     * @Assert\NotBlank
+     * @Assert\Length(max=14)
      */
     private string $siret;
 
     /**
      * @ORM\Column(type="string", length=5)
+     * @Assert\NotBlank
+     * @Assert\Length(max=5)
      */
     private string $apeCode;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(max=255)
      */
     private string $address;
 
     /**
      * @ORM\Column(type="string", length=5)
+     * @Assert\NotBlank
+     * @Assert\Length(max=5)
      */
     private string $postalCode;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
+     * @Assert\Length(max=100)
      */
     private string $city;
 
     /**
      * @ORM\Column(type="string", length=13)
+     * @Assert\NotBlank
+     * @Assert\Length(max=13)
      */
     private string $vatNumber;
 
@@ -60,26 +75,31 @@ class Company
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="company", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid
      */
     private ?User $user;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max=255)
      */
     private ?string $website;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max=255)
      */
     private ?string $linkedin;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max=255)
      */
     private ?string $facebook;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max=255)
      */
     private ?string $instagram;
 
