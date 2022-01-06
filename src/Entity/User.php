@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields="email", message="cette adresse email existe déjà.")
+ * @UniqueEntity(fields="email", message="Cette adresse email existe déjà.")
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
