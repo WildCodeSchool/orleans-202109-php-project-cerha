@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class UserCandidateType extends AbstractType
 {
@@ -16,7 +17,7 @@ class UserCandidateType extends AbstractType
             ->add('lastname', TextType::class, ['label' => 'Nom'])
             ->add('firstname', TextType::class, ['label' => 'Prénom'])
             ->add('phoneNumber', TextType::class, ['label' => 'Téléphone'])
-            ->add('email', TextType::class, ['label' => 'E-mail']);
+            ->add('email', EmailType::class, ['label' => 'E-mail']);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
