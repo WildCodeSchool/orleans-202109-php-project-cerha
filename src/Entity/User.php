@@ -60,9 +60,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private string $firstname;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      * @Assert\NotBlank
-     * @Assert\Type("integer")
+     * @Assert\Type("string")
      */
     private int $phoneNumber;
 
