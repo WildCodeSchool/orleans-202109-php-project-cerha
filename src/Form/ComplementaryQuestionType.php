@@ -17,7 +17,7 @@ class ComplementaryQuestionType extends AbstractType
                 'label' => 'Depuis combien de temps êtes-vous en recherche active ?'
                 ])
             ->add('searchQuality', TextType::class, [
-                'label' =>'Vous qualifierez votre recherche : d\'efficace, 
+                'label' => 'Vous qualifierez votre recherche : d\'efficace, 
                 pas assez ciblée, vous ne savez pas par où commencer :'
                 ])
             ->add('profilQuality', TextType::class, [
