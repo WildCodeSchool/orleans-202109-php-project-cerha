@@ -29,7 +29,7 @@ class CompanyController extends AbstractController
             ['company' => $company]
         );
     }
-  
+
     /**
      * @Route("/profil/{id<^[0-9]+$>}/modifier", name="edit", methods={"GET", "POST"})
      */
@@ -52,7 +52,7 @@ class CompanyController extends AbstractController
             'form' => $form,
         ]);
     }
-  
+
     /**
      * @Route("/profil/{id<^[0-9]+$>}/informations", name="editDetails", methods={"GET", "POST"})
      */
