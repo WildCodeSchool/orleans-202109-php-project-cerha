@@ -1657,7 +1657,7 @@ boolbase@^1.0.0:
 
 bootstrap-icons@^1.7.2:
   version "1.7.2"
-  resolved "https://registry.npmjs.org/bootstrap-icons/-/bootstrap-icons-1.7.2.tgz"
+  resolved "https://registry.yarnpkg.com/bootstrap-icons/-/bootstrap-icons-1.7.2.tgz#4024e081e2c850602552e1fed6451e682d09322a"
   integrity sha512-NiR2PqC73AQOPdVSu6GJfnk+hN2z6powcistXk1JgPnKuoV2FSdSl26w931Oz9HYbKCcKUSB6ncZTYJAYJl3QQ==
 
 bootstrap@^5.1.3:
