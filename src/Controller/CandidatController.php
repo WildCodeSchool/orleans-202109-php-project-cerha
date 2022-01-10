@@ -30,7 +30,6 @@ class CandidatController extends AbstractController
         /** @var User */
         $user = $this->getUser();
         $candidat = $user->getCandidat();
-
         return $this->render(
             'candidat/index.html.twig',
             ['candidat' => $candidat]

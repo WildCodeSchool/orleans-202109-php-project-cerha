@@ -30,7 +30,7 @@ a2lixLib.sfCollection.init({
     manageRemoveEntry: true,
     lang: {
         add: 'Ajouter',
-        remove: 'Supprimer',
+        remove: 'supprimer',
     },
 });
 /* const newItem = (e) => {

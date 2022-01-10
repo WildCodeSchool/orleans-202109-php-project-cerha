@@ -13,7 +13,6 @@
 			<h2 class="text-center fs-3">Ajouter jusqu'à 3 softskills</h2>
 			<div class="col-6 offset-md-3 fs-4 mt-5">
 				{{ form_start(form) }}
-				{{ form_label(form.name, 'Compétence') }}
 				{{ form_widget(form) }}
 				<button class="btn btn-secondary fw-bold text-light align-self-center mb-4">Valider</button>
 				<a class="btn btn-outline-dark align-self-center mb-4" href=" {{ path('candidat_show', {'user': candidat.user}) }}">Retour</a>
