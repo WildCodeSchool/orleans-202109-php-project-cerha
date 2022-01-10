@@ -2,26 +2,25 @@
 
 namespace App\Form;
 
-use App\Entity\SoftSkill;
+use App\Entity\Hobby;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SoftSkillType extends AbstractType
+class HobbyType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Compétence'
+                'label' => 'Centre d\'intérêt',
             ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => SoftSkill::class,
+            'data_class' => Hobby::class,
         ]);
     }
 }
