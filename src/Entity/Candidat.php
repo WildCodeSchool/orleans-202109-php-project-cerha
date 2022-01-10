@@ -56,6 +56,7 @@ class Candidat
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="candidat", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
+     * @assert\Valid
      */
     private ?User $user;
 
