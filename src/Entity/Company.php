@@ -23,49 +23,50 @@ class Company
      * @Assert\NotBlank
      * @Assert\Length(max=100)
      */
-    private string $denomination;
+    private ?string $denomination;
 
     /**
      * @ORM\Column(type="string", length=14)
-     * @Assert\NotBlank
-     * @Assert\Length(max=14)
+     * @Assert\NotBlank(message="Le SIRET est obligatoire.")
+     * @Assert\Luhn(message="Numéro de SIRET invalide.")
+     * @Assert\Length(max=14, message="Le SIRET doit faire 14 caractères.")
      */
-    private string $siret;
+    private ?string $siret;
 
     /**
      * @ORM\Column(type="string", length=5)
      * @Assert\NotBlank
      * @Assert\Length(max=5)
      */
-    private string $apeCode;
+    private ?string $apeCode;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      * @Assert\Length(max=255)
      */
-    private string $address;
+    private ?string $address;
 
     /**
      * @ORM\Column(type="string", length=5)
      * @Assert\NotBlank
      * @Assert\Length(max=5)
      */
-    private string $postalCode;
+    private ?string $postalCode;
 
     /**
      * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank
      * @Assert\Length(max=100)
      */
-    private string $city;
+    private ?string $city;
 
     /**
      * @ORM\Column(type="string", length=13)
      * @Assert\NotBlank
      * @Assert\Length(max=13)
      */
-    private string $vatNumber;
+    private ?string $vatNumber;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -84,24 +85,28 @@ class Company
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(max=255)
+     * @Assert\Url
      */
     private ?string $website;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(max=255)
+     * @Assert\Url
      */
     private ?string $linkedin;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(max=255)
+     * @Assert\Url
      */
     private ?string $facebook;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(max=255)
+     * @Assert\Url
      */
     private ?string $instagram;
 
@@ -115,7 +120,7 @@ class Company
         return $this->denomination;
     }
 
-    public function setDenomination(string $denomination): self
+    public function setDenomination(?string $denomination): self
     {
         $this->denomination = $denomination;
 
@@ -127,7 +132,7 @@ class Company
         return $this->siret;
     }
 
-    public function setSiret(string $siret): self
+    public function setSiret(?string $siret): self
     {
         $this->siret = $siret;
 
@@ -139,7 +144,7 @@ class Company
         return $this->apeCode;
     }
 
-    public function setApeCode(string $apeCode): self
+    public function setApeCode(?string $apeCode): self
     {
         $this->apeCode = $apeCode;
 
@@ -151,7 +156,7 @@ class Company
         return $this->address;
     }
 
-    public function setAddress(string $address): self
+    public function setAddress(?string $address): self
     {
         $this->address = $address;
 
@@ -163,7 +168,7 @@ class Company
         return $this->postalCode;
     }
 
-    public function setPostalCode(string $postalCode): self
+    public function setPostalCode(?string $postalCode): self
     {
         $this->postalCode = $postalCode;
 
@@ -175,7 +180,7 @@ class Company
         return $this->city;
     }
 
-    public function setCity(string $city): self
+    public function setCity(?string $city): self
     {
         $this->city = $city;
 
@@ -187,7 +192,7 @@ class Company
         return $this->vatNumber;
     }
 
-    public function setVatNumber(string $vatNumber): self
+    public function setVatNumber(?string $vatNumber): self
     {
         $this->vatNumber = $vatNumber;
 
