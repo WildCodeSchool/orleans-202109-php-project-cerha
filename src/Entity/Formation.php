@@ -51,6 +51,7 @@ class Formation
 
     /**
      * @ORM\ManyToOne(targetEntity=FormationLevel::class, inversedBy="formations")
+     * @Assert\NotBlank
      */
     private ?FormationLevel $level;
 

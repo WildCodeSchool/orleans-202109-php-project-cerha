@@ -15,7 +15,10 @@ class FormationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('level', null, ['choice_label' => 'level', 'label' => 'Niveau'])
+            ->add('level', null, ['choice_label' => 'level',
+             'label' => 'Niveau',
+             'placeholder' => 'Selectionnez votre choix',
+             'required'   => true,])
             ->add('title', TextType::class, ['label' => 'Intitulé de formation'])
             ->add('place', TextType::class, ['label' => 'Etablissement'])
             ->add('startDate', BirthdayType::class, ['label' => 'Date de début'])
