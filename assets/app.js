@@ -29,6 +29,16 @@ $(document).ready(() => {
 });
 
 a2lixLib.sfCollection.init({
+    collectionsSelector: 'form div[data-prototype]',
+
+    manageRemoveEntry: true,
+    lang: {
+        add: 'Ajouter une compétence',
+        remove: '',
+    },
+});
+
+a2lixLib.sfCollection.init({
     collectionsSelector: 'form #candidate_formations div[data-prototype]',
 
     manageRemoveEntry: true,
