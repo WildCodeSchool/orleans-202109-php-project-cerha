@@ -4,7 +4,7 @@
  * We recommend including the built version of this JavaScript file
  * (and its CSS file) in your base layout (base.html.twig).
  */
-
+import a2lixLib from '@a2lix/symfony-collection/src/a2lix_sf_collection';
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
 
@@ -26,4 +26,22 @@ require('bootstrap');
 
 $(document).ready(() => {
     $('[data-toggle="popover"]').popover();
+});
+
+a2lixLib.sfCollection.init({
+    collectionsSelector: 'form #candidate_skills div[data-prototype]',
+    manageRemoveEntry: true,
+    lang: {
+        add: 'Ajouter une compétence',
+        remove: '',
+    },
+});
+
+a2lixLib.sfCollection.init({
+    collectionsSelector: 'form #candidate_formations div[data-prototype]',
+    manageRemoveEntry: true,
+    lang: {
+        add: 'Ajouter une formation',
+        remove: '',
+    },
 });

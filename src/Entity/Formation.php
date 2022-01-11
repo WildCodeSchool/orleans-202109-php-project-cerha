@@ -58,6 +58,11 @@ class Formation
      */
     private \DateTimeInterface $endDate;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private ?string $phoneReferent;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -156,6 +161,18 @@ class Formation
     public function setEndDate(\DateTimeInterface $endDate): self
     {
         $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    public function getPhoneReferent(): ?string
+    {
+        return $this->phoneReferent;
+    }
+
+    public function setPhoneReferent(?string $phoneReferent): self
+    {
+        $this->phoneReferent = $phoneReferent;
 
         return $this;
     }
