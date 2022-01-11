@@ -61,6 +61,7 @@ class CandidatController extends AbstractController
 
             return $this->redirectToRoute('candidat_show');
         }
+
         return $this->render('candidat/edit/sofskills.html.twig', [
             'form' => $form->createView(), 'candidat' => $candidat
         ]);
@@ -79,6 +80,8 @@ class CandidatController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
+
+            return $this->redirectToRoute('candidat_show');
         }
 
         return $this->renderForm('candidat/edit/edit.contactDetails.html.twig', [
@@ -100,6 +103,8 @@ class CandidatController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
+
+            return $this->redirectToRoute('candidat_show');
         }
         return $this->renderForm('candidat/edit/edit.skill.html.twig', [
             'candidat' => $candidate,
@@ -120,6 +125,8 @@ class CandidatController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
+
+            return $this->redirectToRoute('candidat_show');
         }
         return $this->renderForm('candidat/edit/languages.html.twig', [
             'candidat' => $candidate,

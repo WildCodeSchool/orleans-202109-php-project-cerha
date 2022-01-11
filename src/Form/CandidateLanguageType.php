@@ -13,7 +13,10 @@ class CandidateLanguageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', LanguageType::class, ['label' => false,]);
+            ->add('name', LanguageType::class, [
+                'label' => false,
+                'choice_self_translation' => true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

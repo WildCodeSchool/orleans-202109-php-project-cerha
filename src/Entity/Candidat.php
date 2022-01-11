@@ -85,7 +85,8 @@ class Candidat
     private ?string $profilQuality;
 
     /**
-     * @ORM\OneToMany(targetEntity=CandidatLanguage::class, mappedBy="candidat", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=CandidatLanguage::class,
+     * mappedBy="candidat", orphanRemoval=true, cascade={"persist", "remove"})
      */
     private Collection $candidatLanguages;
 
