@@ -1,50 +1,182 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Candidat{% endblock %}
-
+{% block title %}{{ parent() }} - Détails {{ candidat.user.lastname }} {{ candidat.user.firstname }} {% endblock %}
+{% block stylesheets %}
+{{ encore_entry_link_tags('adminCandidate') }}
+{% endblock %}
 {% block body %}
-    <h1>Candidat</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ candidat.id }}</td>
-            </tr>
-            <tr>
-                <th>BirthDate</th>
-                <td>{{ candidat.birthDate ? candidat.birthDate|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ candidat.address }}</td>
-            </tr>
-            <tr>
-                <th>PostalCode</th>
-                <td>{{ candidat.postalCode }}</td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <td>{{ candidat.city }}</td>
-            </tr>
-            <tr>
-                <th>TimeSearch</th>
-                <td>{{ candidat.timeSearch }}</td>
-            </tr>
-            <tr>
-                <th>SearchQuality</th>
-                <td>{{ candidat.searchQuality }}</td>
-            </tr>
-            <tr>
-                <th>ProfilQuality</th>
-                <td>{{ candidat.profilQuality }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('admin_candidate_index') }}">back to list</a>
-
-    <a href="{{ path('admin_candidate_details', {'id': candidat.id}) }}">edit</a>
-
-    {{ include('admin_candidate/_delete_form.html.twig') }}
+<main class="container">
+    <h1 class="text-center mt-5 mb-4 border-bottom pb-2">Détails de {{ candidat.user.gender }}.
+        {{ candidat.user.lastname }} {{ candidat.user.firstname }}</h1>
+    <div class="row my-3">
+        <div class="col-3 offset-4">
+            <a class="btn btn-secondary text-light" href="{{ path('admin_candidate_index') }}"><i
+                    class="bi bi-arrow-left-square"></i>
+                Retour</a>
+        </div>
+        <div class="col-3">
+            {{ include('admin_candidate/_delete_form.html.twig') }}
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-6 offset-3">
+            <div class="card">
+                <h2 class="card-title title text-center bg-primary rounded-top py-2">Coordonnées</h2>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li class="row py-2">
+                            <i class="bi bi-person-circle ms-3 me-1 col-1 fs-4 align-self-center"></i>
+                            <p class="col-6 fs-4 mb-0">{{ candidat.user.gender }}. {{ candidat.user.lastname }}
+                                {{ candidat.user.firstname }}</p>
+                        </li>
+                        <li class="row py-2">
+                            <i class="bi bi-calendar2-check ms-3 me-1 col-1 fs-4"></i>
+                            <p class="fs-5 col-10 mb-0">{{ candidat.birthDate|date("d M Y") }}</p>
+                        </li>
+                        <li class="row py-2">
+                            <i class="bi bi-telephone-forward ms-3 me-1 col-1 fs-4"></i>
+                            <p class="col-10 fs-5 mb-0"> {{ candidat.user.phoneNumber }} </p>
+                        </li>
+                        <li class="row py-2">
+                            <i class="bi bi-envelope ms-3 me-1 col-1 fs-4"></i>
+                            <p class="col-10 fs-5 mb-0"> {{ candidat.user.email }} </p>
+                        </li>
+                        <li class="row py-2">
+                            <i class="bi bi-geo-alt ms-3 me-1 col-1 fs-4"></i>
+                            <p class="col-10 fs-5 mb-0"> {{ candidat.address }}, {{ candidat.postalCode }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-6 offset-3">
+            <div class="card">
+                <h2 class="card-title title text-center bg-primary rounded-top p-2">Formations</h2>
+                <div class="card-body">
+                    <ul class="list-unstyled mx-3">
+                        {% for formation in candidat.formations %}
+                        <li class="py-2">
+                            <div class="row">
+                                <i class="bi bi-book col-1 fs-4"></i>
+                                <h3 class="col-10 fs-3 mb-0"> {{ formation.title }}</h3>
+                            </div>
+                            <div class="row">
+                                <h4 class="fs-5 mb-0 offset-1"> {{ formation.place }} </h4>
+                            </div>
+                            <div class="row">
+                                <p class="col-10 date offset-1"><i class="bi bi-calendar"> </i>
+                                    {{ formation.startDate|date('M Y') }} - {{ formation.endDate|date('M Y') }}</p>
+                            </div>
+                            <div class="row">
+                                <p class=""> {{ formation.description }} </p>
+                            </div>
+                            <div class="row">
+                                <p class=""><span class="text-primary">Référent:</span> {{ formation.referent }} </p>
+                            </div>
+                        </li>
+                        {% else %}
+                        <div class="alert alert-warning" role="alert">
+                            <i class="bi bi-exclamation-triangle"></i> Pas de donnée
+                        </div>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-6 offset-3">
+            <div class="card">
+                <h2 class="card-title title text-center bg-primary rounded-top p-2">Experiences</h2>
+                <div class="card-body">
+                    <ul class="list-unstyled mx-3">
+                        {% for experience in candidat.experiences %}
+                        <li class="py-2">
+                            <div class="row">
+                                <i class="bi bi-briefcase col-1 fs-4"></i>
+                                <h3 class="col-10 fs-3 mb-0">{{ experience.jobName }}</h3>
+                            </div>
+                            <div class="row mb-3">
+                                <h4 class="fs-5 mb-0 offset-1"> {{ experience.place }} </h4>
+                            </div>
+                            <div class="row">
+                                <p>{{ experience.description }}</p>
+                            </div>
+                            <div class="row">
+                                <p><span class="text-primary">Référent:</span> {{ experience.referentName }}</p>
+                            </div>
+                        </li>
+                        {% else %}
+                        <div class="alert alert-warning" role="alert">
+                            <i class="bi bi-exclamation-triangle"></i> Pas de donnée
+                        </div>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-6 offset-3">
+            <div class="card">
+                <h2 class="card-title title text-center bg-primary rounded-top p-2">Soft Skills</h2>
+                <div class="card-body">
+                    <ul class="list-unstyled mx-3">
+                        {% for soft_skill in candidat.softSkills %}
+                        <li class="py-2">
+                            <p><i class="bi bi-arrow-right-circle-fill"></i> {{ soft_skill.name }}</p>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-6 offset-3">
+            <div class="card">
+                <h2 class="card-title title text-center bg-primary rounded-top p-2">Centre d'intérêt</h2>
+                <div class="card-body">
+                    <ul class="list-unstyled mx-3">
+                        {% for hobby in candidat.hobbies %}
+                        <li class="py-2">
+                            <p><i class="bi bi-arrow-right-circle-fill"></i> {{ hobby.name }}</p>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-6 offset-3">
+            <div class="card">
+                <h2 class="card-title title text-center bg-primary rounded-top p-2">Questions complémentaires</h2>
+                <div class="card-body">
+                    <ul class="list-unstyled mx-3">
+                        <li class="py-2">
+                            <h3 class="fs-5 text-primary">Depuis combien de temps êtes-vous en recherche active ?</h3>
+                            <p><i class="bi bi-arrow-right-circle-fill"></i>
+                                {{ candidat.timeSearch ? candidat.timeSearch : 'Aucune information renseignée' }}</p>
+                        </li>
+                        <li class="py-2">
+                            <h3 class="fs-5 text-primary">Vous qualifierez votre recherche : d'efficace, pas assez
+                                ciblée, vous ne savez pas par où commencer :</h3>
+                            <p><i class="bi bi-arrow-right-circle-fill"></i>
+                                {{ candidat.searchQuality ? candidat.searchQuality : 'Aucune information renseignée' }}</p>
+                        </li>
+                        <li class="py-2">
+                            <h3 class="fs-5 text-primary">Vous qualifierez votre profil : d'attractif, de rare,
+                                d'atypique, commun :</h3>
+                            <p><i class="bi bi-arrow-right-circle-fill"></i>
+                                {{ candidat.profilQuality ? candidat.profilQuality : 'Aucune information renseignée' }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 {% endblock %}
