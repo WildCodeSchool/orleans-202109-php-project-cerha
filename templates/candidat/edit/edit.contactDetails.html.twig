@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes coordonnées
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<h1 class="text-center mt-5 ">
+			Coordonnées<h1>
+				<div class="col-md-6 et offset-md-3 fs-4 mt-5">
+					{{ form_start(form) }}
+
+					<div class="row mb-2">
+						<div class="col">
+							{{ form_row(form.user.gender[0]) }}</div>
+						<div class="col">
+							{{ form_row(form.user.gender[1]) }}</div>
+					</div>
+					<div class="row mb-2">
+						<div class="col">
+							{{ form_row(form.user.lastname) }}</div>
+						<div class="col">
+							{{ form_row(form.user.firstname) }}</div>
+					</div>
+
+					<div class="row mb-2">
+						<div class="col">
+							{{ form_row(form.user.phoneNumber) }}</div>
+
+					</div>
+					<div class="row mb-2">
+						<div class="col">
+							{{ form_row(form.birthDate) }}</div>
+
+					</div>
+					<div class="row mb-2">
+						<div class="col">
+							{{ form_row(form.address) }}</div>
+					</div>
+					<div class="row mb-2	">
+						<div class="col">
+							{{ form_row(form.postalCode) }}</div>
+						<div class="col">
+							{{ form_row(form.city) }}</div>
+					</div>
+					<button class="btn btn-secondary fw-bold text-light align-self-center mb-4">Valider</button>
+					<a class="btn btn-outline-dark align-self-center mb-4" href=" {{ path('candidat_show', {'user': candidat.user}) }}">Retour</a>
+					{{ form_end(form) }}
+				</div>
+			</main>
+		{% endblock %}

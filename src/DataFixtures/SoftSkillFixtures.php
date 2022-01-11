@@ -10,12 +10,13 @@ use Doctrine\Persistence\ObjectManager;
 class SoftSkillFixtures extends Fixture implements DependentFixtureInterface
 {
     public const SOFTSKILLS = ['Management', 'Communication', 'Adaptabilité', 'Travail en équipe'];
+
     public function load(ObjectManager $manager): void
     {
-        foreach (self::SOFTSKILLS as $skill) {
+        foreach (self::SOFTSKILLS as $key => $skill) {
             $softSkill = new SoftSkill();
             $softSkill->setName($skill);
-            $softSkill->setCandidat($this->getReference('candidat_john'));
+            $softSkill->setCandidat($this->getReference('candidat_' . ($key)));
             $manager->persist($softSkill);
         }
         $manager->flush();

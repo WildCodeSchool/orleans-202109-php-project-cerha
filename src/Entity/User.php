@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"email"}, message="Il y a déjà un compte avec cet email")
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -21,6 +23,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email
+     * @Assert\NotBlank
+     * @Assert\Length(max = 180)
      */
     private string $email;
 
@@ -32,26 +37,40 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank
+     * @Assert\Type("string")
+     * @Assert\Length(max  = 255)
      */
     private string $password;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
+     * @Assert\Type("string")
+     * @Assert\Length(max = 100)
      */
     private string $lastname;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
+     * @Assert\Type("string")
+     * @Assert\Length(max = 100)
      */
     private string $firstname;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank
+     * @Assert\Type("string")
      */
-    private int $phoneNumber;
+    private string $phoneNumber;
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Assert\NotBlank
+     * @Assert\Type("string")
+     * @Assert\Length(max = 10)
      */
     private string $gender;
 
@@ -59,6 +78,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToOne(targetEntity=Candidat::class, mappedBy="user", cascade={"persist", "remove"})
      */
     private ?Candidat $candidat;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private bool $isVerified = false;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Company::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private ?Company $company;
 
     public function getId(): ?int
     {
@@ -173,12 +202,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPhoneNumber(): ?int
+    public function getPhoneNumber(): ?string
     {
         return $this->phoneNumber;
     }
 
-    public function setPhoneNumber(int $phoneNumber): self
+    public function setPhoneNumber(string $phoneNumber): self
     {
         $this->phoneNumber = $phoneNumber;
 
@@ -210,6 +239,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         $this->candidat = $candidat;
+
+        return $this;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+        return $this;
+    }
+
+    public function getCompany(): ?Company
+    {
+        return $this->company;
+    }
+
+    public function setCompany(Company $company): self
+    {
+        // set the owning side of the relation if necessary
+        if ($company->getUser() !== $this) {
+            $company->setUser($this);
+        }
+
+        $this->company = $company;
 
         return $this;
     }
