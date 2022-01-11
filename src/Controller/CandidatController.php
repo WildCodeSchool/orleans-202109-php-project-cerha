@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Candidat;
 use App\Form\CandidateSkillsType;
 use App\Repository\HobbyRepository;
@@ -15,7 +14,6 @@ use App\Form\ContactDetailsType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
 use App\Form\SoftSkillsType;
-use App\Entity\Candidat;
 
 /**
  * @Route("/candidat", name="candidat_")
