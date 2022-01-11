@@ -23,7 +23,7 @@ class Skill
     private string $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Sector::class, inversedBy="skills")
+     * @ORM\ManyToOne(targetEntity=Sector::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private ?Sector $sector;

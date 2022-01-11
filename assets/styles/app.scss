@@ -24,3 +24,8 @@ p {
 h1 {
     color: $dark-primary;
 }
+
+.flash {
+    position: absolute;
+    z-index: 1;
+}

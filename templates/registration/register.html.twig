@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Inscription {% endblock %}
+{% block stylesheets %}
+{{ encore_entry_link_tags('login') }}
+{% endblock %}
+{% block body %}
+{% for flash_error in app.flashes('verify_email_error') %}
+<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+{% endfor %}
+<header>
+    {% include "/items/_banner.html.twig" %}
+</header>
+<main class="container">
+    <div class="row mb-4 mt-3">
+        <h1 class="text-center">Inscription</h1>
+    </div>
+
+    <div class="card mb-5 col-lg-6 offset-lg-3 rounded-2">
+        <div class="card-text p-3 mb-5 rounded-top d-flex justify-content-center align-content-center">
+            <p class="mb-0">Créer mon espace personnel</p>
+        </div>
+        {{ form_start(registrationForm,
+        {'attr': {
+        'class': 'd-flex flex-column mt-2 mb-4 px-5 container'
+        }}) }}
+        {{ form_row(registrationForm.gender, {
+        'attr': {
+        'class': 'd-flex justify-content-between'
+        }
+        }) }}
+        <div class="d-flex">
+            <div class="row">
+                <div class="col">
+                    {{ form_row(registrationForm.firstname, {
+                    'attr': {
+                    'placeholder': 'John'
+                    }
+                    }) }}
+                </div>
+                <div class="col">
+                    {{ form_row(registrationForm.lastname, {
+                    'attr': {
+                    'placeholder': 'Doe'
+                    }
+                    }) }}
+                </div>
+            </div>
+        </div>
+        {{ form_row(registrationForm.email, {
+        'attr': {
+        'placeholder': 'john@doe.com'
+        }
+        }) }}
+        {{ form_row(registrationForm.phoneNumber, {
+        'attr': {
+        'placeholder': '0601010101'
+        }
+        }) }}
+        {{ form_row(registrationForm.password, {
+        label: 'Password'
+        }) }}
+        <div class="row">
+            <div class="col-7 offset-3">
+                {{ form_row(registrationForm.agreeTerms, {
+                'attr': {
+                'class': 'align-self-center',
+                }
+                }) }}
+            </div>
+
+        </div>
+        <button type="submit" class="btn btn-primary col-sm-4 offset-sm-4">S'inscrire</button>
+        {{ form_end(registrationForm) }}
+    </div>
+</main>
+
+{% endblock %}
