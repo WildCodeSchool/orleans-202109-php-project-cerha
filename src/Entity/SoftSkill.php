@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\SoftSkillRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=SoftSkillRepository::class)
@@ -19,6 +20,8 @@ class SoftSkill
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
+     * @Assert\Length(max=100)
      */
     private string $name;
 
