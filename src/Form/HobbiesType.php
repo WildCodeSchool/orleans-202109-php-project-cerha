@@ -15,7 +15,7 @@ class HobbiesType extends AbstractType
         $builder
             ->add('hobbies', CollectionType::class, [
                 'entry_type' => HobbyType::class,
-                'label' => false,
+                'label' => 'Centres d\'intérêt',
                 'by_reference' => false,
                 'allow_add' => true,
                 'allow_delete' => true,

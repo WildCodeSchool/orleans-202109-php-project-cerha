@@ -5,12 +5,16 @@
 	- Centres d'intérêt
 {% endblock %}
 
+{% block stylesheets %}
+	{{ encore_entry_link_tags('forms') }}
+{% endblock %}
+
 {% block body %}
 	<div class="container">
 		<h1 class="text-center mt-5 ">
 			Mes centres d'intérêt</h1>
 		<div class="row">
-			<h2 class="text-center fs-3">Ajouter jusqu'à 5 centre d'intérêt</h2>
+			<h2 class="text-center fs-3">Ajouter jusqu'à 5 centres d'intérêt</h2>
 			<div class="col-6 offset-md-3 fs-4 mt-5">
 				{{ form_start(form) }}
 				{{ form_widget(form) }}

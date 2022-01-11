@@ -14,7 +14,7 @@ class HobbyType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Centre d\'intérêt',
+                'label' => false,
             ]);
     }
 
