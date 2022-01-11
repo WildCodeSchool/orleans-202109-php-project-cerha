@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\SkillRepository;
+use App\Repository\CandidatLanguageRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=SkillRepository::class)
+ * @ORM\Entity(repositoryClass=CandidatLanguageRepository::class)
  */
-class Skill
+class CandidatLanguage
 {
     /**
      * @ORM\Id
@@ -23,17 +23,10 @@ class Skill
     private string $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Sector::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private ?Sector $sector;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Candidat::class, inversedBy="skills")
+     * @ORM\ManyToOne(targetEntity=Candidat::class, inversedBy="candidatLanguages")
      * @ORM\JoinColumn(nullable=false)
      */
     private ?Candidat $candidat;
-
 
     public function getId(): ?int
     {
@@ -48,18 +41,6 @@ class Skill
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getSector(): ?Sector
-    {
-        return $this->sector;
-    }
-
-    public function setSector(Sector $sector): self
-    {
-        $this->sector = $sector;
 
         return $this;
     }

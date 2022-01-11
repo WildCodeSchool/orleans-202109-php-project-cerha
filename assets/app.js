@@ -8,6 +8,9 @@ import a2lixLib from '@a2lix/symfony-collection/src/a2lix_sf_collection';
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
 
+// Import boostrap icon
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 // start the Stimulus application
 import './bootstrap';
 
