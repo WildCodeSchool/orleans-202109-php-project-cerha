@@ -21,7 +21,7 @@ class SoftSkill
     /**
      * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank
-     * @Assert\Length(max=10)
+     * @Assert\Length(max=100)
      */
     private string $name;
 

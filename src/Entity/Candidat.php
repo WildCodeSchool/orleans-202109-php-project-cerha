@@ -51,7 +51,7 @@ class Candidat
     /**
      * @ORM\OneToMany(targetEntity=SoftSkill::class,
      * mappedBy="candidat", orphanRemoval=true, cascade={"persist", "remove"})
-     * @Assert\Count(max = 3)
+     * @Assert\Count(max = 5)
      * @Assert\Valid
      */
     private Collection $softSkills;

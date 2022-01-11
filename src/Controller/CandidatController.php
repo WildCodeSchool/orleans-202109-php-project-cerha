@@ -37,7 +37,7 @@ class CandidatController extends AbstractController
     }
 
     /**
-     * @Route("/profil/edit/softskills", name="sofskill_edit")
+     * @Route("/profil/edit/softskills", name="softskill_edit")
      * @IsGranted("ROLE_USER")
      */
 
