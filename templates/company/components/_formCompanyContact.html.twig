@@ -1,0 +1,18 @@
+{{ form_start(form) }}
+<div class="row mb-2">
+	<div class="col">{{ form_row(form.user.gender) }}</div>
+</div>
+<div class="row mb-2">
+	<div class="col-md-6">{{ form_row(form.user.lastname) }}</div>
+	<div class="col-md-6">{{ form_row(form.user.firstname) }}</div>
+</div>
+<div class="row mb-2">
+	<div class="col-md-6">{{ form_row(form.user.phoneNumber) }}</div>
+	<div class="col-md-6">{{ form_row(form.user.email) }}</div>
+</div>
+<div class="row mb-2">
+	{{ form_row(form.contactRole) }}
+</div>
+<button class="btn btn-secondary fw-bold text-light align-self-center mb-4">Valider</button>
+<a class="btn btn-outline-dark align-self-center mb-4" href=" {{ path('company_show', {'id': company.id}) }}">Retour</a>
+{{ form_end(form) }}
