@@ -57,11 +57,13 @@ class Formation
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank
      */
     private \DateTimeInterface $startDate;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank
      */
     private \DateTimeInterface $endDate;
 
