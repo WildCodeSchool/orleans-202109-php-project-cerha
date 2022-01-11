@@ -10,6 +10,6 @@
 					{{ language.name|language_name('fr')|capitalize }}</li>
 			{% endfor %}
 		</ul>
-		<button class="btn btn-secondary align-self-center fw-bold text-light mb-4"> Modifier</button>
+		<a href="{{ path('candidat_edit_languages', {'user': candidat.user}) }} "class="btn btn-secondary align-self-center fw-bold text-light mb-4"> Modifier</a>
 	</div>
 </div>
