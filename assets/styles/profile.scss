@@ -11,6 +11,11 @@
 }
 
 .questions h3 {
-    line-height:calc( $line-height * 60 / 100);
-    color:$primary;
+    line-height: calc($line-height * 60 / 100);
+    color: $primary;
+}
+
+.bi {
+    color: $secondary;
+    font-size: 1.2rem;
 }
