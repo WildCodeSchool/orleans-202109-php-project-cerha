@@ -16,6 +16,9 @@ class CandidateSkillsType extends AbstractType
             ->add('skills', CollectionType::class, [
                 'label' => false,
                 'entry_type'   => SkillType::class,
+                'entry_options'  => [
+                    'label' => false,]
+
             ]);
     }
 
