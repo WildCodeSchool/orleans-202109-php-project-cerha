@@ -22,7 +22,7 @@ class RegistrationFormType extends AbstractType
             ->add('firstname', TextType::class, ['label' => 'Prénom'])
             ->add('lastname', TextType::class, ['label' => 'Nom'])
             ->add('email')
-            ->add('phoneNumber', IntegerType::class, ['label' => 'Numéro de Télephone'])
+            ->add('phoneNumber', TextType::class, ['label' => 'Numéro de Télephone'])
             ->add('gender', ChoiceType::class, [
                 'label' => 'Genre',
                 'expanded' => true,
