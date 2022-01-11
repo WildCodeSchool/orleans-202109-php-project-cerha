@@ -79,6 +79,8 @@ class CandidatController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
+
+            return $this->redirectToRoute('candidat_show');
         }
 
         return $this->renderForm('candidat/edit/edit.contactDetails.html.twig', [
@@ -100,14 +102,17 @@ class CandidatController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
+
             return $this->redirectToRoute('candidat_show');
         }
-        return $this->renderForm('candidat/edit/edit.skill.html.twig', [
+
+        return $this->renderForm('candidat/edit/complementary-questions.html.twig', [
             'candidat' => $candidat,
             'form' => $form,
         ]);
     }
-/**
+
+    /**
      * @Route("/profil/modifier/skill", name="edit_skill", methods={"GET", "POST"})
      */
     public function editSkill(Request $request, EntityManagerInterface $entityManager): Response
