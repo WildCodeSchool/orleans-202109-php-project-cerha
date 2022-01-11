@@ -1,0 +1,19 @@
+#soft_skills_softskills fieldset {
+    display:flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#soft_skills_softskills fieldset button,#candidate_formations_formations fieldset button  {
+    width: 37px;
+    height: 37px;
+    align-self: end;
+    margin-block-end: 17px;
+    background-image: url("../images/trash.svg");
+    background-repeat: no-repeat;   
+    background-position: center; 
+}
+
+#soft_skills_softskills fieldset div {
+    width: 100%;
+}

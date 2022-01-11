@@ -15,7 +15,7 @@
 					{{ formation.level.level }}
 					-
 					{{ formation.title }}</h4>
-				<p class="text-primary mx-3">
+				<p class="text-muted mx-3">
 					{{ formation.place }}
 					|
 					{{ formation.startDate|date('F Y') }}
@@ -24,27 +24,25 @@
 				</p>
 
 
-				<p class="mx-3 lh-base mb-4">
-					{{ formation.description }}</p>
+				<div class="mx-3 mb-4 lh-base">
+					<p>{{ formation.description }}</p>
+				</div>
 
-				<div class="border border-gray text-dark  ">
 
-					<div class="d-flex justify-content-around">
+				<div class="mx-3 d-flex text-dark ">
+					Référent
+					<div>
 						<div>
-							<i class="bi bi-arrow-right-circle-fill text-dark"></i>
-							Contact
-						</div>
-
-						<div>
-							<i class="bi bi-person-plus-fill text-dark"></i>
+							<i class="bi bi-person-check text-dark ms-3 fs-5"></i>
 							{{ formation.referent }}
-						</div>
-						<div>
-							<i class="bi bi-telephone-forward-fill text-dark"></i>
+
+							<i class="bi  bi-telephone-forward text-dark ms-3 fs-6"></i>
 							{{ formation.phoneReferent }}
 						</div>
 					</div>
 				</div>
+
+
 			{% else %}
 
 				Aucune information disponible.

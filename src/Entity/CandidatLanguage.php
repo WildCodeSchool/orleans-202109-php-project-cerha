@@ -2,14 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\SoftSkillRepository;
+use App\Repository\CandidatLanguageRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=SoftSkillRepository::class)
+ * @ORM\Entity(repositoryClass=CandidatLanguageRepository::class)
  */
-class SoftSkill
+class CandidatLanguage
 {
     /**
      * @ORM\Id
@@ -20,13 +19,11 @@ class SoftSkill
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Assert\NotBlank
-     * @Assert\Length(max=100)
      */
     private string $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Candidat::class, inversedBy="softSkills")
+     * @ORM\ManyToOne(targetEntity=Candidat::class, inversedBy="candidatLanguages")
      * @ORM\JoinColumn(nullable=false)
      */
     private ?Candidat $candidat;

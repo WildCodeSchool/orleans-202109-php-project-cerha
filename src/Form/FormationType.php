@@ -20,7 +20,7 @@ class FormationType extends AbstractType
             ->add('place', TextType::class, ['label' => 'Etablissement'])
             ->add('startDate', BirthdayType::class, ['label' => 'Date de début'])
             ->add('endDate', BirthdayType::class, ['label' => 'Date de fin'])
-            ->add('description', TextareaType::class, ['label' => 'Description'])
+            ->add('description', TextareaType::class, ['label' => 'Description','attr' => ['rows' => '4']])
             ->add('referent', TextType::class, ['label' => 'Référent'])
             ->add('phoneReferent', TextType::class, ['label' => 'Téléphone du référent', 'required'   => false,]);
     }
