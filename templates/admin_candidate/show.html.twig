@@ -128,6 +128,10 @@
                         <li class="py-2">
                             <p><i class="bi bi-arrow-right-circle-fill"></i> {{ soft_skill.name }}</p>
                         </li>
+                        {% else %}
+                        <div class="alert alert-warning" role="alert">
+                            <i class="bi bi-exclamation-triangle"></i> Pas de donnée
+                        </div>
                         {% endfor %}
                     </ul>
                 </div>
@@ -144,6 +148,10 @@
                         <li class="py-2">
                             <p><i class="bi bi-arrow-right-circle-fill"></i> {{ hobby.name }}</p>
                         </li>
+                        {% else %}
+                        <div class="alert alert-warning" role="alert">
+                            <i class="bi bi-exclamation-triangle"></i> Pas de donnée
+                        </div>
                         {% endfor %}
                     </ul>
                 </div>
