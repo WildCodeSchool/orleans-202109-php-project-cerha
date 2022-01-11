@@ -14,7 +14,7 @@ class SoftSkillType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Compétence'
+                'label' => false,
             ]);
         ;
     }
