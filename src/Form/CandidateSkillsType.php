@@ -8,20 +8,17 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SoftSkillsType extends AbstractType
+class CandidateSkillsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('softskills', CollectionType::class, [
-                'entry_type' => SoftSkillType::class,
-                'label' => 'Compétences',
-                'by_reference' => false,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'entry_options' => [
-                    'label' => false
-                ]
+            ->add('skills', CollectionType::class, [
+                'label' => false,
+                'entry_type'   => SkillType::class,
+                'entry_options'  => [
+                    'label' => false,]
+
             ]);
     }
 
