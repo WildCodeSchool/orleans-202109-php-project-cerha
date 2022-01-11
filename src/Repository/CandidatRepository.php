@@ -49,10 +49,10 @@ class CandidatRepository extends ServiceEntityRepository
     }
     */
 
-    public function findAllByName(): ArrayCollection
+    public function findAllByName(): array
     {
         /**
-         * @var ArrayCollection
+         * @var array
          */
         return $this->createQueryBuilder('c')
         ->join('c.user', 'u')
