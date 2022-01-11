@@ -29,7 +29,7 @@ class Company
      * @ORM\Column(type="string", length=14)
      * @Assert\NotBlank(message="Le SIRET est obligatoire.")
      * @Assert\Luhn(message="Numéro de SIRET invalide.")
-     * @Assert\Length(max=14, message="Le SIRET doit faire 14 caractères.")
+     * @Assert\Length(max=14)
      */
     private ?string $siret;
 
