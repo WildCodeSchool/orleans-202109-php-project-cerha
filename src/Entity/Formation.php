@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\FormationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=FormationRepository::class)
@@ -20,16 +21,21 @@ class Formation
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
+     * @Assert\Length(max = 100)
      */
     private string $title;
 
     /**
      * @ORM\Column(type="string", length=100)
+     *  @Assert\NotBlank
+     *  @Assert\Length(max = 100)
      */
     private string $place;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
      */
     private string $description;
 
