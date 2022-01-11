@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=CandidatRepository::class)
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
 class Candidat
 {
@@ -81,6 +82,11 @@ class Candidat
     private ?string $profilQuality;
 
     /**
+     * @ORM\OneToMany(targetEntity=CandidatLanguage::class, mappedBy="candidat", orphanRemoval=true)
+     */
+    private Collection $candidatLanguages;
+
+    /**
      * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="candidat")
      */
     private Collection $skills;
@@ -101,6 +107,7 @@ class Candidat
     {
         $this->softSkills = new ArrayCollection();
         $this->hobbies = new ArrayCollection();
+        $this->candidatLanguages = new ArrayCollection();
         $this->skills = new ArrayCollection();
         $this->experiences = new ArrayCollection();
         $this->formations = new ArrayCollection();
@@ -268,6 +275,24 @@ class Candidat
     }
 
     /**
+     * @return Collection|CandidatLanguage[]
+     */
+    public function getCandidatLanguages(): Collection
+    {
+        return $this->candidatLanguages;
+    }
+
+    public function addCandidatLanguage(CandidatLanguage $candidatLanguage): self
+    {
+        if (!$this->candidatLanguages->contains($candidatLanguage)) {
+            $this->candidatLanguages[] = $candidatLanguage;
+            $candidatLanguage->setCandidat($this);
+        }
+
+        return $this;
+    }
+
+    /**
      * @return Collection|Skill[]
      */
     public function getSkills(): Collection
@@ -284,6 +309,19 @@ class Candidat
 
         return $this;
     }
+
+    public function removeCandidatLanguage(CandidatLanguage $candidatLanguage): self
+    {
+        if ($this->candidatLanguages->removeElement($candidatLanguage)) {
+            // set the owning side to null (unless already changed)
+            if ($candidatLanguage->getCandidat() === $this) {
+                $candidatLanguage->setCandidat(null);
+            }
+        }
+
+        return $this;
+    }
+
     public function removeSkill(Skill $skill): self
     {
         if ($this->skills->removeElement($skill)) {

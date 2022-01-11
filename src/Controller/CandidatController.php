@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\ContactDetailsType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
+use App\Entity\Candidat;
 
 /**
  * @Route("/candidat", name="candidat_")
