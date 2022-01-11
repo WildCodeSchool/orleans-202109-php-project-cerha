@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Candidat;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -47,4 +48,17 @@ class CandidatRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findAllByName(): ArrayCollection
+    {
+        /**
+         * @var ArrayCollection
+         */
+        return $this->createQueryBuilder('c')
+        ->join('c.user', 'u')
+        ->orderBy('u.lastname', 'ASC')
+        ->addOrderBy('u.firstname', 'ASC')
+        ->getQuery()
+        ->getResult();
+    }
 }

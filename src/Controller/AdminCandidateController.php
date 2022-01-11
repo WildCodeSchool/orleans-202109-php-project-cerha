@@ -22,7 +22,7 @@ class AdminCandidateController extends AbstractController
     public function index(CandidatRepository $candidatRepository): Response
     {
         return $this->render('admin_candidate/index.html.twig', [
-            'candidats' => $candidatRepository->findAll(),
+            'candidats' => $candidatRepository->findAllByName(),
         ]);
     }
 

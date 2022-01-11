@@ -22,7 +22,7 @@
             <tr>
                 <td class="align-middle"> {{ candidat.user.lastname }} </td>
                 <td class="align-middle">{{ candidat.user.firstname }}</td>
-                <td class="align-middle">{{ candidat.city ?? 'aucune donnée' }}</td>
+                <td class="align-middle">{{ candidat.city }}</td>
                 <td class="d-flex justify-content-end gap-3">
                     <a href="{{ path('admin_candidate_show', {'id': candidat.id}) }}"><button
                             class="btn btn-primary px-3 py-1"><i class="bi bi-eye"></i></button></a>
@@ -31,7 +31,7 @@
             </tr>
             {% else %}
             <tr>
-                <td colspan="9">Aucun candidats trouvé</td>
+                <td colspan="9">Aucun candidat trouvé</td>
             </tr>
             {% endfor %}
         </tbody>
