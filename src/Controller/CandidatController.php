@@ -157,14 +157,14 @@ class CandidatController extends AbstractController
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
             return $this->redirectToRoute('candidat_show');
-         }
-      
+        }
+ 
          return $this->renderForm('candidat/edit/languages.html.twig', [
             'candidat' => $candidate,
             'form' => $form,
           ]);
     }
-      
+
     /**
      * @Route("/profil/modifier/formation", name="edit_formation", methods={"GET", "POST"})
      */
@@ -178,10 +178,10 @@ class CandidatController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
-          
+  
             return $this->redirectToRoute('candidat_show');
         }
-      
+
         return $this->renderForm('candidat/edit/edit.formation.html.twig', [
             'candidat' => $candidate,
             'form' => $form,
