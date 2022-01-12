@@ -6,6 +6,8 @@ use App\Entity\Candidat;
 use App\Form\CandidatType;
 use App\Repository\CandidatRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -91,5 +93,42 @@ class AdminCandidateController extends AbstractController
         }
 
         return $this->redirectToRoute('admin_candidate_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /**
+     * @Route("/pdf/{id<\d+>}", name="admin_candidat_pdf", methods={"GET"})
+     */
+    public function generateCV(Candidat $candidate): Response
+    {
+        // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+        $pdfOptions->set('chroot', __DIR__ . '/../../public/');
+
+        // Instantiate Dompdf with our options
+        // $dompdf = new Dompdf($pdfOptions);
+        $dompdf = new Dompdf($pdfOptions);
+        // Retrieve the HTML generated in our twig file
+        $html = $this->renderView('admin_candidate/cvPdf.html.twig', [
+            'candidate' => $candidate
+        ]);
+
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser (force download)
+        $dompdf->stream("mypdf.pdf", [
+            "Attachment" => false
+        ]);
+
+        return new Response('', 200, [
+            'Content-Type' => 'application/pdf',
+        ]);
     }
 }
