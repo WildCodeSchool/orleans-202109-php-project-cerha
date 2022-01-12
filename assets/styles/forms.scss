@@ -8,7 +8,9 @@
 }
 
 #soft_skills_softskills fieldset button,
-#hobbies_hobbies fieldset button,#candidate_skills_skills fieldset button{
+#candidate_formations_formations fieldset button,
+#hobbies_hobbies fieldset button,
+#candidate_skills_skills fieldset button {
     width: 37px;
     height: 37px;
     align-self: end;
@@ -19,7 +21,7 @@
 }
 
 #soft_skills_softskills fieldset div,
-#hobbies_hobbies fieldset div{
+#hobbies_hobbies fieldset div {
     width: 100%;
 }
 
