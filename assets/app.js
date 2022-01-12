@@ -49,6 +49,15 @@ a2lixLib.sfCollection.init({
 });
 
 a2lixLib.sfCollection.init({
+    collectionsSelector: 'form #candidate_experience div[data-prototype]',
+    manageRemoveEntry: true,
+    lang: {
+        add: 'Ajouter une éxperience',
+        remove: '',
+    },
+});
+
+a2lixLib.sfCollection.init({
     collectionsSelector: 'form #candidate_skills div[data-prototype]',
     manageRemoveEntry: true,
     lang: {
