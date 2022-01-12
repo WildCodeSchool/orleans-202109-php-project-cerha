@@ -107,7 +107,7 @@ class Candidat
     private Collection $experiences;
 
     /**
-     * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="candidat")
+     * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="candidat", cascade={"persist"})
      */
     private Collection $formations;
 

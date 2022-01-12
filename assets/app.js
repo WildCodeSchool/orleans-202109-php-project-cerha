@@ -42,6 +42,15 @@ a2lixLib.sfCollection.init({
     manageRemoveEntry: true,
     lang: {
         add: 'Ajouter une langue',
+      remove: '',
+    },
+});
+
+a2lixLib.sfCollection.init({
+collectionsSelector: 'form #candidate_formations div[data-prototype]',
+    manageRemoveEntry: true,
+    lang: {
+        add: 'Ajouter une formation',
         remove: '',
     },
 });

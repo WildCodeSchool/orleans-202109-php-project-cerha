@@ -14,6 +14,7 @@ use App\Form\ContactDetailsType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
 use App\Form\CandidateLanguagesType;
+use App\Form\CandidateFormationsType;
 use App\Form\HobbiesType;
 use App\Form\SoftSkillsType;
 
@@ -156,8 +157,32 @@ class CandidatController extends AbstractController
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
             return $this->redirectToRoute('candidat_show');
+         }
+      
+         return $this->renderForm('candidat/edit/languages.html.twig', [
+            'candidat' => $candidate,
+            'form' => $form,
+          ]);
+    }
+      
+    /**
+     * @Route("/profil/modifier/formation", name="edit_formation", methods={"GET", "POST"})
+     */
+    public function editFormation(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        /** @var User */
+        $user = $this->getUser();
+        $candidate = $user->getCandidat();
+        $form = $this->createForm(CandidateFormationsType::class, $candidate);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
+          
+            return $this->redirectToRoute('candidat_show');
         }
-        return $this->renderForm('candidat/edit/languages.html.twig', [
+      
+        return $this->renderForm('candidat/edit/edit.formation.html.twig', [
             'candidat' => $candidate,
             'form' => $form,
         ]);

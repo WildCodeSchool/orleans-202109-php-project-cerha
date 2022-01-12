@@ -1,3 +1,4 @@
+
 #soft_skills_softskills fieldset, #hobbies_hobbies fieldset, #candidate_languages_candidatLanguages fieldset {
     display:flex;
     justify-content: center;
@@ -6,6 +7,7 @@
 
 #soft_skills_softskills fieldset button,
 #candidate_languages_candidatLanguages fieldset button,
+#candidate_formations_formations fieldset button,
 #hobbies_hobbies fieldset button {
     width              : 37px;
     height             : 37px;
@@ -16,6 +18,8 @@
     background-position: center;
 }
 
-#soft_skills_softskills fieldset div, #hobbies_hobbies fieldset div, #candidate_languages_candidatLanguages fieldset div {
+#soft_skills_softskills fieldset div,
+#hobbies_hobbies fieldset div,
+#candidate_languages_candidatLanguages fieldset div {
     width: 100%;
 }
