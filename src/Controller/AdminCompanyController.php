@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * @Route("/admin/company")
+ * @Route("/admin/entreprise")
  */
 class AdminCompanyController extends AbstractController
 {
@@ -52,6 +52,7 @@ class AdminCompanyController extends AbstractController
 
     /**
      * @Route("/{id}", name="admin_company_show", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function show(Company $company): Response
     {

@@ -1,70 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Company{% endblock %}
+{% block title %}Entreprise
+{% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('companyProfile') }}
+{% endblock %}
 
 {% block body %}
-    <h1>Company</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ company.id }}</td>
-            </tr>
-            <tr>
-                <th>Denomination</th>
-                <td>{{ company.denomination }}</td>
-            </tr>
-            <tr>
-                <th>Siret</th>
-                <td>{{ company.siret }}</td>
-            </tr>
-            <tr>
-                <th>ApeCode</th>
-                <td>{{ company.apeCode }}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ company.address }}</td>
-            </tr>
-            <tr>
-                <th>PostalCode</th>
-                <td>{{ company.postalCode }}</td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <td>{{ company.city }}</td>
-            </tr>
-            <tr>
-                <th>VatNumber</th>
-                <td>{{ company.vatNumber }}</td>
-            </tr>
-            <tr>
-                <th>ContactRole</th>
-                <td>{{ company.contactRole }}</td>
-            </tr>
-            <tr>
-                <th>Website</th>
-                <td>{{ company.website }}</td>
-            </tr>
-            <tr>
-                <th>Linkedin</th>
-                <td>{{ company.linkedin }}</td>
-            </tr>
-            <tr>
-                <th>Facebook</th>
-                <td>{{ company.facebook }}</td>
-            </tr>
-            <tr>
-                <th>Instagram</th>
-                <td>{{ company.instagram }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('admin_company_index') }}">back to list</a>
-
-    <a href="{{ path('admin_company_edit', {'id': company.id}) }}">edit</a>
-
-    {{ include('admin_company/_delete_form.html.twig') }}
+	<h1 class="text-center text-primary mt-5 mb-4">Détails de
+		{{ company.denomination }}</h1>
+	<div class="container d-flex flex-row justify-content-center gap-5">
+		<a href="{{ path('admin_company_index') }}" class="btn btn-secondary text-light">
+			<i class="bi bi-arrow-left-square me-1"></i>Retour</a>
+		{{ include('admin_company/_delete_form.html.twig') }}
+	</div>
+	{% include 'company/components/_companyDetails.html.twig' %}
+	{% include 'company/components/_companyContact.html.twig' %}
+	{% include 'company/components/_companyNeed.html.twig' %}
 {% endblock %}
