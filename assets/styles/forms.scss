@@ -1,19 +1,23 @@
-#soft_skills_softskills fieldset, #hobbies_hobbies fieldset {
-    display:flex;
+#soft_skills_softskills fieldset,
+#hobbies_hobbies fieldset {
+    display: flex;
     justify-content: center;
     gap: 20px;
 }
 
-#soft_skills_softskills fieldset button , #hobbies_hobbies fieldset button {
+#soft_skills_softskills fieldset button,
+#candidate_formations_formations fieldset button,
+#hobbies_hobbies fieldset button {
     width: 37px;
     height: 37px;
     align-self: end;
     margin-block-end: 17px;
     background-image: url("../images/trash.svg");
-    background-repeat: no-repeat;   
-    background-position: center; 
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-#soft_skills_softskills fieldset div, #hobbies_hobbies fieldset div {
+#soft_skills_softskills fieldset div,
+#hobbies_hobbies fieldset div {
     width: 100%;
 }
