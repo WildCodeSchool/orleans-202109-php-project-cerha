@@ -8,6 +8,7 @@
 }
 
 #soft_skills_softskills fieldset button,
+#candidate_formations_formations fieldset button,
 #hobbies_hobbies fieldset button,
 #candidate_experience_experiences fieldset button {
     width: 37px;
@@ -22,8 +23,4 @@
 #soft_skills_softskills fieldset div,
 #hobbies_hobbies fieldset div {
     width: 100%;
-}
-
-.title h2 {
-    font-family: $title-family;
 }
