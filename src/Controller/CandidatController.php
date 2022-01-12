@@ -135,6 +135,7 @@ class CandidatController extends AbstractController
             'form' => $form,
         ]);
     }
+
     /**
      * @Route("/profil/modifier/formation", name="edit_formation", methods={"GET", "POST"})
      */

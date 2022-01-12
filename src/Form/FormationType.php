@@ -19,11 +19,11 @@ class FormationType extends AbstractType
             ->add('level', null, [
                 'choice_label' => 'level',
                 'label' => 'Niveau',
-                'placeholder' => 'Selectionnez votre choix',
+                'placeholder' => 'Sélectionnez votre choix',
                 'required'   => true,
             ])
             ->add('title', TextType::class, ['label' => 'Intitulé de formation'])
-            ->add('place', TextType::class, ['label' => 'Etablissement'])
+            ->add('place', TextType::class, ['label' => 'Établissement'])
             ->add('startDate', DateType::class, [
                 'label' => 'Date de début',
                 'placeholder' => [
