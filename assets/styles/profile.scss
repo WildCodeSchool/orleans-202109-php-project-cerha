@@ -4,18 +4,32 @@
     box-shadow: $shadow-card;
 }
 
-.softskills, .hobbies ul, .questions h3, .languages {
-    line-height:$line-height;
+.softskills,
+.hobbies ul,
+.questions h3,
+.languages {
+    line-height: $line-height;
     font-family: $text-family;
-    font-size: $text-size;
+    font-size  : $text-size;
 }
 
 .questions h3 {
     line-height: calc($line-height * 60 / 100);
-    color: $primary;
+    color      : $primary;
 }
 
 .bi {
-    color: $secondary;
+    color    : $secondary;
     font-size: 1.2rem;
+}
+
+#candidateDetails,
+#candidateSkills,
+#candidateFormations,
+#candidateExperiences,
+#candidateSoftSkills,
+#candidateLanguages,
+#candidateHobbies,
+#candidateComplementaryQuestions {
+    scroll-margin-top: 5em;
 }
