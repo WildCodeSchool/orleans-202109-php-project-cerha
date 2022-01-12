@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\ContactDetailsType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
+use App\Form\CandidateExperienceType;
 use App\Form\CandidateFormationsType;
 use App\Form\HobbiesType;
 use App\Form\SoftSkillsType;
@@ -151,6 +152,26 @@ class CandidatController extends AbstractController
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
         }
         return $this->renderForm('candidat/edit/edit.formation.html.twig', [
+            'candidat' => $candidate,
+            'form' => $form,
+        ]);
+    }
+
+    /**
+     * @Route("/profil/modifier/experience", name="edit_experience", methods={"GET", "POST"})
+     */
+    public function editExperience(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        /** @var User */
+        $user = $this->getUser();
+        $candidate = $user->getCandidat();
+        $form = $this->createForm(CandidateExperienceType::class, $candidate);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
+        }
+        return $this->renderForm('candidat/edit/edit.experience.html.twig', [
             'candidat' => $candidate,
             'form' => $form,
         ]);
