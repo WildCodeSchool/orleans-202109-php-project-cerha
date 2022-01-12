@@ -15,7 +15,7 @@ class CandidateLanguagesType extends AbstractType
         $builder
             ->add('candidatLanguages', CollectionType::class, [
                 'entry_type' => CandidateLanguageType::class,
-                'label' => 'Langues parlées',
+                'label' => 'Langues',
                 'by_reference' => false,
                 'allow_add' => true,
                 'allow_delete' => true,
