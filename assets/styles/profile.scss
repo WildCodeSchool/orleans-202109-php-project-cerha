@@ -4,8 +4,11 @@
     box-shadow: $shadow-card;
 }
 
-.softskills, .hobbies ul, .questions h3, .languages {
-    line-height:$line-height;
+.softskills,
+.hobbies ul,
+.questions h3,
+.languages {
+    line-height: $line-height;
     font-family: $text-family;
     font-size: $text-size;
 }
@@ -17,5 +20,15 @@
 
 .bi {
     color: $secondary;
+
     font-size: 1.2rem;
+}
+
+.bi-pencil-square {
+    color: $primary;
+    font-size: 1.8rem;
+
+    &:hover {
+        color: $secondary;
+    }
 }
