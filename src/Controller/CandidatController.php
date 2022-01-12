@@ -87,7 +87,8 @@ class CandidatController extends AbstractController
         return $this->renderForm('candidat/edit/edit.contactDetails.html.twig', [
             'candidat' => $candidat,
             'form' => $form,
-        ]);    }
+        ]);
+    }
 
     /**
      * @Route("/profil/modifier/questions-complementaires", name="questions_edit", methods={"GET", "POST"})
@@ -106,13 +107,13 @@ class CandidatController extends AbstractController
 
             return $this->redirectToRoute('candidat_show');
         }
-      
-       return $this->renderForm('candidat/edit/complementary-questions.html.twig', [
+
+        return $this->renderForm('candidat/edit/complementary-questions.html.twig', [
             'candidat' => $candidat,
             'form' => $form,
         ]);
     }
-          
+
     /**
      * @Route("/profil/edit/hobbies", name="hobby_edit")
      * @IsGranted("ROLE_USER")
@@ -132,7 +133,7 @@ class CandidatController extends AbstractController
 
             return $this->redirectToRoute('candidat_show');
         }
-      
+
         return $this->render('candidat/edit/hobbies.html.twig', [
             'form' => $form->createView(), 'candidat' => $candidat
         ]);
