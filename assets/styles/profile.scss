@@ -17,5 +17,15 @@
 
 .bi {
     color: $secondary;
+
     font-size: 1.2rem;
+}
+
+.bi-pencil-square {
+    color: $primary;
+    font-size: 1.8rem;
+
+    &:hover {
+        color: $secondary;
+    }
 }
