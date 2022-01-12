@@ -102,17 +102,13 @@ class AdminCandidateController extends AbstractController
     {
         // Configure Dompdf according to your needs
         $pdfOptions = new Options();
-        $pdfOptions->set('defaultFont', 'Arial');
         $pdfOptions->set('chroot', __DIR__ . '/../../public/');
 
         // Instantiate Dompdf with our options
-        // $dompdf = new Dompdf($pdfOptions);
         $dompdf = new Dompdf($pdfOptions);
         // Retrieve the HTML generated in our twig file
         $html = $this->renderView('admin_candidate/cvPdf.html.twig', [
-            'candidate' => $candidate
         ]);
-
         // Load HTML to Dompdf
         $dompdf->loadHtml($html);
 
