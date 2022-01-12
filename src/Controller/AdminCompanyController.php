@@ -29,54 +29,12 @@ class AdminCompanyController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="admin_company_new", methods={"GET", "POST"})
-     */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $company = new Company();
-        $form = $this->createForm(CompanyType::class, $company);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($company);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('admin_company_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('admin_company/new.html.twig', [
-            'company' => $company,
-            'form' => $form,
-        ]);
-    }
-
-    /**
      * @Route("/{id}", name="admin_company_show", methods={"GET"})
      */
     public function show(Company $company): Response
     {
         return $this->render('admin_company/show.html.twig', [
             'company' => $company,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/edit", name="admin_company_edit", methods={"GET", "POST"})
-     */
-    public function edit(Request $request, Company $company, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(CompanyType::class, $company);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('admin_company_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('admin_company/edit.html.twig', [
-            'company' => $company,
-            'form' => $form,
         ]);
     }
 
