@@ -14,14 +14,13 @@ class ComplementaryQuestionType extends AbstractType
     {
         $builder
             ->add('timeSearch', TextType::class, [
-                'label' => 'Depuis combien de temps êtes-vous en recherche active ?'
+                'label' => false,
                 ])
             ->add('searchQuality', TextType::class, [
-                'label' => 'Vous qualifierez votre recherche : d\'efficace, 
-                pas assez ciblée, vous ne savez pas par où commencer :'
+                'label' => false
                 ])
             ->add('profilQuality', TextType::class, [
-                'label' => 'Vous qualifierez votre profil : d\'attractif, de rare, d\'atypique, commun :'
+                'label' => false
                 ])
         ;
     }
