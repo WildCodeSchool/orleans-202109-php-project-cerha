@@ -33,3 +33,12 @@
 #candidateComplementaryQuestions {
     scroll-margin-top: 5em;
 }
+
+.bi-pencil-square {
+    color    : $primary;
+    font-size: 1.8rem;
+
+    &:hover {
+        color: $secondary;
+    }
+}
