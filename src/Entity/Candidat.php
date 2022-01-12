@@ -108,6 +108,11 @@ class Candidat
      */
     private Collection $formations;
 
+    /**
+     * @ORM\OneToMany(targetEntity=AdditionalDocument::class, mappedBy="candidat")
+     */
+    private Collection $additionalDocuments;
+
 
     public function __construct()
     {
@@ -117,6 +122,7 @@ class Candidat
         $this->skills = new ArrayCollection();
         $this->experiences = new ArrayCollection();
         $this->formations = new ArrayCollection();
+        $this->additionalDocuments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -396,6 +402,35 @@ class Candidat
             }
         }
 
+        return $this;
+    }
+
+    /**
+     * @return Collection|AdditionalDocument[]
+     */
+    public function getAdditionalDocuments(): Collection
+    {
+        return $this->additionalDocuments;
+    }
+
+    public function addAdditionalDocument(AdditionalDocument $additionalDocument): self
+    {
+        if (!$this->additionalDocuments->contains($additionalDocument)) {
+            $this->additionalDocuments[] = $additionalDocument;
+            $additionalDocument->setCandidat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAdditionalDocument(AdditionalDocument $additionalDocument): self
+    {
+        if ($this->additionalDocuments->removeElement($additionalDocument)) {
+            // set the owning side to null (unless already changed)
+            if ($additionalDocument->getCandidat() === $this) {
+                $additionalDocument->setCandidat(null);
+            }
+        }
         return $this;
     }
 }
