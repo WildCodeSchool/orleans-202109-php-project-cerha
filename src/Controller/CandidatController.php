@@ -106,7 +106,7 @@ class CandidatController extends AbstractController
             'form' => $form,
         ]);
     }
-  
+
     /**
      * @Route("/profil/edit/hobbies", name="hobby_edit")
      * @IsGranted("ROLE_USER")
