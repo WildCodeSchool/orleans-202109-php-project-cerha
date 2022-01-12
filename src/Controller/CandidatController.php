@@ -14,6 +14,7 @@ use App\Form\ContactDetailsType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
 use App\Form\ComplementaryQuestionType;
+use App\Form\HobbiesType;
 use App\Form\SoftSkillsType;
 
 /**
@@ -100,6 +101,7 @@ class CandidatController extends AbstractController
         $form = $this->createForm(ComplementaryQuestionType::class, $candidat);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
@@ -109,6 +111,31 @@ class CandidatController extends AbstractController
         return $this->renderForm('candidat/edit/complementary-questions.html.twig', [
             'candidat' => $candidat,
             'form' => $form,
+        ]);
+    }
+
+    /**
+     * @Route("/profil/edit/hobbies", name="hobby_edit")
+     * @IsGranted("ROLE_USER")
+     */
+    public function editHobbies(Request $request): Response
+    {
+        /** @var User */
+        $user = $this->getUser();
+        $candidat = $user->getCandidat();
+        $form = $this->createForm(HobbiesType::class, $candidat);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush();
+            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
+
+            return $this->redirectToRoute('candidat_show');
+        }
+
+        return $this->render('candidat/edit/hobbies.html.twig', [
+            'form' => $form->createView(), 'candidat' => $candidat
         ]);
     }
 
