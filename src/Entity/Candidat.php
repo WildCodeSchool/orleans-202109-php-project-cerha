@@ -65,7 +65,10 @@ class Candidat
     private ?User $user;
 
     /**
-     * @ORM\OneToMany(targetEntity=Hobby::class, mappedBy="candidat", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Hobby::class,
+     * mappedBy="candidat", orphanRemoval=true, cascade={"persist", "remove"})
+     * @Assert\Count(max = 5)
+     * @Assert\Valid
      */
     private Collection $hobbies;
 
