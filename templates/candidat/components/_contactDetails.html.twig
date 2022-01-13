@@ -1,5 +1,7 @@
-<div class="row softskills mt-5">
+<div class="row softskills mt-5" id="candidateDetails">
 	<div class="card card-softskills p-4 col-md-6 offset-md-3">
+	<a class="btn btn-outline-light ms-5 align-self-end fs-5  bi bi-pencil-square" href=" {{ path('candidat_edit', {'user': candidat.user}) }} ">
+			Modifier</a>
 		<h2 class="card-title text-primary text-center mt-3 pt-2 px-4">Coordonnées</h2>
 		<ul class="list-unstyled mt-3">
 
@@ -33,6 +35,6 @@
 				{{ candidat.city }}
 			</li>
 		</ul>
-			<a class=" align-self-center mb-4 bi bi-pencil-square " href=" {{ path('candidat_edit', {'user': candidat.user}) }}"></a>
+
 	</div>
 </div>
