@@ -14,6 +14,8 @@ use App\Form\ContactDetailsType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
 use App\Form\CandidateLanguagesType;
+use App\Form\ComplementaryQuestionType;
+use App\Form\CandidateExperienceType;
 use App\Form\CandidateFormationsType;
 use App\Form\HobbiesType;
 use App\Form\SoftSkillsType;
@@ -93,28 +95,49 @@ class CandidatController extends AbstractController
     }
 
     /**
-     * @Route("/profil/edit/hobbies", name="hobby_edit")
-     * @IsGranted("ROLE_USER")
+     * @Route("/profil/modifier/questions-complementaires", name="questions_edit", methods={"GET", "POST"})
      */
-
-    public function editHobbies(Request $request): Response
+    public function editQuestions(Request $request, EntityManagerInterface $entityManager): Response
     {
-
         /** @var User */
         $user = $this->getUser();
         $candidat = $user->getCandidat();
-
-        $form = $this->createForm(HobbiesType::class, $candidat);
+        $form = $this->createForm(ComplementaryQuestionType::class, $candidat);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
             return $this->redirectToRoute('candidat_show');
         }
+
+        return $this->renderForm('candidat/edit/complementary-questions.html.twig', [
+            'candidat' => $candidat,
+            'form' => $form,
+        ]);
+    }
+
+    /**
+     * @Route("/profil/edit/hobbies", name="hobby_edit")
+     * @IsGranted("ROLE_USER")
+     */
+    public function editHobbies(Request $request): Response
+    {
+        /** @var User */
+        $user = $this->getUser();
+        $candidat = $user->getCandidat();
+        $form = $this->createForm(HobbiesType::class, $candidat);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush();
+            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
+
+            return $this->redirectToRoute('candidat_show');
+        }
+
         return $this->render('candidat/edit/hobbies.html.twig', [
             'form' => $form->createView(), 'candidat' => $candidat
         ]);
@@ -136,6 +159,7 @@ class CandidatController extends AbstractController
 
             return $this->redirectToRoute('candidat_show');
         }
+
         return $this->renderForm('candidat/edit/edit.skill.html.twig', [
             'candidat' => $candidate,
             'form' => $form,
@@ -183,6 +207,26 @@ class CandidatController extends AbstractController
         }
 
         return $this->renderForm('candidat/edit/edit.formation.html.twig', [
+            'candidat' => $candidate,
+            'form' => $form,
+        ]);
+    }
+
+    /**
+     * @Route("/profil/modifier/experience", name="edit_experience", methods={"GET", "POST"})
+     */
+    public function editExperience(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        /** @var User */
+        $user = $this->getUser();
+        $candidate = $user->getCandidat();
+        $form = $this->createForm(CandidateExperienceType::class, $candidate);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
+        }
+        return $this->renderForm('candidat/edit/edit.experience.html.twig', [
             'candidat' => $candidate,
             'form' => $form,
         ]);
