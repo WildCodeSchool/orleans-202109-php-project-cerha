@@ -41,10 +41,8 @@ Encore
     .addStyleEntry('companyProfile', './assets/styles/companyProfile.scss')
     .addStyleEntry('login', './assets/styles/login.scss')
     .addStyleEntry('editCompany', './assets/styles/editCompany.scss')
-    .addStyleEntry('forms', './assets/styles/forms.scss')
     .addStyleEntry('adminCandidate', '/assets/styles/adminCandidate.scss')
     .addStyleEntry('pdf', '/assets/styles/pdf.scss')
-    .addStyleEntry('sideMenu', '/assets/styles/sideMenu.scss')
 
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')

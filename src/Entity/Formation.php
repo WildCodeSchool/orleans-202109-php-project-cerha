@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use App\Repository\FormationRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=FormationRepository::class)
@@ -21,26 +20,21 @@ class Formation
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Assert\NotBlank
-     * @Assert\Length(max = 100)
      */
     private string $title;
 
     /**
      * @ORM\Column(type="string", length=100)
-     *  @Assert\NotBlank
-     *  @Assert\Length(max = 100)
      */
     private string $place;
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotBlank
      */
     private string $description;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", length=100)
      */
     private string $referent;
 
@@ -51,26 +45,18 @@ class Formation
 
     /**
      * @ORM\ManyToOne(targetEntity=FormationLevel::class, inversedBy="formations")
-     * @Assert\NotBlank
      */
     private ?FormationLevel $level;
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\NotBlank
      */
     private \DateTimeInterface $startDate;
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\NotBlank
      */
     private \DateTimeInterface $endDate;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private ?string $phoneReferent;
 
     public function getId(): ?int
     {
@@ -170,18 +156,6 @@ class Formation
     public function setEndDate(\DateTimeInterface $endDate): self
     {
         $this->endDate = $endDate;
-
-        return $this;
-    }
-
-    public function getPhoneReferent(): ?string
-    {
-        return $this->phoneReferent;
-    }
-
-    public function setPhoneReferent(?string $phoneReferent): self
-    {
-        $this->phoneReferent = $phoneReferent;
 
         return $this;
     }

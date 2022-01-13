@@ -22,19 +22,18 @@ class CandidatFixtures extends Fixture implements DependentFixtureInterface
             $candidat->setpostalCode($faker->departmentNumber());
             $candidat->setcity($faker->city);
             $candidat->setUser($this->getReference('user_' . $i));
-            $candidat->addAdditionalDocument($this->getReference('document_0'));
-            copy(__DIR__ . '/CV.pdf', __DIR__ . '/../../public/uploads/candidate/CV.pdf');
             $manager->persist($candidat);
             $this->addReference('candidat_' . $i, $candidat);
         }
+
+
         $manager->flush();
     }
 
     public function getDependencies()
     {
         return [
-            UserFixtures::class,
-            DocumentFixtures::class
+            UserFixtures::class
         ];
     }
 }

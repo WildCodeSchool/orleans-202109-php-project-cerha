@@ -11,7 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=CandidatRepository::class)
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
- * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
 class Candidat
 {
@@ -50,10 +49,7 @@ class Candidat
     private string $city;
 
     /**
-     * @ORM\OneToMany(targetEntity=SoftSkill::class,
-     * mappedBy="candidat", orphanRemoval=true, cascade={"persist", "remove"})
-     * @Assert\Count(max = 5)
-     * @Assert\Valid
+     * @ORM\OneToMany(targetEntity=SoftSkill::class, mappedBy="candidat", orphanRemoval=true)
      */
     private Collection $softSkills;
 
@@ -65,38 +61,24 @@ class Candidat
     private ?User $user;
 
     /**
-     * @ORM\OneToMany(targetEntity=Hobby::class,
-     * mappedBy="candidat", orphanRemoval=true, cascade={"persist", "remove"})
-     * @Assert\Count(max = 5)
-     * @Assert\Valid
+     * @ORM\OneToMany(targetEntity=Hobby::class, mappedBy="candidat", orphanRemoval=true)
      */
     private Collection $hobbies;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Length(max=255)
      */
     private ?string $timeSearch;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Length(max=255)
      */
     private ?string $searchQuality;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Length(max=255)
      */
     private ?string $profilQuality;
-
-    /**
-     * @ORM\OneToMany(targetEntity=CandidatLanguage::class,
-     * mappedBy="candidat", orphanRemoval=true, cascade={"persist", "remove"})
-     * @Assert\Unique
-     * @Assert\Valid
-     */
-    private Collection $candidatLanguages;
 
     /**
      * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="candidat")
@@ -110,25 +92,18 @@ class Candidat
     private Collection $experiences;
 
     /**
-     * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="candidat", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="candidat")
      */
     private Collection $formations;
-
-    /**
-     * @ORM\OneToMany(targetEntity=AdditionalDocument::class, mappedBy="candidat")
-     */
-    private Collection $additionalDocuments;
 
 
     public function __construct()
     {
         $this->softSkills = new ArrayCollection();
         $this->hobbies = new ArrayCollection();
-        $this->candidatLanguages = new ArrayCollection();
         $this->skills = new ArrayCollection();
         $this->experiences = new ArrayCollection();
         $this->formations = new ArrayCollection();
-        $this->additionalDocuments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -293,24 +268,6 @@ class Candidat
     }
 
     /**
-     * @return Collection|CandidatLanguage[]
-     */
-    public function getCandidatLanguages(): Collection
-    {
-        return $this->candidatLanguages;
-    }
-
-    public function addCandidatLanguage(CandidatLanguage $candidatLanguage): self
-    {
-        if (!$this->candidatLanguages->contains($candidatLanguage)) {
-            $this->candidatLanguages[] = $candidatLanguage;
-            $candidatLanguage->setCandidat($this);
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Skill[]
      */
     public function getSkills(): Collection
@@ -327,19 +284,6 @@ class Candidat
 
         return $this;
     }
-
-    public function removeCandidatLanguage(CandidatLanguage $candidatLanguage): self
-    {
-        if ($this->candidatLanguages->removeElement($candidatLanguage)) {
-            // set the owning side to null (unless already changed)
-            if ($candidatLanguage->getCandidat() === $this) {
-                $candidatLanguage->setCandidat(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function removeSkill(Skill $skill): self
     {
         if ($this->skills->removeElement($skill)) {
@@ -408,35 +352,6 @@ class Candidat
             }
         }
 
-        return $this;
-    }
-
-    /**
-     * @return Collection|AdditionalDocument[]
-     */
-    public function getAdditionalDocuments(): Collection
-    {
-        return $this->additionalDocuments;
-    }
-
-    public function addAdditionalDocument(AdditionalDocument $additionalDocument): self
-    {
-        if (!$this->additionalDocuments->contains($additionalDocument)) {
-            $this->additionalDocuments[] = $additionalDocument;
-            $additionalDocument->setCandidat($this);
-        }
-
-        return $this;
-    }
-
-    public function removeAdditionalDocument(AdditionalDocument $additionalDocument): self
-    {
-        if ($this->additionalDocuments->removeElement($additionalDocument)) {
-            // set the owning side to null (unless already changed)
-            if ($additionalDocument->getCandidat() === $this) {
-                $additionalDocument->setCandidat(null);
-            }
-        }
         return $this;
     }
 }

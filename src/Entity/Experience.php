@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ExperienceRepository;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,21 +19,16 @@ class Experience
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Assert\NotBlank
-     * @Assert\Length(max = 100)
      */
     private string $jobName;
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Assert\NotBlank
-     * @Assert\Length(max = 100)
      */
     private string $place;
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotBlank
      */
     private string $description;
 
@@ -47,29 +41,6 @@ class Experience
      * @ORM\ManyToOne(targetEntity=Candidat::class, inversedBy="experiences")
      */
     private ?Candidat $candidat;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private ?string $phoneReferent;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Contrat::class, inversedBy="experiences")
-     */
-    private ?Contrat $contrat;
-
-    /**
-     * @ORM\Column(type="date")
-     * @Assert\NotBlank
-     */
-    private \DateTimeInterface $startDate;
-
-    /**
-     * @ORM\Column(type="date")
-     * @Assert\NotBlank
-     */
-    private \DateTimeInterface $endDate;
-
 
     public function getId(): ?int
     {
@@ -132,54 +103,6 @@ class Experience
     public function setCandidat(?Candidat $candidat): self
     {
         $this->candidat = $candidat;
-
-        return $this;
-    }
-
-    public function getPhoneReferent(): ?string
-    {
-        return $this->phoneReferent;
-    }
-
-    public function setPhoneReferent(?string $phoneReferent): self
-    {
-        $this->phoneReferent = $phoneReferent;
-
-        return $this;
-    }
-
-    public function getContrat(): ?Contrat
-    {
-        return $this->contrat;
-    }
-
-    public function setContrat(?Contrat $contrat): self
-    {
-        $this->contrat = $contrat;
-
-        return $this;
-    }
-
-    public function getStartDate(): ?\DateTimeInterface
-    {
-        return $this->startDate;
-    }
-
-    public function setStartDate(\DateTimeInterface $startDate): self
-    {
-        $this->startDate = $startDate;
-
-        return $this;
-    }
-
-    public function getEndDate(): ?\DateTimeInterface
-    {
-        return $this->endDate;
-    }
-
-    public function setEndDate(\DateTimeInterface $endDate): self
-    {
-        $this->endDate = $endDate;
 
         return $this;
     }

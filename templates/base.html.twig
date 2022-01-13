@@ -14,25 +14,21 @@
 		{{ encore_entry_script_tags('app') }}
 		{% block javascripts %}{% endblock %}
 	</head>
-	<body>
-		{% block navbar %}
-			{% include "items/_navbar.html.twig" %}
-		{% endblock %}
-		{% block flash %}
-			{% for category, messages in app.flashes %}
-				{% for message in messages %}
-					<div class="alert alert-{{ category }} alert-dismissible fade show flash w-100">
-						{{ message }}
-						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-					</div>
-				{% endfor %}
+	{% block navbar %}
+		{% include "items/_navbar.html.twig" %}
+	{% endblock %}
+	{% block flash %}
+		{% for category, messages in app.flashes %}
+			{% for message in messages %}
+				<div class="alert alert-{{ category }} alert-dismissible fade show flash w-100">
+					{{ message }}
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
 			{% endfor %}
-		{% endblock %}
-
-		{% block body %}{% endblock %}
-		{% block footer %}
-			{% include "items/_footer.html.twig" %}
-		{% endblock %}
-	</body>
-
+		{% endfor %}
+	{% endblock %}
+<body>
+	{% block body %}{% endblock %}
+</body>
+{% block footer %} {% include "items/_footer.html.twig" %} {% endblock %}
 </html>

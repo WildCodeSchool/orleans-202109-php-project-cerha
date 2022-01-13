@@ -110,11 +110,6 @@ class Company
      */
     private ?string $instagram;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private ?string $need;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -272,18 +267,6 @@ class Company
     public function setInstagram(?string $instagram): self
     {
         $this->instagram = $instagram;
-
-        return $this;
-    }
-
-    public function getNeed(): ?string
-    {
-        return $this->need;
-    }
-
-    public function setNeed(?string $need): self
-    {
-        $this->need = $need;
 
         return $this;
     }
