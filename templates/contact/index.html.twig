@@ -38,18 +38,18 @@
 						{{ message }}
 					</div>
 				{% endfor %}
-				<div class =" contact_form mt-5 text-info fs-4">
-				{{ form_start(form) }}
-				<div class="row mb-4">
-					<div class="col-6">
-						{{ form_widget(form.company[0]) }}
+				<div class=" contact_form mt-5 text-info fs-4">
+					{{ form_start(form) }}
+					<div class="row mb-4">
+						<div class="col-6">
+							{{ form_widget(form.company[0]) }}
+						</div>
+						<div class="col-6">
+							{{ form_widget(form.company[1]) }}
+						</div>
 					</div>
-					<div class="col-6">
-						{{ form_widget(form.company[1]) }}
-					</div>
+					{{ form_rest(form) }}
 				</div>
-				{{ form_rest(form) }}
-</div>
 				<button class="btn btn-secondary mb-5">Envoyer</button>
 
 				{{ form_end(form) }}
