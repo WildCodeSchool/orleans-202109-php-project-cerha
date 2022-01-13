@@ -63,7 +63,15 @@
 			{{ form_row(registrationForm.password, {
         label: 'Password'
         }) }}
-
+			<div class="row mb-4">
+				{{ form_label(registrationForm.type) }}
+				<div class="col-6">
+					{{ form_widget(registrationForm.type[0]) }}
+				</div>
+				<div class="col-6">
+					{{ form_widget(registrationForm.type[1]) }}
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-7 offset-3">
 					{{ form_row(registrationForm.agreeTerms, {
@@ -72,16 +80,8 @@
                 }
                 }) }}
 				</div>
-
-				<div class="row mb-4">
-					<div class="col-6">
-						{{ form_widget(registrationForm.type[0]) }}
-					</div>
-					<div class="col-6">
-						{{ form_widget(registrationForm.type[1]) }}
-					</div>
-				</div>
 			</div>
+
 			<button type="submit" class="btn btn-primary col-sm-4 offset-sm-4">S'inscrire</button>
 			{{ form_end(registrationForm) }}
 		</div>

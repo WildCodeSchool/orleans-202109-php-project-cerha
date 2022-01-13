@@ -6,6 +6,7 @@ use App\Entity\Candidat;
 use App\Entity\User;
 use App\Form\RegistrationCandidateType;
 use App\Form\RegistrationFormType;
+use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -51,6 +52,8 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
 
             $entityManager->flush();
+
+            $_POST['user'] = $user;
 
             // generate a signed url and email it to the user
             /** @var string */
@@ -106,19 +109,27 @@ class RegistrationController extends AbstractController
         return $this->redirectToRoute('home');
     }
 
-         /**
+    /**
      * @Route("/register/candidat", name="register_candidat")
      */
-    public function candidatRegistration(Request $request, EntityManagerInterface $entityManager): Response
-    {
+    public function candidatRegistration(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        UserRepository $userRepository
+    ): Response {
+        $user = $userRepository->findOneById($_GET['id']);
         $candidat = new Candidat();
         $form = $this->createForm(RegistrationCandidateType::class, $candidat);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $candidat->setUser($user);
             $entityManager->persist($candidat);
             $entityManager->flush();
-            return $this->redirectToRoute('home');
+
+            $this->addFlash('success', 'Inscription terminée, merci de vous connecter et compléter votre profil.');
+
+            return $this->redirectToRoute('candidat_show');
         }
 
         return $this->render('registration/registerCandidat.html.twig', [
