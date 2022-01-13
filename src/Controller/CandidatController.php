@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\ContactDetailsType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
+use App\Form\CandidateLanguagesType;
 use App\Form\ComplementaryQuestionType;
 use App\Form\CandidateExperienceType;
 use App\Form\CandidateFormationsType;
@@ -29,7 +30,6 @@ class CandidatController extends AbstractController
      * @Route("/profil", name="show")
      * @IsGranted("ROLE_USER")
      */
-
     public function showCandidateProfile(): Response
     {
         /** @var User */
@@ -45,7 +45,6 @@ class CandidatController extends AbstractController
      * @Route("/profil/edit/softskills", name="softskill_edit")
      * @IsGranted("ROLE_USER")
      */
-
     public function editSoftSkills(Request $request): Response
     {
 
@@ -64,6 +63,7 @@ class CandidatController extends AbstractController
 
             return $this->redirectToRoute('candidat_show');
         }
+
         return $this->render('candidat/edit/sofskills.html.twig', [
             'form' => $form->createView(), 'candidat' => $candidat
         ]);
@@ -154,6 +154,7 @@ class CandidatController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
+
             return $this->redirectToRoute('candidat_show');
         }
 
@@ -161,6 +162,29 @@ class CandidatController extends AbstractController
             'candidat' => $candidate,
             'form' => $form,
         ]);
+    }
+
+    /**
+     * @Route("/profil/modifier/langues", name="edit_languages", methods={"GET", "POST"})
+     */
+    public function editLanguages(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        /** @var User */
+        $user = $this->getUser();
+        $candidate = $user->getCandidat();
+        $form = $this->createForm(CandidateLanguagesType::class, $candidate);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
+
+            return $this->redirectToRoute('candidat_show');
+        }
+
+         return $this->renderForm('candidat/edit/languages.html.twig', [
+            'candidat' => $candidate,
+            'form' => $form,
+          ]);
     }
 
     /**
@@ -176,7 +200,10 @@ class CandidatController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
+
+            return $this->redirectToRoute('candidat_show');
         }
+
         return $this->renderForm('candidat/edit/edit.formation.html.twig', [
             'candidat' => $candidate,
             'form' => $form,

@@ -91,7 +91,10 @@ class Candidat
     private ?string $profilQuality;
 
     /**
-     * @ORM\OneToMany(targetEntity=CandidatLanguage::class, mappedBy="candidat", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=CandidatLanguage::class,
+     * mappedBy="candidat", orphanRemoval=true, cascade={"persist", "remove"})
+     * @Assert\Unique
+     * @Assert\Valid
      */
     private Collection $candidatLanguages;
 
