@@ -13,11 +13,13 @@
 			</li>
 			<li>
 				<i class="bi bi-calendar2-check  mx-3 "></i>
-				{{ candidat.birthDate|date('d-m-Y') }}</li>
+				{{ candidat.birthDate|date('d-m-Y') }}
+			</li>
 
 			<li>
 				<i class="bi bi-telephone-forward  mx-3 "></i>
-				{{ candidat.user.phoneNumber }}</li>
+				{{ candidat.user.phoneNumber }}
+			</li>
 
 
 			<li>
@@ -33,6 +35,10 @@
 				{{ candidat.city }}
 			</li>
 		</ul>
-			<a class=" align-self-center mb-4 bi bi-pencil-square " href=" {{ path('candidat_edit', {'user': candidat.user}) }}"></a>
+		{% if not is_granted("ROLE_ADMIN") %}
+		<a class=" align-self-center mb-4 bi bi-pencil-square "
+			href=" {{ path('candidat_edit', {'user': candidat.user}) }}"></a>
+		{% endif %}
+
 	</div>
 </div>
