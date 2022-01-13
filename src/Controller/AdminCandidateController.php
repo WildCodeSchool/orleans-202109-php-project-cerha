@@ -91,7 +91,7 @@ class AdminCandidateController extends AbstractController
             $entityManager->remove($candidat);
             $entityManager->flush();
         }
-
+        $this->addFlash('danger', 'L\'utilisateur à été supprimé');
         return $this->redirectToRoute('admin_candidate_index', [], Response::HTTP_SEE_OTHER);
     }
 
