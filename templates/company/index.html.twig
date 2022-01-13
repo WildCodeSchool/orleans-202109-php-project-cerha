@@ -7,13 +7,13 @@
 
 {% block stylesheets %}
 	{{ encore_entry_link_tags('companyProfile') }}
-	{# {{ encore_entry_link_tags('sideMenuCompany') }} #}
+	{{ encore_entry_link_tags('sideMenuCompany') }}
 {% endblock %}
 
 {% block body %}
 <h1 class="text-center mt-5">Mon entreprise</h1>
 	<div class="d-flex">
-		{# {% include "company/components/_SideMenuCompany.html.twig" %} #}
+		{% include "company/components/_SideMenuCompany.html.twig" %}
 		<div class="container my-5">
 			{% include "company/components/_companyDetails.html.twig" %}
 			{% include "company/components/_companyContact.html.twig" %}
