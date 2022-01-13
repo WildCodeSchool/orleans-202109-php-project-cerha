@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Company index
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center mt-5 mb-4">Administration Entreprises</h1>
+
+	<main class="container">
+		<table class="table table-hover">
+			<thead class="bg-primary">
+				<tr>
+					<th class="text-light">Dénomination sociale</th>
+					<th class="text-light">Siret</th>
+					<th class="text-light">Nom / Prénom du contact</th>
+					<th class="text-light"></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for company in companies %}
+					<tr>
+						<td class="align-middle">{{ company.denomination }}</td>
+						<td class="align-middle">{{ company.siret }}</td>
+						<td class="align-middle">{{ company.user.lastname }}
+							{{ company.user.firstname }}</td>
+						<td class="d-flex justify-content-end gap-3">
+							<a href="{{ path('admin_candidate_show', {'id': company.id}) }}">
+								<button class="btn btn-primary px-3 py-1">
+									<i class="bi bi-eye"></i>
+								</button>
+							</a>
+							{{ include('admin_company/_delete_form.html.twig') }}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="9">Aucune entreprise trouvée</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</main>
+
+{% endblock %}

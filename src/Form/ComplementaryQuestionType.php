@@ -17,12 +17,11 @@ class ComplementaryQuestionType extends AbstractType
                 'label' => false,
                 ])
             ->add('searchQuality', TextType::class, [
-                'label' => false
+                'label' => false,
                 ])
             ->add('profilQuality', TextType::class, [
-                'label' => false
-                ])
-        ;
+                'label' => false,
+                ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

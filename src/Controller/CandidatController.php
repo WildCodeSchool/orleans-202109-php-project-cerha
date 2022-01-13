@@ -29,7 +29,6 @@ class CandidatController extends AbstractController
      * @Route("/profil", name="show")
      * @IsGranted("ROLE_USER")
      */
-
     public function showCandidateProfile(): Response
     {
         /** @var User */
@@ -45,7 +44,6 @@ class CandidatController extends AbstractController
      * @Route("/profil/edit/softskills", name="softskill_edit")
      * @IsGranted("ROLE_USER")
      */
-
     public function editSoftSkills(Request $request): Response
     {
 
