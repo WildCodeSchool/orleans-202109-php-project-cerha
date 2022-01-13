@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\HobbyRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=HobbyRepository::class)
@@ -19,6 +20,8 @@ class Hobby
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Length(max=100)
+     * @Assert\NotBlank
      */
     private string $name;
 

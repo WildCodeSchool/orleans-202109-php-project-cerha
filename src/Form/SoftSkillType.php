@@ -16,7 +16,6 @@ class SoftSkillType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => false,
             ]);
-        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

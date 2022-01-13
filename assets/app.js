@@ -29,7 +29,43 @@ $(document).ready(() => {
 });
 
 a2lixLib.sfCollection.init({
-    collectionsSelector: 'form div[data-prototype]',
+    collectionsSelector: 'form #soft_skills div[data-prototype]',
+    manageRemoveEntry: true,
+    lang: {
+        add: 'Ajouter une compétence',
+        remove: '',
+    },
+});
+
+a2lixLib.sfCollection.init({
+    collectionsSelector: 'form #candidate_languages div[data-prototype]',
+    manageRemoveEntry: true,
+    lang: {
+        add: 'Ajouter une langue',
+        remove: '',
+    },
+});
+
+a2lixLib.sfCollection.init({
+    collectionsSelector: 'form #candidate_formations div[data-prototype]',
+    manageRemoveEntry: true,
+    lang: {
+        add: 'Ajouter une formation',
+        remove: '',
+    },
+});
+
+a2lixLib.sfCollection.init({
+    collectionsSelector: 'form #candidate_experience div[data-prototype]',
+    manageRemoveEntry: true,
+    lang: {
+        add: 'Ajouter une éxperience',
+        remove: '',
+    },
+});
+
+a2lixLib.sfCollection.init({
+    collectionsSelector: 'form #candidate_skills div[data-prototype]',
     manageRemoveEntry: true,
     lang: {
         add: 'Ajouter une compétence',

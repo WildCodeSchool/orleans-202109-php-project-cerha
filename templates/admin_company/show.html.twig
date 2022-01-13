@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entreprise
+{% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('companyProfile') }}
+{% endblock %}
+
+{% block body %}
+
+	<h1 class="text-center text-primary mt-5 mb-4">Détails de
+		{{ company.denomination }}</h1>
+	<div class="container d-flex flex-row justify-content-center gap-5">
+		<a href="{{ path('admin_company_index') }}" class="btn btn-secondary text-light">
+			<i class="bi bi-arrow-left-square me-1"></i>Retour</a>
+		{{ include('admin_company/_delete_form.html.twig') }}
+	</div>
+	{% include 'company/components/_companyDetails.html.twig' %}
+	{% include 'company/components/_companyContact.html.twig' %}
+	{% include 'company/components/_companyNeed.html.twig' %}
+{% endblock %}

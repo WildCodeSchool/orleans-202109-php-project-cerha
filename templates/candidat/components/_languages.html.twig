@@ -1,4 +1,4 @@
-<div class="row languages mt-5">
+<div class="row languages mt-5" id="candidateLanguages">
 	<div class="card card-languages p-4 col-md-6 offset-md-3">
 		<h2 class="card-title text-primary text-center mt-3 pt-2 px-4">Langues étrangères</h2>
 		<ul class="list-unstyled mt-3 languages">
@@ -10,6 +10,6 @@
 					{{ language.name|language_name('fr')|capitalize }}</li>
 			{% endfor %}
 		</ul>
-		<button class="btn btn-secondary align-self-center fw-bold text-light mb-4"> Modifier</button>
+		<a href="{{ path('candidat_edit_languages', {'user': candidat.user}) }} "class="btn btn-secondary align-self-center fw-bold text-light mb-4"> Modifier</a>
 	</div>
 </div>
