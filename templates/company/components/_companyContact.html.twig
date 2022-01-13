@@ -27,5 +27,7 @@
 				{{ company.user.phoneNumber }}</li>
 		</li>
 	</ul>
-	<a class="btn btn-secondary fw-bold text-light align-self-center mb-4 " href="{{ path('company_edit', {id: company.id}) }}">Modifier</a>
+	{% if is_granted("ROLE_ADMIN") == false %}
+		<a class="btn btn-secondary fw-bold text-light align-self-center mb-4 " href="{{ path('company_edit', {id: company.id}) }}">Modifier</a>
+	{% endif %}
 </div></div>
