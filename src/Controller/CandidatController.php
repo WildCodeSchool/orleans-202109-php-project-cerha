@@ -80,9 +80,35 @@ class CandidatController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
+
+            return $this->redirectToRoute('candidat_show');
         }
 
         return $this->renderForm('candidat/edit/edit.contactDetails.html.twig', [
+            'candidat' => $candidat,
+            'form' => $form,
+        ]);
+    }
+
+    /**
+     * @Route("/profil/modifier/questions-complementaires", name="questions_edit", methods={"GET", "POST"})
+     */
+    public function editQuestions(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        /** @var User */
+        $user = $this->getUser();
+        $candidat = $user->getCandidat();
+        $form = $this->createForm(ComplementaryQuestionType::class, $candidat);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->flush();
+            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
+
+            return $this->redirectToRoute('candidat_show');
+        }
+
+        return $this->renderForm('candidat/edit/complementary-questions.html.twig', [
             'candidat' => $candidat,
             'form' => $form,
         ]);
@@ -94,22 +120,20 @@ class CandidatController extends AbstractController
      */
     public function editHobbies(Request $request): Response
     {
-
         /** @var User */
         $user = $this->getUser();
         $candidat = $user->getCandidat();
-
         $form = $this->createForm(HobbiesType::class, $candidat);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
             return $this->redirectToRoute('candidat_show');
         }
+
         return $this->render('candidat/edit/hobbies.html.twig', [
             'form' => $form->createView(), 'candidat' => $candidat
         ]);
