@@ -108,6 +108,7 @@ class AdminCandidateController extends AbstractController
         $dompdf = new Dompdf($pdfOptions);
         // Retrieve the HTML generated in our twig file
         $html = $this->renderView('admin_candidate/cvPdf.html.twig', [
+            'candidate' => $candidate
         ]);
         // Load HTML to Dompdf
         $dompdf->loadHtml($html);
