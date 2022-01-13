@@ -34,7 +34,8 @@ class AdditionalDocument
      *     mimeTypes = {"application/pdf", "application/x-pdf", "image/*", "application/msword",
      *                  "application/vnd.ms-excel","application/vnd.openxmlformats-officedocument.wordprocessingml.document",
      *                  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-     *                  "application/vnd.openxmlformats-officedocument.presentationml.presentation","text/plain"})
+     *                  "application/vnd.openxmlformats-officedocument.presentationml.presentation","text/plain"},
+     *                  "ODT application/vnd.oasis.opendocument.text")
      */
     private $documentFile;
 
