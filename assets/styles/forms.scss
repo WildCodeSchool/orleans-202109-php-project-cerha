@@ -1,3 +1,5 @@
+@import "variables.scss";
+
 #soft_skills_softskills fieldset,
 #hobbies_hobbies fieldset {
     display: flex;
@@ -7,7 +9,9 @@
 
 #soft_skills_softskills fieldset button,
 #candidate_formations_formations fieldset button,
-#hobbies_hobbies fieldset button {
+#hobbies_hobbies fieldset button,
+#candidate_experience_experiences fieldset button,
+#candidate_skills_skills fieldset button {
     width: 37px;
     height: 37px;
     align-self: end;
@@ -20,4 +24,8 @@
 #soft_skills_softskills fieldset div,
 #hobbies_hobbies fieldset div {
     width: 100%;
+}
+
+.edit_form {
+    font-family: $title-family;
 }
