@@ -6,6 +6,7 @@ use App\Repository\AdditionalDocumentRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AdditionalDocumentRepository::class)
@@ -26,11 +27,16 @@ class AdditionalDocument
     private ?string $name;
 
     /**
-
      * @Vich\UploadableField(mapping="documents_candidate", fileNameProperty="name")
      * @var File
+     * @Assert\File(
+     *     maxSize = "1M",
+     *     mimeTypes = {"application/pdf", "application/x-pdf", "image/*", "application/msword",
+     *                  "application/vnd.ms-excel","application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+     *                  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+     *                  "application/vnd.openxmlformats-officedocument.presentationml.presentation","text/plain"})
      */
-    private File $documentFile;
+    private $documentFile;
 
     /**
      * @ORM\ManyToOne(targetEntity=Candidat::class, inversedBy="additionalDocuments")

@@ -8,7 +8,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class DocumentFixtures extends Fixture
 {
-    public const DOCUMENTS = ['CV.pdf', 'CV-2.pdf'];
+    public const DOCUMENTS = ['CV.pdf', 'CV.docx'];
     public function load(ObjectManager $manager): void
     {
         foreach (self::DOCUMENTS as $key => $data) {
