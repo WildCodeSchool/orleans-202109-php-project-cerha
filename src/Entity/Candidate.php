@@ -2,18 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\CandidatRepository;
+use App\Repository\CandidateRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CandidatRepository::class)
+ * @ORM\Entity(repositoryClass=CandidateRepository::class)
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
-class Candidat
+class Candidate
 {
     /**
      * @ORM\Id
@@ -51,14 +51,14 @@ class Candidat
 
     /**
      * @ORM\OneToMany(targetEntity=SoftSkill::class,
-     * mappedBy="candidat", orphanRemoval=true, cascade={"persist", "remove"})
+     * mappedBy="candidate", orphanRemoval=true, cascade={"persist", "remove"})
      * @Assert\Count(max = 5)
      * @Assert\Valid
      */
     private Collection $softSkills;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, inversedBy="candidat", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="candidate", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      * @assert\Valid
      */
@@ -66,7 +66,7 @@ class Candidat
 
     /**
      * @ORM\OneToMany(targetEntity=Hobby::class,
-     * mappedBy="candidat", orphanRemoval=true, cascade={"persist", "remove"})
+     * mappedBy="candidate", orphanRemoval=true, cascade={"persist", "remove"})
      * @Assert\Count(max = 5)
      * @Assert\Valid
      */
@@ -91,31 +91,31 @@ class Candidat
     private ?string $profilQuality;
 
     /**
-     * @ORM\OneToMany(targetEntity=CandidatLanguage::class,
-     * mappedBy="candidat", orphanRemoval=true, cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity=CandidateLanguage::class,
+     * mappedBy="candidate", orphanRemoval=true, cascade={"persist", "remove"})
      * @Assert\Unique
      * @Assert\Valid
      */
-    private Collection $candidatLanguages;
+    private Collection $candidateLanguages;
 
     /**
-     * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="candidat")
+     * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="candidate")
      */
     private Collection $skills;
 
 
     /**
-     * @ORM\OneToMany(targetEntity=Experience::class, mappedBy="candidat")
+     * @ORM\OneToMany(targetEntity=Experience::class, mappedBy="candidate")
      */
     private Collection $experiences;
 
     /**
-     * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="candidat", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="candidate", cascade={"persist"})
      */
     private Collection $formations;
 
     /**
-     * @ORM\OneToMany(targetEntity=AdditionalDocument::class, mappedBy="candidat")
+     * @ORM\OneToMany(targetEntity=AdditionalDocument::class, mappedBy="candidate")
      */
     private Collection $additionalDocuments;
 
@@ -124,7 +124,7 @@ class Candidat
     {
         $this->softSkills = new ArrayCollection();
         $this->hobbies = new ArrayCollection();
-        $this->candidatLanguages = new ArrayCollection();
+        $this->candidateLanguages = new ArrayCollection();
         $this->skills = new ArrayCollection();
         $this->experiences = new ArrayCollection();
         $this->formations = new ArrayCollection();
@@ -196,7 +196,7 @@ class Candidat
     {
         if (!$this->softSkills->contains($softSkill)) {
             $this->softSkills[] = $softSkill;
-            $softSkill->setCandidat($this);
+            $softSkill->setCandidate($this);
         }
 
         return $this;
@@ -206,8 +206,8 @@ class Candidat
     {
         if ($this->softSkills->removeElement($softSkill)) {
             // set the owning side to null (unless already changed)
-            if ($softSkill->getCandidat() === $this) {
-                $softSkill->setCandidat(null);
+            if ($softSkill->getCandidate() === $this) {
+                $softSkill->setCandidate(null);
             }
         }
 
@@ -238,7 +238,7 @@ class Candidat
     {
         if (!$this->hobbies->contains($hobby)) {
             $this->hobbies[] = $hobby;
-            $hobby->setCandidat($this);
+            $hobby->setCandidate($this);
         }
 
         return $this;
@@ -248,8 +248,8 @@ class Candidat
     {
         if ($this->hobbies->removeElement($hobby)) {
             // set the owning side to null (unless already changed)
-            if ($hobby->getCandidat() === $this) {
-                $hobby->setCandidat(null);
+            if ($hobby->getCandidate() === $this) {
+                $hobby->setCandidate(null);
             }
         }
 
@@ -293,18 +293,18 @@ class Candidat
     }
 
     /**
-     * @return Collection|CandidatLanguage[]
+     * @return Collection|CandidateLanguage[]
      */
-    public function getCandidatLanguages(): Collection
+    public function getCandidateLanguages(): Collection
     {
-        return $this->candidatLanguages;
+        return $this->candidateLanguages;
     }
 
-    public function addCandidatLanguage(CandidatLanguage $candidatLanguage): self
+    public function addCandidateLanguage(CandidateLanguage $candidateLanguage): self
     {
-        if (!$this->candidatLanguages->contains($candidatLanguage)) {
-            $this->candidatLanguages[] = $candidatLanguage;
-            $candidatLanguage->setCandidat($this);
+        if (!$this->candidateLanguages->contains($candidateLanguage)) {
+            $this->candidateLanguages[] = $candidateLanguage;
+            $candidateLanguage->setCandidate($this);
         }
 
         return $this;
@@ -322,18 +322,18 @@ class Candidat
     {
         if (!$this->skills->contains($skill)) {
             $this->skills[] = $skill;
-            $skill->setCandidat($this);
+            $skill->setCandidate($this);
         }
 
         return $this;
     }
 
-    public function removeCandidatLanguage(CandidatLanguage $candidatLanguage): self
+    public function removeCandidateLanguage(CandidateLanguage $candidateLanguage): self
     {
-        if ($this->candidatLanguages->removeElement($candidatLanguage)) {
+        if ($this->candidateLanguages->removeElement($candidateLanguage)) {
             // set the owning side to null (unless already changed)
-            if ($candidatLanguage->getCandidat() === $this) {
-                $candidatLanguage->setCandidat(null);
+            if ($candidateLanguage->getCandidate() === $this) {
+                $candidateLanguage->setCandidate(null);
             }
         }
 
@@ -344,8 +344,8 @@ class Candidat
     {
         if ($this->skills->removeElement($skill)) {
             // set the owning side to null (unless already changed)
-            if ($skill->getCandidat() === $this) {
-                $skill->setCandidat(null);
+            if ($skill->getCandidate() === $this) {
+                $skill->setCandidate(null);
             }
         }
 
@@ -364,7 +364,7 @@ class Candidat
     {
         if (!$this->experiences->contains($experience)) {
             $this->experiences[] = $experience;
-            $experience->setCandidat($this);
+            $experience->setCandidate($this);
         }
 
         return $this;
@@ -374,8 +374,8 @@ class Candidat
     {
         if ($this->experiences->removeElement($experience)) {
             // set the owning side to null (unless already changed)
-            if ($experience->getCandidat() === $this) {
-                $experience->setCandidat(null);
+            if ($experience->getCandidate() === $this) {
+                $experience->setCandidate(null);
             }
         }
 
@@ -393,7 +393,7 @@ class Candidat
     {
         if (!$this->formations->contains($formation)) {
             $this->formations[] = $formation;
-            $formation->setCandidat($this);
+            $formation->setCandidate($this);
         }
 
         return $this;
@@ -403,8 +403,8 @@ class Candidat
     {
         if ($this->formations->removeElement($formation)) {
             // set the owning side to null (unless already changed)
-            if ($formation->getCandidat() === $this) {
-                $formation->setCandidat(null);
+            if ($formation->getCandidate() === $this) {
+                $formation->setCandidate(null);
             }
         }
 
@@ -423,7 +423,7 @@ class Candidat
     {
         if (!$this->additionalDocuments->contains($additionalDocument)) {
             $this->additionalDocuments[] = $additionalDocument;
-            $additionalDocument->setCandidat($this);
+            $additionalDocument->setCandidate($this);
         }
 
         return $this;
@@ -433,8 +433,8 @@ class Candidat
     {
         if ($this->additionalDocuments->removeElement($additionalDocument)) {
             // set the owning side to null (unless already changed)
-            if ($additionalDocument->getCandidat() === $this) {
-                $additionalDocument->setCandidat(null);
+            if ($additionalDocument->getCandidate() === $this) {
+                $additionalDocument->setCandidate(null);
             }
         }
         return $this;

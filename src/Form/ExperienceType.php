@@ -16,10 +16,10 @@ class ExperienceType extends AbstractType
     {
         $builder
             ->add('jobName', TextType::class, ['label' => 'Intitulé de poste'])
-            ->add('place', TextType::class, ['label' => 'Nom de l’entreprise'])
+            ->add('place', TextType::class, ['label' => 'Nom de l\'entreprise'])
             ->add('contrat', null, [
                 'choice_label' => 'name',
-                'label' => 'Type d’emploi',
+                'label' => 'Type d\'emploi',
                 'placeholder' => 'Sélectionnez votre choix',
                 'required'   => true,
             ])

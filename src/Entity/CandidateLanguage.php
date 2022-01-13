@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\CandidatLanguageRepository;
+use App\Repository\CandidateLanguageRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CandidatLanguageRepository::class)
+ * @ORM\Entity(repositoryClass=CandidateLanguageRepository::class)
  */
-class CandidatLanguage
+class CandidateLanguage
 {
     /**
      * @ORM\Id
@@ -23,10 +23,10 @@ class CandidatLanguage
     private string $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Candidat::class, inversedBy="candidatLanguages")
+     * @ORM\ManyToOne(targetEntity=Candidate::class, inversedBy="candidateLanguages")
      * @ORM\JoinColumn(nullable=false)
      */
-    private ?Candidat $candidat;
+    private ?Candidate $candidate;
 
     public function getId(): ?int
     {
@@ -45,14 +45,14 @@ class CandidatLanguage
         return $this;
     }
 
-    public function getCandidat(): ?Candidat
+    public function getCandidate(): ?Candidate
     {
-        return $this->candidat;
+        return $this->candidate;
     }
 
-    public function setCandidat(?Candidat $candidat): self
+    public function setCandidate(?Candidate $candidate): self
     {
-        $this->candidat = $candidat;
+        $this->candidate = $candidate;
 
         return $this;
     }

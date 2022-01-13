@@ -2,12 +2,12 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\CandidatLanguage;
+use App\Entity\CandidateLanguage;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class CandidatLanguageFixtures extends Fixture implements DependentFixtureInterface
+class CandidateLanguageFixtures extends Fixture implements DependentFixtureInterface
 {
     public const LANGUAGES = [
         'br_FR', 'fr_FR', 'de_DE', 'chr_US', 'el_CY', 'en_BI', 'es_PR', 'fi_FI', 'fy_NL',
@@ -16,12 +16,12 @@ class CandidatLanguageFixtures extends Fixture implements DependentFixtureInterf
     public function load(ObjectManager $manager): void
     {
         foreach (self::LANGUAGES as $language) {
-            $newLanguage = new CandidatLanguage();
+            $newLanguage = new CandidateLanguage();
             $newLanguage->setName($language);
             $newLanguage
-                ->setCandidat(
+                ->setCandidate(
                     $this->getReference(
-                        'candidat_' . rand(0, (CandidatFixtures::CANDIDAT_NUMBER) - 1)
+                        'candidate_' . rand(0, (CandidateFixtures::CANDIDATE_NUMBER) - 1)
                     )
                 );
             $manager->persist($newLanguage);
@@ -32,7 +32,7 @@ class CandidatLanguageFixtures extends Fixture implements DependentFixtureInterf
     public function getDependencies()
     {
         return [
-            CandidatFixtures::class
+            CandidateFixtures::class
         ];
     }
 }
