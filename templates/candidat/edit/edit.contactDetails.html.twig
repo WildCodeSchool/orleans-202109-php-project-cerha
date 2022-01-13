@@ -3,13 +3,18 @@
 {% block title %}Mes coordonnées
 {% endblock %}
 
+{% block stylesheets %}
+	{{ encore_entry_link_tags('forms') }}
+{% endblock %}
+
 {% block body %}
 	<main class="container">
-		<h1 class="text-center mt-5 ">
-			Coordonnées</h1>
-		<div class="col-md-6 et offset-md-3 fs-4 mt-5">
-			{{ form_start(form) }}
 
+		<h1 class="text-center mt-5">
+			Coordonnées</h1>
+		<div class=" edit_form col-md-6 et offset-md-3 fs-4 mt-5 text-info fs-4">
+
+			{{ form_start(form) }}
 			<div class="row mb-2">
 				<div class="col">
 					{{ form_row(form.user.gender[0]) }}</div>

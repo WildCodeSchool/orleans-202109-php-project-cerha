@@ -8,20 +8,20 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CandidateSkillsType extends AbstractType
+class CandidateExperienceType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('skills', CollectionType::class, [
+            ->add('experiences', CollectionType::class, [
+                'entry_type'   => ExperienceType::class,
                 'label' => false,
-                'entry_type'   => SkillType::class,
                 'by_reference' => false,
                 'allow_add' => true,
                 'allow_delete' => true,
-                'entry_options'  => [
-                    'label' => false,]
-
+                'entry_options' => [
+                    'label' => false
+                ]
             ]);
     }
 
