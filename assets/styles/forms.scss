@@ -1,16 +1,19 @@
 @import "variables.scss";
 
 #soft_skills_softskills fieldset,
-#hobbies_hobbies fieldset {
+#hobbies_hobbies fieldset
+#candidate_languages_candidatLanguages fieldset {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap            : 20px;
 }
 
 #soft_skills_softskills fieldset button,
+#candidate_languages_candidatLanguages fieldset button,
 #candidate_formations_formations fieldset button,
 #hobbies_hobbies fieldset button,
-#candidate_experience_experiences fieldset button {
+#candidate_experience_experiences fieldset button,
+#candidate_skills_skills fieldset button {
     width: 37px;
     height: 37px;
     align-self: end;
@@ -21,6 +24,11 @@
 }
 
 #soft_skills_softskills fieldset div,
-#hobbies_hobbies fieldset div {
+#hobbies_hobbies fieldset div,
+#candidate_languages_candidatLanguages fieldset div {
     width: 100%;
+}
+
+.edit_form {
+    font-family: $title-family;
 }
