@@ -41,6 +41,15 @@ class RegistrationFormType extends AbstractType
                 'first_options' => ['label' => 'Mot de Passe'],
                 'second_options' => ['label' => 'Second Mot de Passe'],
             ])
+            ->add('type', ChoiceType::class, [
+                'label' => 'Je suis',
+                'mapped' => false,
+                'choices' => [
+                    'Une entreprise' => 'Entreprise',
+                    'Un candidat' => 'Candidat'
+                ],
+                'expanded' => true, 'multiple' => false
+            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'label' => 'Accepter les conditions d\'utilisation',
                 'mapped' => false,

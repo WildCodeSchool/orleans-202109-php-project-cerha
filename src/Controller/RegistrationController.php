@@ -34,6 +34,7 @@ class RegistrationController extends AbstractController
     ): Response {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -46,6 +47,7 @@ class RegistrationController extends AbstractController
             );
 
             $entityManager->persist($user);
+
             $entityManager->flush();
 
             // generate a signed url and email it to the user
@@ -63,9 +65,14 @@ class RegistrationController extends AbstractController
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
 
+            $userId = $user->getId();
             $this->addFlash('warning', 'Allez vérifier votre email afin de compléter votre inscription');
 
-            return $this->redirectToRoute('home');
+            if ($form->get('type')->getData() == 'Entreprise') {
+                return $this->redirectToRoute('contact', ['id' => $userId]);
+            } else {
+                return $this->redirectToRoute('services', ['id' => $userId]);
+            }
         }
 
         return $this->render('registration/register.html.twig', [
