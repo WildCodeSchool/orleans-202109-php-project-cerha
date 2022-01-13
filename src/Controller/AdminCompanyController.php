@@ -30,6 +30,7 @@ class AdminCompanyController extends AbstractController
 
     /**
      * @Route("/{id}", name="admin_company_show", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function show(Company $company): Response
     {
