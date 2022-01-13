@@ -5,12 +5,13 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Company;
 use Symfony\Component\HttpFoundation\Request;
 use App\Form\CompanyDetailsType;
 use App\Form\CompanyContactType;
 use App\Form\CompanyNeedType;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Entity\User;
 
 /**
  * @Route("/entreprise", name="company_")
@@ -19,12 +20,15 @@ use Doctrine\ORM\EntityManagerInterface;
 class CompanyController extends AbstractController
 {
     /**
-     * @Route("/profil/{id<^[0-9]+$>}", name="show")
+     * @Route("/profil", name="show")
+     *  * @IsGranted("ROLE_COMPANY")
      */
-    public function showCompanyProfile(
-        Company $company
-    ): Response {
+    public function showCompanyProfile(): Response
+    {
 
+        /** @var User */
+        $user = $this->getUser();
+        $company = $user->getCompany();
         return $this->render(
             'company/index.html.twig',
             ['company' => $company]
@@ -32,20 +36,25 @@ class CompanyController extends AbstractController
     }
 
     /**
-     * @Route("/profil/{id<^[0-9]+$>}/modifier", name="edit", methods={"GET", "POST"})
+     * @Route("/profil/contact/modifier", name="editContact", methods={"GET", "POST"})
+     * @IsGranted("ROLE_COMPANY")
      */
     public function editCompanyContact(
         Request $request,
-        Company $company,
         EntityManagerInterface $entityManager
     ): Response {
+
+        /** @var User */
+        $user = $this->getUser();
+        $company = $user->getCompany();
+
         $form = $this->createForm(CompanyContactType::class, $company);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('company_show', ['id' => $company->getId()], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('company_show');
         }
 
         return $this->renderForm('company/editCompanyContact.html.twig', [
@@ -55,20 +64,25 @@ class CompanyController extends AbstractController
     }
 
     /**
-     * @Route("/profil/{id<^[0-9]+$>}/informations", name="editDetails", methods={"GET", "POST"})
+     * @Route("/profil/informations/modifier", name="editDetails", methods={"GET", "POST"})
+     * @IsGranted("ROLE_COMPANY")
      */
     public function editCompanyDetails(
         Request $request,
-        Company $company,
         EntityManagerInterface $entityManager
     ): Response {
+
+        /** @var User */
+        $user = $this->getUser();
+        $company = $user->getCompany();
+
         $form = $this->createForm(CompanyDetailsType::class, $company);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('company_show', ['id' => $company->getId()], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('company_show');
         }
 
         return $this->renderForm('company/editCompanyDetails.html.twig', [
@@ -77,20 +91,25 @@ class CompanyController extends AbstractController
         ]);
     }
     /**
-     * @Route("/profil/{id<^[0-9]+$>}/besoin", name="editNeed", methods={"GET", "POST"})
+     * @Route("/profil/besoin/modifier", name="editNeed", methods={"GET", "POST"})
+     * @IsGranted("ROLE_COMPANY")
      */
     public function editCompanyNeed(
         Request $request,
-        Company $company,
         EntityManagerInterface $entityManager
     ): Response {
+
+        /** @var User */
+        $user = $this->getUser();
+        $company = $user->getCompany();
+
         $form = $this->createForm(CompanyNeedType::class, $company);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('company_show', ['id' => $company->getId()], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('company_show');
         }
 
         return $this->renderForm('company/editCompanyNeed.html.twig', [
