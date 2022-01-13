@@ -96,7 +96,7 @@ class AdminCandidateController extends AbstractController
     }
 
     /**
-     * @Route("/pdf/{id<\d+>}", name="admin_candidate_pdf", methods={"GET"})
+     * @Route("/pdf/{id<\d+>}", name="admin_candidat_pdf", methods={"GET"})
      */
     public function generateCV(Candidat $candidate): Response
     {
