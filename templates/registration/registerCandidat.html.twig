@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes coordonnées
+{% endblock %}
+
+{% block body %}
+	<main class="container">
+		<h1 class="text-center mt-5 ">
+			Coordonnées</h1>
+		<div class="col-md-6 et offset-md-3 fs-4 mt-5">
+			{{ form_start(registrationCandidatForm) }}
+
+			<div class="row mb-2">
+				<div class="col">
+					{{ form_row(registrationCandidatForm.birthDate) }}</div>
+			</div>
+			<div class="row mb-2">
+				<div class="col">
+					{{ form_row(registrationCandidatForm.address) }}</div>
+			</div>
+			<div class="row mb-2	">
+				<div class="col">
+					{{ form_row(registrationCandidatForm.postalCode) }}</div>
+				<div class="col">
+					{{ form_row(registrationCandidatForm.city) }}</div>
+			</div>
+            <div class="row mb-2">
+				<div class="col">
+                    {{ form_widget(registrationCandidatForm.user, {'value': 'coucou'}) }}</div>
+			</div>
+			<button class="btn btn-secondary fw-bold text-light align-self-center mb-4">Valider</button>
+			{{ form_end(registrationCandidatForm) }}
+		</div>
+	</main>
+{% endblock %}

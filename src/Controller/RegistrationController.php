@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Candidat;
 use App\Entity\User;
+use App\Form\RegistrationCandidateType;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
@@ -69,9 +71,9 @@ class RegistrationController extends AbstractController
             $this->addFlash('warning', 'Allez vérifier votre email afin de compléter votre inscription');
 
             if ($form->get('type')->getData() == 'Entreprise') {
-                return $this->redirectToRoute('contact', ['id' => $userId]);
+                return $this->redirectToRoute('register_candidat', ['id' => $userId]);
             } else {
-                return $this->redirectToRoute('services', ['id' => $userId]);
+                return $this->redirectToRoute('register_candidat', ['id' => $userId]);
             }
         }
 
@@ -102,5 +104,25 @@ class RegistrationController extends AbstractController
         $this->addFlash('success', 'Votre addresse email a été vérifiée.');
 
         return $this->redirectToRoute('home');
+    }
+
+         /**
+     * @Route("/register/candidat", name="register_candidat")
+     */
+    public function candidatRegistration(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $candidat = new Candidat();
+        $form = $this->createForm(RegistrationCandidateType::class, $candidat);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($candidat);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('registration/registerCandidat.html.twig', [
+            'registrationCandidatForm' => $form->createView(),
+        ]);
     }
 }
