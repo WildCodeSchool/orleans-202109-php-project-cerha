@@ -24,7 +24,7 @@ class AdminCompanyController extends AbstractController
     public function index(CompanyRepository $companyRepository): Response
     {
         return $this->render('admin_company/index.html.twig', [
-            'companies' => $companyRepository->findAll(),
+            'companies' => $companyRepository->findBy([], ['denomination' => 'ASC']),
         ]);
     }
 

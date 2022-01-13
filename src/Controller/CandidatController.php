@@ -87,27 +87,6 @@ class CandidatController extends AbstractController
     }
 
     /**
-     * @Route("/profil/modifier/questions-complementaires", name="questions_edit", methods={"GET", "POST"})
-     */
-    public function editQuestions(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        /** @var User */
-        $user = $this->getUser();
-        $candidat = $user->getCandidat();
-        $form = $this->createForm(ComplementaryQuestionType::class, $candidat);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
-            return $this->redirectToRoute('candidat_show');
-        }
-        return $this->renderForm('candidat/edit/edit.skill.html.twig', [
-            'candidat' => $candidat,
-            'form' => $form,
-        ]);
-    }
-
-    /**
      * @Route("/profil/edit/hobbies", name="hobby_edit")
      * @IsGranted("ROLE_USER")
      */
