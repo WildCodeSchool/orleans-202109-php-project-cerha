@@ -1,0 +1,19 @@
+<div class="row softskills mt-5" id="documents">
+	<div class="card card-softskills p-4 col-md-6 offset-md-3">
+		<a class="btn btn-outline-light ms-5 align-self-end fs-5  bi bi-pencil-square" href="{{ path('candidat_edit_document', {'user': candidat.user}) }}">
+			Modifier</a>
+		<h2 class="card-title text-primary text-center mt-3 pt-2 px-4">Documents</h2>
+		<ul class="list-unstyled mt-3">
+
+			{% for additionaldocument in candidat.additionaldocuments %}
+			<div>	<i class="bi bi-file-earmark-arrow-up-fill mx-3"></i>
+				<embed src="{{ vich_uploader_asset(additionaldocument) }}" ></embed>
+				</div>
+			{% else %}
+				Aucune information disponible.
+			{% endfor %}
+
+		</ul>
+
+	</div>
+</div>

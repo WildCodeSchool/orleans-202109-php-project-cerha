@@ -1,8 +1,12 @@
 @import "variables.scss";
 
-.sideMenuCompany {
-    width : 17vw;
-    height: 100vh;
+.sideMenu {
+    width           : 17vw;
+    height          : 100vh;
+    background-color: $dark-primary;
+    position: sticky;
+    top: 76px;
+    left: 0;
 
     h2 {
         border-bottom: 2px solid $secondary;

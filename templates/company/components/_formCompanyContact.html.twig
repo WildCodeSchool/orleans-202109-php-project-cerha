@@ -1,6 +1,9 @@
 {{ form_start(form) }}
 <div class="row mb-2">
-	<div class="col">{{ form_row(form.user.gender) }}</div>
+	<div class="col">{{ form_row(form.user.gender, {
+        'attr': {
+        'class': 'd-flex justify-content-around'
+        }}) }}</div>
 </div>
 <div class="row mb-2">
 	<div class="col-md-6">{{ form_row(form.user.lastname) }}</div>
