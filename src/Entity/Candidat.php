@@ -115,7 +115,8 @@ class Candidat
     private Collection $formations;
 
     /**
-     * @ORM\OneToMany(targetEntity=AdditionalDocument::class, mappedBy="candidat")
+     * @ORM\OneToMany(targetEntity=AdditionalDocument::class,
+     *  mappedBy="candidat",orphanRemoval=true, cascade={"persist", "remove"})
      */
     private Collection $additionalDocuments;
 
