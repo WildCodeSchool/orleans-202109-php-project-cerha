@@ -72,3 +72,12 @@ a2lixLib.sfCollection.init({
         remove: '',
     },
 });
+
+a2lixLib.sfCollection.init({
+    collectionsSelector: 'form #candidate_document div[data-prototype]',
+    manageRemoveEntry: true,
+    lang: {
+        add: 'Ajouter un document',
+        remove: '',
+    },
+});

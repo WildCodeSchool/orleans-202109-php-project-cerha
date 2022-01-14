@@ -270,4 +270,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function __serialize(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'email' => $this->getUserIdentifier(),
+            'password' => $this->getPassword(),
+        ];
+    }
 }
