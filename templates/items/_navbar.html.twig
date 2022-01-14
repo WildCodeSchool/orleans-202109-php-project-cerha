@@ -9,19 +9,19 @@
 					<button type="button" class="btn btn-secondary fw-bold dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mon espace</button>
 					<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 						{% if is_granted('ROLE_CANDIDATE') %}
-							<a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ path('candidat_show') }}">
-								<i class="bi bi-person-workspace text-primary"></i>
+							<a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ path('candidate_show') }}">
+								<i class="bi bi-person-workspace text-primary me-2"></i>
 								{{ app.user.firstname }}
 								{{ app.user.lastname }}</a>
 						{% endif %}
 						{% if is_granted('ROLE_COMPANY') %}
 							<a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ path('company_show') }}">
-								<i class="bi bi-person-workspace text-primary"></i>
+								<i class="bi bi-person-workspace text-primary me-2"></i>
 								{{ app.user.company.denomination }}</a>
 						{% endif %}
 						<hr class="dropdown-divider">
 						<a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ path('logout') }}">
-							<i class="bi bi-x-circle text-danger"></i>Déconnexion</a>
+							<i class="bi bi-x-circle text-danger me-2"></i>Déconnexion</a>
 					</div>
 				</div>
 			{% else %}
