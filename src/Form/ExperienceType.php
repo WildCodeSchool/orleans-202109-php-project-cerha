@@ -30,7 +30,7 @@ class ExperienceType extends AbstractType
                 ],
             ])
             ->add('endDate', DateType::class, [
-                'label' => 'Date de début',
+                'label' => 'Date de fin',
                 'placeholder' => [
                     'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour', 'required'   => true,
                 ],

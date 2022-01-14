@@ -29,9 +29,13 @@ class FormationType extends AbstractType
                 'placeholder' => [
                     'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour', 'required'   => true,
                 ],
-
             ])
-            ->add('endDate', DateType::class, ['label' => 'Date de fin'])
+            ->add('endDate', DateType::class, [
+                'label' => 'Date de fin',
+                'placeholder' => [
+                    'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour', 'required'   => true,
+                ],
+            ])
             ->add('description', TextareaType::class, ['label' => 'Description', 'attr' => ['rows' => '4']])
             ->add('referent', TextType::class, ['label' => 'Référent', 'required'   => false,])
             ->add('phoneReferent', TextType::class, ['label' => 'Téléphone du référent', 'required'   => false,]);
