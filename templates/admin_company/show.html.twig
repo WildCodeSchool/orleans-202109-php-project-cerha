@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Entreprise
-{% endblock %}
+{% block title %}{{ parent() }} - Détails {{ company.denomination }}{% endblock %}
 
 {% block stylesheets %}
 	{{ encore_entry_link_tags('companyProfile') }}
