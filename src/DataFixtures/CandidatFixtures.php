@@ -37,7 +37,7 @@ class CandidatFixtures extends Fixture implements DependentFixtureInterface
         $candidat->addAdditionalDocument($this->getReference('document_0'));
         copy(__DIR__ . '/CV.pdf', __DIR__ . '/../../public/uploads/candidate/CV.pdf');
         $manager->persist($candidat);
-        $this->addReference('candidat_sylvain', $candidat);
+        $this->addReference('candidate_sylvain', $candidat);
 
         $manager->flush();
     }

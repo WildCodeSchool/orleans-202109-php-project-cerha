@@ -23,7 +23,7 @@ class SoftSkillFixtures extends Fixture implements DependentFixtureInterface
         foreach (self::SOFTSKILLS as $key => $skill) {
             $softSkill = new SoftSkill();
             $softSkill->setName($skill);
-            $softSkill->setCandidat($this->getReference('candidat_sylvain'));
+            $softSkill->setCandidat($this->getReference('candidate_sylvain'));
             $manager->persist($softSkill);
         }
 
