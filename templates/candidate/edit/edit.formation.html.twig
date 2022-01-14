@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mes formations
-{% endblock %}
+{% block title %}{{ parent() }} - Mes Formations{% endblock %}
 {% block stylesheets %}
 	{{ encore_entry_link_tags('forms') }}
 {% endblock %}

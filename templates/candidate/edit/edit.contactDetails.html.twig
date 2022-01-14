@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mes coordonnées
-{% endblock %}
+{% block title %}{{ parent() }} - Mes Coordonnées{% endblock %}
 
 {% block stylesheets %}
 	{{ encore_entry_link_tags('forms') }}

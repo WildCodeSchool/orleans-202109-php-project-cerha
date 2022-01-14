@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AdditionalDocumentRepository;
+use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -28,7 +30,7 @@ class AdditionalDocument
 
     /**
      * @Vich\UploadableField(mapping="documents_candidate", fileNameProperty="name")
-     * @var File
+     * @var File|null
      * @Assert\File(
      *     maxSize = "1M",
      *     mimeTypes = {"application/pdf", "application/x-pdf", "image/*", "application/msword",
@@ -44,6 +46,15 @@ class AdditionalDocument
      */
     private ?Candidate $candidate;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private DateTimeInterface $updatedAt;
+
+    public function __construct()
+    {
+        $this->updatedAt = new DateTimeImmutable();
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -73,27 +84,29 @@ class AdditionalDocument
         return $this;
     }
 
-    /**
-     * Get the value of documentFile
-     *
-     * @return  File
-     */
-    public function getDocumentFile()
+
+    public function setDocumentFile(?File $documentFile = null): void
+    {
+        $this->documentFile = $documentFile;
+
+        if (null !== $documentFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    public function getDocumentFile(): ?File
     {
         return $this->documentFile;
     }
 
-    /**
-     * Set the value of documentFile
-     *
-     * @param  File  $documentFile
-     *
-     * @return  self
-     */
-    public function setDocumentFile(File $documentFile)
-    {
-        $this->documentFile = $documentFile;
 
-        return $this;
+    /**
+     * Get the value of updatedAt
+     */
+    public function getUpdatedAt(): DateTimeInterface
+    {
+        return $this->updatedAt;
     }
 }

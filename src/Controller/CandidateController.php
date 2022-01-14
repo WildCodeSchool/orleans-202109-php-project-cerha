@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Form\ContactDetailsType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
+use App\Form\CandidateDocumentType;
 use App\Form\CandidateLanguagesType;
 use App\Form\ComplementaryQuestionType;
 use App\Form\CandidateExperienceType;
@@ -181,10 +182,10 @@ class CandidateController extends AbstractController
             return $this->redirectToRoute('candidate_show');
         }
 
-         return $this->renderForm('candidate/edit/languages.html.twig', [
+        return $this->renderForm('candidate/edit/languages.html.twig', [
             'candidate' => $candidate,
             'form' => $form,
-          ]);
+        ]);
     }
 
     /**
@@ -226,6 +227,27 @@ class CandidateController extends AbstractController
         }
         return $this->renderForm('candidate/edit/edit.experience.html.twig', [
             'candidate' => $candidate,
+            'form' => $form,
+        ]);
+    }
+
+    /**
+     * @Route("/profil/modifier/document", name="edit_document", methods={"GET", "POST"})
+     */
+    public function editDocument(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        /** @var User */
+        $user = $this->getUser();
+        $candidate = $user->getCandidate();
+        $form = $this->createForm(CandidateDocumentType::class, $candidate);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
+            return $this->redirectToRoute('candidat_show');
+        }
+        return $this->renderForm('candidat/edit/edit.document.html.twig', [
+            'candidat' => $candidate,
             'form' => $form,
         ]);
     }
