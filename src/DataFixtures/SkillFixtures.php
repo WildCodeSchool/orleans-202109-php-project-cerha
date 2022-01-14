@@ -22,6 +22,15 @@ class SkillFixtures extends Fixture implements DependentFixtureInterface
             $skill->setCandidat($this->getReference('candidat_' . ($key)));
             $manager->persist($skill);
         }
+
+        foreach (self::SKILLS as $key => $skillName) {
+            $skill = new Skill();
+            $skill->setName($skillName);
+            $skill->setSector($this->getReference('sector_' . ($key)));
+            $skill->setCandidat($this->getReference('candidat_sylvain'));
+            $manager->persist($skill);
+        }
+
         $manager->flush();
     }
 

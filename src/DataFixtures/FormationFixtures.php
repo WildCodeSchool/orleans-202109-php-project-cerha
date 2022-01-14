@@ -46,9 +46,24 @@ class FormationFixtures extends Fixture implements DependentFixtureInterface
             $newFormation->setLevel($this->getReference('level_' . ($key)));
             $newFormation->setCandidat($this->getReference('candidat_' . ($key)));
             $manager->persist($newFormation);
-            $manager->flush();
         }
+
+        foreach (self::FORMATIONS as $key => $formation) {
+            $newFormation = new Formation();
+            $newFormation->setStartDate($faker->dateTime());
+            $newFormation->setEndDate($faker->dateTime());
+            $newFormation->setTitle($formation['title']);
+            $newFormation->setPlace($formation['place']);
+            $newFormation->setDescription($faker->paragraph());
+            $newFormation->setReferent($faker->userName());
+            $newFormation->setLevel($this->getReference('level_' . ($key)));
+            $newFormation->setCandidat($this->getReference('candidat_sylvain'));
+            $manager->persist($newFormation);
+        }
+
+        $manager->flush();
     }
+
     public function getDependencies()
     {
         return [

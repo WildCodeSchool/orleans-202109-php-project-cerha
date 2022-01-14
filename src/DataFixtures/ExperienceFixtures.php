@@ -26,11 +26,24 @@ class ExperienceFixtures extends Fixture implements DependentFixtureInterface
                 rand(0, (CandidatFixtures::CANDIDAT_NUMBER) - 1)));
             $experience->setContrat($this->getReference('contrat_' .
                 rand(0, (count(ContratFixtures::CONTRATS)) - 1)));
-
             $manager->persist($experience);
-            $manager->flush();
         }
+
+        $experience = new Experience();
+        $experience->setJobName($faker->jobTitle);
+        $experience->setPlace($faker->company);
+        $experience->setDescription($faker->paragraph());
+        $experience->setReferentName($faker->userName());
+        $experience->setStartDate($faker->dateTime());
+        $experience->setEndDate($faker->dateTime());
+        $experience->setCandidat($this->getReference('candidat_sylvain'));
+        $experience->setContrat($this->getReference('contrat_' .
+            rand(0, (count(ContratFixtures::CONTRATS)) - 1)));
+        $manager->persist($experience);
+
+        $manager->flush();
     }
+
     public function getDependencies()
     {
         return [
