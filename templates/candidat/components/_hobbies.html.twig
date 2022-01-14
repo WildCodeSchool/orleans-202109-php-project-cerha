@@ -3,7 +3,7 @@
    		{% if not is_granted("ROLE_ADMIN") %}
 		<a class="btn btn-outline-light ms-5 align-self-end fs-5  bi bi-pencil-square" href=" {{ path('candidat_edit', {'user': candidat.user}) }} ">
 			Modifier</a>
-		{% endfor %}
+		{% endif %}
 		<h2 class="card-title text-primary text-center mt-3 pt-2 px-4">Centres d'interêt</h2>
 		<ul class="list-unstyled mt-3">
 			{% for hobby in candidat.hobbies %}
