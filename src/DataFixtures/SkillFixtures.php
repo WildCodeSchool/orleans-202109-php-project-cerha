@@ -19,7 +19,7 @@ class SkillFixtures extends Fixture implements DependentFixtureInterface
             $skill = new Skill();
             $skill->setName($skillName);
             $skill->setSector($this->getReference('sector_' . ($key)));
-            $skill->setCandidat($this->getReference('candidat_' . ($key)));
+            $skill->setCandidate($this->getReference('candidate_' . ($key)));
             $manager->persist($skill);
         }
 
@@ -38,7 +38,7 @@ class SkillFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-            CandidatFixtures::class,
+            CandidateFixtures::class,
             SectorFixtures::class
         ];
     }

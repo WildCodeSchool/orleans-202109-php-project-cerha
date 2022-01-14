@@ -45,9 +45,9 @@ class Formation
     private string $referent;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Candidat::class, inversedBy="formations")
+     * @ORM\ManyToOne(targetEntity=Candidate::class, inversedBy="formations")
      */
-    private ?Candidat $candidat;
+    private ?Candidate $candidate;
 
     /**
      * @ORM\ManyToOne(targetEntity=FormationLevel::class, inversedBy="formations")
@@ -126,14 +126,14 @@ class Formation
         return $this;
     }
 
-    public function getCandidat(): ?Candidat
+    public function getCandidate(): ?Candidate
     {
-        return $this->candidat;
+        return $this->candidate;
     }
 
-    public function setCandidat(?Candidat $candidat): self
+    public function setCandidate(?Candidate $candidate): self
     {
-        $this->candidat = $candidat;
+        $this->candidate = $candidate;
 
         return $this;
     }

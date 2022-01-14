@@ -3,7 +3,7 @@
 namespace App\DataFixtures;
 
 use Faker;
-use App\Entity\Candidat;
+use App\Entity\Candidate;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -16,7 +16,7 @@ class CandidatFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Faker\Factory::create('fr_FR');
         for ($i = 0; $i < self::CANDIDAT_NUMBER; $i++) {
-            $candidat = new Candidat();
+            $candidat = new Candidate();
             $candidat->setbirthDate($faker->dateTime());
             $candidat->setaddress($faker->address);
             $candidat->setpostalCode($faker->departmentNumber());
@@ -28,7 +28,7 @@ class CandidatFixtures extends Fixture implements DependentFixtureInterface
             $this->addReference('candidat_' . $i, $candidat);
         }
 
-        $candidat = new Candidat();
+        $candidat = new Candidate();
         $candidat->setbirthDate($faker->dateTime());
         $candidat->setaddress($faker->address);
         $candidat->setpostalCode($faker->departmentNumber());

@@ -44,9 +44,9 @@ class Experience
     private ?string $referentName;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Candidat::class, inversedBy="experiences")
+     * @ORM\ManyToOne(targetEntity=Candidate::class, inversedBy="experiences")
      */
-    private ?Candidat $candidat;
+    private ?Candidate $candidate;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -124,14 +124,14 @@ class Experience
         return $this;
     }
 
-    public function getCandidat(): ?Candidat
+    public function getCandidate(): ?Candidate
     {
-        return $this->candidat;
+        return $this->candidate;
     }
 
-    public function setCandidat(?Candidat $candidat): self
+    public function setCandidate(?Candidate $candidate): self
     {
-        $this->candidat = $candidat;
+        $this->candidate = $candidate;
 
         return $this;
     }

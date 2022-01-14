@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Candidat;
+use App\Entity\Candidate;
 use App\Form\CandidateSkillsType;
 use App\Repository\HobbyRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -21,10 +21,10 @@ use App\Form\HobbiesType;
 use App\Form\SoftSkillsType;
 
 /**
- * @Route("/candidat", name="candidat_")
+ * @Route("/candidat", name="candidate_")
  */
 
-class CandidatController extends AbstractController
+class CandidateController extends AbstractController
 {
     /**
      * @Route("/profil", name="show")
@@ -34,10 +34,10 @@ class CandidatController extends AbstractController
     {
         /** @var User */
         $user = $this->getUser();
-        $candidat = $user->getCandidat();
+        $candidate = $user->getCandidate();
         return $this->render(
-            'candidat/index.html.twig',
-            ['candidat' => $candidat]
+            'candidate/index.html.twig',
+            ['candidate' => $candidate]
         );
     }
 
@@ -50,9 +50,9 @@ class CandidatController extends AbstractController
 
         /** @var User */
         $user = $this->getUser();
-        $candidat = $user->getCandidat();
+        $candidate = $user->getCandidate();
 
-        $form = $this->createForm(SoftSkillsType::class, $candidat);
+        $form = $this->createForm(SoftSkillsType::class, $candidate);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -61,11 +61,11 @@ class CandidatController extends AbstractController
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
-            return $this->redirectToRoute('candidat_show');
+            return $this->redirectToRoute('candidate_show');
         }
 
-        return $this->render('candidat/edit/sofskills.html.twig', [
-            'form' => $form->createView(), 'candidat' => $candidat
+        return $this->render('candidate/edit/sofskills.html.twig', [
+            'form' => $form->createView(), 'candidate' => $candidate
         ]);
     }
 
@@ -76,18 +76,18 @@ class CandidatController extends AbstractController
     {
         /** @var User */
         $user = $this->getUser();
-        $candidat = $user->getCandidat();
-        $form = $this->createForm(ContactDetailsType::class, $candidat);
+        $candidate = $user->getCandidate();
+        $form = $this->createForm(ContactDetailsType::class, $candidate);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
-            return $this->redirectToRoute('candidat_show');
+            return $this->redirectToRoute('candidate_show');
         }
 
-        return $this->renderForm('candidat/edit/edit.contactDetails.html.twig', [
-            'candidat' => $candidat,
+        return $this->renderForm('candidate/edit/edit.contactDetails.html.twig', [
+            'candidate' => $candidate,
             'form' => $form,
         ]);
     }
@@ -99,19 +99,19 @@ class CandidatController extends AbstractController
     {
         /** @var User */
         $user = $this->getUser();
-        $candidat = $user->getCandidat();
-        $form = $this->createForm(ComplementaryQuestionType::class, $candidat);
+        $candidate = $user->getCandidate();
+        $form = $this->createForm(ComplementaryQuestionType::class, $candidate);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
-            return $this->redirectToRoute('candidat_show');
+            return $this->redirectToRoute('candidate_show');
         }
 
-        return $this->renderForm('candidat/edit/complementary-questions.html.twig', [
-            'candidat' => $candidat,
+        return $this->renderForm('candidate/edit/complementary-questions.html.twig', [
+            'candidate' => $candidate,
             'form' => $form,
         ]);
     }
@@ -124,8 +124,8 @@ class CandidatController extends AbstractController
     {
         /** @var User */
         $user = $this->getUser();
-        $candidat = $user->getCandidat();
-        $form = $this->createForm(HobbiesType::class, $candidat);
+        $candidate = $user->getCandidate();
+        $form = $this->createForm(HobbiesType::class, $candidate);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -133,11 +133,11 @@ class CandidatController extends AbstractController
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
-            return $this->redirectToRoute('candidat_show');
+            return $this->redirectToRoute('candidate_show');
         }
 
-        return $this->render('candidat/edit/hobbies.html.twig', [
-            'form' => $form->createView(), 'candidat' => $candidat
+        return $this->render('candidate/edit/hobbies.html.twig', [
+            'form' => $form->createView(), 'candidate' => $candidate
         ]);
     }
 
@@ -148,18 +148,18 @@ class CandidatController extends AbstractController
     {
         /** @var User */
         $user = $this->getUser();
-        $candidate = $user->getCandidat();
+        $candidate = $user->getCandidate();
         $form = $this->createForm(CandidateSkillsType::class, $candidate);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
-            return $this->redirectToRoute('candidat_show');
+            return $this->redirectToRoute('candidate_show');
         }
 
-        return $this->renderForm('candidat/edit/edit.skill.html.twig', [
-            'candidat' => $candidate,
+        return $this->renderForm('candidate/edit/edit.skill.html.twig', [
+            'candidate' => $candidate,
             'form' => $form,
         ]);
     }
@@ -171,18 +171,18 @@ class CandidatController extends AbstractController
     {
         /** @var User */
         $user = $this->getUser();
-        $candidate = $user->getCandidat();
+        $candidate = $user->getCandidate();
         $form = $this->createForm(CandidateLanguagesType::class, $candidate);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
-            return $this->redirectToRoute('candidat_show');
+            return $this->redirectToRoute('candidate_show');
         }
 
-         return $this->renderForm('candidat/edit/languages.html.twig', [
-            'candidat' => $candidate,
+         return $this->renderForm('candidate/edit/languages.html.twig', [
+            'candidate' => $candidate,
             'form' => $form,
           ]);
     }
@@ -194,18 +194,18 @@ class CandidatController extends AbstractController
     {
         /** @var User */
         $user = $this->getUser();
-        $candidate = $user->getCandidat();
+        $candidate = $user->getCandidate();
         $form = $this->createForm(CandidateFormationsType::class, $candidate);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
-            return $this->redirectToRoute('candidat_show');
+            return $this->redirectToRoute('candidate_show');
         }
 
-        return $this->renderForm('candidat/edit/edit.formation.html.twig', [
-            'candidat' => $candidate,
+        return $this->renderForm('candidate/edit/edit.formation.html.twig', [
+            'candidate' => $candidate,
             'form' => $form,
         ]);
     }
@@ -217,15 +217,15 @@ class CandidatController extends AbstractController
     {
         /** @var User */
         $user = $this->getUser();
-        $candidate = $user->getCandidat();
+        $candidate = $user->getCandidate();
         $form = $this->createForm(CandidateExperienceType::class, $candidate);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
         }
-        return $this->renderForm('candidat/edit/edit.experience.html.twig', [
-            'candidat' => $candidate,
+        return $this->renderForm('candidate/edit/edit.experience.html.twig', [
+            'candidate' => $candidate,
             'form' => $form,
         ]);
     }

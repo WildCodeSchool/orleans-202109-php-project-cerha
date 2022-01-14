@@ -11,11 +11,11 @@
 	<main class="container">
 		<h1 class="text-center mt-5 ">
 			Mes Compétences</h1>
-		<div class="col-md-6 et offset-md-3 fs-4 mt-5">
-			{{ form_start(form) }}
-			<h2 class="title text-info fs-4">{{ form_widget(form) }}<h2>
+				<div class="edit_form col-md-6 et offset-md-3 fs-4 mt-5 text-info fs-4">
+					{{ form_start(form) }}
+					{{ form_widget(form) }}
 					<button class="btn btn-secondary fw-bold text-light align-self-center mb-4">Valider</button>
-					<a class="btn btn-outline-dark align-self-center mb-4" href=" {{ path('candidat_show', {'user': candidat.user}) }}">Retour</a>
+					<a class="btn btn-outline-dark align-self-center mb-4" href=" {{ path('candidate_show', {'user': candidate.user}) }}">Retour</a>
 					{{ form_end(form) }}
 				</div>
 			</main>

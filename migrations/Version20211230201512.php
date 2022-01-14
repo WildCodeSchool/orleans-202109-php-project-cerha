@@ -20,12 +20,12 @@ final class Version20211230201512 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE candidat ADD time_search VARCHAR(255) DEFAULT NULL, ADD search_quality VARCHAR(255) DEFAULT NULL, ADD profil_quality VARCHAR(255) DEFAULT NULL');
+        $this->addSql('ALTER TABLE candidate ADD time_search VARCHAR(255) DEFAULT NULL, ADD search_quality VARCHAR(255) DEFAULT NULL, ADD profil_quality VARCHAR(255) DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE candidat DROP time_search, DROP search_quality, DROP profil_quality');
+        $this->addSql('ALTER TABLE candidate DROP time_search, DROP search_quality, DROP profil_quality');
     }
 }

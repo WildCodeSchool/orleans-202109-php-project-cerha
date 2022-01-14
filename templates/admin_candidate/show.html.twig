@@ -1,50 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Candidat{% endblock %}
+{% block title %}Candidate{% endblock %}
 
 {% block body %}
-    <h1>Candidat</h1>
+    <h1>Candidate</h1>
 
     <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ candidat.id }}</td>
+                <td>{{ candidate.id }}</td>
             </tr>
             <tr>
                 <th>BirthDate</th>
-                <td>{{ candidat.birthDate ? candidat.birthDate|date('Y-m-d') : '' }}</td>
+                <td>{{ candidate.birthDate ? candidate.birthDate|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
                 <th>Address</th>
-                <td>{{ candidat.address }}</td>
+                <td>{{ candidate.address }}</td>
             </tr>
             <tr>
                 <th>PostalCode</th>
-                <td>{{ candidat.postalCode }}</td>
+                <td>{{ candidate.postalCode }}</td>
             </tr>
             <tr>
                 <th>City</th>
-                <td>{{ candidat.city }}</td>
+                <td>{{ candidate.city }}</td>
             </tr>
             <tr>
                 <th>TimeSearch</th>
-                <td>{{ candidat.timeSearch }}</td>
+                <td>{{ candidate.timeSearch }}</td>
             </tr>
             <tr>
                 <th>SearchQuality</th>
-                <td>{{ candidat.searchQuality }}</td>
+                <td>{{ candidate.searchQuality }}</td>
             </tr>
             <tr>
                 <th>ProfilQuality</th>
-                <td>{{ candidat.profilQuality }}</td>
+                <td>{{ candidate.profilQuality }}</td>
             </tr>
         </tbody>
     </table>
 
     <a href="{{ path('admin_candidate_index') }}">back to list</a>
 
-    <a href="{{ path('admin_candidate_edit', {'id': candidat.id}) }}">edit</a>
+    <a href="{{ path('admin_candidate_edit', {'id': candidate.id}) }}">edit</a>
 
     {{ include('admin_candidate/_delete_form.html.twig') }}
 {% endblock %}

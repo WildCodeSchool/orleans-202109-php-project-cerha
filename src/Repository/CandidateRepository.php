@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Candidat;
+use App\Entity\Candidate;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Candidat|null find($id, $lockMode = null, $lockVersion = null)
- * @method Candidat|null findOneBy(array $criteria, array $orderBy = null)
- * @method Candidat[]    findAll()
- * @method Candidat[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Candidate|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Candidate|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Candidate[]    findAll()
+ * @method Candidate[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CandidatRepository extends ServiceEntityRepository
+class CandidateRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Candidat::class);
+        parent::__construct($registry, Candidate::class);
     }
 
     // /**
-    //  * @return Candidat[] Returns an array of Candidat objects
+    //  * @return Candidate[] Returns an array of Candidate objects
     //  */
     /*
     public function findByExampleField($value)
@@ -38,7 +38,7 @@ class CandidatRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Candidat
+    public function findOneBySomeField($value): ?Candidate
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')
