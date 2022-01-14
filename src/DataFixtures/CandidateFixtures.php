@@ -9,13 +9,13 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use DateTime;
 
-class CandidatFixtures extends Fixture implements DependentFixtureInterface
+class CandidateFixtures extends Fixture implements DependentFixtureInterface
 {
-    public const CANDIDAT_NUMBER = 10;
+    public const CANDIDATE_NUMBER = 10;
     public function load(ObjectManager $manager): void
     {
         $faker = Faker\Factory::create('fr_FR');
-        for ($i = 0; $i < self::CANDIDAT_NUMBER; $i++) {
+        for ($i = 0; $i < self::CANDIDATE_NUMBER; $i++) {
             $candidate = new Candidate();
             $candidate->setbirthDate($faker->dateTime());
             $candidate->setaddress($faker->address);

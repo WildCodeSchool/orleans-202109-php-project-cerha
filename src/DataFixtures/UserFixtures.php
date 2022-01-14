@@ -29,7 +29,7 @@ class UserFixtures extends Fixture
             $user->setGender('M');
             $manager->persist($user);
             $this->addReference('user_' . $i, $user);
-            if ($i >= CandidateFixtures::CANDIDAT_NUMBER) {
+            if ($i >= CandidateFixtures::CANDIDATE_NUMBER) {
                 $user->setRoles(['ROLE_CANDIDATE']);
             } else {
                 $user->setRoles(['ROLE_COMPANY']);
