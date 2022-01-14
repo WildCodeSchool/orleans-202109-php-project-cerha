@@ -1,4 +1,4 @@
-<div class="row questions mt-5" id="candidateComplementaryQuestions">
+<div class="row questions my-5" id="candidateComplementaryQuestions">
 	<div class="card card-questions p-4 col-md-6 offset-md-3">
 		<h2 class="card-title text-primary text-center mt-3 pt-2 px-4">Questions complémentaires</h2>
 		<h3 class="mx-3 mt-3">Depuis combien de temps êtes-vous en recherche active ?</h3>
@@ -45,7 +45,5 @@
 		{% if not is_granted("ROLE_ADMIN") %}
 		<a href="{{ path('candidat_questions_edit') }}" class="btn btn-secondary align-self-center fw-bold text-light my-4">Modifier</a>
 		{% endif %}
-
-
 	</div>
 </div>
