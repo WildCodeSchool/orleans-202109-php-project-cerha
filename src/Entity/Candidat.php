@@ -99,23 +99,27 @@ class Candidat
     private Collection $candidatLanguages;
 
     /**
-     * @ORM\OneToMany(targetEntity=Skill::class, mappedBy="candidat")
+     * @ORM\OneToMany(targetEntity=Skill::class,  mappedBy="candidat",
+     *  orphanRemoval=true, cascade={"persist", "remove"})
      */
     private Collection $skills;
 
 
     /**
-     * @ORM\OneToMany(targetEntity=Experience::class, mappedBy="candidat")
+     * @ORM\OneToMany(targetEntity=Experience::class,  mappedBy="candidat",
+     *  orphanRemoval=true, cascade={"persist", "remove"})
      */
     private Collection $experiences;
 
     /**
-     * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="candidat", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=Formation::class,  mappedBy="candidat",
+     *  orphanRemoval=true, cascade={"persist", "remove"})
      */
     private Collection $formations;
 
     /**
-     * @ORM\OneToMany(targetEntity=AdditionalDocument::class, mappedBy="candidat")
+     * @ORM\OneToMany(targetEntity=AdditionalDocument::class,
+     *  mappedBy="candidat",orphanRemoval=true, cascade={"persist", "remove"})
      */
     private Collection $additionalDocuments;
 
