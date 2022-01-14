@@ -61,9 +61,9 @@ class AdminCandidateController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/modifier", name="admin_candidate_edit", methods={"GET", "POST"})
+     * @Route("/{id}/details", name="admin_candidate_details", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Candidat $candidat, EntityManagerInterface $entityManager): Response
+    public function details(Request $request, Candidat $candidat, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(CandidatType::class, $candidat);
         $form->handleRequest($request);
@@ -74,7 +74,7 @@ class AdminCandidateController extends AbstractController
             return $this->redirectToRoute('admin_candidate_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('admin_candidate/edit.html.twig', [
+        return $this->renderForm('admin_candidate/details.html.twig', [
             'candidat' => $candidat,
             'form' => $form,
         ]);
