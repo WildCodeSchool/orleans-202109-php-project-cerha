@@ -1,7 +1,9 @@
 <div class="row languages mt-5" id="candidateLanguages">
 	<div class="card card-languages p-4 col-md-6 offset-md-3">
+    {% if not is_granted("ROLE_ADMIN") %}
 		<a class="btn btn-outline-light ms-5 align-self-end fs-5  bi bi-pencil-square" href=" {{ path('candidat_edit', {'user': candidat.user}) }} ">
 			Modifier</a>
+    {% endif %}
 		<h2 class="card-title text-primary text-center mt-3 pt-2 px-4">Langues étrangères</h2>
 		<ul class="list-unstyled mt-3 languages">
 			{% for language in candidat.candidatLanguages %}
