@@ -1,7 +1,11 @@
 <div class="row questions mt-5" id="candidateComplementaryQuestions">
 	<div class="card card-questions p-4 col-md-6 offset-md-3">
+		<a class="btn btn-outline-light ms-5 align-self-end fs-5  bi bi-pencil-square" href=" {{ path('candidat_edit', {'user': candidat.user}) }} ">
+			Modifier</a>
 		<h2 class="card-title text-primary text-center mt-3 pt-2 px-4">Questions complémentaires</h2>
-		<h3 class="mx-3 mt-3 text-secondary fs-5"><i class="bi bi-question-circle me-1"></i> Depuis combien de temps êtes-vous en recherche active ?</h3>
+		<h3 class="mx-3 mt-3 text-secondary fs-5">
+			<i class="bi bi-question-circle me-1"></i>
+			Depuis combien de temps êtes-vous en recherche active ?</h3>
 		<p class="mx-3">
 			{% if candidat.timeSearch is null %}
 				Aucune information renseignée
@@ -9,7 +13,9 @@
 				{{ candidat.timeSearch }}
 			{% endif %}
 		</p>
-		<h3 class="mx-3 mt-2 text-secondary fs-5"> <i class="bi bi-question-circle me-1"></i> Vous qualifierez votre recherche : d'efficace, pas assez ciblée, vous ne savez pas par où commencer :</h3>
+		<h3 class="mx-3 mt-2 text-secondary fs-5">
+			<i class="bi bi-question-circle me-1"></i>
+			Vous qualifierez votre recherche : d'efficace, pas assez ciblée, vous ne savez pas par où commencer :</h3>
 		<p class="mx-3">
 			{% if candidat.searchQuality is null %}
 				Aucune information renseignée
@@ -17,7 +23,9 @@
 				{{ candidat.searchQuality }}
 			{% endif %}
 		</p>
-		<h3 class="mx-3 mt-2 text-secondary fs-5"> <i class="bi bi-question-circle me-1"></i> Vous qualifierez votre profil : d'attractif, de rare, d'atypique, commun :</h3>
+		<h3 class="mx-3 mt-2 text-secondary fs-5">
+			<i class="bi bi-question-circle me-1"></i>
+			Vous qualifierez votre profil : d'attractif, de rare, d'atypique, commun :</h3>
 		<p class="mx-3">
 			{% if candidat.profilQuality is null %}
 				Aucune information renseignée
@@ -25,7 +33,5 @@
 				{{ candidat.profilQuality }}
 			{% endif %}
 		</p>
-
-		<a href="{{ path('candidat_questions_edit') }}" class="btn btn-secondary align-self-center fw-bold text-light my-4">Modifier</a>
 	</div>
 </div>
