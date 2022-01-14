@@ -5,7 +5,7 @@
 {{ encore_entry_link_tags('adminCandidate') }}
 {% endblock %}
 {% block body %}
-<h1 class="text-center mt-5 mb-4">Administration Candidats</h1>
+<h1 class="text-center mt-5 mb-4">Administration candidats</h1>
 
 <main class="container">
     <table class="table table-hover">
@@ -26,7 +26,7 @@
                 <td class="d-flex justify-content-end gap-3">
                     <a href="{{ path('admin_candidate_show', {'id': candidate.id}) }}"><button
                             class="btn btn-primary px-3 py-1"><i class="bi bi-eye"></i></button></a>
-                            <a href="{{ path('admin_candidate_pdf', {'id': candidat.id}) }}"><button class="btn btn-secondary px-3 py-1 text-light">
+                            <a href="{{ path('admin_candidate_pdf', {'id': candidate.id}) }}"><button class="btn btn-secondary px-3 py-1 text-light">
                                 <i class="bi bi-download"></i>
                             </button></a>
                     {{ include('admin_candidate/_delete_form.html.twig') }}

@@ -244,10 +244,10 @@ class CandidateController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
             $this->addFlash('success', 'Votre modification a été bien enregistrée.');
-            return $this->redirectToRoute('candidat_show');
+            return $this->redirectToRoute('candidate_show');
         }
-        return $this->renderForm('candidat/edit/edit.document.html.twig', [
-            'candidat' => $candidate,
+        return $this->renderForm('candidate/edit/edit.document.html.twig', [
+            'candidate' => $candidate,
             'form' => $form,
         ]);
     }
