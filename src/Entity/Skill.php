@@ -29,10 +29,10 @@ class Skill
     private ?Sector $sector;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Candidat::class, inversedBy="skills")
+     * @ORM\ManyToOne(targetEntity=Candidate::class, inversedBy="skills")
      * @ORM\JoinColumn(nullable=false)
      */
-    private ?Candidat $candidat;
+    private ?Candidate $candidate;
 
 
     public function getId(): ?int
@@ -64,14 +64,14 @@ class Skill
         return $this;
     }
 
-    public function getCandidat(): ?Candidat
+    public function getCandidate(): ?Candidate
     {
-        return $this->candidat;
+        return $this->candidate;
     }
 
-    public function setCandidat(?Candidat $candidat): self
+    public function setCandidate(?Candidate $candidate): self
     {
-        $this->candidat = $candidat;
+        $this->candidate = $candidate;
 
         return $this;
     }

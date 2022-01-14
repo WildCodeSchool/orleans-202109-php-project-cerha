@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }} - Détails {{ candidat.user.lastname }} {{ candidat.user.firstname }} {% endblock %}
+{% block title %}{{ parent() }} - Détails {{ candidate.user.lastname }} {{ candidate.user.firstname }} {% endblock %}
 {% block stylesheets %}
 {{ encore_entry_link_tags('adminCandidate') }}
 {% endblock %}
 {% block body %}
 <main class="container">
-    <h1 class="text-center mt-5 mb-4 border-bottom pb-2">Détails de {{ candidat.user.gender }}.
-        {{ candidat.user.lastname }} {{ candidat.user.firstname }}</h1>
+    <h1 class="text-center mt-5 mb-4 border-bottom pb-2">Détails de {{ candidate.user.gender }}.
+        {{ candidate.user.lastname }} {{ candidate.user.firstname }}</h1>
     <div class="row my-3">
         <div class="col-3 offset-4">
             <a class="btn btn-secondary text-light" href="{{ path('admin_candidate_index') }}"><i
@@ -19,28 +19,28 @@
         </div>
     </div>
     <section class="Details">
-        {% include "candidat/components/_contactDetails.html.twig" %}
+        {% include "candidate/components/_contactDetails.html.twig" %}
     </section>
     <section class="Skills">
-        {% include "candidat/components/_skills.html.twig" %}
+        {% include "candidate/components/_skills.html.twig" %}
     </section>
     <section class="Formations">
-        {% include "candidat/components/_formations.html.twig" %}
+        {% include "candidate/components/_formations.html.twig" %}
     </section>
     <section class="experiences">
-        {% include "candidat/components/_experiences.html.twig" %}
+        {% include "candidate/components/_experiences.html.twig" %}
     </section>
     <section class="softSkills">
-        {% include "candidat/components/_experiences.html.twig" %}
+        {% include "candidate/components/_experiences.html.twig" %}
     </section>
     <section class="Languages">
-        {% include "candidat/components/_languages.html.twig" %}
+        {% include "candidate/components/_languages.html.twig" %}
     </section>
     <section class="Hobbies">
-        {% include "candidat/components/_hobbies.html.twig" %}
+        {% include "candidate/components/_hobbies.html.twig" %}
     </section>
     <section class="Other">
-        {% include "candidat/components/_complementary-questions.html.twig" %}
+        {% include "candidate/components/_complementary-questions.html.twig" %}
     </section>
 </main>
 {% endblock %}

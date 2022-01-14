@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\CandidatLanguage;
+use App\Entity\CandidateLanguage;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\LanguageType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -22,7 +22,7 @@ class CandidateLanguageType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => CandidatLanguage::class,
+            'data_class' => CandidateLanguage::class,
         ]);
     }
 }
