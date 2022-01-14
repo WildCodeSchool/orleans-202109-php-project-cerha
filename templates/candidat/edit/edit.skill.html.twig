@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }} - Mes Compétences {% endblock %}
+{% block title %}
+	{{ parent() }}
+	- Mes Compétences
+{% endblock %}
 
 {% block stylesheets %}
 	{{ encore_entry_link_tags('forms') }}
@@ -9,7 +12,8 @@
 {% block body %}
 	<main class="container">
 		<h1 class="text-center mt-5 ">
-			Mes Compétences</h1>
+
+			Mes compétences</h1>
 		<div class="edit_form col-md-6 et offset-md-3 fs-4 mt-5 text-info fs-4">
 			{{ form_start(form) }}
 			{{ form_widget(form) }}
