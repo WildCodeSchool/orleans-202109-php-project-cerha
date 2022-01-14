@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mes Compétences
-{% endblock %}
+{% block title %}{{ parent() }} - Mes Expériences{% endblock %}
 
 {% block stylesheets %}
 	{{ encore_entry_link_tags('forms') }}
