@@ -74,6 +74,15 @@ a2lixLib.sfCollection.init({
 });
 
 a2lixLib.sfCollection.init({
+    collectionsSelector: 'form #hobbies div[data-prototype]',
+    manageRemoveEntry: true,
+    lang: {
+        add: 'Ajouter un centre d\' intérêt',
+        remove: '',
+    },
+});
+
+a2lixLib.sfCollection.init({
     collectionsSelector: 'form #candidate_document div[data-prototype]',
     manageRemoveEntry: true,
     lang: {

@@ -42,7 +42,7 @@ class Formation
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
      */
-    private ?string $referent;
+    private string $referent;
 
     /**
      * @ORM\ManyToOne(targetEntity=Candidat::class, inversedBy="formations")
