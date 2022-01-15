@@ -20,9 +20,9 @@ final class Version20211227093320 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE soft_skill ADD candidat_id INT NOT NULL');
-        $this->addSql('ALTER TABLE soft_skill ADD CONSTRAINT FK_164AECD48D0EB82 FOREIGN KEY (candidat_id) REFERENCES candidat (id)');
-        $this->addSql('CREATE INDEX IDX_164AECD48D0EB82 ON soft_skill (candidat_id)');
+        $this->addSql('ALTER TABLE soft_skill ADD candidate_id INT NOT NULL');
+        $this->addSql('ALTER TABLE soft_skill ADD CONSTRAINT FK_164AECD48D0EB82 FOREIGN KEY (candidate_id) REFERENCES candidate (id)');
+        $this->addSql('CREATE INDEX IDX_164AECD48D0EB82 ON soft_skill (candidate_id)');
     }
 
     public function down(Schema $schema): void
@@ -30,6 +30,6 @@ final class Version20211227093320 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE soft_skill DROP FOREIGN KEY FK_164AECD48D0EB82');
         $this->addSql('DROP INDEX IDX_164AECD48D0EB82 ON soft_skill');
-        $this->addSql('ALTER TABLE soft_skill DROP candidat_id');
+        $this->addSql('ALTER TABLE soft_skill DROP candidate_id');
     }
 }
