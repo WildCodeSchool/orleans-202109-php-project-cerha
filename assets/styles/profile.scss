@@ -6,7 +6,6 @@
 
 .softskills,
 .hobbies ul,
-.questions h3,
 .languages {
     line-height: $line-height;
     font-family: $text-family;
@@ -16,6 +15,8 @@
 .questions h3 {
     line-height: calc($line-height * 60 / 100);
     color      : $primary;
+    font-family: $title-family;
+    color: red;
 }
 
 .bi {
