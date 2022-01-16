@@ -16,10 +16,10 @@ class ExperienceType extends AbstractType
     {
         $builder
             ->add('jobName', TextType::class, ['label' => 'Intitulé de poste'])
-            ->add('place', TextType::class, ['label' => 'Nom de l’entreprise'])
+            ->add('place', TextType::class, ['label' => 'Nom de l\'entreprise'])
             ->add('contrat', null, [
                 'choice_label' => 'name',
-                'label' => 'Type d’emploi',
+                'label' => 'Type d\'emploi',
                 'placeholder' => 'Sélectionnez votre choix',
                 'required'   => true,
             ])
@@ -30,7 +30,7 @@ class ExperienceType extends AbstractType
                 ],
             ])
             ->add('endDate', DateType::class, [
-                'label' => 'Date de début',
+                'label' => 'Date de fin',
                 'placeholder' => [
                     'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour', 'required'   => true,
                 ],

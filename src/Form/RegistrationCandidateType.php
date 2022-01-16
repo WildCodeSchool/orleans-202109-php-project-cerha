@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Candidat;
+use App\Entity\Candidate;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -24,7 +24,7 @@ class RegistrationCandidateType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Candidat::class,
+            'data_class' => Candidate::class,
         ]);
     }
 }

@@ -16,7 +16,12 @@ class SkillType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('sector', null, ['choice_label' => 'name'])
+            ->add('sector', null, [
+                'choice_label' => 'name',
+                'label' => 'Secteur d\'activité',
+                'placeholder' => 'Sélectionnez votre choix',
+                'required'   => true,
+            ])
             ->add('name', TextareaType::class, ['label' => 'compétences']);
     }
 

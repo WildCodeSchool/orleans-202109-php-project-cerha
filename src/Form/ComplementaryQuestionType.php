@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Candidat;
+use App\Entity\Candidate;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,22 +14,20 @@ class ComplementaryQuestionType extends AbstractType
     {
         $builder
             ->add('timeSearch', TextType::class, [
-                'label' => 'Depuis combien de temps êtes-vous en recherche active ?'
+                'label' => false,
                 ])
             ->add('searchQuality', TextType::class, [
-                'label' => 'Vous qualifierez votre recherche : d\'efficace, 
-                pas assez ciblée, vous ne savez pas par où commencer :'
+                'label' => false,
                 ])
             ->add('profilQuality', TextType::class, [
-                'label' => 'Vous qualifierez votre profil : d\'attractif, de rare, d\'atypique, commun :'
-                ])
-        ;
+                'label' => false,
+                ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Candidat::class,
+            'data_class' => Candidate::class,
         ]);
     }
 }

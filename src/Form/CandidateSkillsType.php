@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Candidat;
+use App\Entity\Candidate;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,6 +16,9 @@ class CandidateSkillsType extends AbstractType
             ->add('skills', CollectionType::class, [
                 'label' => false,
                 'entry_type'   => SkillType::class,
+                'by_reference' => false,
+                'allow_add' => true,
+                'allow_delete' => true,
                 'entry_options'  => [
                     'label' => false,]
 
@@ -25,7 +28,7 @@ class CandidateSkillsType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Candidat::class,
+            'data_class' => Candidate::class,
         ]);
     }
 }
