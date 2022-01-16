@@ -23,10 +23,20 @@
 			<div class="card-text p-3 mb-5 rounded-top d-flex justify-content-center align-content-center">
 				<p class="mb-0">Créer mon espace personnel</p>
 			</div>
+
 			{{ form_start(registrationForm,
         {'attr': {
         'class': 'd-flex flex-column mt-2 mb-4 px-5 container'
         }}) }}
+			<div class="row mb-4">
+				{{ form_label(registrationForm.type) }}
+				<div class="col-6">
+					{{ form_widget(registrationForm.type[0]) }}
+				</div>
+				<div class="col-6">
+					{{ form_widget(registrationForm.type[1]) }}
+				</div>
+			</div>
 			{{ form_row(registrationForm.gender, {
         'attr': {
         'class': 'd-flex justify-content-between'
@@ -63,15 +73,6 @@
 			{{ form_row(registrationForm.password, {
         label: 'Password'
         }) }}
-			<div class="row mb-4">
-				{{ form_label(registrationForm.type) }}
-				<div class="col-6">
-					{{ form_widget(registrationForm.type[0]) }}
-				</div>
-				<div class="col-6">
-					{{ form_widget(registrationForm.type[1]) }}
-				</div>
-			</div>
 			<div class="row">
 				<div class="col-7 offset-3">
 					{{ form_row(registrationForm.agreeTerms, {
