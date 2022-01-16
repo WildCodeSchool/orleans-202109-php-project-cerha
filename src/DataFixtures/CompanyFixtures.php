@@ -47,7 +47,7 @@ class CompanyFixtures extends Fixture
         $company->setInstagram('http://www.instagram.com');
         $company->setLinkedin('http://www.linkedin.com');
         $company->setNeed($faker->paragraph(8));
-        $company->setUser($this->getReference('user_fabrice'));
+        $company->setUser($this->getReference('user_will'));
         $manager->persist($company);
         $this->addReference('company_mcdo', $company);
 
