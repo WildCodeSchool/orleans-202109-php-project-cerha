@@ -1,33 +1,29 @@
 <div class="row companyContact mt-5" id="companyContact">
 	<div class="card p-4 col-md-6 offset-md-3">
+		{% if is_granted("ROLE_ADMIN") == false %}
+			<a class="btn btn-outline-light ms-5 align-self-end fs-5  bi bi-pencil-square" href="{{ path('company_edit', {id: company.id}) }}">
+				Modifier</a>
+		{% endif %}
 		<h2 class="card-title text-secondary text-center mt-3 pt-2 px-4">Contact</h2>
 		<ul class="list-unstyled mt-3">
 			<li>
-				<svg class="detailsArrow mx-3" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#0e4d94" class="bi bi-arrow-right-circle-fill" viewbox="0 0 16 16">
-					<path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-				</svg>
+				<i class="bi bi-person-circle mx-3"></i>
 				{{ company.user.gender }}
 				{{ company.user.firstname }}
 				{{ company.user.lastname }}
 			</li>
 			<li>
-				<svg class="detailsArrow mx-3" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#0e4d94" class="bi bi-arrow-right-circle-fill" viewbox="0 0 16 16">
-					<path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-				</svg>
-				{{ company.contactRole }}</li>
+				<i class="bi bi-briefcase mx-3"></i>
+				{{ company.contactRole }}
+			</li>
 			<li>
-				<svg class="detailsArrow mx-3" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#0e4d94" class="bi bi-arrow-right-circle-fill" viewbox="0 0 16 16">
-					<path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-				</svg>
-				{{ company.user.email }}</li>
+				<i class="bi bi-envelope  mx-3 "></i>
+				{{ company.user.email }}
+			</li>
 			<li>
-				<svg class="detailsArrow mx-3" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#0e4d94" class="bi bi-arrow-right-circle-fill" viewbox="0 0 16 16">
-					<path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-				</svg>
-				{{ company.user.phoneNumber }}</li>
-		</li>
-	</ul>
-	{% if is_granted("ROLE_ADMIN") == false %}
-		<a class="btn btn-secondary fw-bold text-light align-self-center mb-4 " href="{{ path('company_edit', {id: company.id}) }}">Modifier</a>
-	{% endif %}
-</div></div>
+				<i class="bi bi-telephone-forward  mx-3 "></i>
+				{{ company.user.phoneNumber }}
+			</li>
+		</ul>
+	</div>
+</div>
