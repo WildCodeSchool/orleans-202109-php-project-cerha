@@ -44,6 +44,7 @@ class CompanyController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
+            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
             return $this->redirectToRoute('company_show', ['id' => $company->getId()], Response::HTTP_SEE_OTHER);
         }
@@ -67,6 +68,7 @@ class CompanyController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
+            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
             return $this->redirectToRoute('company_show', ['id' => $company->getId()], Response::HTTP_SEE_OTHER);
         }
@@ -89,6 +91,7 @@ class CompanyController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
+            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
             return $this->redirectToRoute('company_show', ['id' => $company->getId()], Response::HTTP_SEE_OTHER);
         }
