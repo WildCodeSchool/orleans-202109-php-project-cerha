@@ -23,31 +23,31 @@ class Candidate
     private int $id;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      * @Assert\NotBlank
      */
-    private \DateTimeInterface $birthDate;
+    private ?\DateTimeInterface $birthDate;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=255)
      */
-    private string $address;
+    private ?string $address;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=5)
      */
-    private string $postalCode;
+    private ?string $postalCode;
 
     /**
-     * @ORM\Column(type="string", length=155)
+     * @ORM\Column(type="string", length=155, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=155)
      */
-    private string $city;
+    private ?string $city;
 
     /**
      * @ORM\OneToMany(targetEntity=SoftSkill::class,

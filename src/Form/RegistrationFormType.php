@@ -45,8 +45,8 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Je suis :',
                 'mapped' => false,
                 'choices' => [
-                    'Une entreprise' => 'Entreprise',
-                    'Un candidat' => 'Candidat'
+                    'Une entreprise' => 'company',
+                    'Un candidat' => 'candidate'
                 ],
                 'expanded' => true, 'multiple' => false
             ])

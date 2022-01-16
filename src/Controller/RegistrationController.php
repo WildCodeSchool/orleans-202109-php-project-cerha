@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Candidat;
+use App\Entity\Candidate;
+use App\Entity\Company;
 use App\Entity\User;
 use App\Form\RegistrationCandidateType;
 use App\Form\RegistrationFormType;
@@ -49,11 +50,19 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            if ($form->get('type')->getData() == 'candidate') {
+                $candidate = new Candidate();
+                $candidate->setUser($user);
+                $user->setCandidate($candidate);
+            } elseif ($form->get('type')->getData() == 'company') {
+                $company = new Company();
+                $company->setUser($user);
+                $user->setCompany($company);
+            }
+
             $entityManager->persist($user);
 
             $entityManager->flush();
-
-            $_POST['user'] = $user;
 
             // generate a signed url and email it to the user
             /** @var string */
@@ -70,14 +79,7 @@ class RegistrationController extends AbstractController
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
 
-            $userId = $user->getId();
             $this->addFlash('warning', 'Allez vérifier votre email afin de compléter votre inscription');
-
-            if ($form->get('type')->getData() == 'Entreprise') {
-                return $this->redirectToRoute('register_candidat', ['id' => $userId]);
-            } else {
-                return $this->redirectToRoute('register_candidat', ['id' => $userId]);
-            }
         }
 
         return $this->render('registration/register.html.twig', [
@@ -107,33 +109,5 @@ class RegistrationController extends AbstractController
         $this->addFlash('success', 'Votre addresse email a été vérifiée.');
 
         return $this->redirectToRoute('home');
-    }
-
-    /**
-     * @Route("/register/candidat", name="register_candidat")
-     */
-    public function candidatRegistration(
-        Request $request,
-        EntityManagerInterface $entityManager,
-        UserRepository $userRepository
-    ): Response {
-        $user = $userRepository->findOneById($_GET['id']);
-        $candidat = new Candidat();
-        $form = $this->createForm(RegistrationCandidateType::class, $candidat);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $candidat->setUser($user);
-            $entityManager->persist($candidat);
-            $entityManager->flush();
-
-            $this->addFlash('success', 'Inscription terminée, merci de vous connecter et compléter votre profil.');
-
-            return $this->redirectToRoute('candidat_show');
-        }
-
-        return $this->render('registration/registerCandidat.html.twig', [
-            'registrationCandidatForm' => $form->createView(),
-        ]);
     }
 }
