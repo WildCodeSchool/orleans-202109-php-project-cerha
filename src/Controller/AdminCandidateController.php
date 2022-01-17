@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Candidate;
+use App\Entity\CandidateComment;
+use App\Form\CandidateCommentType;
 use App\Form\CandidateType;
 use App\Repository\CandidateRepository;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -28,33 +31,26 @@ class AdminCandidateController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/nouveau", name="admin_candidate_new", methods={"GET", "POST"})
-     */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $candidate = new Candidate();
-        $form = $this->createForm(CandidateType::class, $candidate);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($candidate);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('admin_candidate_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('admin_candidate/new.html.twig', [
-            'candidate' => $candidate,
-            'form' => $form,
-        ]);
-    }
 
     /**
      * @Route("/{id}", name="admin_candidate_show", methods={"GET"})
      */
-    public function show(Candidate $candidate): Response
+    public function show(Candidate $candidate, Request $request): Response
     {
+        $comment = new CandidateComment();
+        $form = $this->createForm(CandidateCommentType::class, $comment);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setCreatedAt(new DateTime());
+            $comment->setCandidate($candidate);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($comment);
+            $entityManager->flush();
+            $this->addFlash('succes', 'Votre commentaire a été bien ajouté.');
+            return $this->redirectToRoute('admin_candidate_index');
+        }
+
+
         return $this->render('admin_candidate/show.html.twig', [
             'candidate' => $candidate,
         ]);

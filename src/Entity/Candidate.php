@@ -123,6 +123,12 @@ class Candidate
      */
     private Collection $additionalDocuments;
 
+    /**
+     * @ORM\OneToMany(targetEntity=CandidateComment::class, mappedBy="candidate")
+     */
+    private Collection $candidateComments;
+
+
 
     public function __construct()
     {
@@ -133,6 +139,7 @@ class Candidate
         $this->experiences = new ArrayCollection();
         $this->formations = new ArrayCollection();
         $this->additionalDocuments = new ArrayCollection();
+        $this->candidateComments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -441,6 +448,36 @@ class Candidate
                 $additionalDocument->setCandidate(null);
             }
         }
+        return $this;
+    }
+
+    /**
+     * @return Collection|CandidateComment[]
+     */
+    public function getCandidateComments(): Collection
+    {
+        return $this->candidateComments;
+    }
+
+    public function addCandidateComment(CandidateComment $candidateComment): self
+    {
+        if (!$this->candidateComments->contains($candidateComment)) {
+            $this->candidateComments[] = $candidateComment;
+            $candidateComment->setCandidate($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCandidateComment(CandidateComment $candidateComment): self
+    {
+        if ($this->candidateComments->removeElement($candidateComment)) {
+            // set the owning side to null (unless already changed)
+            if ($candidateComment->getCandidate() === $this) {
+                $candidateComment->setCandidate(null);
+            }
+        }
+
         return $this;
     }
 }
