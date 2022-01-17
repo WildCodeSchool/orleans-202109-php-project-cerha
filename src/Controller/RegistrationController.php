@@ -54,10 +54,12 @@ class RegistrationController extends AbstractController
                 $candidate = new Candidate();
                 $candidate->setUser($user);
                 $user->setCandidate($candidate);
+                $user->setRoles(['ROLE_CANDIDATE']);
             } elseif ($form->get('type')->getData() == User::USER_ROLES[1]) {
                 $company = new Company();
                 $company->setUser($user);
                 $user->setCompany($company);
+                $user->setRoles(['ROLE_COMPANY']);
             }
 
             $entityManager->persist($user);
