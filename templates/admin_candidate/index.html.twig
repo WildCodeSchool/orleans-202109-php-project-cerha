@@ -8,6 +8,12 @@
 <h1 class="text-center mt-5 mb-4">Administration candidats</h1>
 
 <main class="container">
+    <section class="searchForm">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn btn-secondary">Search</button>
+        {{ form_end(form) }}
+    </section>
     <table class="table table-hover">
         <thead class="bg-primary">
             <tr>

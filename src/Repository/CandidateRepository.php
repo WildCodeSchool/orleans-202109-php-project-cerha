@@ -61,4 +61,19 @@ class CandidateRepository extends ServiceEntityRepository
         ->getQuery()
         ->getResult();
     }
+
+    public function findByName(string $name): array
+    {
+        /** @var array */
+        return $this->createQueryBuilder('c')
+        ->join('c.user', 'u')
+        ->where('u.lastname LIKE :lastname')
+        ->orWhere('u.firstname LIKE :firstname')
+        ->setParameter('firstname', '%' . $name . '%')
+        ->setParameter('lastname', '%' . $name . '%')
+        ->orderBy('u.lastname', 'ASC')
+        ->addOrderBy('u.firstname', 'ASC')
+        ->getQuery()
+        ->getResult();
+    }
 }
