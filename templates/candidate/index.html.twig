@@ -15,19 +15,15 @@
 	<div class="d-flex">
 		{% include "candidate/components/_SideMenuCandidate.html.twig" %}
 		<div class="container my-5">
-			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			<div class="alert alert-danger alert-dismissible fade show  my-2 col-lg-6 offset-lg-3" role="alert">
 				{% if candidate.candidatecomments is not null %}
-					{% for candidatecomment in candidate.candidatecomments %}
-						Bonjour
-						{{ candidate.user.firstname }}
-						{{ candidate.user.lastname }}.<strong>
-							Vous avez
-							{{ candidatecomment|length }}
-							message(s)</strong>.
-
-						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-
-					{% endfor %}
+					Bonjour
+					{{ candidate.user.firstname }}
+					{{ candidate.user.lastname }}.<strong>
+						Vous avez
+						{{ candidate.candidatecomments|length }}
+						message(s)</strong>.
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 				{% endif %}
 			</div>
 			{% include "candidate/components/_contactDetails.html.twig" %}
@@ -39,7 +35,6 @@
 			{% include "candidate/components/_hobbies.html.twig" %}
 			{% include "candidate/components/_complementary-questions.html.twig" %}
 			{% include "candidate/components/_documents.html.twig" %}
-
 			<div class="p-4 col-md-6 offset-md-3">
 				<div class="alert alert-secondary" role="alert">
 					{% if candidate.candidatecomments is not null %}
@@ -47,7 +42,6 @@
 							<div class="fs-4">
 								Message reçu le
 								{{ candidatecomment.createdAt|date("m/d/Y") }}</div>
-
 							<p>{{ candidatecomment.comment }}</p>
 						{% endfor %}
 					{% endif %}
