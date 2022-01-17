@@ -39,9 +39,9 @@
 				<div class="alert alert-secondary" role="alert">
 					{% if candidate.candidatecomments is not null %}
 						{% for candidatecomment in candidate.candidatecomments|reverse %}
-							<div class="fs-4">
+							<div class="fs-5">
 								Message reçu le
-								{{ candidatecomment.createdAt|date("m/d/Y") }}</div>
+								{{ candidatecomment.createdAt|date("m-d-Y") }}</div>
 							<p>{{ candidatecomment.comment }}</p>
 						{% endfor %}
 					{% endif %}
