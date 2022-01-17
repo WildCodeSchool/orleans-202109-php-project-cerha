@@ -50,9 +50,9 @@
 			{% include "candidate/components/_complementary-questions.html.twig" %}
 		</section>
 		<div>
-			{% for comment in candidate.candidatecomments|reverse %}
+			{% for candidatecomment in candidate.candidatecomments|reverse %}
 				Commentaire :
-				{{ comment.comment }}
+				{{ candidatecomment.comment }}
 
 				{% include "admin_candidate/_delete_form.html.twig" %}
 			{% endif %}
