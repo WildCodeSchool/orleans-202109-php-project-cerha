@@ -21,10 +21,16 @@ class AdminCandidateController extends AbstractController
     /**
      * @Route("/", name="admin_candidate_index", methods={"GET"})
      */
-    public function index(CandidateRepository $candidateRepository): Response
+    public function index(CandidateRepository $candidateRepository, Request $request): Response
     {
+        $page = (int)$request->query->get("page", '1');
+        $limit = 5;
+
+        $candidates = $candidateRepository->getPaginatedCandidates($page, $limit);
+        $totalCandidates = $candidateRepository->getTotalCandidates();
+
         return $this->render('admin_candidate/index.html.twig', [
-            'candidates' => $candidateRepository->findAllByName(),
+            'candidates' => $candidates, 'total' => $totalCandidates, 'limit' => $limit, 'page' => $page
         ]);
     }
 

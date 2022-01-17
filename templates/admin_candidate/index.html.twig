@@ -1,44 +1,87 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }} - Administration candidats{% endblock %}
+{% block title %}
+	{{ parent() }}
+	- Administration candidats
+{% endblock %}
 {% block stylesheets %}
-{{ encore_entry_link_tags('adminCandidate') }}
+	{{ encore_entry_link_tags('adminCandidate') }}
 {% endblock %}
 {% block body %}
-<h1 class="text-center mt-5 mb-4">Administration candidats</h1>
+	<h1 class="text-center mt-5 mb-4">Administration candidats</h1>
 
-<main class="container">
-    <table class="table table-hover">
-        <thead class="bg-primary">
-            <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Ville</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for candidate in candidates %}
-            <tr>
-                <td class="align-middle"> {{ candidate.user.lastname }} </td>
-                <td class="align-middle">{{ candidate.user.firstname }}</td>
-                <td class="align-middle">{{ candidate.city }}</td>
-                <td class="d-flex justify-content-end gap-3">
-                    <a href="{{ path('admin_candidate_show', {'id': candidate.id}) }}"><button
-                            class="btn btn-primary px-3 py-1"><i class="bi bi-eye"></i></button></a>
-                            <a href="{{ path('admin_candidate_pdf', {'id': candidate.id}) }}"><button class="btn btn-secondary px-3 py-1 text-light">
-                                <i class="bi bi-download"></i>
-                            </button></a>
-                    {{ include('admin_candidate/_delete_form.html.twig') }}
-                </td>
-            </tr>
-            {% else %}
-            <tr>
-                <td colspan="9">Aucun candidat trouvé</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</main>
+	<main class="container">
+		<table class="table table-hover">
+			<thead class="bg-primary">
+				<tr>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Ville</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for candidate in candidates %}
+					<tr>
+						<td class="align-middle">
+							{{ candidate.user.lastname }}
+						</td>
+						<td class="align-middle">{{ candidate.user.firstname }}</td>
+						<td class="align-middle">{{ candidate.city }}</td>
+						<td class="d-flex justify-content-end gap-3">
+							<a href="{{ path('admin_candidate_show', {'id': candidate.id}) }}">
+								<button class="btn btn-primary px-3 py-1">
+									<i class="bi bi-eye"></i>
+								</button>
+							</a>
+							<a href="{{ path('admin_candidate_pdf', {'id': candidate.id}) }}">
+								<button class="btn btn-secondary px-3 py-1 text-light">
+									<i class="bi bi-download"></i>
+								</button>
+							</a>
+							{{ include('admin_candidate/_delete_form.html.twig') }}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="9">Aucun candidat trouvé</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<ul class="paging list-group d-flex flex-row list-unstyled ">
+			<li class="{{ (page == 1) ? 'disabled' : '' }}">
+				<a href="?page=1" class="btn btn-primary backward d-flex align-items-center {{ (page == 1) ? 'disabled' : '' }} me-2">
+					<i class="bi bi-skip-backward text-light"></i>
+				</a>
+			</li>
 
+			<li class="{{ (page == 1) ? 'disabled' : '' }}">
+				<a href="{{ (page > 1) ? '?page=' ~ (page - 1) : '' }}" class="btn btn-primary backward d-flex align-items-center {{ (page == 1) ? 'disabled' : '' }} me-2">
+					<i class="bi bi-caret-left text-light"></i>
+				</a>
+			</li>
+
+			{% set pages = ((total / limit)|round(0, 'ceil')) %}
+			{% for number_page in 1..pages %}
+
+				<li>
+					<a href="?page={{ number_page }}" class="btn btn-primary me-2 {{ (page == number_page) ? 'active' : '' }}">{{ number_page }}</a>
+				</li>
+
+			{% endfor %}
+
+			<li class="{{ (page == pages) ? 'disabled' : '' }}">
+				<a href="{{ (page < pages) ? '?page=' ~ (page + 1) : '' }}" class="btn btn-primary d-flex align-items-center forward {{ (page == pages) ? 'disabled' : '' }} me-2">
+					<i class="bi bi-caret-right text-light"></i>
+				</a>
+			</li>
+
+			<li class="{{ (page == pages) ? 'disabled' : '' }}">
+				<a href="?page={{ pages }}" class="btn btn-primary forward d-flex align-items-center {{ (page == pages) ? 'disabled' : '' }} me-2">
+					<i class="bi bi-skip-forward text-light"></i>
+				</a>
+			</li>
+		</ul>
+	</main>
 {% endblock %}

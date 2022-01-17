@@ -61,4 +61,32 @@ class CandidateRepository extends ServiceEntityRepository
         ->getQuery()
         ->getResult();
     }
+
+    public function getPaginatedCandidates(int $page, int $limit): array
+    {
+        $query = $this->createQueryBuilder('c')
+        ->join('c.user', 'u')
+        ->orderBy('u.lastname', 'ASC')
+        ->addOrderBy('u.firstname', 'ASC')
+        ->setFirstResult(($page * $limit) - $limit)
+        ->setMaxResults($limit)
+        ;
+
+        /**
+         * @var array
+         */
+        return $query->getQuery()->getResult();
+    }
+
+    public function getTotalCandidates(): int
+    {
+        $query = $this->createQueryBuilder('c')
+        ->select('COUNT(c)')
+        ;
+
+        /**
+         * @var int
+         */
+        return $query->getQuery()->getSingleScalarResult();
+    }
 }
