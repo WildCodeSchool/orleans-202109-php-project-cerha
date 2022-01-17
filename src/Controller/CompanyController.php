@@ -53,6 +53,7 @@ class CompanyController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
+            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
             return $this->redirectToRoute('company_show');
         }
@@ -81,6 +82,7 @@ class CompanyController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
+            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
             return $this->redirectToRoute('company_show');
         }
@@ -108,6 +110,7 @@ class CompanyController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
+            $this->addFlash('success', 'Votre modification a été bien enregistrée.');
 
             return $this->redirectToRoute('company_show');
         }
