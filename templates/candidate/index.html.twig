@@ -10,10 +10,15 @@
 	{{ encore_entry_link_tags('sideMenu') }}
 {% endblock %}
 
+
 {% block body %}
 	<div class="d-flex">
 		{% include "candidate/components/_SideMenuCandidate.html.twig" %}
 		<div class="container my-5">
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Vous avez!</strong> You should check in on some of those fields below.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 			{% include "candidate/components/_contactDetails.html.twig" %}
 			{% include "candidate/components/_skills.html.twig" %}
 			{% include "candidate/components/_formations.html.twig" %}
