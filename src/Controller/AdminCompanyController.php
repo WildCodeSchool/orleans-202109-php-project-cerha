@@ -41,6 +41,7 @@ class AdminCompanyController extends AbstractController
 
     /**
      * @Route("/{id}", name="admin_company_delete", methods={"POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Company $company, EntityManagerInterface $entityManager): Response
     {
@@ -50,6 +51,7 @@ class AdminCompanyController extends AbstractController
             $entityManager->remove($company);
             $entityManager->flush();
         }
+        $this->addFlash('danger', 'L\' entreprise a bien été supprimée');
 
         return $this->redirectToRoute('admin_company_index', [], Response::HTTP_SEE_OTHER);
     }
