@@ -68,10 +68,9 @@ class CandidateRepository extends ServiceEntityRepository
         ->join('c.user', 'u')
         ->orderBy('u.lastname', 'ASC')
         ->addOrderBy('u.firstname', 'ASC')
-        ->setFirstResult(($page * $limit) - $limit)
+        ->setFirstResult(($page * $limit) - ($limit))
         ->setMaxResults($limit)
         ;
-
         /**
          * @var array
          */

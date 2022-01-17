@@ -24,16 +24,15 @@ class AdminCandidateController extends AbstractController
     public function index(CandidateRepository $candidateRepository, Request $request): Response
     {
         $totalCandidates = $candidateRepository->getTotalCandidates();
-        $limit = 50;
-        $page = (int)$request->query->get("page");
-
-        if ($page > ceil($totalCandidates / $limit)) {
+        define('LIMIT', 5);
+        $page = (int)$request->query->get("page", '1');
+        if ($page > ceil($totalCandidates / LIMIT)) {
             $page = 1;
         }
-        $candidates = $candidateRepository->getPaginatedCandidates($page, $limit);
+        $candidates = $candidateRepository->getPaginatedCandidates($page, LIMIT);
 
         return $this->render('admin_candidate/index.html.twig', [
-            'candidates' => $candidates, 'total' => $totalCandidates, 'limit' => $limit, 'page' => $page
+            'candidates' => $candidates, 'total' => $totalCandidates, 'limit' => LIMIT, 'page' => $page
         ]);
     }
 
