@@ -76,4 +76,15 @@ class CandidateRepository extends ServiceEntityRepository
         ->getQuery()
         ->getResult();
     }
+
+    public function findAllASC(): array
+    {
+        /** @var array */
+        return $this->createQueryBuilder('c')
+        ->join('c.user', 'u')
+        ->orderBy('u.lastname', 'ASC')
+        ->addOrderBy('u.firstname', 'ASC')
+        ->getQuery()
+        ->getResult();
+    }
 }

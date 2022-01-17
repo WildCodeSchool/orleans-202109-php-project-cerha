@@ -40,7 +40,7 @@ class AdminCandidateController extends AbstractController
 
             $candidates = $candidateRepository->findByName($search);
         } else {
-            $candidates = $candidateRepository->findAll();
+            $candidates = $candidateRepository->findAllASC();
         }
 
         return $this->render('admin_candidate/index.html.twig', [
