@@ -1,32 +1,43 @@
 <nav class="topNavbar navbar navbar-expand-lg navbar-light bg-light sticky-top px-4">
 	<div class="container-fluid d-flex">
 		<a class="navbar-brand order-first" href="{{ path('home') }}">
-			<img class="logoCERHA" src="{{ asset('build/images/logo-detoure.png') }}" alt="logo CERHA" />
+			<img class="logoCERHA" src="{{ asset('build/images/CERHA-logo-detoure.svg') }}" alt="logo CERHA"/>
 		</a>
 		<div class="navbar-nav order-lg-last order-xs-2 ms-auto me-2">
 			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-			<a class="btn btn-secondary fw-bold " href="{{ path('candidate_show') }}">Mon espace</a>
+				<div class="nav-item dropdown">
+					<button type="button" class="btn btn-secondary fw-bold dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mon espace</button>
+					<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+						{% if is_granted('ROLE_CANDIDATE') %}
+							<a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ path('candidate_show') }}">
+								<i class="bi bi-person-workspace text-primary me-2"></i>
+								{{ app.user.firstname }}
+								{{ app.user.lastname }}</a>
+						{% endif %}
+						{% if is_granted('ROLE_COMPANY') %}
+							<a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ path('company_show') }}">
+								<i class="bi bi-person-workspace text-primary me-2"></i>
+								{{ app.user.company.denomination }}</a>
+						{% endif %}
+						<hr class="dropdown-divider">
+						<a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ path('logout') }}">
+							<i class="bi bi-x-circle text-danger me-2"></i>Déconnexion</a>
+					</div>
+				</div>
 			{% else %}
-			<a class="btn btn-secondary fw-bold " href="{{ path('login') }}">Connexion</a>
+				<a class="btn btn-secondary fw-bold " href="{{ path('login') }}">Connexion</a>
 			{% endif %}
 		</div>
-		<button class="navbar-toggler order-lg-2 order-xs-3" type="button" data-bs-toggle="collapse"
-			data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-			aria-label="Toggle navigation">
+		<button class="navbar-toggler order-lg-2 order-xs-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse order-lg-3 order-xs-4 justify-content-end me-5"
-			id="navbarSupportedContent">
+		<div class="collapse navbar-collapse order-lg-3 order-xs-4 justify-content-end me-5" id="navbarSupportedContent">
 			<div class="pagesLinks navbar-nav mb-2 mb-lg-0">
 				<a class="nav-link fs-5" href="{{ path('home') }}">Accueil</a>
 				<a class="nav-link fs-5" href="{{ path('about') }}">À propos</a>
 				<a class="nav-link fs-5" href='{{ path('services') }}'>Services</a>
 				<a class="nav-link fs-5" href="{{ path('contact') }}">Contact</a>
-				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-				<a href="{{ path('logout') }}" class="nav-link fs-5 ms-4">Déconnexion</a>
-				{% endif %}
 			</div>
 		</div>
-
 	</div>
 </nav>
