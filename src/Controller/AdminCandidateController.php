@@ -33,7 +33,7 @@ class AdminCandidateController extends AbstractController
 
 
     /**
-     * @Route("/{id}", name="admin_candidate_show", methods={"GET"})
+     * @Route("/{id}", name="admin_candidate_show", methods={"GET", "POST"})
      */
     public function show(Candidate $candidate, Request $request): Response
     {
@@ -46,34 +46,14 @@ class AdminCandidateController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($comment);
             $entityManager->flush();
-            $this->addFlash('succes', 'Votre commentaire a été bien ajouté.');
+            $this->addFlash('success', 'Votre commentaire a été bien ajouté.');
             return $this->redirectToRoute('admin_candidate_index');
         }
 
 
         return $this->render('admin_candidate/show.html.twig', [
             'candidate' => $candidate,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/details", name="admin_candidate_details", methods={"GET", "POST"})
-     */
-    public function edit(Request $request, Candidate $candidate, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(CandidateType::class, $candidate);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('admin_candidate_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-
-        return $this->renderForm('admin_candidate/edit.html.twig', [
-            'candidate' => $candidate,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 
