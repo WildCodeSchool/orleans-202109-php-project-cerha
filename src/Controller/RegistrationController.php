@@ -50,11 +50,11 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            if ($form->get('type')->getData() == 'candidate') {
+            if ($form->get('type')->getData() == User::USER_ROLES[0]) {
                 $candidate = new Candidate();
                 $candidate->setUser($user);
                 $user->setCandidate($candidate);
-            } elseif ($form->get('type')->getData() == 'company') {
+            } elseif ($form->get('type')->getData() == User::USER_ROLES[1]) {
                 $company = new Company();
                 $company->setUser($user);
                 $user->setCompany($company);
@@ -80,6 +80,7 @@ class RegistrationController extends AbstractController
             );
 
             $this->addFlash('warning', 'Allez vérifier votre email afin de compléter votre inscription');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('registration/register.html.twig', [
