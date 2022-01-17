@@ -118,7 +118,7 @@ class CandidateController extends AbstractController
     }
 
     /**
-     * @Route("/profil/edit/hobbies", name="hobby_edit")
+     * @Route("/profil/edit/hobbies", name="hobbies_edit")
      * @IsGranted("ROLE_USER")
      */
     public function editHobbies(Request $request): Response
