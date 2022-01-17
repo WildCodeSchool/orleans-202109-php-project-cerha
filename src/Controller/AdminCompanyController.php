@@ -51,7 +51,7 @@ class AdminCompanyController extends AbstractController
             $entityManager->remove($company);
             $entityManager->flush();
         }
-        $this->addFlash('success', 'L\' entreprise a bien été supprimée');
+        $this->addFlash('danger', 'L\' entreprise a bien été supprimée');
 
         return $this->redirectToRoute('admin_company_index', [], Response::HTTP_SEE_OTHER);
     }
