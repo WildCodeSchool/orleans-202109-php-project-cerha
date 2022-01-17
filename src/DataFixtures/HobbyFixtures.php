@@ -19,6 +19,14 @@ class HobbyFixtures extends Fixture implements DependentFixtureInterface
             $newHobby->setCandidate($this->getReference('candidate_' . ($key)));
             $manager->persist($newHobby);
         }
+
+        foreach (self::HOBBIES as $key => $hobby) {
+            $newHobby = new Hobby();
+            $newHobby->setName($hobby);
+            $newHobby->setCandidate($this->getReference('candidate_sylvain'));
+            $manager->persist($newHobby);
+        }
+
         $manager->flush();
     }
 
