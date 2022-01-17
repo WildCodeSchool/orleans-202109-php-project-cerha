@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Candidate;
+use App\Entity\CandidateComment;
+use App\Form\CandidateCommentType;
 use App\Form\CandidateType;
 use App\Repository\CandidateRepository;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -28,56 +31,29 @@ class AdminCandidateController extends AbstractController
         ]);
     }
 
+
     /**
-     * @Route("/nouveau", name="admin_candidate_new", methods={"GET", "POST"})
+     * @Route("/{id}", name="admin_candidate_show", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function show(Candidate $candidate, Request $request): Response
     {
-        $candidate = new Candidate();
-        $form = $this->createForm(CandidateType::class, $candidate);
+        $comment = new CandidateComment();
+        $form = $this->createForm(CandidateCommentType::class, $comment);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($candidate);
+            $comment->setCreatedAt(new DateTime());
+            $comment->setCandidate($candidate);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($comment);
             $entityManager->flush();
-
-            return $this->redirectToRoute('admin_candidate_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Votre commentaire a été bien ajouté.');
+            return $this->redirectToRoute('admin_candidate_index');
         }
 
-        return $this->renderForm('admin_candidate/new.html.twig', [
-            'candidate' => $candidate,
-            'form' => $form,
-        ]);
-    }
 
-    /**
-     * @Route("/{id}", name="admin_candidate_show", methods={"GET"})
-     */
-    public function show(Candidate $candidate): Response
-    {
         return $this->render('admin_candidate/show.html.twig', [
             'candidate' => $candidate,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/details", name="admin_candidate_details", methods={"GET", "POST"})
-     */
-    public function edit(Request $request, Candidate $candidate, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(CandidateType::class, $candidate);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('admin_candidate_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-
-        return $this->renderForm('admin_candidate/edit.html.twig', [
-            'candidate' => $candidate,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 

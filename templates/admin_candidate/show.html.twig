@@ -1,46 +1,67 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }} - Détails {{ candidate.user.lastname }} {{ candidate.user.firstname }} {% endblock %}
+{% block title %}
+	{{ parent() }}
+	- Détails
+	{{ candidate.user.lastname }}
+	{{ candidate.user.firstname }}
+{% endblock %}
 {% block stylesheets %}
-{{ encore_entry_link_tags('adminCandidate') }}
+	{{ encore_entry_link_tags('adminCandidate') }}
 {% endblock %}
 {% block body %}
-<main class="container">
-    <h1 class="text-center mt-5 mb-4 border-bottom pb-2">Détails de {{ candidate.user.gender }}.
-        {{ candidate.user.lastname }} {{ candidate.user.firstname }}</h1>
-    <div class="row my-3">
-        <div class="col-3 offset-4">
-            <a class="btn btn-secondary text-light" href="{{ path('admin_candidate_index') }}"><i
-                    class="bi bi-arrow-left-square"></i>
-                Retour</a>
-        </div>
-        <div class="col-3">
-            {{ include('admin_candidate/_delete_form.html.twig') }}
-        </div>
-    </div>
-    <section class="Details">
-        {% include "candidate/components/_contactDetails.html.twig" %}
-    </section>
-    <section class="Skills">
-        {% include "candidate/components/_skills.html.twig" %}
-    </section>
-    <section class="Formations">
-        {% include "candidate/components/_formations.html.twig" %}
-    </section>
-    <section class="experiences">
-        {% include "candidate/components/_experiences.html.twig" %}
-    </section>
-    <section class="softSkills">
-        {% include "candidate/components/_experiences.html.twig" %}
-    </section>
-    <section class="Languages">
-        {% include "candidate/components/_languages.html.twig" %}
-    </section>
-    <section class="Hobbies">
-        {% include "candidate/components/_hobbies.html.twig" %}
-    </section>
-    <section class="Other">
-        {% include "candidate/components/_complementary-questions.html.twig" %}
-    </section>
-</main>
+	<main class="container">
+		<h1 class="text-center mt-5 mb-4 border-bottom pb-2">Détails de
+			{{ candidate.user.gender }}.
+			{{ candidate.user.lastname }}
+			{{ candidate.user.firstname }}</h1>
+		<div class="row my-3">
+			<div class="col-3 offset-4">
+				<a class="btn btn-secondary text-light" href="{{ path('admin_candidate_index') }}">
+					<i class="bi bi-arrow-left-square"></i>
+					Retour</a>
+			</div>
+			<div class="col-3">
+				{{ include('admin_candidate/_delete_form.html.twig') }}
+			</div>
+		</div>
+		<section class="Details">
+			{% include "candidate/components/_contactDetails.html.twig" %}
+		</section>
+		<section class="Skills">
+			{% include "candidate/components/_skills.html.twig" %}
+		</section>
+		<section class="Formations">
+			{% include "candidate/components/_formations.html.twig" %}
+		</section>
+		<section class="experiences">
+			{% include "candidate/components/_experiences.html.twig" %}
+		</section>
+		<section class="softSkills">
+			{% include "candidate/components/_experiences.html.twig" %}
+		</section>
+		<section class="Languages">
+			{% include "candidate/components/_languages.html.twig" %}
+		</section>
+		<section class="Hobbies">
+			{% include "candidate/components/_hobbies.html.twig" %}
+		</section>
+		<section class="Other">
+			{% include "candidate/components/_complementary-questions.html.twig" %}
+		</section>
+		<div class="col-md-6 et offset-md-3 text-info fs-4">
+			{% if candidate.candidatecomments is not null %}
+				<div>
+					Votre retour :</div>
+				{% for candidatecomment in candidate.candidatecomments|reverse %}
+					<p>{{ candidatecomment.comment }}</p>
+				{% endfor %}
+			{% endif %}
+		</div>
+		<div class="col-md-6 et offset-md-3 ">
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			<input class="btn btn-secondary text-light mb-3" type='submit' value='Ajouter un commentaire'>
+			{{ form_end(form) }}</div>
+	</main>
 {% endblock %}
