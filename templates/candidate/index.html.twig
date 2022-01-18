@@ -42,7 +42,7 @@
 							<div class="fs-5">
 								Message reçu le
 								{{ candidatecomment.createdAt|date("m-d-Y") }}</div>
-							<p>{{ candidatecomment.comment }}</p>
+							<div class="mb-4 mt-1">{{ candidatecomment.comment }}</div>
 						{% endfor %}
 					{% endif %}
 				</div>
