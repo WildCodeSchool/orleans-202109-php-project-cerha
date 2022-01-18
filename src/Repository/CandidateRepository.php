@@ -70,8 +70,10 @@ class CandidateRepository extends ServiceEntityRepository
             $qb->expr()->concat('u.lastname', $qb->expr()->concat($qb->expr()->literal(' '), 'u.firstname')) .
             'LIKE :fullname'
         )
-        ->orWhere($qb->expr()->concat('u.firstname', $qb->expr()->concat($qb->expr()->literal(' '), 'u.lastname')) .
-        'LIKE :fullname')
+        ->orWhere(
+            $qb->expr()->concat('u.firstname', $qb->expr()->concat($qb->expr()->literal(' '), 'u.lastname')) .
+            'LIKE :fullname'
+        )
         ->setParameter('fullname', '%' . $name . '%')
         ->orderBy('u.lastname', 'ASC')
         ->addOrderBy('u.firstname', 'ASC');
