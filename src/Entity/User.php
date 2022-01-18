@@ -89,6 +89,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private ?Company $company;
 
+    public const USER_ROLES = ['candidate', 'company'];
+
     public function getId(): ?int
     {
         return $this->id;
