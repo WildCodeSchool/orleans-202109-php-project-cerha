@@ -19,7 +19,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class AdminCompanyController extends AbstractController
 {
     /**
-     * @Route("/", name="admin_company_index", methods={"GET"})
+     * @Route("/", name="admin_company_index", methods={"GET", "POST"})
      * @IsGranted("ROLE_ADMIN")
      */
     public function index(CompanyRepository $companyRepository, Request $request): Response
@@ -33,7 +33,7 @@ class AdminCompanyController extends AbstractController
             /** @var string */
             $search = $datas['search'];
 
-            $companies = $companyRepository->findByName($search);
+            $companies = $companyRepository->findBySiretOrName($search);
         } else {
             $companies = $companyRepository->findAllASC();
         }
