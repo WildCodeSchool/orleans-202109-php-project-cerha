@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * @Route("/admin/company")
+ * @Route("/admin/entreprise")
  */
 class AdminCompanyController extends AbstractController
 {
@@ -62,7 +62,7 @@ class AdminCompanyController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($comment);
             $entityManager->flush();
-            $this->addFlash('success', 'Votre commentaire a été bien ajouté.');
+            $this->addFlash('success', 'Votre commentaire a bien été ajouté.');
             return $this->redirectToRoute('admin_company_index');
         }
         return $this->render('admin_company/show.html.twig', [
@@ -84,6 +84,26 @@ class AdminCompanyController extends AbstractController
             $entityManager->flush();
         }
         $this->addFlash('danger', 'L\' entreprise a bien été supprimée');
+
+        return $this->redirectToRoute('admin_company_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /**
+     * @Route("/commentaire/{id}", name="admin_company_comment_delete", methods={"POST"})
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function deleteComment(
+        Request $request,
+        CompanyComment $companyComment,
+        EntityManagerInterface $entityManager
+    ): Response {
+        /** @var string */
+        $token = $request->request->get('_token');
+        if ($this->isCsrfTokenValid('delete' . $companyComment->getId(), $token)) {
+            $entityManager->remove($companyComment);
+            $entityManager->flush();
+        }
+        $this->addFlash('danger', 'Le commentaire a bien été supprimé');
 
         return $this->redirectToRoute('admin_company_index', [], Response::HTTP_SEE_OTHER);
     }
