@@ -5,9 +5,12 @@ namespace App\Controller;
 use App\Entity\Candidate;
 use App\Entity\CandidateComment;
 use App\Form\CandidateCommentType;
+use App\Entity\User;
 use App\Form\CandidateType;
+use App\Form\SearchUserType;
 use App\Repository\CandidateRepository;
 use DateTime;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -22,12 +25,27 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminCandidateController extends AbstractController
 {
     /**
-     * @Route("/", name="admin_candidate_index", methods={"GET"})
+     * @Route("/", name="admin_candidate_index", methods={"GET", "POST"})
      */
-    public function index(CandidateRepository $candidateRepository): Response
+    public function index(Request $request, CandidateRepository $candidateRepository): Response
     {
+        $form = $this->createForm(SearchUserType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var array */
+            $datas = $form->getData();
+
+            /** @var string  */
+            $search = $datas['search'];
+
+            $candidates = $candidateRepository->findByName($search);
+        } else {
+            $candidates = $candidateRepository->findAllASC();
+        }
+
         return $this->render('admin_candidate/index.html.twig', [
-            'candidates' => $candidateRepository->findAllByName(),
+            'candidates' => $candidates,
+            'form' => $form->createView(),
         ]);
     }
 
