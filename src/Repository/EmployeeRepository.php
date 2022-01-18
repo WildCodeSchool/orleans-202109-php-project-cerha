@@ -47,4 +47,16 @@ class EmployeeRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findAllByName(): array
+    {
+        /**
+         * @var array
+         */
+        return $this->createQueryBuilder('e')
+        ->orderBy('e.lastname', 'ASC')
+        ->addOrderBy('e.firstname', 'ASC')
+        ->getQuery()
+        ->getResult();
+    }
 }
