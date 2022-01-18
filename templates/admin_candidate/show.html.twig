@@ -54,7 +54,7 @@
 				<div>
 					Votre retour :</div>
 				{% for candidatecomment in candidate.candidatecomments|reverse %}
-					<p>{{ candidatecomment.comment }}</p>
+					<p>{{ candidatecomment.comment }} {{ include('admin_candidate/_delete_form_comment.html.twig') }}</p>
 				{% endfor %}
 			{% endif %}
 		</div>

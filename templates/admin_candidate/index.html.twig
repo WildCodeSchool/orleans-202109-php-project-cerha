@@ -24,6 +24,7 @@
                 <th>Nom</th>
                 <th>Prénom</th>
                 <th>Ville</th>
+                <th>Commentaire</th>
                 <th></th>
             </tr>
         </thead>
@@ -33,6 +34,7 @@
                 <td class="align-middle"> {{ candidate.user.lastname }} </td>
                 <td class="align-middle">{{ candidate.user.firstname }}</td>
                 <td class="align-middle">{{ candidate.city }}</td>
+ <td class="align-middle">{{ candidate.candidatecomments|length }}<i class="bi bi-chat-left-text mx-3"></i></td>
                 <td class="d-flex justify-content-end gap-3">
                     <a href="{{ path('admin_candidate_show', {'id': candidate.id}) }}"><button
                             class="btn btn-primary px-3 py-1"><i class="bi bi-eye"></i></button></a>
