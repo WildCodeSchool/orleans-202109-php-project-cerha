@@ -22,6 +22,7 @@
 					<th class="text-light">Dénomination sociale</th>
 					<th class="text-light">Siret</th>
 					<th class="text-light">Nom / Prénom du contact</th>
+					<th class="text-light">Commentaire</th>
 					<th class="text-light"></th>
 				</tr>
 			</thead>
@@ -32,6 +33,7 @@
 						<td class="align-middle">{{ company.siret }}</td>
 						<td class="align-middle">{{ company.user.lastname }}
 							{{ company.user.firstname }}</td>
+						<td class="align-middle">{{ company.companycomments|length }}<i class="bi bi-chat-left-text mx-3"></i></td>
 						<td class="d-flex justify-content-end gap-3">
 							<a href="{{ path('admin_company_show', {'id': company.id}) }}">
 								<button class="btn btn-primary px-3 py-1">

@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Company;
+use App\Entity\CompanyComment;
+use App\Form\CompanyCommentType;
 use App\Form\CompanyType;
 use App\Form\SearchUserType;
 use App\Repository\CompanyRepository;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,13 +48,26 @@ class AdminCompanyController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="admin_company_show", methods={"GET"})
+     * @Route("/{id}", name="admin_company_show", methods={"GET", "POST"})
      * @IsGranted("ROLE_ADMIN")
      */
-    public function show(Company $company): Response
+    public function show(Company $company, Request $request): Response
     {
+        $comment = new CompanyComment();
+        $form = $this->createForm(CompanyCommentType::class, $comment);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment->setCreatedAt(new DateTime());
+            $comment->setCompany($company);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($comment);
+            $entityManager->flush();
+            $this->addFlash('success', 'Votre commentaire a été bien ajouté.');
+            return $this->redirectToRoute('admin_company_index');
+        }
         return $this->render('admin_company/show.html.twig', [
             'company' => $company,
+            'form' => $form->createView(),
         ]);
     }
 
