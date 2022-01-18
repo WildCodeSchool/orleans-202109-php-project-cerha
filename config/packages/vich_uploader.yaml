@@ -6,3 +6,9 @@ vich_uploader:
             uri_prefix: /uploads/candidate
             upload_destination: '%upload_directory%/candidate'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        
+        pictures_employee:
+            uri_prefix: /uploads/employee
+            upload_destination: '%upload_directory%/employee'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
