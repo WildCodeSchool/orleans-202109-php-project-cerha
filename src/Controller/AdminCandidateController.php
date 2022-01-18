@@ -49,7 +49,6 @@ class AdminCandidateController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/{id}", name="admin_candidate_show", methods={"GET", "POST"})
      */
@@ -64,7 +63,7 @@ class AdminCandidateController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($comment);
             $entityManager->flush();
-            $this->addFlash('success', 'Votre commentaire a été bien ajouté.');
+            $this->addFlash('success', 'Votre commentaire a bien été ajouté.');
             return $this->redirectToRoute('admin_candidate_index');
         }
 
@@ -76,7 +75,25 @@ class AdminCandidateController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="admin_candidate_delete", methods={"POST"})
+     * @Route("/supprimer/commentaire/{id}", name="admin_candidate_comment_delete", methods={"POST"})
+     */
+    public function deleteComment(
+        Request $request,
+        CandidateComment $candidateComment,
+        EntityManagerInterface $entityManager
+    ): Response {
+        /** @var string */
+        $token = $request->request->get('_token');
+        if ($this->isCsrfTokenValid('delete' . $candidateComment->getId(), $token)) {
+            $entityManager->remove($candidateComment);
+            $entityManager->flush();
+        }
+        $this->addFlash('danger', 'Le message a bien été supprimé.');
+        return $this->redirectToRoute('admin_candidate_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /**
+     * @Route("/supprimer/{id}", name="admin_candidate_delete", methods={"POST"})
      */
     public function delete(Request $request, Candidate $candidate, EntityManagerInterface $entityManager): Response
     {
@@ -86,7 +103,7 @@ class AdminCandidateController extends AbstractController
             $entityManager->remove($candidate);
             $entityManager->flush();
         }
-        $this->addFlash('danger', 'L\'utilisateur à été supprimé');
+        $this->addFlash('danger', 'L\'utilisateur a bien été supprimé.');
         return $this->redirectToRoute('admin_candidate_index', [], Response::HTTP_SEE_OTHER);
     }
 
