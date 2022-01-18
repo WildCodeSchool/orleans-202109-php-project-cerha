@@ -19,14 +19,14 @@ class Company
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=100)
      */
     private ?string $denomination;
 
     /**
-     * @ORM\Column(type="string", length=14)
+     * @ORM\Column(type="string", length=14, nullable=true)
      * @Assert\NotBlank(message="Le SIRET est obligatoire.")
      * @Assert\Luhn(message="Numéro de SIRET invalide.")
      * @Assert\Length(max=14)
@@ -34,46 +34,46 @@ class Company
     private ?string $siret;
 
     /**
-     * @ORM\Column(type="string", length=5)
+     * @ORM\Column(type="string", length=5, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=5)
      */
     private ?string $apeCode;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=255)
      */
     private ?string $address;
 
     /**
-     * @ORM\Column(type="string", length=5)
+     * @ORM\Column(type="string", length=5, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=5)
      */
     private ?string $postalCode;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=100)
      */
     private ?string $city;
 
     /**
-     * @ORM\Column(type="string", length=13)
+     * @ORM\Column(type="string", length=13, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=13)
      */
     private ?string $vatNumber;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=100)
      */
-    private string $contactRole;
+    private ?string $contactRole;
 
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="company", cascade={"persist", "remove"})

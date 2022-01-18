@@ -2,8 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Candidate;
+use App\Entity\Company;
 use App\Entity\User;
+use App\Form\RegistrationCandidateType;
 use App\Form\RegistrationFormType;
+use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -34,6 +38,7 @@ class RegistrationController extends AbstractController
     ): Response {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -45,7 +50,20 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            if ($form->get('type')->getData() == User::USER_ROLES[0]) {
+                $candidate = new Candidate();
+                $candidate->setUser($user);
+                $user->setCandidate($candidate);
+                $user->setRoles(['ROLE_CANDIDATE']);
+            } elseif ($form->get('type')->getData() == User::USER_ROLES[1]) {
+                $company = new Company();
+                $company->setUser($user);
+                $user->setCompany($company);
+                $user->setRoles(['ROLE_COMPANY']);
+            }
+
             $entityManager->persist($user);
+
             $entityManager->flush();
 
             // generate a signed url and email it to the user
@@ -64,7 +82,6 @@ class RegistrationController extends AbstractController
             );
 
             $this->addFlash('warning', 'Allez vérifier votre email afin de compléter votre inscription');
-
             return $this->redirectToRoute('home');
         }
 
