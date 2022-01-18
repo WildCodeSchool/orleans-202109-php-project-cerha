@@ -13,11 +13,10 @@ class SearchUserType extends AbstractType
     {
         $builder
             ->add('search', SearchType::class, [
-                'required' => false,
                 'attr' => [
                     'class' => 'form-control',
                 ]
-                ])
+            ])
         ;
     }
 

@@ -4,7 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Candidate;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -64,17 +64,22 @@ class CandidateRepository extends ServiceEntityRepository
 
     public function findByName(string $name): array
     {
-        /** @var array */
-        return $this->createQueryBuilder('c')
-        ->join('c.user', 'u')
-        ->where('u.lastname LIKE :lastname')
-        ->orWhere('u.firstname LIKE :firstname')
-        ->setParameter('firstname', '%' . $name . '%')
-        ->setParameter('lastname', '%' . $name . '%')
+        $qb = $this->createQueryBuilder('c');
+        $qb->join('c.user', 'u')
+        ->where(
+            $qb->expr()->concat('u.lastname', $qb->expr()->concat($qb->expr()->literal(' '), 'u.firstname')) .
+            'LIKE :fullname'
+        )
+        ->orWhere(
+            $qb->expr()->concat('u.firstname', $qb->expr()->concat($qb->expr()->literal(' '), 'u.lastname')) .
+            'LIKE :fullname'
+        )
+        ->setParameter('fullname', '%' . $name . '%')
         ->orderBy('u.lastname', 'ASC')
-        ->addOrderBy('u.firstname', 'ASC')
-        ->getQuery()
-        ->getResult();
+        ->addOrderBy('u.firstname', 'ASC');
+
+        /** @var array */
+        return $qb->getQuery()->getResult();
     }
 
     public function findAllASC(): array
