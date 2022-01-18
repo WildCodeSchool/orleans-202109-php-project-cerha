@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CompanyRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -114,6 +116,16 @@ class Company
      * @ORM\Column(type="text", nullable=true)
      */
     private ?string $need;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CompanyComment::class, mappedBy="company")
+     */
+    private Collection $companyComments;
+
+    public function __construct()
+    {
+        $this->companyComments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -284,6 +296,36 @@ class Company
     public function setNeed(?string $need): self
     {
         $this->need = $need;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CompanyComment[]
+     */
+    public function getCompanyComments(): Collection
+    {
+        return $this->companyComments;
+    }
+
+    public function addCompanyComment(CompanyComment $companyComment): self
+    {
+        if (!$this->companyComments->contains($companyComment)) {
+            $this->companyComments[] = $companyComment;
+            $companyComment->setCompany($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCompanyComment(CompanyComment $companyComment): self
+    {
+        if ($this->companyComments->removeElement($companyComment)) {
+            // set the owning side to null (unless already changed)
+            if ($companyComment->getCompany() === $this) {
+                $companyComment->setCompany(null);
+            }
+        }
 
         return $this;
     }
