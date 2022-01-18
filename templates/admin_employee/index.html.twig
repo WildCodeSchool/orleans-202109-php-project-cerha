@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }} - Administration membres{% endblock %}
-
+{% block title %}
+	{{ parent() }}
+	- Administration membres
+{% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('adminCandidate') }}
+{% endblock %}
 {% block body %}
 	<h1 class="text-center mt-5 mb-4">Administration membres CERHA</h1>
 
@@ -12,7 +17,7 @@
 					<th class="text-light">Nom</th>
 					<th class="text-light">Prénom</th>
 					<th class="text-light">Rôle</th>
-                    <th class="text-light">Photo</th>
+					<th class="text-light">Photo</th>
 
 					<th class="text-light"></th>
 				</tr>
@@ -23,7 +28,7 @@
 						<td class="align-middle">{{ employee.lastname }}</td>
 						<td class="align-middle">{{ employee.firstname }}</td>
 						<td class="align-middle">{{ employee.role }}</td>
-                        <td class="align-middle"><img src="{{ employee.picture }}" alt="Photo du membre"></td>
+						<td class="align-middle"><img src="{{ employee.picture }}" class="avatar" alt="Photo de {{ employee.lastname }} {{ employee.firstname }}"></td>
 						<td class="d-flex justify-content-end gap-3">
 							<a href="{{ path('admin_employee_show', {'id': employee.id}) }}">
 								<button class="btn btn-primary px-3 py-1">
