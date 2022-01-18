@@ -5,10 +5,12 @@
     box-shadow: $shadow-card;
 }
 
-.service-body {
-    min-height: 300px;
-    height: auto;
-    
+.body-particular {
+    height: 300px;    
+}
+
+.body-company {
+    height: 380px;
 }
 
 .service-head {
