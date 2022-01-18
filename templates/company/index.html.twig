@@ -17,10 +17,33 @@
 	<div class="d-flex">
 		{% include "company/components/_SideMenuCompany.html.twig" %}
 		<div class="container my-5">
+			<div class="alert alert-danger alert-dismissible fade show  my-2 col-lg-6 offset-lg-3" role="alert">
+				{% if company.companycomments is not null %}
+					Bonjour
+					{{ company.user.firstname }}
+					{{ company.user.lastname }}.<strong>
+						Vous avez
+						{{ company.companycomments|length }}
+						message(s)</strong>.
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				{% endif %}
+			</div>
 			<h1 class="text-center mb-4">Mon entreprise</h1>
 			{% include "company/components/_companyDetails.html.twig" %}
 			{% include "company/components/_companyContact.html.twig" %}
 			{% include "company/components/_companyNeed.html.twig" %}
+				<div class="p-4 col-md-6 offset-md-3">
+				<div class="alert alert-primary" role="alert">
+					{% if company.companycomments is not null %}
+						{% for company_comment in company.companycomments|reverse %}
+							<div class="fs-5">
+								Message reçu le
+								{{ company_comment.createdAt|date("m-d-Y") }}</div>
+							<p>{{ company_comment.comment }}</p>
+						{% endfor %}
+					{% endif %}
+				</div>
+			</div>
 		</div>
 	</div>
 {% endblock %}
