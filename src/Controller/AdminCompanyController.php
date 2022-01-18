@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Company;
 use App\Form\CompanyType;
+use App\Form\SearchUserType;
 use App\Repository\CompanyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,10 +22,25 @@ class AdminCompanyController extends AbstractController
      * @Route("/", name="admin_company_index", methods={"GET"})
      * @IsGranted("ROLE_ADMIN")
      */
-    public function index(CompanyRepository $companyRepository): Response
+    public function index(CompanyRepository $companyRepository, Request $request): Response
     {
+        $form = $this->createForm(SearchUserType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var array */
+            $datas = $form->getData();
+
+            /** @var string */
+            $search = $datas['search'];
+
+            $companies = $companyRepository->findByName($search);
+        } else {
+            $companies = $companyRepository->findAllASC();
+        }
+
         return $this->render('admin_company/index.html.twig', [
-            'companies' => $companyRepository->findBy([], ['denomination' => 'ASC']),
+            'companies' => $companies,
+            'form' => $form->createView(),
         ]);
     }
 
