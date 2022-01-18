@@ -22,7 +22,7 @@
 				<div>
 					Votre retour :</div>
 				{% for company_comment in company.companycomments|reverse %}
-					<p>{{ company_comment.comment }}</p>
+					<p>{{ company_comment.comment }}{{ include('admin_company/_delete_form_comment.html.twig') }}</p>
 				{% endfor %}
 			{% endif %}
 		</div>
