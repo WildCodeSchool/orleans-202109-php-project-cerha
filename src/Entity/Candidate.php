@@ -123,6 +123,7 @@ class Candidate
      */
     private Collection $additionalDocuments;
 
+    public const NUMBER_OF_CANDIDATES_DISPLAYED = 50;
 
     public function __construct()
     {
