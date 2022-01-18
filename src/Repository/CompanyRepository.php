@@ -47,4 +47,28 @@ class CompanyRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findBySiretOrName(string $search): array
+    {
+        /** @var array */
+        return $this->createQueryBuilder('c')
+        ->join('c.user', 'u')
+        ->where('c.siret LIKE :siret')
+        ->orWhere('c.denomination LIKE :denomination')
+        ->setParameter('siret', $search)
+        ->setParameter('denomination', $search)
+        ->getQuery()
+        ->getResult();
+    }
+
+    public function findAllASC(): array
+    {
+        /** @var array */
+        return $this->createQueryBuilder('c')
+        ->join('c.user', 'u')
+        ->orderBy('u.lastname', 'ASC')
+        ->addOrderBy('u.firstname', 'ASC')
+        ->getQuery()
+        ->getResult();
+    }
 }
