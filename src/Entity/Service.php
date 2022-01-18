@@ -27,6 +27,12 @@ class Service
      */
     private string $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=ServiceCategory::class, inversedBy="services")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private ?ServiceCategory $category;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +58,18 @@ class Service
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCategory(): ?ServiceCategory
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?ServiceCategory $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
