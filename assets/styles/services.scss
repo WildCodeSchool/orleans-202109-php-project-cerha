@@ -1,34 +1,33 @@
 @import 'variables.scss';
 
 .service-card {
-    border:none;
+    border    : none;
     box-shadow: $shadow-card;
 }
 
 .service-body {
     min-height: 300px;
-    height: auto;
-    
+    height    : auto;
+
 }
 
 .service-head {
     background-color: $primary;
-    font-family: $text-family;
-    font-size: 20px;
+    font-family     : $text-family;
+    font-size       : 20px;
 }
 
 .service-body ul {
-    font-size: 16px;
+    font-size  : 16px;
     line-height: $line-height;
 }
 
-.service-body svg {
-    fill:$secondary;
-    margin-inline-end: 16px;
+.serviceIcon {
+    font-size: 1.2rem;
 }
 
-.particular{
-    color:$secondary;
+.particular {
+    color: $secondary;
 }
 
 .head-company {
@@ -36,20 +35,19 @@
 }
 
 .body-company svg {
-    fill:$primary;
+    fill: $primary;
 }
 
 .img-services {
-    height: 500px;
-    object-fit: cover;
-    object-position:top;
+    height         : 500px;
+    object-fit     : cover;
+    object-position: top;
 }
 
 .arrow {
-    fill:$primary;
+    fill: $primary;
 }
 
-.arrow:hover{
-    fill:$secondary;
+.arrow:hover {
+    fill: $secondary;
 }
-
