@@ -19,7 +19,7 @@ class EmployeeType extends AbstractType
             ->add('civility', ChoiceType::class, [
                 'attr' => ['class' => 'd-flex justify-content-around'],
                 'choices' => [
-                    'Monsieur' => 'M',
+                    'Monsieur' => 'M.',
                     'Madame' => 'Mme'
                 ],
                 'label' => false,
