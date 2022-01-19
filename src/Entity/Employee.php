@@ -23,35 +23,35 @@ class Employee
      * @Assert\NotBlank
      * @Assert\Length(max  = 255)
      */
-    private string $picture;
+    private ?string $picture;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      * @Assert\Length(max  = 255)
      */
-    private string $role;
+    private ?string $role;
 
     /**
      * @ORM\Column(type="string", length=10)
      * @Assert\NotBlank
      * @Assert\Length(max  = 10)
      */
-    private string $civility;
+    private ?string $civility;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      * @Assert\Length(max  = 255)
      */
-    private string $firstname;
+    private ?string $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      * @Assert\Length(max  = 255)
      */
-    private string $lastname;
+    private ?string $lastname;
 
     public function getId(): ?int
     {
@@ -63,7 +63,7 @@ class Employee
         return $this->picture;
     }
 
-    public function setPicture(string $picture): self
+    public function setPicture(?string $picture): self
     {
         $this->picture = $picture;
 
@@ -75,7 +75,7 @@ class Employee
         return $this->role;
     }
 
-    public function setRole(string $role): self
+    public function setRole(?string $role): self
     {
         $this->role = $role;
 
@@ -87,7 +87,7 @@ class Employee
         return $this->civility;
     }
 
-    public function setCivility(string $civility): self
+    public function setCivility(?string $civility): self
     {
         $this->civility = $civility;
 
@@ -99,7 +99,7 @@ class Employee
         return $this->firstname;
     }
 
-    public function setFirstname(string $firstname): self
+    public function setFirstname(?string $firstname): self
     {
         $this->firstname = $firstname;
 
@@ -111,7 +111,7 @@ class Employee
         return $this->lastname;
     }
 
-    public function setLastname(string $lastname): self
+    public function setLastname(?string $lastname): self
     {
         $this->lastname = $lastname;
 
