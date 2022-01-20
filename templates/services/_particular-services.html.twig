@@ -1,16 +1,16 @@
 <h2 class="text-center particular mb-5" id="particular">Aux particuliers</h2>
-<div class="container mb-5">
-	<div class="row">
-		<img src="{{ asset('build/images/services-particular.jpg') }}" class="col-sm-8 offset-sm-2 col-lg-10 offset-lg-1 img-services mb-5" alt="services pour particuliers">
+<div class="d-flex flex-column align-items-center mb-5">
+	<div class="mb-5 d-flex justify-content-center">
+		<img src="{{ asset('build/images/services-particular.jpg') }}" class="img-services img-fluid" alt="services pour particuliers">
 	</div>
-	<div class="row mt-5">
-		<div class="col-sm-8 offset-sm-2 col-lg-4 offset-lg-1 mt-0">
-			{% for category in categories|filter(category => category.type == 'candidate') %}
+	<div class="d-flex justify-content-around mt-5">
+		{% for category in categories|filter(category => category.type == 'candidate') %}
+			<div class="col-sm-8 col-lg-5 mt-0">
 				<div class="card service-card my-5">
 					<div class="card-header text-center fw-bold py-3 service-head text-light">
 						{{ category.title }}
 					</div>
-					<div class="card-body service-body body-particular py-md-3 px-md-4 py-lg-4 px-lg-5">
+					<div class="card-body service-body body-particular py-md-3 px-md-4 py-lg-4 px-lg-4">
 						<ul class="list-unstyled">
 							{% for service in category.services %}
 								<li>
@@ -21,7 +21,7 @@
 						</ul>
 					</div>
 				</div>
-			{% endfor %}
-		</div>
+			</div>
+		{% endfor %}
 	</div>
 </div>
