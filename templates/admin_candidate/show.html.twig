@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
 {% block title %}
 	{{ parent() }}
@@ -10,8 +10,8 @@
 	{{ encore_entry_link_tags('adminCandidate') }}
 {% endblock %}
 {% block body %}
-	<main class="container">
-		<h1 class="text-center mt-5 mb-4 border-bottom pb-2">Détails de
+	<main class="container m-5">
+		<h1 class="text-center mb-4 border-bottom pb-2">Détails de
 			{{ candidate.user.gender }}.
 			{{ candidate.user.lastname }}
 			{{ candidate.user.firstname }}</h1>

@@ -1,23 +1,29 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
-{% block title %}{{ parent() }} - Détails {{ company.denomination }}{% endblock %}
+{% block title %}
+	{{ parent() }}
+	- Détails
+	{{ company.denomination }}
+{% endblock %}
 
-{% block stylesheets %}{{ encore_entry_link_tags('adminCandidate') }}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('adminCandidate') }}
 {% endblock %}
 
 {% block body %}
+	<div class="container m-5">
 
-	<h1 class="text-center text-primary mt-5 mb-4">Détails de
-		{{ company.denomination }}</h1>
-	<div class="container d-flex flex-row justify-content-center gap-5">
-		<a href="{{ path('admin_company_index') }}" class="btn btn-secondary text-light">
-			<i class="bi bi-arrow-left-square test-light me-1"></i>Retour</a>
-		{{ include('admin_company/_delete_form.html.twig') }}
-	</div>
-	{% include 'company/components/_companyDetails.html.twig' %}
-	{% include 'company/components/_companyContact.html.twig' %}
-	{% include 'company/components/_companyNeed.html.twig' %}
-	<div class="col-md-6 et offset-md-3 text-info fs-4 mt-4">
+		<h1 class="text-center text-primary mb-4">Détails de
+			{{ company.denomination }}</h1>
+		<div class="container d-flex flex-row justify-content-center gap-5">
+			<a href="{{ path('admin_company_index') }}" class="btn btn-secondary text-light">
+				<i class="bi bi-arrow-left-square test-light me-1"></i>Retour</a>
+			{{ include('admin_company/_delete_form.html.twig') }}
+		</div>
+		{% include 'company/components/_companyDetails.html.twig' %}
+		{% include 'company/components/_companyContact.html.twig' %}
+		{% include 'company/components/_companyNeed.html.twig' %}
+		<div class="col-md-6 et offset-md-3 text-info fs-4 mt-4">
 			{% if company.companycomments is not null %}
 				<div>
 					Votre retour :</div>
@@ -31,4 +37,5 @@
 			{{ form_widget(form) }}
 			<input class="btn btn-secondary text-light mb-3" type='submit' value='Ajouter un commentaire'>
 			{{ form_end(form) }}</div>
+	</div>
 {% endblock %}
