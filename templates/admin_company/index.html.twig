@@ -6,12 +6,23 @@
 	<h1 class="text-center mt-5 mb-4">Administration Entreprises</h1>
 
 	<main class="container">
+		<section class="searchForm">
+			{{ form_start(form) }}
+			{{ form_label(form.search, 'Rechercher une Entreprise') }}
+			<div class="input-group mb-3 col-6">
+				{{ form_widget(form.search) }}
+				<button class="btn btn-primary text-light" id="button-addon2"><i class="bi bi-search"></i></button>
+				<a href="{{ path('admin_company_index') }}" class="btn btn-secondary text-light" id="button-addon2"><i class="bi bi-arrow-clockwise"></i></a>
+			</div>
+			{{ form_end(form) }}
+		</section>
 		<table class="table table-hover">
 			<thead class="bg-primary">
 				<tr>
 					<th class="text-light">Dénomination sociale</th>
 					<th class="text-light">Siret</th>
 					<th class="text-light">Nom / Prénom du contact</th>
+					<th class="text-light">Commentaire</th>
 					<th class="text-light"></th>
 				</tr>
 			</thead>
@@ -22,6 +33,7 @@
 						<td class="align-middle">{{ company.siret }}</td>
 						<td class="align-middle">{{ company.user.lastname }}
 							{{ company.user.firstname }}</td>
+						<td class="align-middle">{{ company.companycomments|length }}<i class="bi bi-chat-left-text mx-3"></i></td>
 						<td class="d-flex justify-content-end gap-3">
 							<a href="{{ path('admin_company_show', {'id': company.id}) }}">
 								<button class="btn btn-primary px-3 py-1">
