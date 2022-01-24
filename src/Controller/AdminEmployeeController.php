@@ -29,7 +29,8 @@ class AdminEmployeeController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="admin_employee_new", methods={"GET", "POST"})
+     * @Route("/ajouter", name="admin_employee_new", methods={"GET", "POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
