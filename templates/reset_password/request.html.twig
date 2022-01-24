@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Connexion
+{% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('login') }}
+{% endblock %}
+{% block body %}
+	<main class="container">
+		<div class="row text-center mb-4 mt-3">
+			<h1 class="mt-3">Mon espace personnel</h1>
+		</div>
+
+		<div class="row">
+			{% for flasherror in app.flashes('reset_password_error') %}
+				<div class="alert alert-danger" role="alert">{{ flasherror }}</div>
+			{% endfor %}
+		</div>
+
+		<div class="card mb-5 col-lg-6 offset-lg-3 rounded-2">
+			<div class="card-text p-3 mb-5 rounded-top d-flex justify-content-center align-content-center">
+				<p class="mb-0">Mot de passe oublié</p>
+			</div>
+			<div class="mx-3">
+				{{ form_start(requestForm) }}
+				{{ form_row(requestForm.email) }}
+			</div>
+			<div class="mx-3">
+				<small>
+					Entrez votre adresse e-mail et nous vous enverrons un
+lien pour réinitialiser votre mot de passe.
+				</small>
+			</div>
+<div class="my-3 align-self-center">
+			<button class="btn btn-primary">Envoyé</button>
+			{{ form_end(requestForm) }}
+
+	</div>
+
+	</main>
+{% endblock %}
