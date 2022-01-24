@@ -1,44 +1,5 @@
-<!DOCTYPE html>
-<html lang="fr">
+{% extends "base.html.twig" %}
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="icon" type="image/png" href="{{ asset('build/images/favicon.png') }}"/>
-		<title>
-			{% block title %}CERHA
-			{% endblock %}
-		</title>
-		{{ encore_entry_link_tags('app') }}
-		{{ encore_entry_link_tags('sideMenu') }}
-		{% block stylesheets %}{% endblock %}
-		{{ encore_entry_script_tags('app') }}
-		{% block javascripts %}{% endblock %}
-	</head>
-	<body>
-		{% block navbar %}
-			{% include "items/_navbar.html.twig" %}
-		{% endblock %}
-		{% block flash %}
-			{% for category, messages in app.flashes %}
-				{% for message in messages %}
-					<div class="d-flex justify-content-center mt-3">
-						<div class="alert alert-{{ category }} alert-dismissible fade show flash w-auto">
-							{{ message }}
-							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-						</div>
-					</div>
-				{% endfor %}
-			{% endfor %}
-		{% endblock %}
-		<div class="d-flex">
-			{% include "items/_sideMenuAdmin.html.twig" %}
-
-			{% block body %}{% endblock %}
-		</div>
-		{% block footer %}
-			{% include "items/_footer.html.twig" %}
-		{% endblock %}
-	</body>
-
-</html></body></html>
+{% block body %}
+	{% include "items/_sideMenuAdmin.html.twig" %}
+{% endblock %}

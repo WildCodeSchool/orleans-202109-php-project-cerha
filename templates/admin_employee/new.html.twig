@@ -4,12 +4,19 @@
 	{{ parent() }}
 	- Ajouter un membre
 {% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('adminCandidate') }}
+	{{ encore_entry_link_tags('sideMenu') }}
+{% endblock %}
 
 {% block body %}
-	<main class="container m-5">
-		<h1 class="text-center">Ajouter un membre</h1>
-		<div class="col-md-6 et offset-md-3 fs-4 my-5 text-info edit_form">
-			{{ include('admin_employee/_form.html.twig') }}
-		</div>
-	</main>
+	<div class="d-flex">
+		{{ parent() }}
+		<main class="container m-5">
+			<h1 class="text-center">Ajouter un membre</h1>
+			<div class="col-md-6 et offset-md-3 fs-4 my-5 text-info edit_form">
+				{{ include('admin_employee/_form.html.twig') }}
+			</div>
+		</main>
+	</div>
 {% endblock %}
