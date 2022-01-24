@@ -52,16 +52,6 @@ class AdminEmployeeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="admin_employee_show", methods={"GET"})
-     */
-    public function show(Employee $employee): Response
-    {
-        return $this->render('admin_employee/show.html.twig', [
-            'employee' => $employee,
-        ]);
-    }
-
-    /**
      * @Route("/{id}/modifier", name="admin_employee_edit", methods={"GET", "POST"})
      * @IsGranted("ROLE_ADMIN")
      */
