@@ -9,7 +9,7 @@
 {% endblock %}
 {% block body %}
 	<main class="container m-5">
-		<h1 class="text-center">Administration membres CERHA</h1>
+		<h1 class="text-center mb-4">Administration membres CERHA</h1>
 
 		<table class="table table-hover">
 			<thead class="bg-primary">
@@ -30,9 +30,9 @@
 						<td class="align-middle">{{ employee.role }}</td>
 						<td class="align-middle"><img src="{{ employee.picture }}" class="avatar" alt="Photo de {{ employee.lastname }} {{ employee.firstname }}"></td>
 						<td class="d-flex justify-content-end gap-3">
-							<a href="{{ path('admin_employee_show', {'id': employee.id}) }}">
+							<a href="{{ path('admin_employee_edit', {'id': employee.id}) }}">
 								<button class="btn btn-primary px-3 py-1">
-									<i class="bi bi-eye"></i>
+									<i class="bi bi-pencil-square"></i>
 								</button>
 							</a>
 							{{ include('admin_employee/_delete_form.html.twig') }}

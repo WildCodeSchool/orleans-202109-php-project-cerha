@@ -1,14 +1,15 @@
 {% extends 'base-admin.html.twig' %}
 
-{% block title %}New Employee
+{% block title %}
+	{{ parent() }}
+	- Ajouter un membre
 {% endblock %}
 
 {% block body %}
-	<div class="container m-5">
-		<h1>Create new Employee</h1>
-
-		{{ include('admin_employee/_form.html.twig') }}
-
-		<a href="{{ path('admin_employee_index') }}">back to list</a>
-	</div>
+	<main class="container m-5">
+		<h1 class="text-center">Ajouter un membre</h1>
+		<div class="col-md-6 et offset-md-3 fs-4 my-5 text-info edit_form">
+			{{ include('admin_employee/_form.html.twig') }}
+		</div>
+	</main>
 {% endblock %}
