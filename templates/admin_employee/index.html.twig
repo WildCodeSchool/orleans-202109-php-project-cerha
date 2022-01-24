@@ -11,6 +11,7 @@
 	<h1 class="text-center mt-5 mb-4">Administration membres CERHA</h1>
 
 	<main class="container">
+		<div class="d-flex justify-content-end mb-3 pe-2"></div>
 		<table class="table table-hover">
 			<thead class="bg-primary">
 				<tr>
@@ -18,8 +19,11 @@
 					<th class="text-light">Prénom</th>
 					<th class="text-light">Rôle</th>
 					<th class="text-light">Photo</th>
-
-					<th class="text-light"></th>
+					<th class="text-light d-flex justify-content-end add">
+						<a href="{{ path('admin_employee_new') }}" class="btn btn-secondary ">
+							<i class="bi bi-plus-lg text-light px-1"></i>
+						</a>
+					</th>
 				</tr>
 			</thead>
 			<tbody>
