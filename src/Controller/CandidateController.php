@@ -23,6 +23,7 @@ use App\Form\SoftSkillsType;
 
 /**
  * @Route("/candidat", name="candidate_")
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 
 class CandidateController extends AbstractController
@@ -39,6 +40,19 @@ class CandidateController extends AbstractController
 
         return $this->render(
             'candidate/index.html.twig',
+            ['candidate' => $candidate]
+        );
+    }
+
+    /**
+     * @Route("/profil/{id}", name="show_public_profile")
+     * @IsGranted("ROLE_COMPANY")
+     */
+    public function showPublicProfile(Candidate $candidate): Response
+    {
+
+        return $this->render(
+            'candidate/public-profile.html.twig',
             ['candidate' => $candidate]
         );
     }
