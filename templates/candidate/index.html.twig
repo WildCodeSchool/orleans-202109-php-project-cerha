@@ -40,11 +40,11 @@
 			{% if candidate.candidatecomments is not empty %}
 				<div class=" mt-5 col-md-6 offset-md-3">
 					<div class="alert alert-secondary" role="alert">
-						{% for candidatecomment in candidate.candidatecomments|reverse %}
+						{% for candidate_comment in candidate.candidatecomments|reverse %}
 							<div class="fs-5 text-secondary">
 								<i class="bi bi-chat-text-fill me-2"></i>
-								{{ candidatecomment.createdAt|date("m-d-Y") }}</div>
-							<div class="mb-4 mt-1 text-dark mb-4">{{ candidatecomment.comment }}</div>
+								{{ candidate_comment.createdAt|date("m-d-Y") }}</div>
+							<div class="mb-4 mt-1 text-dark mb-4">{{ candidate_comment.comment }}</div>
 						{% endfor %}
 					{% endif %}
 				</div>
