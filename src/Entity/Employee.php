@@ -4,10 +4,15 @@ namespace App\Entity;
 
 use App\Repository\EmployeeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use DateTimeImmutable;
+use DateTimeInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EmployeeRepository::class)
+ * @Vich\Uploadable
  */
 class Employee
 {
@@ -17,6 +22,17 @@ class Employee
      * @ORM\Column(type="integer")
      */
     private int $id;
+
+    /**
+     * @Vich\UploadableField(mapping="pictures_employee", fileNameProperty="picture")
+     * @Assert\File(
+     *      maxSize = "2M",
+     *      mimeTypes = {"image/jpeg", "image/jpg", "image/png","image/webp",}
+     * )
+     *
+     * @var File|null
+     */
+    private $pictureFile;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -52,6 +68,18 @@ class Employee
      * @Assert\Length(max  = 255)
      */
     private ?string $lastname;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTimeInterface|null
+     */
+    private $updatedAt;
+
+    public function __construct()
+    {
+        $this->updatedAt = new DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -116,5 +144,35 @@ class Employee
         $this->lastname = $lastname;
 
         return $this;
+    }
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $pictureFile
+     */
+    public function setPictureFile(?File $pictureFile = null): void
+    {
+        $this->pictureFile = $pictureFile;
+
+        if (null !== $pictureFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new DateTimeImmutable();
+        }
+    }
+
+    public function getPictureFile(): ?File
+    {
+        return $this->pictureFile;
+    }
+
+    public function getUpdatedAt(): ?DateTimeInterface
+    {
+        return $this->updatedAt;
     }
 }

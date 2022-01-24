@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class EmployeeType extends AbstractType
 {
@@ -28,8 +29,11 @@ class EmployeeType extends AbstractType
             ])
             ->add('lastname', TextType::class, ['label' => 'Nom'])
             ->add('firstname', TextType::class, ['label' => 'Prénom'])
-            ->add('picture', UrlType::class, [
-                'label' => 'Photo',
+            ->add('pictureFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => true,
+                'delete_label' => 'Delete',
+                'download_uri' => false
             ])
             ->add('role', TextType::class, ['label' => 'Rôle']);
     }
