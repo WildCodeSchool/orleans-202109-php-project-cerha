@@ -29,7 +29,8 @@ class AdminEmployeeController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="admin_employee_new", methods={"GET", "POST"})
+     * @Route("/ajouter", name="admin_employee_new", methods={"GET", "POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -61,7 +62,8 @@ class AdminEmployeeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="admin_employee_edit", methods={"GET", "POST"})
+     * @Route("/{id}/modifier", name="admin_employee_edit", methods={"GET", "POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Employee $employee, EntityManagerInterface $entityManager): Response
     {
@@ -82,6 +84,7 @@ class AdminEmployeeController extends AbstractController
 
     /**
      * @Route("/{id}", name="admin_employee_delete", methods={"POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Employee $employee, EntityManagerInterface $entityManager): Response
     {
