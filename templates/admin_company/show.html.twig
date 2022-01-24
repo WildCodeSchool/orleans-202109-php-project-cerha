@@ -22,7 +22,7 @@
 	{% include 'company/components/_companyDetails.html.twig' %}
 	{% include 'company/components/_companyContact.html.twig' %}
 	{% include 'company/components/_companyNeed.html.twig' %}
-	<div class="col-md-6 et offset-md-3 text-info fs-4 mt-4">
+	<div class="col-md-6 offset-md-3 text-info fs-4 mt-4">
 		{% if company.companycomments is not empty %}
 
 			{% for company_comment in company.companycomments|reverse %}
@@ -34,7 +34,7 @@
 			{% endfor %}
 		{% endif %}
 	</div>
-	<div class="col-md-6 et offset-md-3 ">
+	<div class="col-md-6  offset-md-3 ">
 		{{ form_start(form) }}
 		{{ form_widget(form) }}
 		<input class="btn btn-secondary text-light mb-3" type='submit' value='Ajouter un commentaire'>
