@@ -25,6 +25,10 @@ class Employee
 
     /**
      * @Vich\UploadableField(mapping="pictures_employee", fileNameProperty="picture")
+     * @Assert\File(
+     *      maxSize = "2M",
+     *      mimeTypes = {"image/jpeg", "image/jpg", "image/png","image/webp",}
+     * )
      *
      * @var File|null
      */
