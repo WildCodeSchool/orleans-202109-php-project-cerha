@@ -137,7 +137,7 @@ bibendum cursus. In tortor nisl, blandit sit amet euismod sed, ultrices at turpi
         <div class="row my-4 flex-lg-row justify-content-center">
             {% for employee in employees %}
             <div class="col-lg-4 text-center">
-                <img class="rounded-1" src="{{ employee.picture }}"
+                <img class="rounded-1" src="uploads/employee/{{ employee.picture }}"
                     alt="{{ employee.firstname ~ employee.lastname }} picture">
                 <h3 class="fw-bold mt-4 mb-0">{{ employee.civility ~ '. ' ~ employee.firstname ~ ' ' ~ employee.lastname }}</h3>
                 <p class="role mb-3 fs-4">{{ employee.role }}</p>
