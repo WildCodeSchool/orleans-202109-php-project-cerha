@@ -15,8 +15,9 @@
 	<div class="d-flex">
 		{% include "candidate/components/_SideMenuCandidate.html.twig" %}
 		<div class="container my-5">
-			<div class="alert alert-danger alert-dismissible fade show  my-2 col-lg-6 offset-lg-3" role="alert">
-				{% if candidate.candidatecomments is not null %}
+			{% if candidate.candidatecomments is not empty %}
+				<div class="alert alert-danger alert-dismissible fade show  my-2 col-lg-6 offset-lg-3" role="alert">
+
 					Bonjour
 					{{ candidate.user.firstname }}
 					{{ candidate.user.lastname }}.<strong>
@@ -24,8 +25,9 @@
 						{{ candidate.candidatecomments|length }}
 						message(s)</strong>.
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-				{% endif %}
-			</div>
+
+				</div>
+			{% endif %}
 			{% include "candidate/components/_contactDetails.html.twig" %}
 			{% include "candidate/components/_skills.html.twig" %}
 			{% include "candidate/components/_formations.html.twig" %}
@@ -35,14 +37,14 @@
 			{% include "candidate/components/_hobbies.html.twig" %}
 			{% include "candidate/components/_complementary-questions.html.twig" %}
 			{% include "candidate/components/_documents.html.twig" %}
-			<div class="p-4 col-md-6 offset-md-3">
-				<div class="alert alert-secondary" role="alert">
-					{% if candidate.candidatecomments is not null %}
-						{% for candidatecomment in candidate.candidatecomments|reverse %}
-							<div class="fs-5">
-								Message reçu le
-								{{ candidatecomment.createdAt|date("m-d-Y") }}</div>
-							<div class="mb-4 mt-1">{{ candidatecomment.comment }}</div>
+			{% if candidate.candidatecomments is not empty %}
+				<div class=" mt-5 col-md-6 offset-md-3">
+					<div class="alert alert-secondary" role="alert">
+						{% for candidate_comment in candidate.candidatecomments|reverse %}
+							<div class="fs-5 text-secondary">
+								<i class="bi bi-chat-text-fill me-2"></i>
+								{{ candidate_comment.createdAt|date("m-d-Y") }}</div>
+							<div class="mb-4 mt-1 text-dark mb-4">{{ candidate_comment.comment }}</div>
 						{% endfor %}
 					{% endif %}
 				</div>
