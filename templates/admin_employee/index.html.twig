@@ -6,12 +6,9 @@
 {% endblock %}
 {% block stylesheets %}
 	{{ encore_entry_link_tags('adminCandidate') }}
-	{{ encore_entry_link_tags('sideMenu') }}
 {% endblock %}
 
 {% block body %}
-	<div class="d-flex">
-		{{ parent() }}
 		<main class="container m-5">
 			<h1 class="text-center mb-4">Administration membres CERHA</h1>
 
@@ -53,5 +50,4 @@
 				</tbody>
 			</table>
 		</main>
-	</div>
 {% endblock %}
