@@ -23,7 +23,7 @@ Remplacez db_user/db_password par votre utilisateur MySql et db_name par le nom 
 Il faut maintenant ajouter le MAILER afin que le site fonctionne bien
 Allez sur votre site préféré pour tester les mails (nous utiliserons Mailtrap ici)
 Cliquez sur My Inbox, dans SMTP settings, sélectionnez Symfony 5+ dans la catégorie intégration et copiez la ligne MAILER_DSN
-Ensuite, toujours dans env.local, Dans la partie dédiée au Mailer collez le mailer  sans mettre de #
+Ensuite, toujours dans env.local, dans la partie dédiée au Mailer collez le mailer  sans mettre de #
 Ensuite, mettez l’adresse email de votre choix sur la ligne MAILER_FROM_ADDRESSE en retirant le #.
 
 ## Base de données
@@ -41,7 +41,7 @@ Vous pouvez maintenant utiliser notre merveilleux site en allant sur localhost:8
 ### Les Profils
 
 Il y a plusieurs profils utilisable sur le site, 1 administrateur, 1 Candidat et 1 Entreprise.
-Pour vous connecter à celle-ci, vous devez aller dans l'onglet connection et saisir ces informations:
+Pour vous connecter à celle-ci, vous devez aller dans l'onglet connexion et saisir ces informations:
 
 * Administrateur
    * Email : john@doe.com
