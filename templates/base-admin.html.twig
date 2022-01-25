@@ -1,5 +1,7 @@
 {% extends "base.html.twig" %}
 
-{% block body %}
+{% block stylesheets %}{{ encore_entry_link_tags('sideMenu') }}{% endblock %}
+
+{% block navbar %}
 	{% include "items/_sideMenuAdmin.html.twig" %}
 {% endblock %}
