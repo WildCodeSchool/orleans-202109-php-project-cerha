@@ -30,8 +30,10 @@
 				{% endfor %}
 			{% endfor %}
 		{% endblock %}
-		{% block navbarAdmin %}{% endblock %}
-		{% block body %}{% endblock %}
+		{% block main %}
+			{% block body %}{% endblock %}
+		{% endblock %}
+
 		{% block footer %}
 			{% include "items/_footer.html.twig" %}
 		{% endblock %}

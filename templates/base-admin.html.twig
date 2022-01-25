@@ -4,8 +4,11 @@
 	{{ encore_entry_link_tags('sideMenu') }}
 {% endblock %}
 
-
-	{% block navbarAdmin %}
-		{% include "items/_sideMenuAdmin.html.twig" %}
-	{% endblock %}
-	{% block body %}{% endblock %}
+{% block main %}
+	<div class="d-flex">
+		{% block navbarAdmin %}
+			{% include "items/_sideMenuAdmin.html.twig" %}
+		{% endblock %}
+		{% block body %}{% endblock %}
+	</div>
+{% endblock %}
