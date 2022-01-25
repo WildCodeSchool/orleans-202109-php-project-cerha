@@ -1,6 +1,6 @@
 <div class="row softskills mt-5" id="candidateFormations">
 	<div class="card card-softskills p-4 col-md-6 offset-md-3">
-		{% if not is_granted("ROLE_ADMIN") %}
+		{% if not is_granted("ROLE_ADMIN") and is_granted("ROLE_CANDIDATE") %}
 			<a class="btn btn-outline-light ms-5 align-self-end fs-5  bi bi-pencil-square" href=" {{ path('candidate_edit_formation', {'user': candidate.user}) }}">
 				Modifier</a>
 		{% endif %}
