@@ -1,0 +1,38 @@
+<div class="row softskills mt-5" id="candidateDetails">
+	<div class="card card-softskills p-4 col-md-6 offset-md-3">
+		{% if not is_granted("ROLE_ADMIN") %}
+		<a class="btn btn-outline-light ms-5 align-self-end fs-5  bi bi-pencil-square"
+			href=" {{ path('candidate_edit', {'user': candidate.user}) }} ">
+			Modifier</a>
+		{% endif %}
+		<h2 class="card-title text-primary text-center mt-3 pt-2 px-4">Coordonnées</h2>
+		<ul class="list-unstyled mt-3">
+
+			<li class="fs-4">
+				<i class=" bi bi-person-circle mx-3 "></i>
+
+				{{ candidate.user.gender }}
+				.
+				{{ candidate.user.firstname }}
+				{{ candidate.user.lastname }}
+			</li>
+			<li>
+				<i class="bi bi-calendar2-check  mx-3 "></i>
+				{{ candidate.birthDate|date('d-m-Y') }}</li>
+			<li>
+				<i class="bi bi-telephone-forward  mx-3 "></i>
+				{{ candidate.user.phoneNumber }}</li>
+			<li>
+				<i class="bi bi-envelope  mx-3 "></i>
+				{{ candidate.user.email }}
+			</li>
+
+			<li>
+				<i class="bi bi-geo-alt  mx-3 "></i>
+				{{ candidate.address }}
+				{{ candidate.postalCode }}
+				{{ candidate.city }}
+			</li>
+		</ul>
+	</div>
+</div>

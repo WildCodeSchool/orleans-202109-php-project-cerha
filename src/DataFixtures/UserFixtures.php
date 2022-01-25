@@ -29,6 +29,11 @@ class UserFixtures extends Fixture
             $user->setGender('M');
             $manager->persist($user);
             $this->addReference('user_' . $i, $user);
+            if ($i >= CandidateFixtures::CANDIDATE_NUMBER) {
+                $user->setRoles(['ROLE_COMPANY']);
+            } else {
+                $user->setRoles(['ROLE_CANDIDATE']);
+            }
         }
 
         $user = new User();
@@ -41,6 +46,28 @@ class UserFixtures extends Fixture
         $user->setRoles(['ROLE_ADMIN']);
         $manager->persist($user);
         $this->addReference('user_john', $user);
+
+        $user = new User();
+        $user->setLastname('Blondeau');
+        $user->setFirstname('Sylvain');
+        $user->setEmail('sylvain@blondeau.com');
+        $user->setPhoneNumber('0666666666');
+        $user->setPassword($this->passwordHasher->hashPassword($user, 'bilbo'));
+        $user->setGender('M');
+        $user->setRoles(['ROLE_CANDIDATE']);
+        $manager->persist($user);
+        $this->addReference('user_sylvain', $user);
+
+        $user = new User();
+        $user->setLastname('Smith');
+        $user->setFirstname('Will');
+        $user->setEmail('will@smith.com');
+        $user->setPhoneNumber('0606060606');
+        $user->setPassword($this->passwordHasher->hashPassword($user, 'bigmac'));
+        $user->setGender('M');
+        $user->setRoles(['ROLE_COMPANY']);
+        $manager->persist($user);
+        $this->addReference('user_will', $user);
 
         $manager->flush();
     }

@@ -2,9 +2,15 @@
 
 namespace App\Controller;
 
-use App\Entity\Candidat;
-use App\Form\CandidatType;
-use App\Repository\CandidatRepository;
+use App\Entity\Candidate;
+use App\Entity\CandidateComment;
+use App\Form\CandidateCommentType;
+use App\Entity\User;
+use App\Form\CandidateType;
+use App\Form\SearchUserType;
+use App\Repository\CandidateRepository;
+use DateTime;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -19,86 +25,92 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminCandidateController extends AbstractController
 {
     /**
-     * @Route("/", name="admin_candidate_index", methods={"GET"})
+     * @Route("/", name="admin_candidate_index", methods={"GET", "POST"})
      */
-    public function index(CandidatRepository $candidatRepository): Response
+    public function index(Request $request, CandidateRepository $candidateRepository): Response
     {
+        $form = $this->createForm(SearchUserType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var array */
+            $datas = $form->getData();
+
+            /** @var string  */
+            $search = $datas['search'];
+
+            $candidates = $candidateRepository->findByName($search);
+        } else {
+            $candidates = $candidateRepository->findAllASC();
+        }
+
         return $this->render('admin_candidate/index.html.twig', [
-            'candidats' => $candidatRepository->findAllByName(),
+            'candidates' => $candidates,
+            'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/nouveau", name="admin_candidate_new", methods={"GET", "POST"})
+     * @Route("/{id}", name="admin_candidate_show", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function show(Candidate $candidate, Request $request): Response
     {
-        $candidat = new Candidat();
-        $form = $this->createForm(CandidatType::class, $candidat);
+        $comment = new CandidateComment();
+        $form = $this->createForm(CandidateCommentType::class, $comment);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($candidat);
+            $comment->setCreatedAt(new DateTime());
+            $comment->setCandidate($candidate);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($comment);
             $entityManager->flush();
-
-            return $this->redirectToRoute('admin_candidate_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Votre commentaire a bien été ajouté.');
+            return $this->redirectToRoute('admin_candidate_index');
         }
 
-        return $this->renderForm('admin_candidate/new.html.twig', [
-            'candidat' => $candidat,
-            'form' => $form,
-        ]);
-    }
 
-    /**
-     * @Route("/{id}", name="admin_candidate_show", methods={"GET"})
-     */
-    public function show(Candidat $candidat): Response
-    {
         return $this->render('admin_candidate/show.html.twig', [
-            'candidat' => $candidat,
+            'candidate' => $candidate,
+            'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}/details", name="admin_candidate_details", methods={"GET", "POST"})
+     * @Route("/supprimer/commentaire/{id}", name="admin_candidate_comment_delete", methods={"POST"})
      */
-    public function details(Request $request, Candidat $candidat, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(CandidatType::class, $candidat);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+    public function deleteComment(
+        Request $request,
+        CandidateComment $candidateComment,
+        EntityManagerInterface $entityManager
+    ): Response {
+        /** @var string */
+        $token = $request->request->get('_token');
+        if ($this->isCsrfTokenValid('delete' . $candidateComment->getId(), $token)) {
+            $entityManager->remove($candidateComment);
             $entityManager->flush();
-
-            return $this->redirectToRoute('admin_candidate_index', [], Response::HTTP_SEE_OTHER);
         }
-
-        return $this->renderForm('admin_candidate/details.html.twig', [
-            'candidat' => $candidat,
-            'form' => $form,
-        ]);
+        $this->addFlash('danger', 'Le message a bien été supprimé.');
+        return $this->redirectToRoute('admin_candidate_index', [], Response::HTTP_SEE_OTHER);
     }
 
     /**
-     * @Route("/{id}", name="admin_candidate_delete", methods={"POST"})
+     * @Route("/supprimer/{id}", name="admin_candidate_delete", methods={"POST"})
      */
-    public function delete(Request $request, Candidat $candidat, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Candidate $candidate, EntityManagerInterface $entityManager): Response
     {
         /** @var string */
         $token = $request->request->get('_token');
-        if ($this->isCsrfTokenValid('delete' . $candidat->getId(), $token)) {
-            $entityManager->remove($candidat);
+        if ($this->isCsrfTokenValid('delete' . $candidate->getId(), $token)) {
+            $entityManager->remove($candidate);
             $entityManager->flush();
         }
-        $this->addFlash('danger', 'L\'utilisateur à été supprimé');
+        $this->addFlash('danger', 'L\'utilisateur a bien été supprimé.');
         return $this->redirectToRoute('admin_candidate_index', [], Response::HTTP_SEE_OTHER);
     }
 
     /**
      * @Route("/pdf/{id<\d+>}", name="admin_candidate_pdf", methods={"GET"})
      */
-    public function generateCV(Candidat $candidate): Response
+    public function generateCV(Candidate $candidate): Response
     {
         // Configure Dompdf according to your needs
         $pdfOptions = new Options();

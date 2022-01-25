@@ -13,14 +13,14 @@ class EmployeeFixtures extends Fixture
             'firstname' => 'Kévin',
             'lastname' => 'Hidalgo',
             'role' => 'rôle',
-            'picture' => 'https://via.placeholder.com/300?text=Employee+Placeholder',
+            'picture' => 'placeholder.png',
             'civility' => 'M'
         ],
         [
             'firstname' => 'Lionel',
             'lastname' => 'Dubos',
             'role' => 'rôle',
-            'picture' => 'https://via.placeholder.com/300?text=Employee+Placeholder',
+            'picture' => 'placeholder.png',
             'civility' => 'M',
         ]
     ];
@@ -32,6 +32,7 @@ class EmployeeFixtures extends Fixture
             $newEmployee->setLastname($employee['lastname']);
             $newEmployee->setRole($employee['role']);
             $newEmployee->setPicture($employee['picture']);
+            copy(__DIR__ . '/placeholder.png', __DIR__ . '/../../public/uploads/employee/placeholder.png');
             $newEmployee->setCivility($employee['civility']);
             $manager->persist($newEmployee);
         }

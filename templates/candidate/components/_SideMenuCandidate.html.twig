@@ -1,0 +1,71 @@
+<nav class="sideMenu d-lg-flex d-none flex-column justify-content-start align-items-start overflow-auto">
+	<h2 class="text-light fs-3 mt-4 px-4 pb-4 text-break">{{ candidate.user.firstname }}
+		{{ candidate.user.lastname }}</h2>
+	<div class="navbar-nav mt-4 px-4">
+		<a class="nav-link fs-5 my-1 d-flex" href="#candidateDetails">
+			{% if candidate.user is not empty %}
+			<i class="bi bi-check-circle-fill  text-secondary me-3"></i>
+			{% else %}
+				<i class="bi bi-exclamation-circle text-light me-3"></i>
+			{% endif %}Coordonnées
+		</a>
+		<a class="nav-link fs-5 my-1 d-flex" href="#candidateSkills">
+			{% if candidate.skills is not empty %}
+				<i class="bi bi-check-circle-fill  text-secondary me-3"></i>
+			{% else %}
+				<i class="bi bi-exclamation-circle text-light me-3"></i>
+			{% endif %}Compétences
+		</a>
+		<a class="nav-link fs-5 my-1 d-flex" href="#candidateFormations">
+			{% if candidate.formations is not empty %}
+					<i class="bi bi-check-circle-fill  text-secondary me-3"></i>
+			{% else %}
+				<i class="bi bi-exclamation-circle text-light me-3"></i>
+			{% endif %}Formations
+		</a>
+		<a class="nav-link fs-5 my-1 d-flex" href="#candidateExperiences">
+			{% if candidate.experiences is not empty %}
+			<i class="bi bi-check-circle-fill  text-secondary me-3"></i>
+			{% else %}
+				<i class="bi bi-exclamation-circle text-light me-3"></i>
+			{% endif %}Expériences
+		</a>
+		<a class="nav-link fs-5 my-1 d-flex" href="#candidateSoftSkills">
+			{% if candidate.softSkills is not empty %}
+				<i class="bi bi-check-circle-fill  text-secondary me-3"></i>
+			{% else %}
+				<i class="bi bi-exclamation-circle text-light me-3"></i>
+			{% endif %}Soft skills
+		</a>
+		<a class="nav-link fs-5 my-1 d-flex" href="#candidateLanguages">
+			{% if candidate.candidateLanguages is not empty %}
+			<i class="bi bi-check-circle-fill  text-secondary me-3"></i>
+			{% else %}
+				<i class="bi bi-exclamation-circle text-light me-3"></i>
+			{% endif %}Langues étrangères
+		</a>
+		<a class="nav-link fs-5 my-1 d-flex" href="#candidateHobbies">
+			{% if candidate.hobbies is not empty  %}
+				<i class="bi bi-check-circle-fill  text-secondary me-3"></i>
+			{% else %}
+				<i class="bi bi-exclamation-circle text-light me-3"></i>
+			{% endif %}Centres d'intérêt
+		</a>
+		<a class="nav-link fs-5 my-1 d-flex" href="#candidateComplementaryQuestions">
+			{% if candidate.profilQuality is not empty  %}
+				<i class="bi bi-check-circle-fill  text-secondary me-3"></i>
+			{% else %}
+				<i class="bi bi-exclamation-circle text-light me-3"></i>
+			{% endif %}
+			<div>Questions complémentaires</div>
+		</a>
+		<a class="nav-link d-flex fs-5 my-1 d-flex" href="#documents">
+			{% if candidate.additionaldocuments is not empty  %}
+				<i class="bi bi-check-circle-fill  text-secondary me-3"></i>
+			{% else %}
+				<i class="bi bi-exclamation-circle text-light me-3"></i>
+			{% endif %}
+			<div>Documents</div>
+		</a>
+	</div>
+</nav>

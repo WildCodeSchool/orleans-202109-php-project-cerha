@@ -1,14 +1,26 @@
-<nav class="sideMenu d-flex flex-column justify-content-start align-items-start">
+<nav class="sideMenu d-lg-flex d-none flex-column justify-content-start align-items-start overflow-auto">
 	<h2 class="text-light fs-3 mt-4 px-4 pb-4 text-break">{{ company.denomination }}</h2>
 	<div class="navbar-nav mt-4 px-4">
-		<a class="nav-link fs-5 my-2" href="#companyDetails">
-			<i class="bi bi-plus-circle-fill text-light me-3"></i>Informations
+		<a class="nav-link fs-5 my-1 d-flex" href="#companyDetails">
+			{% if company.denomination is not empty  %}
+				<i class="bi bi-check-circle-fill text-secondary me-3"></i>
+			{% else %}
+				<i class="bi bi-exclamation-circle text-light me-3"></i>
+			{% endif %}Informations
 		</a>
-		<a class="nav-link fs-5 my-2" href="#companyContact">
-			<i class="bi bi-plus-circle-fill text-light me-3"></i>Contact
+		<a class="nav-link fs-5 my-1 d-flex" href="#companyContact">
+			{% if company.user is not empty  %}
+				<i class="bi bi-check-circle-fill  text-secondary me-3"></i>
+			{% else %}
+				<i class="bi bi-exclamation-circle text-light me-3"></i>
+			{% endif %}Contact
 		</a>
-		<a class="nav-link fs-5 my-2" href="#companyNeed">
-			<i class="bi bi-plus-circle-fill text-light me-3"></i>Description
+		<a class="nav-link fs-5 my-1 d-flex" href="#companyNeed">
+			{% if company.need is not empty  %}
+				<i class="bi bi-check-circle-fill  text-secondary me-3"></i>
+			{% else %}
+				<i class="bi bi-exclamation-circle text-light me-3"></i>
+			{% endif %}Description
 		</a>
 	</div>
 </nav>

@@ -21,9 +21,9 @@ final class Version20220103125013 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE sector (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(100) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE skill (id INT AUTO_INCREMENT NOT NULL, sector_id INT NOT NULL, candidat_id INT NOT NULL, name VARCHAR(100) NOT NULL, UNIQUE INDEX UNIQ_5E3DE477DE95C867 (sector_id), INDEX IDX_5E3DE4778D0EB82 (candidat_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE skill (id INT AUTO_INCREMENT NOT NULL, sector_id INT NOT NULL, candidate_id INT NOT NULL, name VARCHAR(100) NOT NULL, UNIQUE INDEX UNIQ_5E3DE477DE95C867 (sector_id), INDEX IDX_5E3DE4778D0EB82 (candidate_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE skill ADD CONSTRAINT FK_5E3DE477DE95C867 FOREIGN KEY (sector_id) REFERENCES sector (id)');
-        $this->addSql('ALTER TABLE skill ADD CONSTRAINT FK_5E3DE4778D0EB82 FOREIGN KEY (candidat_id) REFERENCES candidat (id)');
+        $this->addSql('ALTER TABLE skill ADD CONSTRAINT FK_5E3DE4778D0EB82 FOREIGN KEY (candidate_id) REFERENCES candidate (id)');
         $this->addSql('ALTER TABLE skill DROP INDEX UNIQ_5E3DE477DE95C867, ADD INDEX IDX_5E3DE477DE95C867 (sector_id)');
     }
 

@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Candidat;
+use App\Entity\Candidate;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -27,7 +27,7 @@ class ComplementaryQuestionType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Candidat::class,
+            'data_class' => Candidate::class,
         ]);
     }
 }

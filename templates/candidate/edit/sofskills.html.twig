@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	- Mes Softskills
+{% endblock %}
+
+{% block stylesheets %}
+	{{ encore_entry_link_tags('forms') }}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1 class="text-center mt-5 ">
+			Mes softskills</h1>
+		<div class="row">
+			<h2 class="text-center fs-3">Ajouter jusqu'à 5 softskills</h2>
+			<div class="col-6 offset-md-3 fs-4 mt-5 text-info edit_form">
+				{{ form_start(form) }}
+				{{ form_widget(form) }}
+				<button class="btn btn-secondary fw-bold text-light mb-4">Valider</button>
+				<a class="btn btn-outline-dark mb-4" href=" {{ path('candidate_show', {'user': candidate.user}) }}">Retour</a>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

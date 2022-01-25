@@ -75,9 +75,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private string $gender;
 
     /**
-     * @ORM\OneToOne(targetEntity=Candidat::class, mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Candidate::class, mappedBy="user", cascade={"persist", "remove"})
      */
-    private ?Candidat $candidat;
+    private ?Candidate $candidate;
 
     /**
      * @ORM\Column(type="boolean")
@@ -88,6 +88,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToOne(targetEntity=Company::class, mappedBy="user", cascade={"persist", "remove"})
      */
     private ?Company $company;
+
+    public const USER_ROLES = ['candidate', 'company'];
 
     public function getId(): ?int
     {
@@ -226,19 +228,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getCandidat(): ?Candidat
+    public function getCandidate(): ?Candidate
     {
-        return $this->candidat;
+        return $this->candidate;
     }
 
-    public function setCandidat(Candidat $candidat): self
+    public function setCandidate(Candidate $candidate): self
     {
         // set the owning side of the relation if necessary
-        if ($candidat->getUser() !== $this) {
-            $candidat->setUser($this);
+        if ($candidate->getUser() !== $this) {
+            $candidate->setUser($this);
         }
 
-        $this->candidat = $candidat;
+        $this->candidate = $candidate;
 
         return $this;
     }

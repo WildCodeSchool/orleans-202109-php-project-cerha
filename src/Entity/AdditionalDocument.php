@@ -42,9 +42,9 @@ class AdditionalDocument
     private $documentFile;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Candidat::class, inversedBy="additionalDocuments")
+     * @ORM\ManyToOne(targetEntity=Candidate::class, inversedBy="additionalDocuments")
      */
-    private ?Candidat $candidat;
+    private ?Candidate $candidate;
 
     /**
      * @ORM\Column(type="datetime")
@@ -72,14 +72,14 @@ class AdditionalDocument
         return $this;
     }
 
-    public function getCandidat(): ?Candidat
+    public function getCandidate(): ?Candidate
     {
-        return $this->candidat;
+        return $this->candidate;
     }
 
-    public function setCandidat(?Candidat $candidat): self
+    public function setCandidate(?Candidate $candidate): self
     {
-        $this->candidat = $candidat;
+        $this->candidate = $candidate;
 
         return $this;
     }

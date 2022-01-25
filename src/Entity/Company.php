@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CompanyRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -19,14 +21,14 @@ class Company
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=100)
      */
     private ?string $denomination;
 
     /**
-     * @ORM\Column(type="string", length=14)
+     * @ORM\Column(type="string", length=14, nullable=true)
      * @Assert\NotBlank(message="Le SIRET est obligatoire.")
      * @Assert\Luhn(message="Numéro de SIRET invalide.")
      * @Assert\Length(max=14)
@@ -34,46 +36,46 @@ class Company
     private ?string $siret;
 
     /**
-     * @ORM\Column(type="string", length=5)
+     * @ORM\Column(type="string", length=5, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=5)
      */
     private ?string $apeCode;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=255)
      */
     private ?string $address;
 
     /**
-     * @ORM\Column(type="string", length=5)
+     * @ORM\Column(type="string", length=5, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=5)
      */
     private ?string $postalCode;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=100)
      */
     private ?string $city;
 
     /**
-     * @ORM\Column(type="string", length=13)
+     * @ORM\Column(type="string", length=13, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=13)
      */
     private ?string $vatNumber;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=100)
      */
-    private string $contactRole;
+    private ?string $contactRole;
 
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="company", cascade={"persist", "remove"})
@@ -114,6 +116,16 @@ class Company
      * @ORM\Column(type="text", nullable=true)
      */
     private ?string $need;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CompanyComment::class, mappedBy="company")
+     */
+    private Collection $companyComments;
+
+    public function __construct()
+    {
+        $this->companyComments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -284,6 +296,36 @@ class Company
     public function setNeed(?string $need): self
     {
         $this->need = $need;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CompanyComment[]
+     */
+    public function getCompanyComments(): Collection
+    {
+        return $this->companyComments;
+    }
+
+    public function addCompanyComment(CompanyComment $companyComment): self
+    {
+        if (!$this->companyComments->contains($companyComment)) {
+            $this->companyComments[] = $companyComment;
+            $companyComment->setCompany($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCompanyComment(CompanyComment $companyComment): self
+    {
+        if ($this->companyComments->removeElement($companyComment)) {
+            // set the owning side to null (unless already changed)
+            if ($companyComment->getCompany() === $this) {
+                $companyComment->setCompany(null);
+            }
+        }
 
         return $this;
     }

@@ -20,9 +20,9 @@ final class Version20211230193451 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE hobby ADD candidat_id INT NOT NULL');
-        $this->addSql('ALTER TABLE hobby ADD CONSTRAINT FK_3964F3378D0EB82 FOREIGN KEY (candidat_id) REFERENCES candidat (id)');
-        $this->addSql('CREATE INDEX IDX_3964F3378D0EB82 ON hobby (candidat_id)');
+        $this->addSql('ALTER TABLE hobby ADD candidate_id INT NOT NULL');
+        $this->addSql('ALTER TABLE hobby ADD CONSTRAINT FK_3964F3378D0EB82 FOREIGN KEY (candidate_id) REFERENCES candidate (id)');
+        $this->addSql('CREATE INDEX IDX_3964F3378D0EB82 ON hobby (candidate_id)');
     }
 
     public function down(Schema $schema): void
@@ -30,6 +30,6 @@ final class Version20211230193451 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE hobby DROP FOREIGN KEY FK_3964F3378D0EB82');
         $this->addSql('DROP INDEX IDX_3964F3378D0EB82 ON hobby');
-        $this->addSql('ALTER TABLE hobby DROP candidat_id');
+        $this->addSql('ALTER TABLE hobby DROP candidate_id');
     }
 }

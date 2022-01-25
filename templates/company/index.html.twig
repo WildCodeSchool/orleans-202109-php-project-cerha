@@ -2,7 +2,9 @@
 
 {% block title %}
 	{{ parent() }}
-	- {{ company.denomination }} Profil
+	-
+	{{ company.denomination }}
+	Profil
 {% endblock %}
 
 {% block stylesheets %}
@@ -11,13 +13,39 @@
 {% endblock %}
 
 {% block body %}
-<h1 class="text-center mt-5">Mon entreprise</h1>
+
 	<div class="d-flex">
 		{% include "company/components/_SideMenuCompany.html.twig" %}
 		<div class="container my-5">
+			{% if company.companycomments is not empty %}
+				<div class="alert alert-danger alert-dismissible fade show  my-2 col-lg-6 offset-lg-3" role="alert">
+
+					Bonjour
+					{{ company.user.firstname }}
+					{{ company.user.lastname }}.<strong>
+						Vous avez
+						{{ company.companycomments|length }}
+						message(s)</strong>.
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+				</div>
+			{% endif %}
+			<h1 class="text-center mb-4">Mon entreprise</h1>
 			{% include "company/components/_companyDetails.html.twig" %}
 			{% include "company/components/_companyContact.html.twig" %}
 			{% include "company/components/_companyNeed.html.twig" %}
+			{% if company.companycomments is not empty %}
+				<div class="mt-5 col-md-6 offset-md-3 mt-3">
+					<div class="alert alert-primary" role="alert">
+						{% for company_comment in company.companycomments|reverse %}
+							<div class="fs-4 text-info">
+								<i class="bi bi-chat-text-fill text-info me-2"></i>
+								{{ company_comment.createdAt|date("m-d-Y") }}</div>
+							<div class="mb-4 mt-1 mb-4">{{ company_comment.comment }}</div>
+						{% endfor %}
+					{% endif %}
+				</div>
+			</div>
 		</div>
 	</div>
 {% endblock %}
