@@ -11,32 +11,33 @@
 {% endblock %}
 
 {% block body %}
+	<main class="container">
+		<h1 class="text-center text-primary mt-5 mb-4">Détails de
+			{{ company.denomination }}</h1>
+		<div class="container d-flex flex-row justify-content-center gap-5">
+			<a href="{{ path('admin_company_index') }}" class="btn btn-secondary text-light">
+				<i class="bi bi-arrow-left-square test-light me-1"></i>Retour</a>
+			{{ include('admin_company/_delete_form.html.twig') }}
+		</div>
+		{% include 'company/components/_companyDetails.html.twig' %}
+		{% include 'company/components/_companyContact.html.twig' %}
+		{% include 'company/components/_companyNeed.html.twig' %}
+		<div class="col-md-6 offset-md-3 text-info fs-4 mt-4">
+			{% if company.companycomments is not empty %}
 
-	<h1 class="text-center text-primary mt-5 mb-4">Détails de
-		{{ company.denomination }}</h1>
-	<div class="container d-flex flex-row justify-content-center gap-5">
-		<a href="{{ path('admin_company_index') }}" class="btn btn-secondary text-light">
-			<i class="bi bi-arrow-left-square test-light me-1"></i>Retour</a>
-		{{ include('admin_company/_delete_form.html.twig') }}
-	</div>
-	{% include 'company/components/_companyDetails.html.twig' %}
-	{% include 'company/components/_companyContact.html.twig' %}
-	{% include 'company/components/_companyNeed.html.twig' %}
-	<div class="col-md-6 offset-md-3 text-info fs-4 mt-4">
-		{% if company.companycomments is not empty %}
+				{% for company_comment in company.companycomments|reverse %}
+					<div class="mb-2">
+						Commentaire ajouté le
+						{{ company_comment.createdAt|date("m-d-Y") }}</div>
 
-			{% for company_comment in company.companycomments|reverse %}
-				<div class="mb-2">
-					Commentaire ajouté le
-					{{ company_comment.createdAt|date("m-d-Y") }}</div>
-
-				<p>{{ company_comment.comment }}{{ include('admin_company/_delete_form_comment.html.twig') }}</p>
-			{% endfor %}
-		{% endif %}
-	</div>
-	<div class="col-md-6  offset-md-3 ">
-		{{ form_start(form) }}
-		{{ form_widget(form) }}
-		<input class="btn btn-secondary text-light mb-3" type='submit' value='Ajouter un commentaire'>
-		{{ form_end(form) }}</div>
+					<p>{{ company_comment.comment }}{{ include('admin_company/_delete_form_comment.html.twig') }}</p>
+				{% endfor %}
+			{% endif %}
+		</div>
+		<div class="col-md-6  offset-md-3 ">
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			<input class="btn btn-secondary text-light mb-3" type='submit' value='Ajouter un commentaire'>
+			{{ form_end(form) }}</div>
+	</main>
 {% endblock %}
