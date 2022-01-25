@@ -11,7 +11,7 @@
 {% endblock %}
 {% block body %}
 	<main class="container">
-		<h1 class="text-center mt-5 mb-4 border-bottom pb-2">Détails de
+		<h1 class="text-center mt-5 mb-4 border-bottom pb-2" id="top">Détails de
 			{{ candidate.user.gender }}.
 			{{ candidate.user.lastname }}
 			{{ candidate.user.firstname }}</h1>
@@ -67,4 +67,5 @@
 			<input class="btn btn-secondary text-light mb-3" type='submit' value='Ajouter un commentaire'>
 			{{ form_end(form) }}</div>
 	</main>
+	{% include 'items/_return.html.twig' %}
 {% endblock %}

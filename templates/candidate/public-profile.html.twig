@@ -13,7 +13,8 @@
 
 {% block body %}
 	<div class="container my-5">
-		<h1 class="text-center mb-4">Profil n° {{ candidate.id }}</h1>
+		<h1 class="text-center mb-4" id="top">Profil n°
+			{{ candidate.id }}</h1>
 		{% include "candidate/components/_skills.html.twig" %}
 		{% include "candidate/components/_formations.html.twig" %}
 		{% include "candidate/components/_experiences.html.twig" %}
@@ -22,4 +23,6 @@
 		{% include "candidate/components/_hobbies.html.twig" %}
 		{% include "candidate/components/_complementary-questions.html.twig" %}
 	</div>
+
+	{% include 'items/_return.html.twig' %}
 </div>{% endblock %}

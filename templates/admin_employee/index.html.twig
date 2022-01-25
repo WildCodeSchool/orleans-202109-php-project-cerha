@@ -8,7 +8,7 @@
 	{{ encore_entry_link_tags('adminCandidate') }}
 {% endblock %}
 {% block body %}
-	<h1 class="text-center mt-5 mb-4">Administration membres CERHA</h1>
+	<h1 class="text-center mt-5 mb-4" id="top">Administration membres CERHA</h1>
 
 	<main class="container">
 		<div class="d-flex justify-content-end mb-3 pe-2"></div>
@@ -50,5 +50,5 @@
 			</tbody>
 		</table>
 	</main>
-
+	{% include 'items/_return.html.twig' %}
 {% endblock %}

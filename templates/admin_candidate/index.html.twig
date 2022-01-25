@@ -5,7 +5,7 @@
 {{ encore_entry_link_tags('adminCandidate') }}
 {% endblock %}
 {% block body %}
-<h1 class="text-center mt-5 mb-4">Administration candidats</h1>
+<h1 class="text-center mt-5 mb-4" id="top">Administration candidats</h1>
 
 <main class="container">
     <section class="searchForm">
@@ -52,5 +52,5 @@
         </tbody>
     </table>
 </main>
-
+{% include 'items/_return.html.twig' %}
 {% endblock %}

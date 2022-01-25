@@ -16,7 +16,7 @@
 
 	<div class="d-flex">
 		{% include "company/components/_SideMenuCompany.html.twig" %}
-		<div class="container my-5">
+		<div class="container my-5" >
 			{% if company.companycomments is not empty %}
 				<div class="alert alert-danger alert-dismissible fade show  my-2 col-lg-6 offset-lg-3" role="alert">
 
@@ -30,7 +30,7 @@
 
 				</div>
 			{% endif %}
-			<h1 class="text-center mb-4">Mon entreprise</h1>
+			<h1 class="text-center mb-4" id="top">Mon entreprise</h1>
 			{% include "company/components/_companyDetails.html.twig" %}
 			{% include "company/components/_companyContact.html.twig" %}
 			{% include "company/components/_companyNeed.html.twig" %}
@@ -45,6 +45,7 @@
 						{% endfor %}
 					{% endif %}
 				</div>
+				{% include 'items/_return.html.twig' %}
 			</div>
 		</div>
 	</div>

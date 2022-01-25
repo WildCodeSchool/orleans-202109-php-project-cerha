@@ -10,11 +10,10 @@
 	{{ encore_entry_link_tags('sideMenu') }}
 {% endblock %}
 
-
 {% block body %}
 	<div class="d-flex">
 		{% include "candidate/components/_SideMenuCandidate.html.twig" %}
-		<div class="container my-5">
+		<div class="container my-5" id="top">
 			{% if candidate.candidatecomments is not empty %}
 				<div class="alert alert-danger alert-dismissible fade show  my-2 col-lg-6 offset-lg-3" role="alert">
 
@@ -48,7 +47,11 @@
 						{% endfor %}
 					{% endif %}
 				</div>
+				{% include 'items/_return.html.twig' %}
 			</div>
+
 		</div>
+
 	</div>
+
 {% endblock %}

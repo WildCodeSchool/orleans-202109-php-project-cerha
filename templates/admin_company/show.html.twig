@@ -12,7 +12,7 @@
 
 {% block body %}
 
-	<h1 class="text-center text-primary mt-5 mb-4">Détails de
+	<h1 class="text-center text-primary mt-5 mb-4" id="top">Détails de
 		{{ company.denomination }}</h1>
 	<div class="container d-flex flex-row justify-content-center gap-5">
 		<a href="{{ path('admin_company_index') }}" class="btn btn-secondary text-light">
@@ -39,4 +39,5 @@
 		{{ form_widget(form) }}
 		<input class="btn btn-secondary text-light mb-3" type='submit' value='Ajouter un commentaire'>
 		{{ form_end(form) }}</div>
+		{% include 'items/_return.html.twig' %}
 {% endblock %}
