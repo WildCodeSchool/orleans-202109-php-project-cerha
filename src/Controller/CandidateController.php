@@ -45,19 +45,6 @@ class CandidateController extends AbstractController
     }
 
     /**
-     * @Route("/profil/{id}", name="show_public_profile")
-     * @IsGranted("ROLE_COMPANY")
-     */
-    public function showPublicProfile(Candidate $candidate): Response
-    {
-
-        return $this->render(
-            'candidate/public-profile.html.twig',
-            ['candidate' => $candidate]
-        );
-    }
-
-    /**
      * @Route("/profil/edit/softskills", name="softskill_edit")
      * @IsGranted("ROLE_USER")
      */
@@ -106,6 +93,19 @@ class CandidateController extends AbstractController
             'candidate' => $candidate,
             'form' => $form,
         ]);
+    }
+
+    /**
+     * @Route("/profil/{id}", name="show_public_profile")
+     * @IsGranted("ROLE_COMPANY")
+     */
+    public function showPublicProfile(Candidate $candidate): Response
+    {
+
+        return $this->render(
+            'candidate/public-profile.html.twig',
+            ['candidate' => $candidate]
+        );
     }
 
     /**
