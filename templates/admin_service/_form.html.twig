@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+{{ form_widget(form.category.title, {
+        'attr': {
+        'class': 'd-none'
+        }}) }}
+{{ form_widget(form.category.type, {
+        'attr': {
+        'class': 'd-none'
+        }}) }}
+{{ form_row(form.title) }}
+{{ form_row(form.description) }}
+<a href="{{ path('admin_service_index') }}" class="btn btn-secondary mt-3 me-3 text-light">
+	<i class="bi bi-arrow-left-square test-light me-1"></i>Retour</a>
+<button class="btn btn-primary mt-3">{{ button_label|default('Sauvegarder') }}</button>
+{{ form_end(form) }}

@@ -6,6 +6,7 @@ use App\Repository\ServiceCategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ServiceCategoryRepository::class)
@@ -20,14 +21,18 @@ class ServiceCategory
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Length(max=255)
      */
-    private string $title;
+    private ?string $title;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=10, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Length(max=10)
      */
-    private string $type;
+    private ?string $type;
 
     /**
      * @ORM\OneToMany(targetEntity=Service::class, mappedBy="category", orphanRemoval=true)
@@ -49,7 +54,7 @@ class ServiceCategory
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(?string $title): self
     {
         $this->title = $title;
 
@@ -61,7 +66,7 @@ class ServiceCategory
         return $this->type;
     }
 
-    public function setType(string $type): self
+    public function setType(?string $type): self
     {
         $this->type = $type;
 

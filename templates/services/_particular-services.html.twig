@@ -4,7 +4,7 @@
 		<img src="{{ asset('build/images/services-particular.jpg') }}" class="img-services img-fluid" alt="services pour particuliers">
 	</div>
 	<div class="row d-flex justify-content-around mt-5">
-		{% for category in categories|filter(category => category.type == 'candidate') %}
+		{% for category in categories|filter(category => category.type == 'Candidat') %}
 			<div class="col-11 col-lg-5 mt-0">
 				<div class="card service-card my-5">
 					<div class="card-header text-center fw-bold py-3 service-head text-light">
