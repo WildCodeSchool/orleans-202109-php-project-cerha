@@ -26,7 +26,7 @@ class UserFixtures extends Fixture
             $user->setEmail($faker->email());
             $user->setPhoneNumber((int)$faker->serviceNumber());
             $user->setPassword($this->passwordHasher->hashPassword($user, 'test'));
-            $user->setGender('M');
+            $user->setGender('M.');
             $manager->persist($user);
             $this->addReference('user_' . $i, $user);
             if ($i >= CandidateFixtures::CANDIDATE_NUMBER) {

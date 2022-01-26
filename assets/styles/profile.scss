@@ -4,23 +4,28 @@
     box-shadow: $shadow-card;
 }
 
-.softskills,
+.candidateSkills,
+.candidateExperiences,
+.candidateFormations,
+.documents,
+.candidateDetails,
+.softskills,    
 .hobbies ul,
 .languages {
     line-height: $line-height;
     font-family: $text-family;
-    font-size  : $text-size;
+    font-size: $text-size;
 }
 
 .questions h3 {
     line-height: calc($line-height * 60 / 100);
-    color      : $primary;
+    color: $primary;
     font-family: $title-family;
     color: red;
 }
 
 .bi {
-    color    : $secondary;
+    color: $secondary;
     font-size: 1.2rem;
 }
 
@@ -36,15 +41,10 @@
 }
 
 .bi-pencil-square {
-    color    : $primary;
+    color: $primary;
     font-size: 1.8rem;
 
     &:hover {
         color: $secondary;
     }
-}
-
-embed{
-    height: 9rem;
-    width: 24rem;
 }

@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block body %}
+
 	<div class="d-flex">
 		{% include "candidate/components/_SideMenuCandidate.html.twig" %}
 		<div class="container my-5" id="top">
@@ -27,6 +28,9 @@
 
 				</div>
 			{% endif %}
+
+			<h1 class="text-center mt-3 ">
+				Mon profil</h1>
 			{% include "candidate/components/_contactDetails.html.twig" %}
 			{% include "candidate/components/_skills.html.twig" %}
 			{% include "candidate/components/_formations.html.twig" %}

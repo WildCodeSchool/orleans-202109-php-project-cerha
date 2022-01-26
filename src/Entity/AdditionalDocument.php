@@ -40,7 +40,6 @@ class AdditionalDocument
      *                  "application/vnd.oasis.opendocument.text"})
      */
     private $documentFile;
-
     /**
      * @ORM\ManyToOne(targetEntity=Candidate::class, inversedBy="additionalDocuments")
      */
