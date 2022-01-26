@@ -17,11 +17,11 @@ class ReferenceGenerator
 
     public function generateReference(): string
     {
-        $user = $this->userRepository->findByYear();
-        if (!$user) {
+        $lastUser = $this->userRepository->findByYear();
+        if (!$lastUser) {
             $number = 1;
         } else {
-            $number = $this->getNumber($user);
+            $number = $this->getNumber($lastUser);
         }
         return $this->getNewReference($number);
     }
