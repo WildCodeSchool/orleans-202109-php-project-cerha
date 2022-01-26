@@ -3,10 +3,12 @@
 namespace App\DataFixtures;
 
 use App\Entity\User;
+use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Validator\Constraints\Date;
 
 class UserFixtures extends Fixture
 {
@@ -27,6 +29,9 @@ class UserFixtures extends Fixture
             $user->setPhoneNumber((int)$faker->serviceNumber());
             $user->setPassword($this->passwordHasher->hashPassword($user, 'test'));
             $user->setGender('M');
+            $user->setCreatedAt(new DateTime('now'));
+            /* TODO : replace by the reference who will be generate in the Service Reference generator */
+            $user->setReference('soon');
             $manager->persist($user);
             $this->addReference('user_' . $i, $user);
             if ($i >= CandidateFixtures::CANDIDATE_NUMBER) {
@@ -44,6 +49,9 @@ class UserFixtures extends Fixture
         $user->setPassword($this->passwordHasher->hashPassword($user, 'admin'));
         $user->setGender('M');
         $user->setRoles(['ROLE_ADMIN']);
+        $user->setCreatedAt(new DateTime('now'));
+        /* TODO : replace by the reference who will be generate in the Service Reference generator */
+        $user->setReference('soon');
         $manager->persist($user);
         $this->addReference('user_john', $user);
 
@@ -55,6 +63,9 @@ class UserFixtures extends Fixture
         $user->setPassword($this->passwordHasher->hashPassword($user, 'bilbo'));
         $user->setGender('M');
         $user->setRoles(['ROLE_CANDIDATE']);
+        $user->setCreatedAt(new DateTime('now'));
+        /* TODO : replace by the reference who will be generate in the Service Reference generator */
+        $user->setReference('soon');
         $manager->persist($user);
         $this->addReference('user_sylvain', $user);
 
@@ -66,6 +77,9 @@ class UserFixtures extends Fixture
         $user->setPassword($this->passwordHasher->hashPassword($user, 'bigmac'));
         $user->setGender('M');
         $user->setRoles(['ROLE_COMPANY']);
+        $user->setCreatedAt(new DateTime('now'));
+        /* TODO : replace by the reference who will be generate in the Service Reference generator */
+        $user->setReference('soon');
         $manager->persist($user);
         $this->addReference('user_will', $user);
 

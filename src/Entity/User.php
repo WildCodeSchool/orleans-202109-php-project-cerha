@@ -89,6 +89,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private ?Company $company;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="string", length=15)
+     */
+    private $reference;
+
     public const USER_ROLES = ['candidate', 'company'];
 
     public function getId(): ?int
@@ -280,5 +290,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             'email' => $this->getUserIdentifier(),
             'password' => $this->getPassword(),
         ];
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    public function setReference(string $reference): self
+    {
+        $this->reference = $reference;
+
+        return $this;
     }
 }
