@@ -37,7 +37,6 @@
                 <label for="floatingPassword">Password</label>
                 <p class="text-end"><a href="{{ path('app_forgot_password_request') }}">mot de passe oublié ?</a></p>
             </div>
-            <input type="hidden" name="_target_path" value={% if is_granted("ROLE_ADMIN") %}"{{ path('admin_candidate_index') }}"{% endif %}>
             <button class="btn btn-primary col-sm-4 offset-sm-4">Se connecter</button>
         </form>
         <p class="text-center">Pas de compte ? <a href="{{ path('app_register') }}">Inscrivez vous</a></p>
