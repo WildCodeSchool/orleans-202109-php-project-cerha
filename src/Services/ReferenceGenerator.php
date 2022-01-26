@@ -17,13 +17,13 @@ class ReferenceGenerator
 
     public function generateReference(): string
     {
-        $date = new DateTime();
         $user = $this->userRepository->findByYear();
         if (!$user) {
-            return 'null';
+            $number = 1;
         } else {
-            return 'CER_' . str_pad((string) $this->getNumber($user), 4, '0', STR_PAD_LEFT) . '_' . $date->format('y');
+            $number = $this->getNumber($user);
         }
+        return $this->getNewReference($number);
     }
 
     private function getNumber(User $user): int
@@ -33,6 +33,13 @@ class ReferenceGenerator
         $number = explode('_', $userReference)[1];
         /** @var int */
         $number = ltrim($number, '0');
-        return $number += 1;
+        return $number;
+    }
+
+    public function getNewReference(int $number): string
+    {
+        $date = new DateTime();
+        $number++;
+        return 'CER_' . str_pad((string)$number, 4, '0', STR_PAD_LEFT) . '_' . $date->format('y');
     }
 }
