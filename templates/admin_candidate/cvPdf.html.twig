@@ -9,7 +9,7 @@
     <div class="candidate">
         <p class="h1">CERHA</p>
         <p class="h2">
-            {{ candidate.user.lastname }} {{ candidate.user.firstname }}
+            Candidat : {{ candidate.user.reference }}
             <!--A anonymisé (quelle ref utilisent-ils ?)-->
         </p>
     </div>
@@ -31,16 +31,18 @@
     </section>
     <section class="softSkills">
         <p class="h3">Soft skills</p>
+        <ul>
         {% for soft_skill in candidate.softSkills %}
-        <p>{{ soft_skill.name }}</p>
+        <li><p>{{ soft_skill.name }}</p></li>
         {% endfor %}
+    </ul>
     </section>
     <section class="languages">
         <h3>Langues</h3>
         <ul>
             {% for language in candidate.candidateLanguages %}
             <li>
-                <p>{{ language.name }}</p>
+                <p>{{ language.name|language_name('fr')|capitalize }}</p>
             </li>
             {% endfor %}
         </ul>
