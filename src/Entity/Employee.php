@@ -35,11 +35,12 @@ class Employee
     private $pictureFile;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max  = 255)
+
      */
-    private ?string $picture;
+    private ?string $picture = null;
 
     /**
      * @ORM\Column(type="string", length=255)
