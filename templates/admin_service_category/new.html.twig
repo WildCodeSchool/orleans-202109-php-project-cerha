@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Ajouter une catégorie
+{% endblock %}
+
+{% block body %}
+	<main class="container my-5">
+		<h1 class="text-center">Ajouter une catgéorie</h1>
+		<div class="col-md-6 offset-md-3 fs-4 my-5 text-info edit_form">
+			{{ include('admin_service_category/_form.html.twig') }}
+		</div>
+	</main>
+{% endblock %}

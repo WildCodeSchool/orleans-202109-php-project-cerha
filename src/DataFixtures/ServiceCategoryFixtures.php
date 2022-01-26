@@ -11,23 +11,23 @@ class ServiceCategoryFixtures extends Fixture
     public const CATEGORIES = [
         [
             'title' => 'Coaching personnalisé',
-            'type' => 'candidate'
+            'type' => 'Candidat'
         ],
         [
             'title' => 'Prestations de services',
-            'type' => 'candidate'
+            'type' => 'Candidat'
         ],
         [
             'title' => 'Conseils & Expertise RH',
-            'type' => 'company'
+            'type' => 'Entreprise'
         ],
         [
             'title' => 'Appui administratif',
-            'type' => 'company'
+            'type' => 'Entreprise'
         ],
         [
             'title' => 'Cabinet recrutement',
-            'type' => 'company'
+            'type' => 'Entreprise'
         ],
     ];
     public function load(ObjectManager $manager): void
