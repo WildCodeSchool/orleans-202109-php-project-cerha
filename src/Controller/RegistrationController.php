@@ -9,6 +9,8 @@ use App\Form\RegistrationCandidateType;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
+use App\Services\ReferenceGenerator;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,7 +36,8 @@ class RegistrationController extends AbstractController
     public function register(
         Request $request,
         UserPasswordHasherInterface $userPasswordHasher,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        ReferenceGenerator $referenceGenerator
     ): Response {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -54,11 +57,15 @@ class RegistrationController extends AbstractController
                 $candidate = new Candidate();
                 $candidate->setUser($user);
                 $user->setCandidate($candidate);
+                $user->setCreatedAt(new DateTime());
+                $user->setReference($referenceGenerator->generateReference());
                 $user->setRoles(['ROLE_CANDIDATE']);
             } elseif ($form->get('type')->getData() == User::USER_ROLES[1]) {
                 $company = new Company();
                 $company->setUser($user);
                 $user->setCompany($company);
+                $user->setCreatedAt(new DateTime());
+                $user->setReference($referenceGenerator->generateReference());
                 $user->setRoles(['ROLE_COMPANY']);
             }
 

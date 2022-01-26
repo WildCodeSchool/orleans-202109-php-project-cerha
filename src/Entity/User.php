@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -93,6 +95,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToOne(targetEntity=Company::class, mappedBy="user", cascade={"persist", "remove"})
      */
     private ?Company $company;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private ?DateTimeInterface $createdAt;
+
+    /**
+     * @ORM\Column(type="string", length=15)
+     */
+    private ?string $reference;
 
     public const USER_ROLES = ['candidate', 'company'];
 
@@ -285,5 +297,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             'email' => $this->getUserIdentifier(),
             'password' => $this->getPassword(),
         ];
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    public function setReference(string $reference): self
+    {
+        $this->reference = $reference;
+
+        return $this;
     }
 }
