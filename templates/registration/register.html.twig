@@ -74,12 +74,13 @@
         label: 'Password'
         }) }}
 			<div class="row">
-				<div class="col-7 offset-3">
-					{{ form_row(registrationForm.agreeTerms, {
+				<div class="col-8 offset-2 d-flex">
+				{{ form_row(registrationForm.agreeTerms, {
                 'attr': {
                 'class': 'align-self-center',
                 }
                 }) }}
+				<p>Accepter les <a href="{{ path('conditions') }}">conditions d'utilisation</a></p>
 				</div>
 			</div>
 
