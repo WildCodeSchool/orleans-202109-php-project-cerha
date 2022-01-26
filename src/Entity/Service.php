@@ -27,7 +27,6 @@ class Service
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Assert\NotBlank(message="Veuillez décrire le service.")
      */
     private ?string $description;
 
