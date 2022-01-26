@@ -50,13 +50,17 @@
 		<section class="Other">
 			{% include "candidate/components/_complementary-questions.html.twig" %}
 		</section>
-		<div class="col-md-6 et offset-md-3 text-info fs-4">
-			{% if candidate.candidatecomments is not null %}
-				<div>
-					Votre retour :</div>
+		<section class="Documents">
+			{% include "candidate/components/_documents.html.twig" %}
+		</section>
+		<div class="col-md-6 offset-md-3 text-info fs-4 mt-4">
+			{% if candidate.candidatecomments is not empty %}
+
 				{% for candidate_comment in candidate.candidatecomments|reverse %}
-					<p>{{ candidate_comment.comment }}
-						{{ include('admin_candidate/_delete_form_comment.html.twig') }}</p>
+					<div class="mb-2">
+						Commentaire ajouté le
+						{{ candidate_comment.createdAt|date("m-d-Y") }}</div>
+					<p>{{ candidate_comment.comment }}{{ include('admin_candidate/_delete_form_comment.html.twig') }}</p>
 				{% endfor %}
 			{% endif %}
 		</div>
