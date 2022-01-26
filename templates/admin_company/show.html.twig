@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
 {% block title %}
 	{{ parent() }}
@@ -7,15 +7,16 @@
 {% endblock %}
 
 {% block stylesheets %}
+	{{ parent() }}
 	{{ encore_entry_link_tags('adminCandidate') }}
 {% endblock %}
 
 {% block body %}
-	<main class="container">
+	<div class="container m-5">
 
-		<h1 class="text-center text-primary border-bottom mt-5 mb-4">Détails de
+		<h1 class="text-center text-primary mb-4">Détails de
 			{{ company.denomination }}</h1>
-		<div class="d-flex flex-row justify-content-center gap-5">
+		<div class="container d-flex flex-row justify-content-center gap-5">
 			<a href="{{ path('admin_company_index') }}" class="btn btn-secondary text-light">
 				<i class="bi bi-arrow-left-square test-light me-1"></i>Retour</a>
 			{{ include('admin_company/_delete_form.html.twig') }}
@@ -30,7 +31,6 @@
 					<div class="mb-2">
 						Commentaire ajouté le
 						{{ company_comment.createdAt|date("m-d-Y") }}</div>
-
 					<p>{{ company_comment.comment }}{{ include('admin_company/_delete_form_comment.html.twig') }}</p>
 				{% endfor %}
 			{% endif %}
@@ -40,5 +40,5 @@
 			{{ form_widget(form) }}
 			<input class="btn btn-secondary text-light mb-3" type='submit' value='Ajouter un commentaire'>
 			{{ form_end(form) }}</div>
-	</main>
+	</div>
 {% endblock %}
