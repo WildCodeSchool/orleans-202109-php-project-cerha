@@ -3,6 +3,8 @@
 namespace App\DataFixtures;
 
 use App\Entity\User;
+use App\Repository\UserRepository;
+use App\Services\ReferenceGenerator;
 use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -13,13 +15,16 @@ use Symfony\Component\Validator\Constraints\Date;
 class UserFixtures extends Fixture
 {
     private UserPasswordHasherInterface $passwordHasher;
-    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    private ReferenceGenerator $referenceGenerator;
+    public function __construct(UserPasswordHasherInterface $passwordHasher, ReferenceGenerator $referenceGenerator)
     {
         $this->passwordHasher = $passwordHasher;
+        $this->referenceGenerator = $referenceGenerator;
     }
     public const USER_NUMBER = 20;
     public function load(ObjectManager $manager): void
     {
+        $countUsers = 0;
         $faker = Factory::create('fr_FR');
         for ($i = 0; $i < self::USER_NUMBER; $i++) {
             $user = new User();
@@ -31,7 +36,9 @@ class UserFixtures extends Fixture
             $user->setGender('M');
             $user->setCreatedAt(new DateTime('now'));
             /* TODO : replace by the reference who will be generate in the Service Reference generator */
-            $user->setReference('soon');
+            $user->setReference(
+                'CER_' . str_pad($countUsers + 1, 4, '0', STR_PAD_LEFT) . '_' . $user->getCreatedAt()->format('y')
+            );
             $manager->persist($user);
             $this->addReference('user_' . $i, $user);
             if ($i >= CandidateFixtures::CANDIDATE_NUMBER) {
@@ -39,6 +46,7 @@ class UserFixtures extends Fixture
             } else {
                 $user->setRoles(['ROLE_CANDIDATE']);
             }
+            $countUsers++;
         }
 
         $user = new User();
@@ -50,8 +58,10 @@ class UserFixtures extends Fixture
         $user->setGender('M');
         $user->setRoles(['ROLE_ADMIN']);
         $user->setCreatedAt(new DateTime('now'));
-        /* TODO : replace by the reference who will be generate in the Service Reference generator */
-        $user->setReference('soon');
+        $user->setReference(
+            'CER_' . str_pad($countUsers + 1, 4, '0', STR_PAD_LEFT) . '_' . $user->getCreatedAt()->format('y')
+        );
+        $countUsers++;
         $manager->persist($user);
         $this->addReference('user_john', $user);
 
@@ -64,8 +74,10 @@ class UserFixtures extends Fixture
         $user->setGender('M');
         $user->setRoles(['ROLE_CANDIDATE']);
         $user->setCreatedAt(new DateTime('now'));
-        /* TODO : replace by the reference who will be generate in the Service Reference generator */
-        $user->setReference('soon');
+        $user->setReference(
+            'CER_' . str_pad($countUsers + 1, 4, '0', STR_PAD_LEFT) . '_' . $user->getCreatedAt()->format('y')
+        );
+        $countUsers++;
         $manager->persist($user);
         $this->addReference('user_sylvain', $user);
 
@@ -78,8 +90,10 @@ class UserFixtures extends Fixture
         $user->setGender('M');
         $user->setRoles(['ROLE_COMPANY']);
         $user->setCreatedAt(new DateTime('now'));
-        /* TODO : replace by the reference who will be generate in the Service Reference generator */
-        $user->setReference('soon');
+        $user->setReference(
+            'CER_' . str_pad($countUsers + 1, 4, '0', STR_PAD_LEFT) . '_' . $user->getCreatedAt()->format('y')
+        );
+        $countUsers++;
         $manager->persist($user);
         $this->addReference('user_will', $user);
 
