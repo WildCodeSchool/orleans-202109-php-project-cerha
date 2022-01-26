@@ -84,6 +84,7 @@ class AdminEmployeeController extends AbstractController
             $entityManager->remove($employee);
             $entityManager->flush();
         }
+        $this->addFlash('danger', 'Le membre a bien été supprimé.');
 
         return $this->redirectToRoute('admin_employee_index', [], Response::HTTP_SEE_OTHER);
     }
