@@ -16,6 +16,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    public const GENDER = [
+        'M.' => 'M.',
+        'Mme' => 'Mme',
+        'Autre' => '',
+    ];
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -29,7 +35,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @Assert\NotBlank
      * @Assert\Length(max = 180)
      */
-    private string $email;
+    private ?string $email;
 
     /**
      * @ORM\Column(type="json")
@@ -51,7 +57,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @Assert\Type("string")
      * @Assert\Length(max = 100)
      */
-    private string $lastname;
+    private ?string $lastname;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -59,22 +65,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @Assert\Type("string")
      * @Assert\Length(max = 100)
      */
-    private string $firstname;
+    private ?string $firstname;
 
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank
      * @Assert\Type("string")
      */
-    private string $phoneNumber;
+    private ?string $phoneNumber;
 
     /**
      * @ORM\Column(type="string", length=10)
-     * @Assert\NotBlank
      * @Assert\Type("string")
      * @Assert\Length(max = 10)
      */
-    private string $gender;
+    private ?string $gender;
 
     /**
      * @ORM\OneToOne(targetEntity=Candidate::class, mappedBy="user", cascade={"persist", "remove"})
@@ -113,7 +118,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 
@@ -197,7 +202,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->lastname;
     }
 
-    public function setLastname(string $lastname): self
+    public function setLastname(?string $lastname): self
     {
         $this->lastname = $lastname;
 
@@ -209,7 +214,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->firstname;
     }
 
-    public function setFirstname(string $firstname): self
+    public function setFirstname(?string $firstname): self
     {
         $this->firstname = $firstname;
 
@@ -221,7 +226,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->phoneNumber;
     }
 
-    public function setPhoneNumber(string $phoneNumber): self
+    public function setPhoneNumber(?string $phoneNumber): self
     {
         $this->phoneNumber = $phoneNumber;
 
@@ -233,7 +238,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->gender;
     }
 
-    public function setGender(string $gender): self
+    public function setGender(?string $gender): self
     {
         $this->gender = $gender;
 

@@ -1,41 +1,41 @@
-<div class="row questions my-5" id="candidateComplementaryQuestions">
-	<div class="card card-questions p-4 col-md-6 offset-md-3">
-		{% if not is_granted("ROLE_ADMIN") and is_granted("ROLE_CANDIDATE") %}
-			<a class="btn btn-outline-light ms-5 align-self-end fs-5  bi bi-pencil-square" href=" {{ path('candidate_questions_edit', {'user': candidate.user}) }} ">
-				Modifier</a>
-		{% endif %}
-		<h2 class="card-title text-primary text-center mt-3 pt-2 px-4">Questions complémentaires</h2>
-		<h3 class="mx-3 mt-3 text-secondary fs-5">
-			<i class="bi bi-question-circle me-1"></i>
-			Depuis combien de temps êtes-vous en recherche active ?</h3>
-		<p class="mx-3">
+	<div class="row questions my-5 d-lg-block d-flex justify-content-center" id="candidateComplementaryQuestions">
+		<div class="card card-questions  p-4 col-lg-6 col-10 offset-lg-3 ">
+			{% if not is_granted("ROLE_ADMIN") and is_granted("ROLE_CANDIDATE") %}
+				<a class="btn btn-outline-light ms-5 align-self-end fs-6  bi bi-pencil-square" href=" {{ path('candidate_questions_edit', {'user': candidate.user}) }} ">
+					Modifier</a>
+			{% endif %}
+			<h2 class="card-title text-primary text-center mt-3 pt-2 px-4">Questions complémentaires</h2>
+			<h3 class="mx-3 mt-3 text-secondary fs-5">
+				<i class="bi bi-question-circle me-1"></i>
+				Depuis combien de temps êtes-vous en recherche active ?</h3>
+			<p class="mx-3">
 
-			{% if candidate.timeSearch is null %}
-				Aucune information renseignée
-			{% else %}
-				{{ candidate.timeSearch }}
-			{% endif %}
-		</p>
-		<h3 class="mx-3 mt-2 text-secondary fs-5">
-			<i class="bi bi-question-circle me-1"></i>
-			Vous qualifierez votre recherche : d'efficace, pas assez ciblée, vous ne savez pas par où commencer :</h3>
-		<p class="mx-3">
+				{% if candidate.timeSearch is null %}
+					Aucune information renseignée
+				{% else %}
+					{{ candidate.timeSearch }}
+				{% endif %}
+			</p>
+			<h3 class="mx-3 mt-2 text-secondary fs-5">
+				<i class="bi bi-question-circle me-1"></i>
+				Vous qualifierez votre recherche : d'efficace, pas assez ciblée, vous ne savez pas par où commencer :</h3>
+			<p class="mx-3">
 
-			{% if candidate.searchQuality is null %}
-				Aucune information renseignée
-			{% else %}
-				{{ candidate.searchQuality }}
-			{% endif %}
-		</p>
-		<h3 class="mx-3 mt-2 text-secondary fs-5">
-			<i class="bi bi-question-circle me-1"></i>
-			Vous qualifierez votre profil : d'attractif, de rare, d'atypique, commun :</h3>
-		<p class="mx-3">
-			{% if candidate.profilQuality is null %}
-				Aucune information renseignée
-			{% else %}
-				{{ candidate.profilQuality }}
-			{% endif %}
-		</p>
+				{% if candidate.searchQuality is null %}
+					Aucune information renseignée
+				{% else %}
+					{{ candidate.searchQuality }}
+				{% endif %}
+			</p>
+			<h3 class="mx-3 mt-2 text-secondary fs-5">
+				<i class="bi bi-question-circle me-1"></i>
+				Vous qualifierez votre profil : d'attractif, de rare, d'atypique, commun :</h3>
+			<p class="mx-3">
+				{% if candidate.profilQuality is null %}
+					Aucune information renseignée
+				{% else %}
+					{{ candidate.profilQuality }}
+				{% endif %}
+			</p>
+		</div>
 	</div>
-</div>

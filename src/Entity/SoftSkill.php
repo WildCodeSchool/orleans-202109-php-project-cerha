@@ -23,7 +23,7 @@ class SoftSkill
      * @Assert\NotBlank
      * @Assert\Length(max=100)
      */
-    private string $name;
+    private ?string $name;
 
     /**
      * @ORM\ManyToOne(targetEntity=Candidate::class, inversedBy="softSkills")
@@ -41,7 +41,7 @@ class SoftSkill
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 

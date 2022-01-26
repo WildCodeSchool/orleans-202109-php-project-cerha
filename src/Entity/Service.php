@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ServiceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ServiceRepository::class)
@@ -18,14 +19,17 @@ class Service
     private int $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Veuillez donner un titre au service.")
+     * @Assert\Length(max=255)
      */
-    private string $title;
+    private ?string $title;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
+     * @Assert\NotBlank(message="Veuillez décrire le service.")
      */
-    private string $description;
+    private ?string $description;
 
     /**
      * @ORM\ManyToOne(targetEntity=ServiceCategory::class, inversedBy="services")
@@ -43,7 +47,7 @@ class Service
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(?string $title): self
     {
         $this->title = $title;
 
@@ -55,7 +59,7 @@ class Service
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 

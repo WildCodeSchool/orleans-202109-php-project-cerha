@@ -24,20 +24,20 @@ class Formation
      * @Assert\NotBlank
      * @Assert\Length(max = 100)
      */
-    private string $title;
+    private ?string $title;
 
     /**
      * @ORM\Column(type="string", length=100)
      *  @Assert\NotBlank
      *  @Assert\Length(max = 100)
      */
-    private string $place;
+    private ?string $place;
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank
      */
-    private string $description;
+    private ?string $description;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
@@ -59,13 +59,13 @@ class Formation
      * @ORM\Column(type="date")
      * @Assert\NotBlank
      */
-    private \DateTimeInterface $startDate;
+    private ?\DateTimeInterface $startDate;
 
     /**
      * @ORM\Column(type="date")
      * @Assert\NotBlank
      */
-    private \DateTimeInterface $endDate;
+    private ?\DateTimeInterface $endDate;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -83,7 +83,7 @@ class Formation
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(?string $title): self
     {
         $this->title = $title;
 
@@ -95,7 +95,7 @@ class Formation
         return $this->place;
     }
 
-    public function setPlace(string $place): self
+    public function setPlace(?string $place): self
     {
         $this->place = $place;
 
@@ -107,7 +107,7 @@ class Formation
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -119,7 +119,7 @@ class Formation
         return $this->referent;
     }
 
-    public function setReferent(string $referent): self
+    public function setReferent(?string $referent): self
     {
         $this->referent = $referent;
 
@@ -155,7 +155,7 @@ class Formation
         return $this->startDate;
     }
 
-    public function setStartDate(\DateTimeInterface $startDate): self
+    public function setStartDate(?\DateTimeInterface $startDate): self
     {
         $this->startDate = $startDate;
 
@@ -167,7 +167,7 @@ class Formation
         return $this->endDate;
     }
 
-    public function setEndDate(\DateTimeInterface $endDate): self
+    public function setEndDate(?\DateTimeInterface $endDate): self
     {
         $this->endDate = $endDate;
 

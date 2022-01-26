@@ -39,6 +39,7 @@ class UserFixtures extends Fixture
             $user->setReference(
                 'CER_' . str_pad($countUsers + 1, 4, '0', STR_PAD_LEFT) . '_' . $user->getCreatedAt()->format('y')
             );
+            $user->setGender('M.');
             $manager->persist($user);
             $this->addReference('user_' . $i, $user);
             if ($i >= CandidateFixtures::CANDIDATE_NUMBER) {

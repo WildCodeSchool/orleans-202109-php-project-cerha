@@ -26,12 +26,17 @@ class FormationType extends AbstractType
             ->add('place', TextType::class, ['label' => 'Établissement'])
             ->add('startDate', DateType::class, [
                 'label' => 'Date de début',
+                'widget' => 'choice',
+                'years' => range(date('Y'), date('Y') - 60),
+
                 'placeholder' => [
                     'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour', 'required'   => true,
                 ],
             ])
             ->add('endDate', DateType::class, [
                 'label' => 'Date de fin',
+                'widget' => 'choice',
+                'years' => range(date('Y'), date('Y') - 60),
                 'placeholder' => [
                     'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour', 'required'   => true,
                 ],
