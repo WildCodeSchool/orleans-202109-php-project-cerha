@@ -1,11 +1,12 @@
 <div class="row candidateExperiences mt-5 d-lg-block d-flex justify-content-center" id="candidateExperiences">
 	<div class="card card-candidateExperiences p-4 col-lg-6 col-10 offset-lg-3">
-		{% if not is_granted("ROLE_ADMIN") and is_granted("ROLE_CANDIDATE") %}
-			<a class="btn btn-outline-light ms-5 align-self-end fs-6  bi bi-pencil-square" href=" {{ path('candidate_edit_experience', {'user': candidate.user}) }} ">
-				Modifier</a>
-		{% endif %}
-		<h2 class="card-title text-primary text-center mt-3 pt-2 px-4">
-			Expériences</h2>
+		<div class="d-flex mt-2 justify-content-between">
+			<h2 class="card-title text-primary ms-3 pt-1">Expériences</h2>
+			{% if is_granted("ROLE_ADMIN") == false %}
+				<a class="btn fs-6 bi bi-pencil-square pt-2" href="{{ path('candidate_edit_experience', {'user': candidate.user}) }}">
+					Modifier</a>
+			{% endif %}
+		</div>
 		<div class=" mt-3">
 			{% for experience in candidate.experiences %}
 				<h4 class="text-secondary mx-3">
