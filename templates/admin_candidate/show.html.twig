@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
 {% block title %}
 	{{ parent() }}
@@ -7,11 +7,12 @@
 	{{ candidate.user.firstname }}
 {% endblock %}
 {% block stylesheets %}
+	{{ parent() }}
 	{{ encore_entry_link_tags('adminCandidate') }}
 {% endblock %}
 {% block body %}
-	<main class="container">
-		<h1 class="text-center mt-5 mb-4 border-bottom pb-2" id="top">Détails de
+	<main class="container m-5">
+		<h1 class="text-center mb-4 border-bottom pb-2">Détails de
 			{{ candidate.user.gender }}.
 			{{ candidate.user.lastname }}
 			{{ candidate.user.firstname }}</h1>
@@ -49,19 +50,17 @@
 		<section class="Other">
 			{% include "candidate/components/_complementary-questions.html.twig" %}
 		</section>
-		<div class="col-md-6 offset-md-3 text-info fs-4 ">
-			{% if candidate.candidatecomments is not empty %}
-
+		<div class="col-md-6 et offset-md-3 text-info fs-4">
+			{% if candidate.candidatecomments is not null %}
+				<div>
+					Votre retour :</div>
 				{% for candidate_comment in candidate.candidatecomments|reverse %}
-					<div class="mb-2">
-						Commentaire ajouté le
-						{{ candidate_comment.createdAt|date("m-d-Y") }}</div>
 					<p>{{ candidate_comment.comment }}
 						{{ include('admin_candidate/_delete_form_comment.html.twig') }}</p>
 				{% endfor %}
 			{% endif %}
 		</div>
-		<div class="col-md-6  offset-md-3 ">
+		<div class="col-md-6 et offset-md-3 ">
 			{{ form_start(form) }}
 			{{ form_widget(form) }}
 			<input class="btn btn-secondary text-light mb-3" type='submit' value='Ajouter un commentaire'>

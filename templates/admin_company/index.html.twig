@@ -1,17 +1,20 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
 {% block title %}
 	{{ parent() }}
 	- Administration Entreprises
 {% endblock %}
 
+{% block stylesheets %}
+{{ parent() }}
+	{{ encore_entry_link_tags('adminCandidate') }}
+{% endblock %}
 {% block body %}
-	<h1 class="text-center mt-5 mb-4">Administration Entreprises</h1>
-
-	<main class="container">
+	<main class="container m-5">
+		<h1 class="text-center mb-4">Administration Entreprises</h1>
 		<section class="searchForm">
 			{{ form_start(form) }}
-			{{ form_label(form.search, 'Rechercher une Entreprise') }}
+			{{ form_label(form.search, 'Rechercher une entreprise') }}
 			<div class="input-group mb-3 col-6">
 				{{ form_widget(form.search) }}
 				<button class="btn btn-primary text-light" id="button-addon2">
@@ -58,5 +61,5 @@
 				{% endfor %}
 			</tbody>
 		</table>
-	</main>}
+	</main>
 {% endblock %}
