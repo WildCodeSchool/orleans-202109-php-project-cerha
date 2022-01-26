@@ -10,11 +10,11 @@
 	{{ encore_entry_link_tags('sideMenu') }}
 {% endblock %}
 
-
 {% block body %}
+
 	<div class="d-flex">
 		{% include "candidate/components/_SideMenuCandidate.html.twig" %}
-		<div class="container my-5">
+		<div class="container my-5 ">
 			{% if candidate.candidatecomments is not empty %}
 				<div class="alert alert-danger alert-dismissible fade show  my-2 col-lg-6 offset-lg-3" role="alert">
 
@@ -28,6 +28,9 @@
 
 				</div>
 			{% endif %}
+
+			<h1 class="text-center mt-3 ">
+				Mon profil</h1>
 			{% include "candidate/components/_contactDetails.html.twig" %}
 			{% include "candidate/components/_skills.html.twig" %}
 			{% include "candidate/components/_formations.html.twig" %}

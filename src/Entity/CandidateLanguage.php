@@ -20,7 +20,7 @@ class CandidateLanguage
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private string $name;
+    private ?string $name;
 
     /**
      * @ORM\ManyToOne(targetEntity=Candidate::class, inversedBy="candidateLanguages")
@@ -38,7 +38,7 @@ class CandidateLanguage
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 

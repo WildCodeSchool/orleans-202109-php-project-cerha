@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }} - Mes Coordonnées{% endblock %}
+{% block title %}
+	{{ parent() }}
+	- Mes Coordonnées
+{% endblock %}
 
 {% block stylesheets %}
 	{{ encore_entry_link_tags('forms') }}
@@ -16,9 +19,11 @@
 			{{ form_start(form) }}
 			<div class="row mb-2">
 				<div class="col">
-					{{ form_row(form.user.gender[0]) }}</div>
-				<div class="col">
-					{{ form_row(form.user.gender[1]) }}</div>
+					{{ form_row(form.user.gender, {
+        'attr': {
+        'class': 'd-flex justify-content-between'
+        }
+        }) }}</div>
 			</div>
 			<div class="row mb-2">
 				<div class="col">
