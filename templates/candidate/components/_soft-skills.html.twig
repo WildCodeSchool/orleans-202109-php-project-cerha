@@ -1,10 +1,12 @@
 <div class="row softskills mt-5 d-lg-block d-flex justify-content-center" id="candidateSoftSkills">
 	<div class="card card-softskills  p-4 col-lg-6 col-10 offset-lg-3 ">
-		{% if not is_granted("ROLE_ADMIN") and is_granted("ROLE_CANDIDATE") %}
-			<a class="btn btn-outline-light ms-5 align-self-end fs-6  bi bi-pencil-square" href=" {{ path('candidate_softskill_edit', {'user': candidate.user}) }} ">
-				Modifier</a>
-		{% endif %}
-		<h2 class="card-title text-primary text-center mt-3 pt-2 px-4">Soft skills</h2>
+		<div class="d-flex mt-2 justify-content-between">
+			<h2 class="card-title text-primary ms-3 pt-1">Soft skills</h2>
+			{% if is_granted("ROLE_ADMIN") == false %}
+				<a class="btn fs-6 bi bi-pencil-square pt-2" href="{{ path('candidate_softskill_edit', {'user': candidate.user}) }}">
+					Modifier</a>
+			{% endif %}
+		</div>
 		<ul class="list-unstyled mt-3">
 			{% for softskill in candidate.softSkills %}
 				<li>

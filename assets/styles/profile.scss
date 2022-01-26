@@ -4,6 +4,10 @@
     box-shadow: $shadow-card;
 }
 
+h2 {
+    border-bottom: 4px solid $primary;
+}
+
 .candidateSkills,
 .candidateExperiences,
 .candidateFormations,
@@ -41,10 +45,10 @@
 }
 
 .bi-pencil-square {
-    color: $primary;
+    color: $secondary;
     font-size: 1.8rem;
 
     &:hover {
-        color: $secondary;
+        color: $primary;
     }
 }

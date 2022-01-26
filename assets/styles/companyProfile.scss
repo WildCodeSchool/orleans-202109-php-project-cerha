@@ -4,6 +4,10 @@
     box-shadow: $shadow-card;
 }
 
+h2 {
+    border-bottom: 4px solid $secondary;
+}
+
 .companyDetails,
 .companyContact {
     line-height      : $line-height;
@@ -42,4 +46,13 @@
 
 .bi-globe {
     color: #000000;
+}
+
+.bi-pencil-square {
+    color: $primary;
+    font-size: 1.8rem;
+
+    &:hover {
+        color: $secondary;
+    }
 }
