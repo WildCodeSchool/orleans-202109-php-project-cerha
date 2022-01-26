@@ -1,5 +1,5 @@
 <footer class="footer container-fluid footer-expand-md bg-primary sticky-bottom" id="footer">
-	<div class="row d-flex justify-content-around align-items-center py-3 pt-1 pb-3">
+	<div class="row d-flex justify-content-around align-items-center px-3 pt-1">
 		<div class="col-lg-4 col-md-6 col-xs-8 mt-3 footerInfos d-flex justify-content-center align-items-center">
 			<div class="footerInfoContact d-flex flex-column m-2">
 				<div class="contactTitle">
@@ -34,6 +34,7 @@
 				<a href="https://www.linkedin.com/company/cerha/" target="_blank"><img class="linkedinQR" src="{{ asset('build/images/QRCode.png') }}" alt="QRCode Linkedin"></a>
 			</div>
 		</div>
+		{% include 'items/_return.html.twig' %}
 		<div class="col-lg-4 col-md-6 col-xs-8 mt-3 footerLogoPartners d-flex align-items-center flex-column">
 			<a href="{{ path('home') }}" target="_blank"><img class="footerImage" src="{{ asset('build/images/CERHA-logo-detoure.svg') }}" alt="Logo CERHA bas de page">
 			</a>
