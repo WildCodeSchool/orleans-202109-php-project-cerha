@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\SkillRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=SkillRepository::class)
@@ -19,8 +20,10 @@ class Skill
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
+     * @Assert\Length(max=100)
      */
-    private string $name;
+    private ?string $name;
 
     /**
      * @ORM\ManyToOne(targetEntity=Sector::class)
@@ -45,7 +48,7 @@ class Skill
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -57,7 +60,7 @@ class Skill
         return $this->sector;
     }
 
-    public function setSector(Sector $sector): self
+    public function setSector(?Sector $sector): self
     {
         $this->sector = $sector;
 
