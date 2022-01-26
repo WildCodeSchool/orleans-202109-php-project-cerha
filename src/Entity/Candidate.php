@@ -24,28 +24,28 @@ class Candidate
 
     /**
      * @ORM\Column(type="date", nullable=true)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(groups={"coordinates"})
      */
     private ?\DateTimeInterface $birthDate;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Length(max=255)
+     * @Assert\NotBlank(groups={"coordinates"})
+     * @Assert\Length(max=255,groups={"coordinates"})
      */
     private ?string $address;
 
     /**
      * @ORM\Column(type="string", nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Length(max=5)
+     * @Assert\NotBlank(groups={"coordinates"})
+     * @Assert\Length(max=5,groups={"coordinates"})
      */
     private ?string $postalCode;
 
     /**
      * @ORM\Column(type="string", length=155, nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Length(max=155)
+     * @Assert\NotBlank(groups={"coordinates"})
+     * @Assert\Length(max=155,groups={"coordinates"})
      */
     private ?string $city;
 
