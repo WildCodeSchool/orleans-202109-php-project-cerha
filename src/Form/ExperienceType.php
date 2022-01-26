@@ -34,9 +34,7 @@ class ExperienceType extends AbstractType
                 'label' => 'Date de début',
                 'widget' => 'choice',
                 'years' => range(date('Y'), date('Y') - 60),
-                'placeholder' => [
-                    'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour', 'required' => true,
-                ],
+                'placeholder' => $placeholder,
             ])
             ->add('endDate', DateType::class, [
                 'label' => 'Date de fin',
