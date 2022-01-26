@@ -62,19 +62,20 @@ class CandidateRepository extends ServiceEntityRepository
         ->getResult();
     }
 
-    public function findByName(string $name): array
+    public function findByNameOrReference(string $data): array
     {
         $qb = $this->createQueryBuilder('c');
         $qb->join('c.user', 'u')
         ->where(
             $qb->expr()->concat('u.lastname', $qb->expr()->concat($qb->expr()->literal(' '), 'u.firstname')) .
-            'LIKE :fullname'
+            'LIKE :data'
         )
         ->orWhere(
             $qb->expr()->concat('u.firstname', $qb->expr()->concat($qb->expr()->literal(' '), 'u.lastname')) .
-            'LIKE :fullname'
+            'LIKE :data'
         )
-        ->setParameter('fullname', '%' . $name . '%')
+        ->orWhere('u.reference LIKE :data')
+        ->setParameter('data', '%' . $data . '%')
         ->orderBy('u.lastname', 'ASC')
         ->addOrderBy('u.firstname', 'ASC');
 

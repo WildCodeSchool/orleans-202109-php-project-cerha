@@ -38,7 +38,7 @@ class AdminCandidateController extends AbstractController
             /** @var string  */
             $search = $datas['search'];
 
-            $candidates = $candidateRepository->findByName($search);
+            $candidates = $candidateRepository->findByNameOrReference($search);
         } else {
             $candidates = $candidateRepository->findAllASC();
         }
