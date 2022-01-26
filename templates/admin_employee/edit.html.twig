@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
 {% block title %}
 	{{ parent() }}
@@ -6,15 +6,16 @@
 {% endblock %}
 
 {% block stylesheets %}
-	{{ encore_entry_link_tags('forms') }}
+{{ parent() }}
+	{{ encore_entry_link_tags('adminCandidate') }}
 {% endblock %}
 
 {% block body %}
-	<main class="container my-5">
-		<h1 class="text-center">Modifier un membre</h1>
-		<div class="col-md-6 et offset-md-3 fs-4 my-5 text-info edit_form">
-			{{ include('admin_employee/_form.html.twig') }}
+		<main class="container m-5">
+			<h1 class="text-center">Modifier un membre</h1>
+			<div class="col-md-6 et offset-md-3 fs-4 my-5 text-info edit_form">
+				{{ include('admin_employee/_form.html.twig') }}
+			</div>
 			{{ include('admin_employee/_delete_form.html.twig') }}
-		</div>
-	</main>
+		</main>
 {% endblock %}

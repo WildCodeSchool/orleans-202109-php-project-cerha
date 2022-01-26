@@ -1,17 +1,17 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
 {% block title %}
 	{{ parent() }}
 	- Administration membres
 {% endblock %}
 {% block stylesheets %}
+	{{ parent() }}
 	{{ encore_entry_link_tags('adminCandidate') }}
 {% endblock %}
-{% block body %}
-	<h1 class="text-center mt-5 mb-4">Administration membres CERHA</h1>
 
-	<main class="container">
-		<div class="d-flex justify-content-end mb-3 pe-2"></div>
+{% block body %}
+	<main class="container m-5">
+		<h1 class="text-center mb-4">Administration membres CERHA</h1>
 		<table class="table table-hover">
 			<thead class="bg-primary">
 				<tr>
@@ -50,5 +50,4 @@
 			</tbody>
 		</table>
 	</main>
-
 {% endblock %}
