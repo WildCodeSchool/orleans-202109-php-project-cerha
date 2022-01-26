@@ -7,12 +7,12 @@
 
 .body-particular {
     min-height: 300px;
-    height: auto;
+    height    : auto;
 }
 
 .body-company {
     min-height: 250px;
-    height:auto;
+    height    : auto;
 }
 
 .service-head {
@@ -32,6 +32,10 @@
 
 .particular {
     color: $secondary;
+}
+
+.company {
+    color: $primary;
 }
 
 .head-company {

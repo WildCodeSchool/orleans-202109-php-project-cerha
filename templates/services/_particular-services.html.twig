@@ -11,11 +11,20 @@
 						{{ category.title }}
 					</div>
 					<div class="card-body service-body body-particular py-md-3 px-md-4 p-lg-4">
-						<ul class="list-unstyled">
+						<ul class="list-unstyled accordion accordion-flush" id="accordionServices{{ category.id }}">
 							{% for service in category.services %}
-								<li>
-									<i class="serviceIcon bi bi-arrow-right-circle-fill me-3 text-secondary"></i>
-									{{ service.title }}
+								<li class="accordion-item">
+									<div class="accordion-header" id="heading{{ service.id }}">
+										<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ service.id }}" aria-expanded="false" aria-controls="collapse{{ service.id }}">
+											<i class="serviceIcon bi bi-arrow-right-circle-fill me-3 text-secondary"></i>
+											{{ service.title }}
+										</button>
+									</div>
+									<div id="collapse{{ service.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ service.id }}" data-bs-parent="#accordionServices{{ category.id }}">
+										<div class="accordion-body">
+											{{ service.description }}
+										</div>
+									</div>
 								</li>
 							{% endfor %}
 						</ul>
