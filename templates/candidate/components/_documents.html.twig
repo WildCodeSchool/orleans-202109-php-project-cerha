@@ -11,7 +11,7 @@
 			{% for additionaldocument in candidate.additionaldocuments %}
 				<div>
 					<i class="bi bi-file-earmark-arrow-up-fill mx-3"></i>
-					{{ additionaldocument.name }}
+					<a href="{{ vich_uploader_asset(additionaldocument) }}" alt="{{ additionaldocument.name }}"> {{ additionaldocument.name }}</a>
 				</div>
 			{% else %}
 				<p class="mx-3">Aucune information disponible.</p>
