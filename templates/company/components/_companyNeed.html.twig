@@ -1,5 +1,5 @@
-<div class="row companyNeed mt-5" id="companyNeed">
-	<div class="card p-4 col-md-6 offset-md-3">
+<div class="row companyNeed mt-5 d-lg-block d-flex justify-content-center" id="companyNeed">
+	<div class="card p-4 col-lg-6 col-10 offset-lg-3">
 		{% if is_granted("ROLE_ADMIN") == false %}
 			<a class="btn btn-outline-light ms-5 align-self-end fs-5  bi bi-pencil-square" href="{{ path('company_editNeed') }}">
 				Modifier</a>
