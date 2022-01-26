@@ -32,6 +32,10 @@ class CompanyDetailsType extends AbstractType
             ->add('city', TextType::class, [
                 'label' => 'Ville',
             ])
+            ->add('companyNumber', TextType::class, [
+                'label' => 'Numéro de téléphone',
+                'required' => false
+            ])
             ->add('vatNumber', TextType::class, [
                 'label' => 'TVA',
             ])

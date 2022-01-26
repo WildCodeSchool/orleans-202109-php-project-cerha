@@ -19,6 +19,7 @@ class CompanyFixtures extends Fixture
             $company->setSiret(preg_replace('/\s+/', '', $faker->siret));
             $company->setApeCode(rand(1001, 9999) . 'B');
             $company->setAddress($faker->streetAddress);
+            $company->setCompanyNumber((int)$faker->serviceNumber());
             $company->setPostalCode(preg_replace('/\s+/', '', $faker->postcode));
             $company->setCity($faker->city);
             $company->setVatNumber(preg_replace('/\s+/', '', $faker->vat));
@@ -42,6 +43,7 @@ class CompanyFixtures extends Fixture
         $company->setCity('Fleury-les-Aubrais');
         $company->setVatNumber(preg_replace('/\s+/', '', $faker->vat));
         $company->setContactRole($faker->jobTitle);
+        $company->setCompanyNumber((int)$faker->serviceNumber());
         $company->setWebsite('http://www.lesite.fr');
         $company->setFacebook('http://www.facebook.com');
         $company->setInstagram('http://www.instagram.com');

@@ -122,6 +122,14 @@ class Company
      */
     private Collection $companyComments;
 
+    /**
+     * @ORM\Column(type="string", length=10, nullable=true)
+     * @Assert\NotBlank
+     * @Assert\Type("string")
+     * @Assert\Length(max=10)
+     */
+    private ?string $companyNumber;
+
     public function __construct()
     {
         $this->companyComments = new ArrayCollection();
@@ -326,6 +334,18 @@ class Company
                 $companyComment->setCompany(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCompanyNumber(): ?string
+    {
+        return $this->companyNumber;
+    }
+
+    public function setCompanyNumber(?string $companyNumber): self
+    {
+        $this->companyNumber = $companyNumber;
 
         return $this;
     }
