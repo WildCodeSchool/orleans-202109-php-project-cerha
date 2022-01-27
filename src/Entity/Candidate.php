@@ -39,6 +39,7 @@ class Candidate
      * @ORM\Column(type="string", nullable=true)
      * @Assert\NotBlank(groups={"coordinates"})
      * @Assert\Length(max=5,groups={"coordinates"})
+     * @Assert\Regex(pattern="/^[0-9]*$/",groups={"coordinates"})
      */
     private ?string $postalCode;
 
@@ -46,6 +47,11 @@ class Candidate
      * @ORM\Column(type="string", length=155, nullable=true)
      * @Assert\NotBlank(groups={"coordinates"})
      * @Assert\Length(max=155,groups={"coordinates"})
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     groups={"coordinates"}
+     * )
      */
     private ?string $city;
 

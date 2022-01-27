@@ -53,6 +53,7 @@ class Company
      * @ORM\Column(type="string", length=5, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=5)
+     * @Assert\Regex(pattern="/^[0-9]*$/")
      */
     private ?string $postalCode;
 
@@ -60,6 +61,10 @@ class Company
      * @ORM\Column(type="string", length=100, nullable=true)
      * @Assert\NotBlank
      * @Assert\Length(max=100)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false
+     * )
      */
     private ?string $city;
 
