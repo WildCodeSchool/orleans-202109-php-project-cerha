@@ -74,7 +74,12 @@
 			<tbody>
 				{% for category in categories|filter(category => category.type == 'Entreprise') %}
 					<tr class="text-light">
-						<td colspan="3" class="text-center align-middle text-primary fs-4">{{ category.title }}</td>
+						<td colspan="2" class="text-center align-middle text-primary fs-4">{{ category.title }}</td>
+						<td>
+							<a class="d-flex btn btn-primary px-3 py-1 text-light" href="{{ path('admin_service_new', {'id': category.id}) }}">
+								<i class="bi bi-plus-lg me-2"></i>Service
+							</a>
+						</td>
 					</tr>
 					{% for service in category.services %}
 						<tr>
