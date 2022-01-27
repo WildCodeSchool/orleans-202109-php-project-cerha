@@ -21,7 +21,6 @@ class EmployeeType extends AbstractType
                 'attr' => ['class' => 'd-flex justify-content-around'],
                 'choices' => [
                     'Monsieur' => 'M.',
-
                     'Madame' => 'Mme'
                 ],
                 'label' => false,
