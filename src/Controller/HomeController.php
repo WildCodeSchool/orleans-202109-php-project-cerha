@@ -15,4 +15,20 @@ class HomeController extends AbstractController
     {
         return $this->render('home/index.html.twig');
     }
+
+    /**
+     * @Route("/mentions-legales", name="legal_notice")
+     */
+    public function legalNoticeIndex(): Response
+    {
+        return $this->render('legal-terms/legal-notice.html.twig');
+    }
+
+    /**
+     * @Route("/conditions-generales", name="conditions")
+     */
+    public function conditionsIndex(): Response
+    {
+        return $this->render('legal-terms/conditions.html.twig');
+    }
 }

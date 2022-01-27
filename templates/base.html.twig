@@ -21,20 +21,18 @@
 		{% block flash %}
 			{% for category, messages in app.flashes %}
 				{% for message in messages %}
-					<div class="d-flex justify-content-center mt-3">
-						<div class="alert alert-{{ category }} alert-dismissible fade show flash w-auto">
+						<div class="alert alert-{{ category }} alert-dismissible fade show flash ms-5">
 							{{ message }}
 							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 						</div>
-					</div>
 				{% endfor %}
 			{% endfor %}
 		{% endblock %}
-
-		{% block body %}{% endblock %}
+		{% block main %}
+			{% block body %}{% endblock %}
+		{% endblock %}
 		{% block footer %}
 			{% include "items/_footer.html.twig" %}
 		{% endblock %}
 	</body>
-
 </html>

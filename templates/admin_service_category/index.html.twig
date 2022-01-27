@@ -1,0 +1,86 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Administration catégories de services
+{% endblock %}
+
+{% block body %}
+	<main class="container m-5">
+		<h1 class="text-center mb-4">
+			Administration catégories de services
+		</h1>
+		<h2 class="mt-5 mb-4">
+			Catégories services candidat
+		</h2>
+		<table class="table table-hover">
+			<thead class="bg-primary text-light">
+				<tr>
+					<th>Nom</th>
+					<th>
+						<div class="d-flex justify-content-end">
+							<a class="btn btn-secondary px-3 py-1 text-light" href="{{ path('admin_service_category_new') }}">
+								<i class="bi bi-plus-lg me-2"></i>Catégorie
+							</a>
+						</div>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for service_category in service_categories|filter(service_category => service_category.type == 'Candidat') %}
+					<tr>
+						<td class="align-middle">{{ service_category.title }}</td>
+						<td>
+							<div class="d-flex justify-content-end gap-3">
+								<a class="btn btn-primary px-3 py-1" href="{{ path('admin_service_category_edit', {'id': service_category.id}) }}">
+									<i class="bi bi-pencil-square"></i>
+								</a>
+								{{ include('admin_service_category/_delete_form.html.twig') }}
+							</div>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="9">Aucune catgéorie trouvée</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<h2 class="mt-5 mb-4">
+			Catégories services entreprise
+		</h2>
+		<table class="table table-hover">
+			<thead class="bg-primary text-light">
+				<tr>
+					<th>Nom</th>
+					<th>
+						<div class="d-flex justify-content-end">
+							<a class="btn btn-secondary px-3 py-1 text-light" href="{{ path('admin_service_category_new') }}">
+								<i class="bi bi-plus-lg me-2"></i>Catégorie
+							</a>
+						</div>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for service_category in service_categories|filter(service_category => service_category.type == 'Entreprise') %}
+					<tr>
+						<td class="align-middle">{{ service_category.title }}</td>
+						<td>
+							<div class="d-flex justify-content-end gap-3">
+								<a class="btn btn-primary px-3 py-1" href="{{ path('admin_service_category_edit', {'id': service_category.id}) }}">
+									<i class="bi bi-pencil-square"></i>
+								</a>
+								{{ include('admin_service_category/_delete_form.html.twig') }}
+							</div>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="9">Aucune catgéorie trouvée</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</main>
+{% endblock %}

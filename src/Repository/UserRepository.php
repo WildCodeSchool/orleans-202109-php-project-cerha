@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\User;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
@@ -64,4 +65,24 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         ;
     }
     */
+
+    public function findByYear(): ?User
+    {
+        $date = new DateTime();
+        $thisYear = $date->format('y');
+        $maxResult = 1;
+        $qb = $this->createQueryBuilder('u');
+        /** @var User */
+        return $qb->where(
+            $qb->expr()->like(
+                $qb->expr()->substring('u.reference', 10, 2),
+                ':thisYear'
+            )
+        )
+            ->setParameter('thisYear', $thisYear)
+            ->orderBy('u.reference', 'DESC')
+            ->setMaxResults($maxResult)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

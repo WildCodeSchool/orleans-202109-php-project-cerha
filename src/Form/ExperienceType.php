@@ -4,16 +4,23 @@ namespace App\Form;
 
 use App\Entity\Experience;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * @SuppressWarnings
+ */
 class ExperienceType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $placeholder = [
+            'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour', 'required' => true,
+        ];
         $builder
             ->add('jobName', TextType::class, ['label' => 'Intitulé de poste'])
             ->add('place', TextType::class, ['label' => 'Nom de l\'entreprise'])
@@ -25,15 +32,15 @@ class ExperienceType extends AbstractType
             ])
             ->add('startDate', DateType::class, [
                 'label' => 'Date de début',
-                'placeholder' => [
-                    'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour', 'required'   => true,
-                ],
+                'widget' => 'choice',
+                'years' => range(date('Y'), date('Y') - 60),
+                'placeholder' => $placeholder,
             ])
             ->add('endDate', DateType::class, [
                 'label' => 'Date de fin',
-                'placeholder' => [
-                    'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour', 'required'   => true,
-                ],
+                'widget' => 'choice',
+                'years' => range(date('Y'), date('Y') - 60),
+                'placeholder' => $placeholder,
             ])
             ->add('description', TextareaType::class, ['label' => 'Description', 'attr' => ['rows' => '4']])
             ->add('referentName', TextType::class, ['label' => 'Référent', 'required' => false,])

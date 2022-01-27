@@ -1,19 +1,21 @@
-<div class="row softskills mt-5" id="documents">
-	<div class="card card-softskills p-4 col-md-6 offset-md-3">
-		<a class="btn btn-outline-light ms-5 align-self-end fs-5  bi bi-pencil-square" href="{{ path('candidate_edit_document', {'user': candidate.user}) }}">
-			Modifier</a>
-		<h2 class="card-title text-primary text-center mt-3 pt-2 px-4">Documents</h2>
+<div class="row documents mt-5 d-lg-block d-flex justify-content-center" id="documents">
+	<div class="card card-documents p-4 col-lg-6 col-10 offset-lg-3">
+		<div class="d-flex mt-2 justify-content-between">
+			<h2 class="card-title text-primary ms-3 pt-1">Documents</h2>
+			{% if is_granted("ROLE_ADMIN") == false %}
+				<a class="btn fs-6 bi bi-pencil-square pt-2" href="{{ path('candidate_edit_document', {'user': candidate.user}) }}">
+					Modifier</a>
+			{% endif %}
+		</div>
 		<ul class="list-unstyled mt-3">
-
 			{% for additionaldocument in candidate.additionaldocuments %}
-				<i class="bi bi-file-earmark-arrow-up-fill mx-3"></i>
-				{{ additionaldocument.name }}
-
+				<div>
+					<i class="bi bi-file-earmark-arrow-up-fill mx-3"></i>
+					<a href="{{ vich_uploader_asset(additionaldocument) }}" alt="{{ additionaldocument.name }}"> {{ additionaldocument.name }}</a>
+				</div>
 			{% else %}
-				Aucune information disponible.
+				<p class="mx-3">Aucune information disponible.</p>
 			{% endfor %}
-
 		</ul>
-
 	</div>
 </div>

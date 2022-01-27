@@ -1,0 +1,101 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Administration services
+{% endblock %}
+
+{% block body %}
+	<main class="container m-5">
+		<h1 class="text-center mb-4">
+			Administration services
+		</h1>
+		<h2 class="mt-5 mb-4">
+			Services candidat
+		</h2>
+		<table class="table table-hover">
+			<thead class="bg-primary text-light">
+				<tr>
+					<th>Titre</th>
+					<th>Description</th>
+					<th>
+						<a class="d-flex btn btn-secondary px-3 py-1 text-light" href="{{ path('admin_service_category_new') }}">
+							<i class="bi bi-plus-lg me-2"></i>Catégorie
+						</a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for category in categories|filter(category => category.type == 'Candidat') %}
+					<tr class="text-light">
+						<td colspan="2" class="text-center align-middle text-primary fs-4">{{ category.title }}</td>
+						<td>
+							<a class="d-flex btn btn-primary px-3 py-1 text-light" href="{{ path('admin_service_new', {'id': category.id}) }}">
+								<i class="bi bi-plus-lg me-2"></i>Service
+							</a>
+						</td>
+					</tr>
+					{% for service in category.services %}
+						<tr>
+							<td class="align-middle">{{ service.title }}</td>
+							<td class="align-middle">{{ service.description }}</td>
+							<td>
+								<div class="d-flex justify-content-end gap-3">
+									<a class="btn btn-primary px-3 py-1" href="{{ path('admin_service_edit', {'id': service.id}) }}">
+										<i class="bi bi-pencil-square"></i>
+									</a>
+									{{ include('admin_service/_delete_form.html.twig') }}
+								</div>
+							</td>
+						</tr>
+					{% endfor %}
+				{% else %}
+					<tr>
+						<td colspan="9">Aucun service trouvé</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<h2 class="mt-5 mb-4">
+			Services entreprise
+		</h2>
+		<table class="table table-hover">
+			<thead class="bg-primary text-light">
+				<tr>
+					<th>Titre</th>
+					<th>Description</th>
+					<th>
+						<a class="d-flex btn btn-secondary px-3 py-1 text-light" href="{{ path('admin_service_category_new') }}">
+							<i class="bi bi-plus-lg me-2"></i>Catégorie
+						</a>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for category in categories|filter(category => category.type == 'Entreprise') %}
+					<tr class="text-light">
+						<td colspan="3" class="text-center align-middle text-primary fs-4">{{ category.title }}</td>
+					</tr>
+					{% for service in category.services %}
+						<tr>
+							<td class="align-middle">{{ service.title }}</td>
+							<td class="align-middle">{{ service.description }}</td>
+							<td>
+								<div class="d-flex justify-content-end gap-3">
+									<a class="btn btn-primary px-3 py-1" href="{{ path('admin_service_edit', {'id': service.id}) }}">
+										<i class="bi bi-pencil-square"></i>
+									</a>
+									{{ include('admin_service/_delete_form.html.twig') }}
+								</div>
+							</td>
+						</tr>
+					{% endfor %}
+				{% else %}
+					<tr>
+						<td colspan="9">Aucun service trouvé</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</main>
+{% endblock %}

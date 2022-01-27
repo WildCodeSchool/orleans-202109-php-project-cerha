@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use DateTime;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -11,9 +13,16 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"email"}, message="Il y a déjà un compte avec cet email")
+ * @UniqueEntity(fields={"reference"}, message="Un utilisateur à déjà cette référence")
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    public const GENDER = [
+        'M.' => 'M.',
+        'Mme' => 'Mme',
+        'Autre' => '',
+    ];
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -27,7 +36,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @Assert\NotBlank
      * @Assert\Length(max = 180)
      */
-    private string $email;
+    private ?string $email;
 
     /**
      * @ORM\Column(type="json")
@@ -49,7 +58,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @Assert\Type("string")
      * @Assert\Length(max = 100)
      */
-    private string $lastname;
+    private ?string $lastname;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -57,22 +66,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @Assert\Type("string")
      * @Assert\Length(max = 100)
      */
-    private string $firstname;
+    private ?string $firstname;
 
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank
      * @Assert\Type("string")
      */
-    private string $phoneNumber;
+    private ?string $phoneNumber;
 
     /**
      * @ORM\Column(type="string", length=10)
-     * @Assert\NotBlank
      * @Assert\Type("string")
      * @Assert\Length(max = 10)
      */
-    private string $gender;
+    private ?string $gender;
 
     /**
      * @ORM\OneToOne(targetEntity=Candidate::class, mappedBy="user", cascade={"persist", "remove"})
@@ -89,6 +97,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private ?Company $company;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private ?DateTimeInterface $createdAt;
+
+    /**
+     * @ORM\Column(type="string", length=15)
+     */
+    private ?string $reference;
+
     public const USER_ROLES = ['candidate', 'company'];
 
     public function getId(): ?int
@@ -101,7 +119,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 
@@ -185,7 +203,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->lastname;
     }
 
-    public function setLastname(string $lastname): self
+    public function setLastname(?string $lastname): self
     {
         $this->lastname = $lastname;
 
@@ -197,7 +215,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->firstname;
     }
 
-    public function setFirstname(string $firstname): self
+    public function setFirstname(?string $firstname): self
     {
         $this->firstname = $firstname;
 
@@ -209,7 +227,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->phoneNumber;
     }
 
-    public function setPhoneNumber(string $phoneNumber): self
+    public function setPhoneNumber(?string $phoneNumber): self
     {
         $this->phoneNumber = $phoneNumber;
 
@@ -221,7 +239,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->gender;
     }
 
-    public function setGender(string $gender): self
+    public function setGender(?string $gender): self
     {
         $this->gender = $gender;
 
@@ -280,5 +298,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             'email' => $this->getUserIdentifier(),
             'password' => $this->getPassword(),
         ];
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    public function setReference(string $reference): self
+    {
+        $this->reference = $reference;
+
+        return $this;
     }
 }

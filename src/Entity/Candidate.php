@@ -24,28 +24,28 @@ class Candidate
 
     /**
      * @ORM\Column(type="date", nullable=true)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(groups={"coordinates"})
      */
     private ?\DateTimeInterface $birthDate;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Length(max=255)
+     * @Assert\NotBlank(groups={"coordinates"})
+     * @Assert\Length(max=255,groups={"coordinates"})
      */
     private ?string $address;
 
     /**
      * @ORM\Column(type="string", nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Length(max=5)
+     * @Assert\NotBlank(groups={"coordinates"})
+     * @Assert\Length(max=5,groups={"coordinates"})
      */
     private ?string $postalCode;
 
     /**
      * @ORM\Column(type="string", length=155, nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Length(max=155)
+     * @Assert\NotBlank(groups={"coordinates"})
+     * @Assert\Length(max=155,groups={"coordinates"})
      */
     private ?string $city;
 
@@ -75,6 +75,7 @@ class Candidate
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(max=255)
+     * @Assert\Valid
      */
     private ?string $timeSearch;
 
@@ -101,6 +102,7 @@ class Candidate
     /**
      * @ORM\OneToMany(targetEntity=Skill::class,  mappedBy="candidate",
      *  orphanRemoval=true, cascade={"persist", "remove"})
+     * @Assert\Valid
      */
     private Collection $skills;
 
@@ -108,23 +110,27 @@ class Candidate
     /**
      * @ORM\OneToMany(targetEntity=Experience::class,  mappedBy="candidate",
      *  orphanRemoval=true, cascade={"persist", "remove"})
+     * @Assert\Valid
      */
     private Collection $experiences;
 
     /**
      * @ORM\OneToMany(targetEntity=Formation::class,  mappedBy="candidate",
      *  orphanRemoval=true, cascade={"persist", "remove"})
+     * @Assert\Valid
      */
     private Collection $formations;
 
     /**
      * @ORM\OneToMany(targetEntity=AdditionalDocument::class,
      *  mappedBy="candidate",orphanRemoval=true, cascade={"persist", "remove"})
+     * @Assert\Valid
      */
     private Collection $additionalDocuments;
 
     /**
      * @ORM\OneToMany(targetEntity=CandidateComment::class, mappedBy="candidate")
+     * @Assert\Valid
      */
     private Collection $candidateComments;
 
@@ -152,7 +158,7 @@ class Candidate
         return $this->birthDate;
     }
 
-    public function setBirthDate(\DateTimeInterface $birthDate): self
+    public function setBirthDate(?\DateTimeInterface $birthDate): self
     {
         $this->birthDate = $birthDate;
 
@@ -164,7 +170,7 @@ class Candidate
         return $this->address;
     }
 
-    public function setAddress(string $address): self
+    public function setAddress(?string $address): self
     {
         $this->address = $address;
 
@@ -176,7 +182,7 @@ class Candidate
         return $this->postalCode;
     }
 
-    public function setPostalCode(string $postalCode): self
+    public function setPostalCode(?string $postalCode): self
     {
         $this->postalCode = $postalCode;
 
@@ -188,7 +194,7 @@ class Candidate
         return $this->city;
     }
 
-    public function setCity(string $city): self
+    public function setCity(?string $city): self
     {
         $this->city = $city;
 

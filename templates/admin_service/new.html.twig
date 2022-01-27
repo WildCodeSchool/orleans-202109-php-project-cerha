@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Ajouter un service
+{% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('forms') }}
+{% endblock %}
+
+{% block body %}
+	<main class="container my-5">
+		<h1 class="text-center d-flex flex-column">
+			<span>Ajouter un service</span>
+			<span>à "{{ category.title }}"</span>
+			<span>pour "{{ category.type }}"</span>
+		</h1>
+		<div class="col-md-6 offset-md-3 fs-4 my-5 text-info edit_form">
+			{{ include('admin_service/_form.html.twig') }}
+		</div>
+	</main>
+{% endblock %}

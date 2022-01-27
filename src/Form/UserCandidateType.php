@@ -18,11 +18,10 @@ class UserCandidateType extends AbstractType
             ->add('firstname', TextType::class, ['label' => 'Prénom'])
             ->add('phoneNumber', TextType::class, ['label' => 'Téléphone'])
             ->add('gender', ChoiceType::class, [
-                'choices' => [
-                    'Monsieur' => 'M',
-                    'Madame' => 'Mme'
-                ],
-                'expanded' => true, 'multiple' => false
+                'label' => false,
+                'expanded' => true,
+                'multiple' => false,
+                'choices' => User::GENDER
             ]);
     }
 

@@ -23,7 +23,7 @@ class Hobby
      * @Assert\Length(max=100)
      * @Assert\NotBlank
      */
-    private string $name;
+    private ?string $name;
 
     /**
      * @ORM\ManyToOne(targetEntity=Candidate::class, inversedBy="hobbies")
@@ -41,7 +41,7 @@ class Hobby
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 

@@ -20,7 +20,7 @@ class Sector
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private string $name;
+    private ?string $name;
 
     public function getId(): ?int
     {
@@ -32,7 +32,7 @@ class Sector
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 

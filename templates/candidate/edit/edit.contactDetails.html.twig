@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }} - Mes Coordonnées{% endblock %}
+{% block title %}
+	{{ parent() }}
+	- Mes Coordonnées
+{% endblock %}
 
 {% block stylesheets %}
 	{{ encore_entry_link_tags('forms') }}
@@ -11,14 +14,16 @@
 
 		<h1 class="text-center mt-5">
 			Mes coordonnées</h1>
-		<div class=" edit_form col-md-6 et offset-md-3 fs-4 mt-5 text-info fs-4">
+		<div class=" edit_form col-md-6 offset-md-3 fs-4 mt-5 text-info fs-4">
 
 			{{ form_start(form) }}
 			<div class="row mb-2">
 				<div class="col">
-					{{ form_row(form.user.gender[0]) }}</div>
-				<div class="col">
-					{{ form_row(form.user.gender[1]) }}</div>
+					{{ form_row(form.user.gender, {
+        'attr': {
+        'class': 'd-flex justify-content-between'
+        }
+        }) }}</div>
 			</div>
 			<div class="row mb-2">
 				<div class="col">

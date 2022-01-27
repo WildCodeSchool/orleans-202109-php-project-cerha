@@ -6,11 +6,13 @@
 }
 
 .body-particular {
-    height: 300px;
+    min-height: 300px;
+    height    : auto;
 }
 
 .body-company {
-    height: 380px;
+    min-height: 250px;
+    height    : auto;
 }
 
 .service-head {
@@ -30,6 +32,10 @@
 
 .particular {
     color: $secondary;
+}
+
+.company {
+    color: $primary;
 }
 
 .head-company {

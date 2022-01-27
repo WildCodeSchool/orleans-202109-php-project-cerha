@@ -1,10 +1,12 @@
-<div class="row companyContact mt-5" id="companyContact">
-	<div class="card p-4 col-md-6 offset-md-3">
-		{% if is_granted("ROLE_ADMIN") == false %}
-			<a class="btn btn-outline-light ms-5 align-self-end fs-5  bi bi-pencil-square" href="{{ path('company_editContact') }}">
-				Modifier</a>
-		{% endif %}
-		<h2 class="card-title text-secondary text-center mt-3 pt-2 px-4">Contact</h2>
+<div class="row companyContact mt-3 d-lg-block d-flex justify-content-center" id="companyContact">
+	<div class="card p-4 col-lg-6 col-10 offset-lg-3">
+		<div class="d-flex mt-2 justify-content-between">
+			<h2 class="card-title text-secondary ms-3 pt-1">Contact</h2>
+			{% if is_granted("ROLE_ADMIN") == false %}
+				<a class="btn fs-6 bi bi-pencil-square pt-2" href="{{ path('company_editContact') }}">
+					Modifier</a>
+			{% endif %}
+		</div>
 		<ul class="list-unstyled mt-3">
 			<li>
 				<i class="bi bi-person-circle mx-3"></i>
@@ -21,7 +23,7 @@
 				{{ company.user.email }}
 			</li>
 			<li>
-				<i class="bi bi-telephone-forward  mx-3 "></i>
+				<i class="bi bi-telephone  mx-3 "></i>
 				{{ company.user.phoneNumber }}
 			</li>
 		</ul>

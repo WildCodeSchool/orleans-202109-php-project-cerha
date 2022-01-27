@@ -4,18 +4,27 @@
 		<img src="{{ asset('build/images/services-company.jpg') }}" class="img-services img-fluid" alt="services pour entreprises">
 	</div>
 	<div class="row d-flex justify-content-around mt-5">
-		{% for category in categories|filter(category => category.type == 'company') %}
+		{% for category in categories|filter(category => category.type == 'Entreprise') %}
 			<div class="col-11 col-lg-5 mt-0">
 				<div class="card service-card my-5">
 					<div class="card-header text-center fw-bold py-3 service-head head-company text-light">
 						{{ category.title }}
 					</div>
 					<div class="card-body service-body body-company py-md-3 px-md-4 p-lg-4">
-						<ul class="list-unstyled">
+						<ul class="list-unstyled accordion accordion-flush" id="accordionServices{{ category.id }}">
 							{% for service in category.services %}
-								<li>
-									<i class="serviceIcon bi bi-arrow-right-circle-fill me-3 text-primary"></i>
-									{{ service.title }}
+								<li class="accordion-item">
+									<div class="accordion-header" id="heading{{ service.id }}">
+										<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ service.id }}" aria-expanded="false" aria-controls="collapse{{ service.id }}">
+											<i class="serviceIcon bi bi-arrow-right-circle-fill me-3 text-secondary"></i>
+											{{ service.title }}
+										</button>
+									</div>
+									<div id="collapse{{ service.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ service.id }}" data-bs-parent="#accordionServices{{ category.id }}">
+										<div class="accordion-body">
+											{{ service.description }}
+										</div>
+									</div>
 								</li>
 							{% endfor %}
 						</ul>
