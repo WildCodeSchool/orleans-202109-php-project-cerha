@@ -38,7 +38,7 @@ class RegistrationFormType extends AbstractType
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
                 'first_options' => ['label' => 'Mot de Passe'],
-                'second_options' => ['label' => 'Second Mot de Passe'],
+                'second_options' => ['label' => 'Confirmez votre mot de passe'],
             ])
             ->add('type', ChoiceType::class, [
                 'label' => 'Je suis :',
