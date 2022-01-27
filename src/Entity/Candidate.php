@@ -60,7 +60,7 @@ class Candidate
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="candidate", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
-     * @assert\Valid
+     * @Assert\Valid
      */
     private ?User $user;
 
@@ -236,7 +236,7 @@ class Candidate
         return $this->user;
     }
 
-    public function setUser(User $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 

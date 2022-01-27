@@ -30,6 +30,7 @@
 			<table class="table table-hover">
 				<thead class="bg-primary">
 					<tr>
+						<th>Référence</th>
 						<th>Nom</th>
 						<th>Prénom</th>
 						<th>Ville</th>
@@ -40,6 +41,9 @@
 				<tbody>
 					{% for candidate in candidates %}
 						<tr>
+							<td class="align-middle">
+								{{ candidate.user.reference }}
+							</td>
 							<td class="align-middle">
 								{{ candidate.user.lastname }}
 							</td>
