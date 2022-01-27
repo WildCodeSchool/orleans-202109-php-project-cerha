@@ -18,9 +18,6 @@ class ExperienceType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $placeholder = [
-            'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour', 'required' => true,
-        ];
         $builder
             ->add('jobName', TextType::class, ['label' => 'Intitulé de poste'])
             ->add('place', TextType::class, ['label' => 'Nom de l\'entreprise'])
@@ -32,16 +29,15 @@ class ExperienceType extends AbstractType
             ])
             ->add('startDate', DateType::class, [
                 'label' => 'Date de début',
-                'widget' => 'choice',
-                'years' => range(date('Y') + 0, date('Y') - 60),
-                'placeholder' => $placeholder,
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
             ])
             ->add('endDate', DateType::class, [
                 'label' => 'Date de fin',
-                'widget' => 'choice',
-                'years' => range(date('Y') + 5, date('Y') - 60),
-                'placeholder' => $placeholder,
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
             ])
+
             ->add('description', TextareaType::class, ['label' => 'Description', 'attr' => ['rows' => '4']])
             ->add('referentName', TextType::class, ['label' => 'Référent', 'required' => false,])
             ->add('phoneReferent', TextType::class, ['label' => 'Téléphone du référent', 'required' => false,]);
