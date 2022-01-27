@@ -27,7 +27,7 @@ class ContactDetailsType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Candidate::class,
-            'validation_groups' => ['Default', 'registration']
+            'validation_groups' => ['Default', 'coordinates']
         ]);
     }
 }
