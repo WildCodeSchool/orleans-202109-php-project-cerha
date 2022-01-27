@@ -72,7 +72,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string")
      * @Assert\NotBlank
      * @Assert\Type("string")
-     * @Assert\Regex(pattern="/^[0-9]*$/")
      */
     private ?string $phoneNumber;
 
