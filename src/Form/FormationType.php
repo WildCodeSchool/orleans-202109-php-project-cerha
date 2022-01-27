@@ -27,7 +27,7 @@ class FormationType extends AbstractType
             ->add('startDate', DateType::class, [
                 'label' => 'Date de début',
                 'widget' => 'choice',
-                'years' => range(date('Y'), date('Y') - 60),
+                'years' => range(date('Y') + 0, date('Y') - 60),
 
                 'placeholder' => [
                     'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour', 'required'   => true,
@@ -36,7 +36,7 @@ class FormationType extends AbstractType
             ->add('endDate', DateType::class, [
                 'label' => 'Date de fin',
                 'widget' => 'choice',
-                'years' => range(date('Y'), date('Y') - 60),
+                'years' => range(date('Y') + 5, date('Y') - 60),
                 'placeholder' => [
                     'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour', 'required'   => true,
                 ],

@@ -33,13 +33,13 @@ class ExperienceType extends AbstractType
             ->add('startDate', DateType::class, [
                 'label' => 'Date de début',
                 'widget' => 'choice',
-                'years' => range(date('Y'), date('Y') - 60),
+                'years' => range(date('Y') + 0, date('Y') - 60),
                 'placeholder' => $placeholder,
             ])
             ->add('endDate', DateType::class, [
                 'label' => 'Date de fin',
                 'widget' => 'choice',
-                'years' => range(date('Y'), date('Y') - 60),
+                'years' => range(date('Y') + 5, date('Y') - 60),
                 'placeholder' => $placeholder,
             ])
             ->add('description', TextareaType::class, ['label' => 'Description', 'attr' => ['rows' => '4']])
