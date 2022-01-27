@@ -52,7 +52,8 @@ class Candidate
     /**
      * @ORM\OneToMany(targetEntity=SoftSkill::class,
      * mappedBy="candidate", orphanRemoval=true, cascade={"persist", "remove"})
-     * @Assert\Count(max = 5)
+     * @Assert\Count(max = 5,
+     * maxMessage = "Vous ne pouvez pas ajouter plus de {{ limit }} softskills")
      * @Assert\Valid
      */
     private Collection $softSkills;
@@ -67,7 +68,8 @@ class Candidate
     /**
      * @ORM\OneToMany(targetEntity=Hobby::class,
      * mappedBy="candidate", orphanRemoval=true, cascade={"persist", "remove"})
-     * @Assert\Count(max = 5)
+     * @Assert\Count(max = 5,
+     * * maxMessage = "Vous ne pouvez pas ajouter plus de {{ limit }} centres d' intérêt"))
      * @Assert\Valid
      */
     private Collection $hobbies;
