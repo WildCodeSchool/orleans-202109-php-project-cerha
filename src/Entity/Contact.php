@@ -22,7 +22,6 @@ class Contact
 
     /**
      * @Assert\NotBlank
-     * @AssertPhoneNumber
      */
     private string $phone;
 
