@@ -22,6 +22,7 @@ class Contact
 
     /**
      * @Assert\NotBlank
+     * @Assert\Regex(pattern="/^[0-9]*$/")
      */
     private string $phone;
 
