@@ -72,7 +72,7 @@ class AdminCompanyController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="admin_company_delete", methods={"POST"})
+     * @Route("/supprimer/{id}", name="admin_company_delete", methods={"POST"})
      * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Company $company, EntityManagerInterface $entityManager): Response
