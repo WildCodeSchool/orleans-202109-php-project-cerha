@@ -29,16 +29,13 @@ class Employee
      *      maxSize = "2M",
      *      mimeTypes = {"image/jpeg", "image/jpg", "image/png","image/webp",}
      * )
-     *
      * @var File|null
      */
     private $pictureFile;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank
      * @Assert\Length(max  = 255)
-
      */
     private ?string $picture = null;
 
@@ -52,7 +49,7 @@ class Employee
     /**
      * @ORM\Column(type="string", length=10)
      * @Assert\NotBlank
-     * @Assert\Length(max  = 10)
+     * @Assert\Length(max = 10)
      */
     private ?string $civility;
 

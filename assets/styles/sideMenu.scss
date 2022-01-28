@@ -2,6 +2,7 @@
 
 .sideMenu {
     width           : 17vw;
+    min-width: 220px;
     height          : 100vh;
     background-color: $dark-primary;
     position: sticky;

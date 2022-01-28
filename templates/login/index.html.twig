@@ -25,7 +25,7 @@
 
     <div class="card mb-5 col-lg-6 offset-lg-3 rounded-2">
         <div class="card-text p-3 mb-5 rounded-top d-flex justify-content-center align-content-center">
-            <p class="mb-0">Accéder a mon espace personnel</p>
+            <p class="mb-0">Accéder à mon espace personnel</p>
         </div>
         <form action="{{ path('login') }}" method="post" class="d-flex flex-column mt-2 mb-4 container">
             <div class="form-floating mb-4">
@@ -34,12 +34,12 @@
             </div>
             <div class="form-floating mb-3">
                 <input type="password" class="form-control" name="_password" id="password" placeholder="Password">
-                <label for="floatingPassword">Password</label>
-                <p class="text-end"><a href="{{ path('app_forgot_password_request') }}">mot de passe oublié ?</a></p>
+                <label for="floatingPassword">Mot de passe</label>
+                <p class="text-end"><a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a></p>
             </div>
             <button class="btn btn-primary col-sm-4 offset-sm-4">Se connecter</button>
         </form>
-        <p class="text-center">Pas de compte ? <a href="{{ path('app_register') }}">Inscrivez vous</a></p>
+        <p class="text-center">Pas de compte ? <a href="{{ path('app_register') }}">Inscrivez-vous</a></p>
     </div>
 
 </main>
