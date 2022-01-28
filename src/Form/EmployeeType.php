@@ -30,9 +30,10 @@ class EmployeeType extends AbstractType
             ->add('lastname', TextType::class, ['label' => 'Nom'])
             ->add('firstname', TextType::class, ['label' => 'Prénom'])
             ->add('pictureFile', VichImageType::class, [
+                'label' => 'Photo',
                 'required' => false,
                 'allow_delete' => true,
-                'delete_label' => 'Delete',
+                'delete_label' => 'Supprimer',
                 'download_uri' => false
             ])
             ->add('role', TextType::class, ['label' => 'Rôle']);
