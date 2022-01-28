@@ -29,7 +29,6 @@ class Employee
      *      maxSize = "2M",
      *      mimeTypes = {"image/jpeg", "image/jpg", "image/png","image/webp",}
      * )
-     * @Assert\NotBlank
      * @var File|null
      */
     private $pictureFile;
