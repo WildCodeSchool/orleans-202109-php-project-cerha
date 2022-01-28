@@ -37,3 +37,7 @@ img.avatar {
     color: $secondary;
     font-size: 1.2rem;
 }
+
+.vich-image img {
+    max-height: 200px;
+}
