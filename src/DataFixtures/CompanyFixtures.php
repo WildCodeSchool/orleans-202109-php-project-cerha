@@ -9,11 +9,11 @@ use Faker;
 
 class CompanyFixtures extends Fixture
 {
-    public const COMPANY_NUMBER = 10;
+    public const COMPANY_NUMBER = 5;
     public function load(ObjectManager $manager): void
     {
         $faker = Faker\Factory::create('fr_FR');
-        for ($i = 10; $i < (self::COMPANY_NUMBER + 10); $i++) {
+        for ($i = 10; $i < (self::COMPANY_NUMBER + 5); $i++) {
             $company = new Company();
             $company->setDenomination($faker->company);
             $company->setSiret(preg_replace('/\s+/', '', $faker->siret));
