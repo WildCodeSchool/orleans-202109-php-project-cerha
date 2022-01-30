@@ -90,3 +90,15 @@ a2lixLib.sfCollection.init({
         remove: '',
     },
 });
+
+const arrowUp = document.getElementById('arrow-up');
+
+arrowUp.style.display = 'none';
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+        arrowUp.style.display = 'flex';
+    } else {
+        arrowUp.style.display = 'none';
+    }
+}, false);
