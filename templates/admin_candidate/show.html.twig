@@ -12,10 +12,11 @@
 {% endblock %}
 {% block body %}
 	<main class="container m-5">
-		<h1 class="text-center mb-4 border-bottom pb-2">Détails de
+		<h1 class="text-center mb-4">Détails de
 			{{ candidate.user.gender }}.
 			{{ candidate.user.lastname }}
 			{{ candidate.user.firstname }}</h1>
+			<h2 class="text-center mb-4 border-bottom pb-2 text-primary">Référence {{ candidate.user.reference }}</h2>
 		<div class="row my-3">
 			<div class="col-3 offset-4">
 				<a class="btn btn-secondary text-light" href="{{ path('admin_candidate_index') }}">
