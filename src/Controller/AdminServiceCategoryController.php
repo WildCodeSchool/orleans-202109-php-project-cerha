@@ -44,7 +44,7 @@ class AdminServiceCategoryController extends AbstractController
             $entityManager->persist($serviceCategory);
             $entityManager->flush();
 
-            return $this->redirectToRoute('admin_service_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_service_category_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin_service_category/new.html.twig', [
