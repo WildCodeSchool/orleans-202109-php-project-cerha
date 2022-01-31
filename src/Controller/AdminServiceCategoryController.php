@@ -37,8 +37,11 @@ class AdminServiceCategoryController extends AbstractController
         EntityManagerInterface $entityManager
     ): Response {
         $serviceCategory = new ServiceCategory();
+        /** @var string */
+        $type = $request->get('type');
         $form = $this->createForm(ServiceCategoryType::class, $serviceCategory);
         $form->handleRequest($request);
+        $serviceCategory->setType($type);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($serviceCategory);
