@@ -21,7 +21,7 @@ class UserFixtures extends Fixture
         $this->passwordHasher = $passwordHasher;
         $this->referenceGenerator = $referenceGenerator;
     }
-    public const USER_NUMBER = 20;
+    public const USER_NUMBER = 10;
     public function load(ObjectManager $manager): void
     {
         $countUsers = 0;
@@ -67,12 +67,12 @@ class UserFixtures extends Fixture
         $this->addReference('user_john', $user);
 
         $user = new User();
-        $user->setLastname('Blondeau');
-        $user->setFirstname('Sylvain');
-        $user->setEmail('sylvain@blondeau.com');
+        $user->setLastname('Candidat');
+        $user->setFirstname('Test');
+        $user->setEmail('candidat@test.fr');
         $user->setPhoneNumber('0666666666');
-        $user->setPassword($this->passwordHasher->hashPassword($user, 'bilbo'));
-        $user->setGender('M');
+        $user->setPassword($this->passwordHasher->hashPassword($user, 'candidat'));
+        $user->setGender('M.');
         $user->setRoles(['ROLE_CANDIDATE']);
         $user->setCreatedAt(new DateTime('now'));
         $user->setReference(
@@ -80,15 +80,15 @@ class UserFixtures extends Fixture
         );
         $countUsers++;
         $manager->persist($user);
-        $this->addReference('user_sylvain', $user);
+        $this->addReference('user_candidat', $user);
 
         $user = new User();
-        $user->setLastname('Smith');
-        $user->setFirstname('Will');
-        $user->setEmail('will@smith.com');
+        $user->setLastname('Entreprise');
+        $user->setFirstname('Test');
+        $user->setEmail('entreprise@test.fr');
         $user->setPhoneNumber('0606060606');
-        $user->setPassword($this->passwordHasher->hashPassword($user, 'bigmac'));
-        $user->setGender('M');
+        $user->setPassword($this->passwordHasher->hashPassword($user, 'entreprise'));
+        $user->setGender('M.');
         $user->setRoles(['ROLE_COMPANY']);
         $user->setCreatedAt(new DateTime('now'));
         $user->setReference(
@@ -96,7 +96,7 @@ class UserFixtures extends Fixture
         );
         $countUsers++;
         $manager->persist($user);
-        $this->addReference('user_will', $user);
+        $this->addReference('user_entreprise', $user);
 
         $manager->flush();
     }

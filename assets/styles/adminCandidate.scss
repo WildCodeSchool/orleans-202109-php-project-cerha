@@ -37,3 +37,11 @@ img.avatar {
     color: $secondary;
     font-size: 1.2rem;
 }
+
+.vich-image img {
+    max-height: 200px;
+}
+
+#employee_pictureFile_help.form-text{
+    font-size: 1rem;
+}

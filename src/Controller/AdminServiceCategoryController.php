@@ -37,14 +37,17 @@ class AdminServiceCategoryController extends AbstractController
         EntityManagerInterface $entityManager
     ): Response {
         $serviceCategory = new ServiceCategory();
+        /** @var string */
+        $type = $request->get('type');
         $form = $this->createForm(ServiceCategoryType::class, $serviceCategory);
         $form->handleRequest($request);
+        $serviceCategory->setType($type);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($serviceCategory);
             $entityManager->flush();
 
-            return $this->redirectToRoute('admin_service_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_service_category_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('admin_service_category/new.html.twig', [

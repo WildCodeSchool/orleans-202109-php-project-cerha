@@ -29,10 +29,12 @@ class EmployeeType extends AbstractType
             ->add('lastname', TextType::class, ['label' => 'Nom'])
             ->add('firstname', TextType::class, ['label' => 'Prénom'])
             ->add('pictureFile', VichImageType::class, [
+                'label' => 'Photo',
                 'required' => false,
                 'allow_delete' => true,
-                'delete_label' => 'Delete',
-                'download_uri' => false
+                'delete_label' => 'Supprimer',
+                'download_uri' => false,
+                'help' => 'L\'image ne doit pas dépasser 2M et doit être au format : jpg, jpeg, png, ou webp.'
             ])
             ->add('role', TextType::class, ['label' => 'Rôle']);
     }
