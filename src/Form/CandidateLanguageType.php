@@ -16,6 +16,7 @@ class CandidateLanguageType extends AbstractType
             ->add('name', LanguageType::class, [
                 'label' => false,
                 'choice_self_translation' => true,
+                'placeholder' => 'Choisissez une langue'
             ]);
     }
 
