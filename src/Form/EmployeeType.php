@@ -33,7 +33,8 @@ class EmployeeType extends AbstractType
                 'required' => false,
                 'allow_delete' => true,
                 'delete_label' => 'Supprimer',
-                'download_uri' => false
+                'download_uri' => false,
+                'help' => 'L\'image ne doit pas dépasser 2M et doit être au format : jpg, jpeg, png, ou webp.'
             ])
             ->add('role', TextType::class, ['label' => 'Rôle']);
     }
