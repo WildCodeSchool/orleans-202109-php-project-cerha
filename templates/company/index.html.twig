@@ -22,10 +22,10 @@
 
 					Bonjour
 					{{ company.user.firstname }}
-					{{ company.user.lastname }}.<strong>
+					{{ company.user.lastname }}.<strong> <a class="comment" href="#companycomment">
 						Vous avez
 						{{ company.companycomments|length }}
-						message(s)</strong>.
+						message(s)</strong></a>.
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
 				</div>
@@ -35,12 +35,12 @@
 			{% include "company/components/_companyContact.html.twig" %}
 			{% include "company/components/_companyNeed.html.twig" %}
 			{% if company.companycomments is not empty %}
-				<div class="mt-5 col-md-6 offset-md-3 mt-3">
+				<div class="mt-5 col-md-6 offset-md-3 mt-3" id ="companycomment">
 					<div class="alert alert-primary" role="alert">
 						{% for company_comment in company.companycomments|reverse %}
 							<div class="fs-4 text-info">
 								<i class="bi bi-chat-text-fill text-info me-2"></i>
-								{{ company_comment.createdAt|date("m-d-Y") }}</div>
+								{{ company_comment.createdAt|date("d-m-Y") }}</div>
 							<div class="mb-4 mt-1 mb-4">{{ company_comment.comment }}</div>
 						{% endfor %}
 					{% endif %}

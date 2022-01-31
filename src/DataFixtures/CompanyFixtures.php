@@ -13,7 +13,7 @@ class CompanyFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $faker = Faker\Factory::create('fr_FR');
-        for ($i = 10; $i < (self::COMPANY_NUMBER + 5); $i++) {
+        for ($i = 5; $i < (self::COMPANY_NUMBER + 5); $i++) {
             $company = new Company();
             $company->setDenomination($faker->company);
             $company->setSiret(preg_replace('/\s+/', '', $faker->siret));
