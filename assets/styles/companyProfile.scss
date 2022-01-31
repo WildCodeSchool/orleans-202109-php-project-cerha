@@ -56,3 +56,12 @@ h2 {
         color: $secondary;
     }
 }
+
+.comment {
+    color: rgb(128, 4, 4);
+    text-decoration: none;
+    &:hover {
+        color: rgb(128, 4, 4);
+        text-decoration: none;
+    }
+}

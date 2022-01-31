@@ -59,7 +59,7 @@
 				{% for candidate_comment in candidate.candidatecomments|reverse %}
 					<div class="mb-2">
 						Commentaire ajouté le
-						{{ candidate_comment.createdAt|date("m-d-Y") }}</div>
+						{{ candidate_comment.createdAt|date("d-m-Y") }}</div>
 					<p>{{ candidate_comment.comment }}{{ include('admin_candidate/_delete_form_comment.html.twig') }}</p>
 				{% endfor %}
 			{% endif %}

@@ -13,7 +13,7 @@ h2 {
 .candidateFormations,
 .documents,
 .candidateDetails,
-.softskills,    
+.softskills,
 .hobbies ul,
 .languages {
     line-height: $line-height;
@@ -50,5 +50,14 @@ h2 {
 
     &:hover {
         color: $primary;
+    }
+}
+
+.comment {
+    color: rgb(128, 4, 4);
+    text-decoration: none;
+    &:hover {
+        color: rgb(128, 4, 4);
+        text-decoration: none;
     }
 }
