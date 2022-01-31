@@ -96,10 +96,10 @@ class CandidateController extends AbstractController
     }
 
     /**
-     * @Route("/profil/{id}", name="show_public_profile")
+     * @Route("/profil/{reference}", name="show_public_profile")
      * @IsGranted("ROLE_COMPANY")
      */
-    public function showPublicProfile(Candidate $candidate): Response
+    public function showPublicProfile(User $user, Candidate $candidate): Response
     {
 
         return $this->render(
