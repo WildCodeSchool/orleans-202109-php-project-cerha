@@ -10,17 +10,17 @@ h2 {
 
 .companyDetails,
 .companyContact {
-    line-height      : $line-height;
-    font-family      : $text-family;
-    font-size        : $text-size;
+    line-height: $line-height;
+    font-family: $text-family;
+    font-size: $text-size;
     scroll-margin-top: 5em;
 }
 
 .companyNetwork {
-    transition : color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
     font-family: $text-family;
-    font-size  : $text-size;
-    color      : $dark-primary;
+    font-size: $text-size;
+    color: $dark-primary;
 
     &:hover {
         color: $secondary;
@@ -28,7 +28,7 @@ h2 {
 }
 
 .bi {
-    color    : $primary;
+    color: $primary;
     font-size: 1.2rem;
 }
 
@@ -60,6 +60,7 @@ h2 {
 .comment {
     color: rgb(128, 4, 4);
     text-decoration: none;
+
     &:hover {
         color: rgb(128, 4, 4);
         text-decoration: none;
