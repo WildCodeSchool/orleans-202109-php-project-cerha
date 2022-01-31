@@ -21,7 +21,7 @@ class UserFixtures extends Fixture
         $this->passwordHasher = $passwordHasher;
         $this->referenceGenerator = $referenceGenerator;
     }
-    public const USER_NUMBER = 20;
+    public const USER_NUMBER = 10;
     public function load(ObjectManager $manager): void
     {
         $countUsers = 0;

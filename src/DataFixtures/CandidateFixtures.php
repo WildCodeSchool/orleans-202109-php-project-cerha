@@ -11,7 +11,7 @@ use DateTime;
 
 class CandidateFixtures extends Fixture implements DependentFixtureInterface
 {
-    public const CANDIDATE_NUMBER = 10;
+    public const CANDIDATE_NUMBER = 5;
     public function load(ObjectManager $manager): void
     {
         $faker = Faker\Factory::create('fr_FR');
