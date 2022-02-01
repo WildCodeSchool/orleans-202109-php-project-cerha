@@ -17,9 +17,9 @@
 				<p class="text-muted mx-3">
 					{{ experience.place }}
 					|
-					{{ experience.startDate|date('F Y') }}
+					{{ experience.startDate|format_datetime('medium', 'none') }}
 					-
-					{{ experience.endDate|date('F Y') }}
+					{{ experience.endDate|format_datetime('medium', 'none') }}
 				</p>
 				<div class="mx-3 my-4 lh-base">
 					<p>{{ experience.description }}</p>
