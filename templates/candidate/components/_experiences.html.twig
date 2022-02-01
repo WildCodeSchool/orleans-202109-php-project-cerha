@@ -25,15 +25,20 @@
 					<p>{{ experience.description }}</p>
 				</div>
 				<div class="mx-3 d-flex text-muted ">
-					<span class="fs-5 pb-5 text-dark">Référent</span>
+					{% if experience.referentName or experience.phoneReferent is not empty %}
+						<span class="fs-5 pb-5 text-dark">Référent</span>
+					{% endif %}
 					<div>
-						<i class="bi bi-person text-muted ms-3"></i>
+						{% if experience.referentName is not empty %}
+							<i class="bi bi-person text-muted ms-3"></i>
+						{% endif %}
 						{{ experience.referentName }}
-						<i class="bi  bi-telephone text-muted ms-3 mb-3"></i>
+						{% if experience.phoneReferent is not empty %}
+							<i class="bi  bi-telephone text-muted ms-3 mb-3"></i>
+						{% endif %}
 						{{ experience.phoneReferent }}
 					</div>
 				</div>
-
 			{% else %}
 				<p class="mx-3">Aucune information disponible.</p>
 			{% endfor %}
