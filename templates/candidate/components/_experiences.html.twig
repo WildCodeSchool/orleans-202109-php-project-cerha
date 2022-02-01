@@ -22,7 +22,7 @@
 					{{ experience.endDate|format_datetime('medium', 'none') }}
 				</p>
 				<div class="mx-3 my-4 lh-base">
-					<p>{{ experience.description }}</p>
+					<p>{{ experience.description|nl2br }}</p>
 				</div>
 				<div class="mx-3 d-flex text-muted ">
 					{% if experience.referentName or experience.phoneReferent is not empty %}
