@@ -58,16 +58,14 @@ class Formation
     /**
      * @ORM\Column(type="date")
      * @Assert\NotBlank
-     * @Assert\GreaterThan("today")
      */
     private ?\DateTimeInterface $startDate;
 
     /**
      * @ORM\Column(type="date")
      * @Assert\NotBlank
-     * @Assert\GreaterThan("today")
-     * @Assert\Expression(
-     *      "this.getstartDate() < this.getendDate()",
+     *      * @Assert\Expression(
+     *      "this.getStartDate() < this.getEndDate()",
      *      message="La date de fin ne doit pas être antérieure à la date de début"
      * )
      */
