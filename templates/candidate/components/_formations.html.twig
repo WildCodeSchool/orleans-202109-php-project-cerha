@@ -17,9 +17,9 @@
 				<p class="text-muted mx-3">
 					{{ formation.place }}
 					|
-					{{ formation.startDate|date('F Y') }}
+					{{ formation.startDate|format_datetime('medium', 'none') }}
 					-
-					{{ formation.endDate|date('F Y') }}
+					{{ formation.endDate|format_datetime('medium', 'none') }}
 				</p>
 				<div class="mx-3 my-4 lh-base">
 					<p>{{ formation.description }}</p>
