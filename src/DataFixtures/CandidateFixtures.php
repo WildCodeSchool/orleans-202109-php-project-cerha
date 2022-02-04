@@ -11,7 +11,7 @@ use DateTime;
 
 class CandidateFixtures extends Fixture implements DependentFixtureInterface
 {
-    public const CANDIDATE_NUMBER = 10;
+    public const CANDIDATE_NUMBER = 5;
     public function load(ObjectManager $manager): void
     {
         $faker = Faker\Factory::create('fr_FR');
@@ -29,15 +29,9 @@ class CandidateFixtures extends Fixture implements DependentFixtureInterface
         }
 
         $candidate = new Candidate();
-        $candidate->setbirthDate($faker->dateTime());
-        $candidate->setaddress($faker->address);
-        $candidate->setpostalCode($faker->departmentNumber());
-        $candidate->setcity($faker->city);
-        $candidate->setUser($this->getReference('user_sylvain'));
-        $candidate->addAdditionalDocument($this->getReference('document_0'));
-        copy(__DIR__ . '/CV.pdf', __DIR__ . '/../../public/uploads/candidate/CV.pdf');
+        $candidate->setUser($this->getReference('user_candidat'));
         $manager->persist($candidate);
-        $this->addReference('candidate_sylvain', $candidate);
+        $this->addReference('candidate_test', $candidate);
 
         $manager->flush();
     }

@@ -29,7 +29,7 @@
 				{% for company_comment in company.companycomments|reverse %}
 					<div class="mb-2">
 						Commentaire ajouté le
-						{{ company_comment.createdAt|date("m-d-Y") }}</div>
+						{{ company_comment.createdAt|date("d-m-Y") }}</div>
 					<p>{{ company_comment.comment }}{{ include('admin_company/_delete_form_comment.html.twig') }}</p>
 				{% endfor %}
 			{% endif %}

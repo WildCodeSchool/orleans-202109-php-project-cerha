@@ -29,12 +29,6 @@ class CandidateLanguageFixtures extends Fixture implements DependentFixtureInter
             $manager->persist($newLanguage);
         }
 
-        for ($i = 0; $i < self::LANGUAGES_NUMBER; $i++) {
-            $language = new CandidateLanguage();
-            $language->setName(self::LANGUAGES[array_rand(self::LANGUAGES)]);
-            $language->setCandidate($this->getReference('candidate_sylvain'));
-            $manager->persist($language);
-        }
         $manager->flush();
     }
 

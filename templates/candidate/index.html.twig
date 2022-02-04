@@ -20,10 +20,13 @@
 
 					Bonjour
 					{{ candidate.user.firstname }}
-					{{ candidate.user.lastname }}.<strong>
-						Vous avez
-						{{ candidate.candidatecomments|length }}
-						message(s)</strong>.
+					{{ candidate.user.lastname }}.
+					<strong>
+						<a class="comment" href="#candidatecomment">
+							Vous avez
+							{{ candidate.candidatecomments|length }}
+							message(s)</strong>
+					</a>.
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
 				</div>
@@ -41,12 +44,12 @@
 			{% include "candidate/components/_complementary-questions.html.twig" %}
 			{% include "candidate/components/_documents.html.twig" %}
 			{% if candidate.candidatecomments is not empty %}
-				<div class=" mt-5 col-md-6 offset-md-3">
+				<div class=" mt-5 col-md-6 offset-md-3" id="candidatecomment">
 					<div class="alert alert-secondary" role="alert">
 						{% for candidate_comment in candidate.candidatecomments|reverse %}
 							<div class="fs-5 text-secondary">
 								<i class="bi bi-chat-text-fill me-2"></i>
-								{{ candidate_comment.createdAt|date("m-d-Y") }}</div>
+								{{ candidate_comment.createdAt|date("d-m-Y") }}</div>
 							<div class="mb-4 mt-1 text-dark mb-4">{{ candidate_comment.comment }}</div>
 						{% endfor %}
 					{% endif %}

@@ -26,11 +26,7 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Genre',
                 'expanded' => true,
                 'multiple' => false,
-                'choices' => [
-                    'M' => 'M',
-                    'Mme' => 'Mme',
-                    'Autre' => 'Autre',
-                ],
+                'choices' => User::GENDER,
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,

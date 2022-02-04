@@ -17,19 +17,25 @@
 				<p class="text-muted mx-3">
 					{{ formation.place }}
 					|
-					{{ formation.startDate|date('F Y') }}
+					{{ formation.startDate|format_datetime('medium', 'none') }}
 					-
-					{{ formation.endDate|date('F Y') }}
+					{{ formation.endDate|format_datetime('medium', 'none') }}
 				</p>
 				<div class="mx-3 my-4 lh-base">
-					<p>{{ formation.description }}</p>
+					<p>{{ formation.description|nl2br }}</p>
 				</div>
 				<div class="mx-3 d-flex text-muted ">
-					<span class="fs-5 pb-5 text-dark">Référent</span>
+					{% if formation.referent or formation.phoneReferent is not empty %}
+						<span class="fs-5 pb-5 text-dark">Référent</span>
+					{% endif %}
 					<div>
-						<i class="bi bi-person text-muted ms-3"></i>
+						{% if formation.referent is not empty %}
+							<i class="bi bi-person text-muted ms-3"></i>
+						{% endif %}
 						{{ formation.referent }}
-						<i class="bi  bi-telephone text-muted ms-3  mb-3"></i>
+						{% if formation.phoneReferent is not empty %}
+							<i class="bi  bi-telephone text-muted ms-3  mb-3"></i>
+						{% endif %}
 						{{ formation.phoneReferent }}
 					</div>
 				</div>
