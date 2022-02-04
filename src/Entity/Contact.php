@@ -17,6 +17,7 @@ class Contact
     private string $lastName;
 
     /**
+     * @Assert\NotBlank
      */
     private string $firstName;
 
