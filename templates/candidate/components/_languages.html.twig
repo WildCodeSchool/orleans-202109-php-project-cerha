@@ -1,7 +1,7 @@
 <div class="row languages mt-5 d-lg-block d-flex justify-content-center" id="candidateLanguages">
 	<div class="card card-languages  p-4 col-lg-6 col-10 offset-lg-3">
 		<div class="d-flex mt-2 justify-content-between">
-			<h2 class="card-title text-primary ms-3 pt-1">Langues étrangères</h2>
+			<h2 class="card-title text-primary ms-3 pt-1">Langues parlées et lues</h2>
 			{% if is_granted("ROLE_ADMIN") == false %}
 				<a class="btn fs-6 bi bi-pencil-square pt-2" href="{{ path('candidate_edit_languages', {'user': candidate.user}) }}">
 					Modifier</a>
