@@ -12,17 +12,41 @@
 #candidate_languages_candidateLanguages fieldset button,
 #candidate_formations_formations fieldset button,
 #hobbies_hobbies fieldset button,
-#candidate_experience_experiences fieldset button,
-#candidate_skills_skills fieldset button,
+#candidate_experience_experiences fieldset button.btn-danger,
+#candidate_skills_skills fieldset button.btn-danger,
 #candidate_document_additionalDocuments fieldset button {
     width: 37px;
     height: 37px;
     align-self: end;
     margin-block-end: 17px;
+    margin-inline-end: 10px;
     background-image: url("../images/trash.svg");
     background-repeat: no-repeat;
     background-position: center;
 }
+
+#candidate_formations_formations fieldset button,
+#candidate_experience_experiences fieldset button.btn-danger,
+#candidate_skills_skills fieldset button.btn-danger {
+    margin-block-end: 0px;
+}
+
+
+button.add {
+    background-image: url("../images/plus-lg.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+button.add-experience, button.add-skill, button.add-formation {
+    height: 37px;
+    width: 37px;
+    background-image: url("../images/plus-lg.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
 
 #soft_skills_softskills fieldset div,
 #hobbies_hobbies fieldset div,
@@ -32,4 +56,30 @@
 
 .edit_form {
     font-family: $title-family;
+}
+
+#soft_skills_softskills, #candidate_languages_candidateLanguages, #hobbies_hobbies{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+#soft_skills_softskills button, #candidate_languages_candidateLanguages button, #hobbies_hobbies button {
+    height: 37px;
+    width: 33px;
+}
+
+#soft_skills_softskills fieldset, #candidate_languages_candidateLanguages fieldset, #hobbies_hobbies fieldset {
+   flex-grow: 5;
+   flex-basis: calc(100% - 50px);
+}
+
+#candidate_languages_candidateLanguages fieldset, #hobbies_hobbies fieldset {
+    display: flex;
+    gap: 10px;
+}
+
+#candidate_experience_experiences, #candidate_skills_skills, #candidate_formations_formations {
+    margin-block-end: 50px;
 }

@@ -32,7 +32,7 @@ a2lixLib.sfCollection.init({
     collectionsSelector: 'form #soft_skills div[data-prototype]',
     manageRemoveEntry: true,
     lang: {
-        add: 'Ajouter une compétence',
+        add: '',
         remove: '',
     },
 });
@@ -41,7 +41,7 @@ a2lixLib.sfCollection.init({
     collectionsSelector: 'form #candidate_languages div[data-prototype]',
     manageRemoveEntry: true,
     lang: {
-        add: 'Ajouter une langue',
+        add: '',
         remove: '',
     },
 });
@@ -50,7 +50,7 @@ a2lixLib.sfCollection.init({
     collectionsSelector: 'form #candidate_formations div[data-prototype]',
     manageRemoveEntry: true,
     lang: {
-        add: 'Ajouter une formation',
+        add: '',
         remove: '',
     },
 });
@@ -59,7 +59,7 @@ a2lixLib.sfCollection.init({
     collectionsSelector: 'form #candidate_experience div[data-prototype]',
     manageRemoveEntry: true,
     lang: {
-        add: 'Ajouter une éxperience',
+        add: '',
         remove: '',
     },
 });
@@ -68,7 +68,7 @@ a2lixLib.sfCollection.init({
     collectionsSelector: 'form #candidate_skills div[data-prototype]',
     manageRemoveEntry: true,
     lang: {
-        add: 'Ajouter une compétence',
+        add: '',
         remove: '',
     },
 });
@@ -77,7 +77,7 @@ a2lixLib.sfCollection.init({
     collectionsSelector: 'form #hobbies div[data-prototype]',
     manageRemoveEntry: true,
     lang: {
-        add: 'Ajouter un centre d\' intérêt',
+        add: '',
         remove: '',
     },
 });
