@@ -10,7 +10,7 @@ class EmployeeFixtures extends Fixture
 {
     public const EMPLOYEES = [
         [
-            'firstname' => 'Kévin',
+            'firstname' => 'Kevin',
             'lastname' => 'Hidalgo',
             'role' => 'Co-fondateur - Responsable RH',
             'civility' => 'M.',
