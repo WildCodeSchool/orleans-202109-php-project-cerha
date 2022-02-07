@@ -20,7 +20,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public const GENDER = [
         'M.' => 'M.',
         'Mme' => 'Mme',
-        'Autre' => '',
     ];
 
     /**

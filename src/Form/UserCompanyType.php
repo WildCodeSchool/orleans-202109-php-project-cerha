@@ -16,11 +16,7 @@ class UserCompanyType extends AbstractType
     {
         $builder
             ->add('gender', ChoiceType::class, [
-                'choices' => [
-                    'M.' => 'M.',
-                    'Mme' => 'Mme',
-                    'Autre' => ''
-                ],
+                'choices' => User::GENDER,
                 'expanded' => true,
                 'multiple' => false,
                 'label' => false
