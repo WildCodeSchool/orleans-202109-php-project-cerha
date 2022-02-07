@@ -4,3 +4,12 @@
     background-color: $dark-primary;
     color: $light;
 }
+
+.link-connection {
+    color      : $primary;
+    text-decoration: none;
+
+    &:hover {
+        color: $secondary;
+    }
+}

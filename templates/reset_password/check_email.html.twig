@@ -4,10 +4,11 @@
 
 {% block body %}
 <div class="container my-5">
-<div class=" fs-4 my-3 text-secondary">Email de réinitialisation du mot de passe envoyé</div>
+<div class=" fs-4 my-3 text-secondary">Votre demande de réinitialisation du mot de passe a bien été envoyé.</div>
     <p>
-        Un email contenant le lien de réinitialisation de mot de passe vient d'être envoyé à l'adresse que vous avez indiqué. Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+        Un email contenant le lien de réinitialisation de mot de passe vient d'être envoyé à l'adresse que vous avez indiqué, ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
     </p>
-    <p>Si vous ne recevez pas d'email, veuillez vérifier votre dossier spam ou réessayer <a href="{{ path('app_forgot_password_request') }}"> (essayer à nouveau)</a>.</p>
+    <p>Si vous ne recevez pas d'email, veuillez vérifier votre dossier spam ou réessayer à nouveau.</p>
+    <a  class="btn btn-primary"  href="{{ path('app_forgot_password_request') }}"> renvoyer le mail</a>
 </div>
 {% endblock %}
