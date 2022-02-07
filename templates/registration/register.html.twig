@@ -8,9 +8,6 @@
 	{{ encore_entry_link_tags('login') }}
 {% endblock %}
 {% block body %}
-	{% for flash_error in app.flashes('verify_email_error') %}
-		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-	{% endfor %}
 	<header>
 		{% include "/items/_banner.html.twig" %}
 	</header>
@@ -80,7 +77,7 @@
                 'class': 'align-self-center',
                 }
                 }) }}
-				<p>Accepter les <a href="{{ path('conditions') }}">conditions d'utilisation</a></p>
+				<p>Accepter les <a href="{{ path('conditions') }} " target="_blank">conditions d'utilisation</a></p>
 				</div>
 			</div>
 

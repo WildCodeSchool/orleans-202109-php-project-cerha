@@ -55,7 +55,7 @@
 								<a class="btn btn-primary px-3 py-1" href="{{ path('admin_candidate_show', {'id': candidate.id}) }}">
 									<i class="bi bi-eye me-2"></i>Profil nommé
 								</a>
-								<a href="{{ path('candidate_show_public_profile', {'reference': candidate.user.reference}) }}" class="px-3 py-1 btn btn-primary">
+								<a href="{{ path('candidate_show_public_profile', {'reference': candidate.user.reference}) }}" class="px-3 py-1 btn btn-primary" target="_blank">
 									<i class="bi bi-person-video me-2"></i>Profil anonyme
 								</a>
 								<a href="{{ path('admin_candidate_pdf', {'id': candidate.id}) }}">

@@ -112,14 +112,14 @@ class Candidate
     /**
      * @ORM\OneToMany(targetEntity=Experience::class,  mappedBy="candidate",
      *  orphanRemoval=true, cascade={"persist", "remove"})
-     * @Assert\Valid
+     * @Assert\Valid(groups={"dates"})
      */
     private Collection $experiences;
 
     /**
      * @ORM\OneToMany(targetEntity=Formation::class,  mappedBy="candidate",
      *  orphanRemoval=true, cascade={"persist", "remove"})
-     * @Assert\Valid
+     * @Assert\Valid(groups={"dates"})
      */
     private Collection $formations;
 
@@ -131,7 +131,7 @@ class Candidate
     private Collection $additionalDocuments;
 
     /**
-     * @ORM\OneToMany(targetEntity=CandidateComment::class, mappedBy="candidate")
+     * @ORM\OneToMany(targetEntity=CandidateComment::class, mappedBy="candidate", cascade={"persist", "remove"} )
      * @Assert\Valid
      */
     private Collection $candidateComments;
