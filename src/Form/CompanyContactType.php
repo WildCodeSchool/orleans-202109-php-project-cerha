@@ -25,6 +25,7 @@ class CompanyContactType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Company::class,
+            'validation_groups' => ['Default', 'contactCompany']
         ]);
     }
 }
