@@ -26,7 +26,7 @@ class AdditionalDocument
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private ?string $name;
+    private ?string $name = null;
 
     /**
      * @Vich\UploadableField(mapping="documents_candidate", fileNameProperty="name")
