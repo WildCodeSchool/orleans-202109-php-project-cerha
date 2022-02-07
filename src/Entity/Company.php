@@ -132,17 +132,17 @@ class Company
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank
-     * @Assert\Type("string")
-     * @Assert\Length(max=255)
+     * @Assert\NotBlank (groups={"company"})
+     * @Assert\Type("string", groups={"company"})
+     * @Assert\Length(max=255, groups={"company"})
      */
     private ?string $businessArea;
 
     /**
      * @ORM\Column(type="string", length=5)
-     * @Assert\NotBlank
-     * @Assert\Type("string")
-     * @Assert\Length(max=5)
+     * @Assert\NotBlank (groups={"company"})
+     * @Assert\Type("string", groups={"company"})
+     * @Assert\Length(max=5, groups={"company"})
      */
     private ?string $collectiveAgreement;
 
