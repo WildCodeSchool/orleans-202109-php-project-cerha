@@ -85,7 +85,7 @@ vos besoins, nous vous aidons à augmenter vos chances en fonction de la demande
 		<div class="row my-4 flex-lg-row justify-content-center">
 			{% for employee in employees %}
 			<div class="col-lg-4 text-center">
-				<img class="rounded-1" src="{{ employee.picture }}"
+				<img class="rounded-1" src="{{ vich_uploader_asset(employee) }}"
 					alt="{{ employee.firstname ~ employee.lastname }} picture">
 				<h3 class="fw-bold mt-4 mb-0">
 					{{ employee.civility ~ '. ' ~ employee.firstname ~ ' ' ~ employee.lastname }}
