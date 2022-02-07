@@ -131,7 +131,7 @@ class Candidate
     private Collection $additionalDocuments;
 
     /**
-     * @ORM\OneToMany(targetEntity=CandidateComment::class, mappedBy="candidate")
+     * @ORM\OneToMany(targetEntity=CandidateComment::class, mappedBy="candidate", cascade={"persist", "remove"} )
      * @Assert\Valid
      */
     private Collection $candidateComments;
