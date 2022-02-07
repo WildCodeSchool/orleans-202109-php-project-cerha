@@ -25,7 +25,7 @@ class CompanyFixtures extends Fixture
             $company->setVatNumber(preg_replace('/\s+/', '', $faker->vat));
             $company->setContactRole($faker->jobTitle);
             $company->setBusinessArea('Commerce');
-            $company->setContactRole('12345');
+            $company->setCollectiveAgreement('12345');
             $company->setWebsite('http://www.lesite.fr');
             $company->setFacebook('http://www.facebook.com');
             $company->setInstagram('http://www.instagram.com');
