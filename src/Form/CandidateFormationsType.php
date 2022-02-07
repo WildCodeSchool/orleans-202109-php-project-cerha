@@ -29,6 +29,7 @@ class CandidateFormationsType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Candidate::class,
+            'validation_groups' => ['Default', 'dates']
         ]);
     }
 }

@@ -67,6 +67,10 @@ class Experience
     /**
      * @ORM\Column(type="date")
      * @Assert\NotBlank
+     * @Assert\Expression(
+     *      "this.getStartDate() < this.getEndDate()",
+     *      message="La date de fin ne doit pas être antérieure à la date de début"
+     * )
      */
     private ?\DateTimeInterface $endDate;
 
