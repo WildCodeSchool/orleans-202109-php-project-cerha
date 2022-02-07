@@ -89,7 +89,7 @@ vos besoins, nous vous aidons à augmenter vos chances en fonction de la demande
 	</section>
 	<section class="employee container-fluid my-5">
 		<div class="row">
-			<h2 class="mt-4 text-center">Notre équipe</h2>
+			<h2 class="mt-4 text-center">L'équipe de direction</h2>
 		</div>
 		<div class="row my-4 flex-lg-row justify-content-center">
 			{% for employee in employees %}
@@ -99,7 +99,7 @@ vos besoins, nous vous aidons à augmenter vos chances en fonction de la demande
 				<h3 class="fw-bold mt-4 mb-0">
 					{{ employee.civility ~ '. ' ~ employee.firstname ~ ' ' ~ employee.lastname }}
 				</h3>
-				<p class="role mb-3 fs-4 text-secondary">{{ employee.role }}</p>
+				<p class="role mb-3 fs-5 fw-light text-secondary">{{ employee.role }}</p>
 			</div>
 			{% endfor %}
 			<div>
