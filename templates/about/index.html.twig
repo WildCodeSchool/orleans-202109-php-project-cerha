@@ -97,7 +97,7 @@ vos besoins, nous vous aidons à augmenter vos chances en fonction de la demande
 				<img class="rounded-1" src="{{ employee.picture }}"
 					alt="{{ employee.firstname ~ employee.lastname }} picture">
 				<h3 class="fw-bold mt-4 mb-0">
-					{{ employee.civility ~ '. ' ~ employee.firstname ~ ' ' ~ employee.lastname }}
+					{{ employee.civility ~ employee.firstname ~ ' ' ~ employee.lastname }}
 				</h3>
 				<p class="role mb-3 fs-5 fw-light text-secondary">{{ employee.role }}</p>
 			</div>

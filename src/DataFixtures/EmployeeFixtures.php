@@ -13,14 +13,14 @@ class EmployeeFixtures extends Fixture
             'firstname' => 'Kévin',
             'lastname' => 'Hidalgo',
             'role' => 'Co-fondateur - Responsable RH',
-            'civility' => 'M',
+            'civility' => 'M.',
             'picture' => 'DSC_4754.jpg'
         ],
         [
             'firstname' => 'Lionel',
             'lastname' => 'Dubos',
             'role' => 'Co-fondateur - Responsable Financement',
-            'civility' => 'M',
+            'civility' => 'M.',
             'picture' => 'DSC_6606.jpg'
         ]
     ];
