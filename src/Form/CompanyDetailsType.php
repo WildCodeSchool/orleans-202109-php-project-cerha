@@ -39,6 +39,12 @@ class CompanyDetailsType extends AbstractType
             ->add('vatNumber', TextType::class, [
                 'label' => 'TVA',
             ])
+            ->add('businessArea', TextType::class, [
+                'label' => 'Domaine d\'activité',
+            ])
+            ->add('collectiveAgreement', TextType::class, [
+                'label' => 'Convention collective',
+            ])
             ->add('website', UrlType::class, [
                 'label' => 'Site internet',
                 'required' => false
