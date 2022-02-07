@@ -37,7 +37,7 @@ class RegistrationFormType extends AbstractType
                 'second_options' => ['label' => 'Confirmez votre mot de passe'],
             ])
             ->add('type', ChoiceType::class, [
-                'label' => ' Je suis :',
+                'label' => 'Je suis :',
                 'mapped' => false,
                 'choices' => [
                     'Une entreprise' => User::USER_ROLES[1],
