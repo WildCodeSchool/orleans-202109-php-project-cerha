@@ -130,6 +130,22 @@ class Company
      */
     private ?string $companyNumber;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (groups={"company"})
+     * @Assert\Type("string", groups={"company"})
+     * @Assert\Length(max=255, groups={"company"})
+     */
+    private ?string $businessArea;
+
+    /**
+     * @ORM\Column(type="string", length=5)
+     * @Assert\NotBlank (groups={"company"})
+     * @Assert\Type("string", groups={"company"})
+     * @Assert\Length(max=5, groups={"company"})
+     */
+    private ?string $collectiveAgreement;
+
     public function __construct()
     {
         $this->companyComments = new ArrayCollection();
@@ -346,6 +362,30 @@ class Company
     public function setCompanyNumber(?string $companyNumber): self
     {
         $this->companyNumber = $companyNumber;
+
+        return $this;
+    }
+
+    public function getBusinessArea(): ?string
+    {
+        return $this->businessArea;
+    }
+
+    public function setBusinessArea(?string $businessArea): self
+    {
+        $this->businessArea = $businessArea;
+
+        return $this;
+    }
+
+    public function getCollectiveAgreement(): ?string
+    {
+        return $this->collectiveAgreement;
+    }
+
+    public function setCollectiveAgreement(?string $collectiveAgreement): self
+    {
+        $this->collectiveAgreement = $collectiveAgreement;
 
         return $this;
     }
