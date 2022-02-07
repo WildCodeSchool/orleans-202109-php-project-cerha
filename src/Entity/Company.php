@@ -31,42 +31,42 @@ class Company
      * @ORM\Column(type="string", length=14, nullable=true)
      * @Assert\NotBlank(message="Le SIRET est obligatoire.",groups={"company"})
      * @Assert\Luhn(message="Numéro de SIRET invalide.",groups={"company"})
-     * @Assert\Length(max=14,groups={"company"})
+     * @Assert\Length(max=14, groups={"company"})
      */
     private ?string $siret;
 
     /**
      * @ORM\Column(type="string", length=5, nullable=true)
      * @Assert\NotBlank(groups={"company"})
-     * @Assert\Length(max=5,groups={"company"})
+     * @Assert\Length(max=5, groups={"company"})
      */
     private ?string $apeCode;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank(groups={"company"})
-     * @Assert\Length(max=255,groups={"company"})
+     * @Assert\Length(max=255, groups={"company"})
      */
     private ?string $address;
 
     /**
      * @ORM\Column(type="string", length=5, nullable=true)
      * @Assert\NotBlank(groups={"company"})
-     * @Assert\Length(max=5,groups={"company"})
+     * @Assert\Length(max=5, groups={"company"})
      */
     private ?string $postalCode;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
      * @Assert\NotBlank(groups={"company"})
-     * @Assert\Length(max=100,groups={"company"})
+     * @Assert\Length(max=100, groups={"company"})
      */
     private ?string $city;
 
     /**
      * @ORM\Column(type="string", length=13, nullable=true)
      * @Assert\NotBlank(groups={"company"})
-     * @Assert\Length(max=13,groups={"company"})
+     * @Assert\Length(max=13, groups={"company"})
      */
     private ?string $vatNumber;
 
@@ -125,8 +125,8 @@ class Company
     /**
      * @ORM\Column(type="string", length=10, nullable=true)
      * @Assert\NotBlank (groups={"company"})
-     * @Assert\Type("string",groups={"company"})
-     * @Assert\Length(max=10,groups={"company"})
+     * @Assert\Type("string", groups={"company"})
+     * @Assert\Length(max=10, groups={"company"})
      */
     private ?string $companyNumber;
 
