@@ -35,7 +35,6 @@
 						<th>Prénom</th>
 						<th>Ville</th>
 						<th>Commentaire</th>
-						<th>Profil public</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -52,16 +51,16 @@
 							<td class="align-middle">{{ candidate.city }}</td>
 							<td class="align-middle">{{ candidate.candidatecomments|length }}<i class="bi bi-chat-left-text mx-3"></i>
 							</td>
-							<td class="align-middle"><a href="{{ path('candidate_show_public_profile', {'reference': candidate.user.reference}) }}" class="btn btn-primary"><i class="bi bi-person-video mx-2"></i></a></td>
 							<td class="d-flex justify-content-end gap-3">
-								<a href="{{ path('admin_candidate_show', {'id': candidate.id}) }}">
-									<button class="btn btn-primary px-3 py-1">
-										<i class="bi bi-eye"></i>
-									</button>
+								<a class="btn btn-primary px-3 py-1" href="{{ path('admin_candidate_show', {'id': candidate.id}) }}">
+									<i class="bi bi-eye me-2"></i>Profil nommé
+								</a>
+								<a href="{{ path('candidate_show_public_profile', {'reference': candidate.user.reference}) }}" class="px-3 py-1 btn btn-primary" target="_blank">
+									<i class="bi bi-person-video me-2"></i>Profil anonyme
 								</a>
 								<a href="{{ path('admin_candidate_pdf', {'id': candidate.id}) }}">
 									<button class="btn btn-secondary px-3 py-1 text-light">
-										<i class="bi bi-download"></i>
+										<i class="bi bi-download me-2"></i>PDF
 									</button>
 								</a>
 								{{ include('admin_candidate/_delete_form.html.twig') }}

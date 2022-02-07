@@ -15,7 +15,7 @@ class SoftSkillsType extends AbstractType
         $builder
             ->add('softskills', CollectionType::class, [
                 'entry_type' => SoftSkillType::class,
-                'label' => 'Compétences',
+                'label' => 'Savoir-être',
                 'by_reference' => false,
                 'allow_add' => true,
                 'allow_delete' => true,

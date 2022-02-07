@@ -3,57 +3,57 @@
 {% block title %}Contact
 {% endblock %}
 {% block stylesheets %}
-	{{ encore_entry_link_tags('contact') }}
+{{ encore_entry_link_tags('contact') }}
 {% endblock %}
 
 {% block body %}
-	<main class="container">
-		<h1 class="text-center mt-5 ">
-			Nous contacter
-		</h1>
+<main class="container">
+	<h1 class="text-center mt-5 ">
+		Nous contacter
+	</h1>
 
-		<div class="row ">
-			<div class=" col-md-5 ">
+	<div class="row ">
+		<div class=" col-md-5 ">
 
-				<img class=" w-50 h-70" src="{{ asset('build/images/CERHA-logo-detoure.svg') }}" alt="logo"/>
+			<img class=" w-50 h-70" src="{{ asset('build/images/CERHA-logo-detoure.svg') }}" alt="logo" />
 
-				<p>
-					<i class="bi bi-envelope mx-3"></i>contact@cerha.fr</p>
-				<p>
-					<i class="bi bi-telephone mx-3"></i>07.71.55.93.65</p>
-				<p>
-					<i class="bi bi-geo-alt mx-3"></i>Orléans</p>
-				<iframe class="w-100 mt-3 mb-5 map align-middle" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=1.8236768245697024%2C47.9344951864642%2C1.827603578567505%2C47.93633890209049&amp;layer=mapnik&amp;marker=47.93541705249512%2C1.8256402015686035"></iframe><br/><small>
-					<a href="https://www.openstreetmap.org/?mlat=47.93542&amp;mlon=1.82564#map=19/47.93542/1.82564"></a>
-				</small>
-			</div>
-
-			<div class="col-2 d-flex justify-content-center mt-5">
-				<div class=" vr mt-5 h-75 d-none d-sm-block "></div>
-			</div>
-
-			<div class="col-md-5  mt-5 fs-4 ">
-				{% for message in app.flashes('success') %}
-					<div class="alert alert-success">
-						{{ message }}
-					</div>
-				{% endfor %}
-				<div class=" contact_form mt-5 text-info fs-4">
-					{{ form_start(form) }}
-					<div class="row mb-4">
-						<div class="col-6">
-							{{ form_widget(form.company[0]) }}
-						</div>
-						<div class="col-6">
-							{{ form_widget(form.company[1]) }}
-						</div>
-					</div>
-					{{ form_rest(form) }}
-				</div>
-				<button class="btn btn-secondary mb-5">Envoyer</button>
-
-				{{ form_end(form) }}
-			</div>
+			<p>
+				<i class="bi bi-envelope mx-3"></i>contact@cerha.fr
+			</p>
+			<p>
+				<i class="bi bi-telephone mx-3"></i>07.71.55.93.65
+			</p>
+			<p>
+				<i class="bi bi-geo-alt mx-3"></i>Orléans
+			</p>
+			<iframe class="w-100 mt-3 mb-5 map align-middle" frameborder="0" scrolling="no" marginheight="0"
+				marginwidth="0"
+				src="https://www.openstreetmap.org/export/embed.html?bbox=1.8236768245697024%2C47.9344951864642%2C1.827603578567505%2C47.93633890209049&amp;layer=mapnik&amp;marker=47.93541705249512%2C1.8256402015686035"></iframe><br /><small>
+				<a href="https://www.openstreetmap.org/?mlat=47.93542&amp;mlon=1.82564#map=19/47.93542/1.82564"></a>
+			</small>
 		</div>
-	</main>
+
+		<div class="col-2 d-flex justify-content-center mt-5">
+			<div class=" vr mt-5 h-75 d-none d-sm-block "></div>
+		</div>
+
+		<div class="col-md-5  mt-5 fs-4 ">
+			<div class=" contact_form mt-5 text-info fs-4">
+				{{ form_start(form) }}
+				<div class="row mb-4">
+					<div class="col-6">
+						{{ form_widget(form.company[0]) }}
+					</div>
+					<div class="col-6">
+						{{ form_widget(form.company[1]) }}
+					</div>
+				</div>
+				{{ form_rest(form) }}
+			</div>
+			<button class="btn btn-secondary mb-5">Envoyer</button>
+
+			{{ form_end(form) }}
+		</div>
+	</div>
+</main>
 {% endblock %}

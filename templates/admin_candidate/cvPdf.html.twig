@@ -2,99 +2,114 @@
 {% block navbar %}{% endblock %}
 {% block footer %}{% endblock %}
 {% block stylesheets %}
-<link rel="stylesheet" href="build/pdf.css">
+	<link rel="stylesheet" href="build/pdf.css">
 {% endblock %}
 {% block body %}
-<header>
-    <div class="candidate">
-        <p class="h1">CERHA</p>
-        <p class="h2">
-            Candidat : {{ candidate.user.reference }}
-        </p>
-    </div>
-</header>
-<aside class="complements">
-    <section class="contact">
-        <h3 class="contact">Contact (CERHA) :</h3>
-        <ul>
-            <li>
-                <p>07 71 55 93 65</p>
-            </li>
-            <li>
-                <p>cerha.france@gmail.com</p>
-            </li>
-            <li>
-                <p><a href="https://www.linkedin.com/company/cerha">LinkedIn</a></p>
-            </li>
-        </ul>
-    </section>
-    <section class="softSkills">
-        <p class="h3">Soft skills</p>
-        <ul>
-        {% for soft_skill in candidate.softSkills %}
-        <li><p>{{ soft_skill.name }}</p></li>
-        {% endfor %}
-    </ul>
-    </section>
-    <section class="languages">
-        <h3>Langues</h3>
-        <ul>
-            {% for language in candidate.candidateLanguages %}
-            <li>
-                <p>{{ language.name|language_name('fr')|capitalize }}</p>
-            </li>
-            {% endfor %}
-        </ul>
-    </section>
-    <section class="hobbies">
-        <h3>Centres d'intérêt</h3>
-        <ul>
-            {% for hobby in candidate.hobbies %}
-            <li>
-                <p>{{ hobby.name }}</p>
-            </li>
-            {% endfor %}
-        </ul>
-    </section>
-</aside>
-<main>
-    <main>
-        <section class="competence">
-            <p class="h3">Compétences</p>
-            <ul>
-                {% for skill in candidate.skills %}
-                <li class="skill">
-                    <p class="skills">{{ skill.name }}</p>
-                </li>
-                {% endfor %}
-            </ul>
-            <hr noshade="true">
-        </section>
-        <section class="experiences">
-            <p class="h3">Expériences professionnelles</p>
-            <ul>
-                {% for experience in candidate.experiences %}
-                <li class="main">
-                    <p class="h4">{{ experience.jobName }}</p>
-                    <p class="h5">{{ experience.place }}</p>
-                    <p> {{ experience.description }} </p>
-                </li>
-                {% endfor %}
-            </ul>
-            <hr noshade="true">
-        </section>
-        <section class="formations">
-            <p class="h3">Diplômes et formations</p>
-            <ul>
-                {% for formation in candidate.formations %}
-                <li class="main">
-                    <p class="h4">{{ formation.title }}</p>
-                    <p class="h5">{{ formation.place }} |
-                        {{ formation.startDate|date("M d Y") }} - {{ formation.endDate|date('M d Y') }}</p>
-                    <p>{{ formation.description }}</p>
-                </li>
-                {% endfor %}
-            </ul>
-        </section>
-    </main>
-    {% endblock %}
+	<header>
+		<div class="candidate">
+			<p class="h1">CERHA</p>
+			<p class="h2">
+				Candidat :
+				{{ candidate.user.reference }}
+			</p>
+		</div>
+	</header>
+	<aside class="complements">
+		<section class="contact">
+			<h3 class="contact">Contact (CERHA) :</h3>
+			<ul>
+				<li>
+					<p>07 71 55 93 65</p>
+				</li>
+				<li>
+					<p>cerha.france@gmail.com</p>
+				</li>
+				<li>
+					<p>
+						<a href="https://www.linkedin.com/company/cerha">LinkedIn</a>
+					</p>
+				</li>
+			</ul>
+		</section>
+		<section class="softSkills">
+			<p class="h3">Soft skills</p>
+			<ul>
+				{% for soft_skill in candidate.softSkills %}
+					<li>
+						<p>{{ soft_skill.name }}</p>
+					</li>
+				{% endfor %}
+			</ul>
+		</section>
+		<section class="languages">
+			<h3>Langues</h3>
+			<ul>
+				{% for language in candidate.candidateLanguages %}
+					<li>
+						<p>{{ language.name|language_name('fr')|capitalize }}</p>
+					</li>
+				{% endfor %}
+			</ul>
+		</section>
+		<section class="hobbies">
+			<h3>Centres d'intérêt</h3>
+			<ul>
+				{% for hobby in candidate.hobbies %}
+					<li>
+						<p>{{ hobby.name }}</p>
+					</li>
+				{% endfor %}
+			</ul>
+		</section>
+	</aside>
+	<main>
+		<main>
+			<section class="competence">
+				<p class="h3">Compétences</p>
+				<ul>
+					{% for skill in candidate.skills %}
+						<li class="skill">
+							<p class="skills">{{ skill.name }}</p>
+						</li>
+					{% endfor %}
+				</ul>
+				<hr noshade="true">
+			</section>
+			<section class="experiences">
+				<p class="h3">Expériences professionnelles</p>
+				<ul>
+					{% for experience in candidate.experiences %}
+						<li class="main">
+							<p class="h4">{{ experience.jobName }}</p>
+							<p class="h5">{{ experience.place }}
+								|
+								{{ experience.startDate|format_datetime('medium', 'none') }}
+								-
+								{{ experience.endDate|format_datetime('medium', 'none') }}
+							</p>
+							<p>
+								{{ experience.description }}
+							</p>
+						</li>
+					{% endfor %}
+				</ul>
+				<hr noshade="true">
+			</section>
+			<section class="formations">
+				<p class="h3">Diplômes et formations</p>
+				<ul>
+					{% for formation in candidate.formations %}
+						<li class="main">
+							<p class="h4">{{ formation.title }}</p>
+							<p class="h5">{{ formation.place }}
+								|
+								{{ formation.startDate|format_datetime('medium', 'none') }}
+								-
+								{{ formation.endDate|format_datetime('medium', 'none') }}</p>
+							<p>{{ formation.description }}</p>
+						</li>
+					{% endfor %}
+				</ul>
+			</section>
+		</main>
+	{% endblock %}

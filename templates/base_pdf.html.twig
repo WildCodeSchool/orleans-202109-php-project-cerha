@@ -1,15 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
-    {% block stylesheets %}
-    {{ encore_entry_link_tags('pdf') }}
-    {% endblock %}
+    <style>
+        .h3 {
+            font-size: 18px;
+            font: bold;
+            margin-bottom: 8px;
+        }
+
+        .h1 {
+            margin: 0px;
+            padding: 0px;
+            font-weight: bold;
+            font-size: 26px;
+            margin-bottom: 4px;
+            color: #0e4d94;
+        }
+
+        .softSkills {
+            margin-bottom: 8px;
+        }
+
+        ul {
+            margin: 2px;
+        }
+
+        .h2 {
+            margin: 0;
+            padding: 0;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #e8a006;
+        }
+
+        .contact {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        th {
+            padding-right: 50px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .complements {
+            float: left;
+            background-color: #1a2f5b;
+            color: #fffdf9;
+            height: 25.5cm;
+            width: 180px;
+        }
+
+        .sector {
+            float: right;
+        }
+
+        hr {
+            color: #e8a006;
+        }
+
+        aside {
+            padding-left: 8px;
+            padding-right: 8px;
+            margin-right: 10px;
+        }
+
+        a {
+            color: #fffdf9;
+        }
+
+        main section .h3 {
+            color: #0e4d94;
+        }
+
+        .main {
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 12px;
+            margin: 2px;
+        }
+
+        .h5 {
+            color: #e8a006;
+            opacity: 0.7;
+            margin-bottom: 6px;
+            font-size: 13px;
+        }
+
+        .h4 {
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 100;
+        }
+    </style>
 </head>
+
 <body>
     {% block body %}{% endblock %}
 </body>
+
 </html>
