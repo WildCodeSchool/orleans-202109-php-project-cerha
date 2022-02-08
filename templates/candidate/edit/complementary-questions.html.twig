@@ -17,6 +17,8 @@
 			{{ form_row(form.searchQuality) }}
 			<h3 class="fs-4">Vous qualifierez votre profil : d' attractif, de rare, d' atypique, commun :</h3>
 			{{ form_row(form.profilQuality) }}
+			<h3 class="fs-4">Où identifiez-vous avoir besoin d’accompagnement ?</h3>
+			{{ form_row(form.helpNeeded) }}
 			<button class="btn btn-secondary fw-bold text-light align-self-center mb-4">Valider</button>
 			<a class="btn btn-outline-dark align-self-center mb-4" href=" {{ path('candidate_show', {'user': candidate.user}) }}">Retour</a>
 			{{ form_end(form) }}

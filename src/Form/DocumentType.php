@@ -14,12 +14,15 @@ class DocumentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-
-            ->add('documentFile', VichFileType::class, [
-                'label' => false,
-                'required'      => false,
-                'allow_delete'  => false,
-            ]);
+            ->add(
+                'documentFile',
+                VichFileType::class,
+                [
+                    'label' => false,
+                    'required'      => false,
+                    'allow_delete'  => false,
+                    'download_label' => static fn (AdditionalDocument $name): ?string => $name->getName(),]
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -22,65 +22,65 @@ class Company
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Length(max=100)
+     * @Assert\NotBlank(groups={"company"})
+     * @Assert\Length(max=100,groups={"company"})
      */
     private ?string $denomination;
 
     /**
      * @ORM\Column(type="string", length=14, nullable=true)
-     * @Assert\NotBlank(message="Le SIRET est obligatoire.")
-     * @Assert\Luhn(message="Numéro de SIRET invalide.")
-     * @Assert\Length(max=14)
+     * @Assert\NotBlank(message="Le SIRET est obligatoire.",groups={"company"})
+     * @Assert\Luhn(message="Numéro de SIRET invalide.",groups={"company"})
+     * @Assert\Length(max=14, groups={"company"})
      */
     private ?string $siret;
 
     /**
      * @ORM\Column(type="string", length=5, nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Length(max=5)
+     * @Assert\NotBlank(groups={"company"})
+     * @Assert\Length(max=5, groups={"company"})
      */
     private ?string $apeCode;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Length(max=255)
+     * @Assert\NotBlank(groups={"company"})
+     * @Assert\Length(max=255, groups={"company"})
      */
     private ?string $address;
 
     /**
      * @ORM\Column(type="string", length=5, nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Length(max=5)
+     * @Assert\NotBlank(groups={"company"})
+     * @Assert\Length(max=5, groups={"company"})
      */
     private ?string $postalCode;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Length(max=100)
+     * @Assert\NotBlank(groups={"company"})
+     * @Assert\Length(max=100, groups={"company"})
      */
     private ?string $city;
 
     /**
      * @ORM\Column(type="string", length=13, nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Length(max=13)
+     * @Assert\NotBlank(groups={"company"})
+     * @Assert\Length(max=13, groups={"company"})
      */
     private ?string $vatNumber;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Length(max=100)
+     * @Assert\NotBlank(groups={"contactCompany"})
+     * @Assert\Length(max=100, groups={"contactCompany"})
      */
     private ?string $contactRole;
 
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="company", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
-     * @Assert\Valid
+     * @Assert\Valid(groups={"contactCompany"})
      */
     private ?User $user;
 
@@ -124,11 +124,27 @@ class Company
 
     /**
      * @ORM\Column(type="string", length=10, nullable=true)
-     * @Assert\NotBlank
-     * @Assert\Type("string")
-     * @Assert\Length(max=10)
+     * @Assert\NotBlank (groups={"company"})
+     * @Assert\Type("string", groups={"company"})
+     * @Assert\Length(max=10, groups={"company"})
      */
     private ?string $companyNumber;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (groups={"company"})
+     * @Assert\Type("string", groups={"company"})
+     * @Assert\Length(max=255, groups={"company"})
+     */
+    private ?string $businessArea;
+
+    /**
+     * @ORM\Column(type="string", length=5)
+     * @Assert\NotBlank (groups={"company"})
+     * @Assert\Type("string", groups={"company"})
+     * @Assert\Length(max=5, groups={"company"})
+     */
+    private ?string $collectiveAgreement;
 
     public function __construct()
     {
@@ -346,6 +362,30 @@ class Company
     public function setCompanyNumber(?string $companyNumber): self
     {
         $this->companyNumber = $companyNumber;
+
+        return $this;
+    }
+
+    public function getBusinessArea(): ?string
+    {
+        return $this->businessArea;
+    }
+
+    public function setBusinessArea(?string $businessArea): self
+    {
+        $this->businessArea = $businessArea;
+
+        return $this;
+    }
+
+    public function getCollectiveAgreement(): ?string
+    {
+        return $this->collectiveAgreement;
+    }
+
+    public function setCollectiveAgreement(?string $collectiveAgreement): self
+    {
+        $this->collectiveAgreement = $collectiveAgreement;
 
         return $this;
     }
