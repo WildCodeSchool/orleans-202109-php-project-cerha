@@ -14,14 +14,14 @@ class EmployeeFixtures extends Fixture
             'lastname' => 'Hidalgo',
             'role' => 'Co-fondateur - Responsable RH',
             'civility' => 'M.',
-            'picture' => 'DSC_4754.jpg'
+            'picture' => 'kevin.jpg'
         ],
         [
             'firstname' => 'Lionel',
             'lastname' => 'Dubos',
             'role' => 'Co-fondateur - Responsable Financement',
             'civility' => 'M.',
-            'picture' => 'DSC_6606.jpg'
+            'picture' => 'lionel.jpg'
         ]
     ];
     public function load(ObjectManager $manager): void
