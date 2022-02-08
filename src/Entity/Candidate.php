@@ -136,7 +136,10 @@ class Candidate
      */
     private Collection $candidateComments;
 
-
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private ?string $helpNeeded;
 
     public function __construct()
     {
@@ -485,6 +488,18 @@ class Candidate
                 $candidateComment->setCandidate(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getHelpNeeded(): ?string
+    {
+        return $this->helpNeeded;
+    }
+
+    public function setHelpNeeded(?string $helpNeeded): self
+    {
+        $this->helpNeeded = $helpNeeded;
 
         return $this;
     }
