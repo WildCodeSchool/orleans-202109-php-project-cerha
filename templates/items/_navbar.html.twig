@@ -19,9 +19,15 @@
 								{{ app.user.firstname }}
 								{{ app.user.lastname }}</a>
 						{% elseif is_granted('ROLE_COMPANY') %}
-							<a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ path('company_show') }}">
-								<i class="bi bi-person-workspace text-primary me-2"></i>
-								{{ app.user.company.denomination }}</a>
+							{% if app.user.company.denomination %}
+								<a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ path('company_show') }}">
+									<i class="bi bi-person-workspace text-primary me-2"></i>
+									{{ app.user.company.denomination }}</a>
+							{% else %}
+								<a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ path('company_show') }}">
+									<i class="bi bi-person-workspace text-primary me-2"></i>
+									Mon espace</a>
+							{% endif %}
 						{% endif %}
 						<hr class="dropdown-divider">
 						<a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ path('logout') }}">
