@@ -80,7 +80,7 @@ class Company
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="company", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
-     * @Assert\Valid(groups={"contactCompany"})
+     * @Assert\Valid
      */
     private ?User $user;
 

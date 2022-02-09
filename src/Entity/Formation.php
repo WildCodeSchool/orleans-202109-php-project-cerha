@@ -57,16 +57,17 @@ class Formation
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\NotBlank
+     * @Assert\NotBlank(groups={"dates"})
      */
     private ?\DateTimeInterface $startDate;
 
     /**
      * @ORM\Column(type="date")
-     * @Assert\NotBlank
-     *      * @Assert\Expression(
+     * @Assert\NotBlank(groups={"dates"})
+     * @Assert\Expression(
      *      "this.getStartDate() < this.getEndDate()",
-     *      message="La date de fin ne doit pas être antérieure à la date de début"
+     *      message="La date de fin ne doit pas être antérieure à la date de début",
+     *      groups={"dates"}
      * )
      */
     private ?\DateTimeInterface $endDate;
