@@ -1,7 +1,7 @@
 <h2 class="text-center company m-5" id="company">Aux entreprises</h2>
 <div class="d-flex flex-column mb-5">
 	<div class="img-services-div mb-5 d-flex justify-content-center">
-		<img src="{{ asset('build/images/services-company.jpg') }}" class="img-services img-fluid" alt="services pour entreprises">
+		<img src="{{ asset('build/images/banner-company.jpg') }}" class="img-services img-fluid" alt="services pour entreprises">
 	</div>
 	<div class="row d-flex justify-content-around mt-5">
 		{% for category in categories|filter(category => category.type == 'Entreprise') %}

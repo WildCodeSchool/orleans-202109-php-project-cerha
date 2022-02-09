@@ -1,7 +1,7 @@
 <h2 class="text-center particular mb-5" id="particular">Aux particuliers</h2>
 <div class="d-flex flex-column mb-5">
 	<div class="img-services-div mb-5 d-flex justify-content-center">
-		<img src="{{ asset('build/images/services-particular.jpg') }}" class="img-services img-fluid" alt="services pour particuliers">
+		<img src="{{ asset('build/images/banner-particular.jpg') }}" class="img-services img-fluid" alt="services pour particuliers">
 	</div>
 	<div class="row d-flex justify-content-around mt-5">
 		{% for category in categories|filter(category => category.type == 'Candidat') %}
