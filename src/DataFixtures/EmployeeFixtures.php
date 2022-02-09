@@ -3,11 +3,18 @@
 namespace App\DataFixtures;
 
 use App\Entity\Employee;
+use App\Kernel;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
 class EmployeeFixtures extends Fixture
 {
+    private Kernel $kernel;
+
+    public function __construct(Kernel $kernel)
+    {
+        $this->kernel = $kernel;
+    }
     public const EMPLOYEES = [
         [
             'firstname' => 'Kevin',
@@ -34,7 +41,7 @@ class EmployeeFixtures extends Fixture
             $newEmployee->setPicture($employee['picture']);
             copy(
                 __DIR__ . '/' . $employee['picture'],
-                __DIR__ . '/../../public/uploads/employee/' . $employee['picture']
+                $this->kernel->getProjectDir() . '/public/uploads/employee/' . $employee['picture']
             );
             $newEmployee->setCivility($employee['civility']);
             $manager->persist($newEmployee);
