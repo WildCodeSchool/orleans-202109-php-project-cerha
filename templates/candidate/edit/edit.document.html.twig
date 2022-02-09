@@ -14,9 +14,10 @@
 		<div class="edit_form col-md-6  offset-md-3 fs-4 mt-5 text-info fs-4">
 			{{ form_start(form) }}
 			{{ form_widget(form) }}
-			<button class="btn btn-secondary fw-bold text-light align-self-center mb-4">Valider</button>
-			<a class="btn btn-outline-dark align-self-center mb-4" href=" {{ path('candidate_show', {'user': candidate.user}) }}">Retour</a>
-			{{ form_end(form) }}
-		</div>
-	</main>
-{% endblock %}
+
+					<button class="btn btn-secondary fw-bold text-light align-self-center mb-4"><i class="bi bi-check2-square me-2"></i>Valider</button>
+					<a class="btn btn-outline-dark align-self-center mb-4" href=" {{ path('candidate_show', {'user': candidate.user}) }}"><i class="bi bi-arrow-left-square test-light me-2"></i>Retour</a>
+					{{ form_end(form) }}
+				</div>
+			</main>
+		{% endblock %}

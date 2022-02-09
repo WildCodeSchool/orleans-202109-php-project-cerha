@@ -80,7 +80,7 @@ class Company
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="company", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
-     * @Assert\Valid(groups={"contactCompany"})
+     * @Assert\Valid
      */
     private ?User $user;
 
@@ -118,7 +118,7 @@ class Company
     private ?string $need;
 
     /**
-     * @ORM\OneToMany(targetEntity=CompanyComment::class, mappedBy="company")
+     * @ORM\OneToMany(targetEntity=CompanyComment::class, mappedBy="company", cascade={"persist", "remove"})
      */
     private Collection $companyComments;
 

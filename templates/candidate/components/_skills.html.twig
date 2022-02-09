@@ -1,7 +1,7 @@
 <div class="row candidateSkills mt-5 d-lg-block d-flex justify-content-center" id="candidateSkills">
 	<div class="card card-candidateSkills p-4 col-lg-6 col-10 offset-lg-3 ">
 		<div class="d-flex mt-2 justify-content-between">
-			<h2 class="card-title text-primary ms-3 pt-1">Compétences</h2>
+			<h2 class="card-title text-primary fs-4 ms-3 pt-1">Mes compétences acquises et mobilisées</h2>
 			{% if is_granted("ROLE_ADMIN") == false %}
 				<a class="btn fs-6 bi bi-pencil-square pt-2" href="{{ path('candidate_edit_skill', {'user': candidate.user}) }}">
 					Modifier</a>

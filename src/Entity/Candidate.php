@@ -119,7 +119,7 @@ class Candidate
     /**
      * @ORM\OneToMany(targetEntity=Formation::class,  mappedBy="candidate",
      *  orphanRemoval=true, cascade={"persist", "remove"})
-     * @Assert\Valid(groups={"dates"})
+     * @Assert\Valid
      */
     private Collection $formations;
 
