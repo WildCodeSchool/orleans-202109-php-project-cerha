@@ -11,3 +11,7 @@ $text-family: Calibri, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
 $shadow-card: 4px 4px 4px rgb(211, 211, 211);
 $line-height: 40px;
 $info: #16316b;
+
+$shadow-color : rgb(211, 211, 211);
+
+$shadow-card: 4px 4px 4px $shadow-color;

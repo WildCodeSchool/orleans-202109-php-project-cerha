@@ -6,6 +6,10 @@
 	{{ encore_entry_link_tags('forms') }}
 {% endblock %}
 
+{% block javascripts %}
+	{{ encore_entry_script_tags('experiences') }}
+{% endblock %}
+
 {% block body %}
 	<main class="container">
 		<h1 class="text-center mt-5 ">
@@ -13,8 +17,8 @@
 		<div class="col-md-6  offset-md-3 fs-4 mt-5 text-info edit_form">
 			{{ form_start(form) }}
 			<h2 class="title text-info fs-4">{{ form_widget(form) }}<h2>
-					<button class="btn btn-secondary fw-bold text-light align-self-center mb-4">Valider</button>
-					<a class="btn btn-outline-dark align-self-center mb-4" href=" {{ path('candidate_show', {'user': candidate.user}) }}">Retour</a>
+					<button class="btn btn-secondary fw-bold text-light align-self-center mb-4"><i class="bi bi-check2-square me-2"></i>Valider</button>
+					<a class="btn btn-outline-dark align-self-center mb-4" href=" {{ path('candidate_show', {'user': candidate.user}) }}"><i class="bi bi-arrow-left-square test-light me-2"></i>Retour</a>
 					{{ form_end(form) }}
 				</div>
 			</main>
