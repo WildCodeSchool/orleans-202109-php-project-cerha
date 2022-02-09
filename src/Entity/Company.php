@@ -118,7 +118,7 @@ class Company
     private ?string $need;
 
     /**
-     * @ORM\OneToMany(targetEntity=CompanyComment::class, mappedBy="company")
+     * @ORM\OneToMany(targetEntity=CompanyComment::class, mappedBy="company", cascade={"persist", "remove"})
      */
     private Collection $companyComments;
 
